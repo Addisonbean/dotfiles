@@ -1,0 +1,111 @@
+[colors]
+background = ${xrdb:polybar.background:#881A0A0A}
+foreground = ${xrdb:polybar.foreground:#CCCCCC}
+
+; TODO: change this:
+background-alt = #444444
+foreground-alt = #555
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+[bar/default]
+width = 100%
+height = 34
+font-0 = "iosevka:size=13;2"
+; font-0 = "Fira Code:size=11;2"
+; font-0 = "Cutive Mono:size=13:style=Regular;2"
+; font-0 = "IBM Plex Sans:style=Regular:size=12;2"
+; font-0 = "scientifica:size=14:style=Medium:antialias=false;3"
+font-1 = "Font Awesome 5 Free:size=11:style=Solid;2"
+font-2 = "Noto Sans CJK JP:size=11;2"
+background = ${colors.background}
+foreground = ${colors.foreground}
+padding-left = 2
+padding-right = 3
+
+wm-restack = bspwm
+; override-redirect = true
+
+modules-left = bspwm
+modules-center = date
+modules-right = battery cpu network spotify
+module-margin-left = 1
+module-margin-right = 2
+
+; tray-position = right
+; tray-detached = true
+
+[module/cpu]
+type = internal/cpu
+label = CPU %percentage%%
+interval = 4
+
+[module/network]
+type = internal/network
+interface = ${env:NETWORK_INTERFACE:wlp59s0}
+label-connected = %{A1:st -e nmtui:}%{A}
+; label-disconnected = %{F#FF3333}%{A1:st -e nmtui:}%{F- A}
+label-disconnected = %{F#FF3333}%{A1:st -e nmtui:}%{F- A}
+
+[module/battery]
+type = internal/battery
+time-format = %H:%M
+poll-interval = 10
+
+; I think format full is broken atm... (and charging???)
+format-full = %{F#cbd14f} <ramp-capacity> %{F-}<label-full>
+format-charging = %{F#cbd14f} <ramp-capacity> %{F-}<label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+
+label-full = %percentage%% (%time%)
+label-charging = %percentage%% (%time%)
+label-discharging = %percentage%% (%time%)
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+[module/date]
+type  = internal/date
+label = "    %time%   %date%"
+date  = %b %d, %Y
+time  = %I:%M %p
+date-alt  = %a. %b %d, %Y
+time-alt  = %I:%M:%S %p
+
+[module/spotify]
+type = custom/script
+interval = 2
+exec = ~/.config/polybar/scripts/spotify.sh
+click-left = wmctrl -xa spotify
+
+[module/bspwm]
+type = internal/bspwm
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+
+pin-workspaces = false
+enable-scroll = false
+
+label-separator = "  "
+label-separator-padding = 0
+
+label-focused = %name% %icon%
+; label-focused-foreground = #ABD94C
+label-focused-foreground = ${xrdb:polybar.focusedDesktop:#ABD94C}
+
+; Inverted colors:
+; label-focused = " %name% %icon%  "
+; label-focused-foreground = #D20A0A0A
+; label-focused-background = #ABD94C
+
+label-occupied = %name% %icon%
+label-empty =
+
+vim:ft=dosini

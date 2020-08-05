@@ -1,0 +1,64 @@
+# Restart bspwm (+ sxhkd b/c my bspwmrc)
+super + shift + r
+	bspc wm -r
+
+# Open a terminal
+shift + super + Return
+	st
+
+# Set the window state
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# go to next/prev desktop
+# super + bracket{left,right}
+# 	bspc desktop -f {prev,next}.local
+
+super + p
+	rofi -show drun
+
+super + m
+	rofi -show window
+
+super + Tab
+	bspc node -f last
+
+super + bracket{left,right}
+	bspc node -f {prev,next}.local
+
+# Close an window or app
+super + {_,shift + }w
+	bspc node -{c,k}
+
+super + {_,shift + }{1-9}
+	bspc {desktop -f,node -d} focused:'^{1-9}'
+
+super + space
+	bspc desktop -l next
+
+XF86AudioPlay
+	[ -z "$(pidof spotify)" ] && bspc desktop --focus ^3 && spotify; playerctl play-pause
+
+XF86Audio{Lower,Raise}Volume
+	~/.local/bin/volume.sh {down,up}
+
+XF86AudioMute
+	~/.local/bin/volume.sh toggle
+
+XF86MonBrightness{Down,Up}
+	~/.local/bin/brightness.sh {down,up}
+
+XF86Audio{Prev,Next}
+	playerctl {previous,next}
+
+super + shift + Delete
+	systemctl suspend
+
+super + {Left,Right}
+	desk=`bspc query -D -d focused`; bspc desktop -m {prev,next}; bspc monitor -f {prev,next}; bspc desktop -f $desk
+
+# super + {left,right}
+# 	desk=`bspc query -D -d focused`; \
+# 	bspc desktop -m {prev,next}; \
+# 	bspc monitor -f {prev,next}; \
+# 	bspc desktop -f $desk

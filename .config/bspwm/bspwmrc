@@ -1,0 +1,43 @@
+#!/bin/bash
+
+_NET_WM_STRUT_PARTIAL=1
+
+killall sxhkd; sxhkd &
+[ -z "$(pidof polybar)" ] && polybar -r default &
+
+bspc monitor -d 1 2 3 4 5 6
+# bspc monitor -d 1a 2a 3a
+
+bspc desktop 1 -l monocle
+bspc desktop 2 -l tiled
+
+bspc rule -r "*"
+
+bspc config border_width         3
+bspc config window_gap          15
+
+bspc config active_border_color '#33415E'
+bspc config normal_border_color '#33415E'
+bspc config focused_border_color '#BBBBBB'
+
+bspc config split_ratio          0.5
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config focus_follows_pointer true
+
+bspc config single_monocle true
+
+bspc rule -a Project-slippi desktop='^8' state=floating follow=on
+bspc rule -a Sxiv state=fullscreen
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc config external_rules_command ~/.config/bspwm/external_rules.sh
+
+# Don't let windows steal focus, could be useful...
+# bspc config ignore_ewmh_focus true
+
+# Ugly hack for when I change polybar's size...
+bspc config -m focused top_padding "$(xprop -name "polybar-default_eDP-1" _NET_WM_STRUT | awk -e '{ print $5 }' | cut -d ',' -f 1)"
+
+# Hmmmm...
+# polybar-msg cmd hide
+# polybar-msg cmd show
