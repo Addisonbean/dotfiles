@@ -9,6 +9,9 @@
 !.config/
 .config/**
 
+!.config/Xresources
+!.config/xmodmaprc
+
 !.config/bspwm/
 !.config/bspwm/**
 
