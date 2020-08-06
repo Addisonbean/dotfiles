@@ -1,0 +1,38 @@
+#ifndef ST_ALPHA
+#define ST_ALPHA 0.9
+#endif
+
+#ifndef ST_CURSOR
+#define ST_CURSOR COLOR_05
+#endif
+
+#ifndef ST_BG
+#define ST_BG COLOR_00
+#endif
+
+#ifndef ST_FG
+#define ST_FG COLOR_07
+#endif
+
+st.color0: COLOR_00
+st.color1: COLOR_01
+st.color2: COLOR_02
+st.color3: COLOR_03
+st.color4: COLOR_04
+st.color5: COLOR_05
+st.color6: COLOR_06
+st.color7: COLOR_07
+st.color8: COLOR_08
+st.color9: COLOR_09
+st.color10: COLOR_10
+st.color11: COLOR_11
+st.color12: COLOR_12
+st.color13: COLOR_13
+st.color14: COLOR_14
+st.color15: COLOR_15
+st.foreground: ST_FG
+st.background: ST_BG
+st.cursorColor: ST_CURSOR
+st.alpha: ST_ALPHA
+
+! vim:ft=xdefaults

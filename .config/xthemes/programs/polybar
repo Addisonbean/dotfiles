@@ -1,0 +1,17 @@
+#ifndef POLYBAR_BG
+#define POLYBAR_BG #881A0A0A
+#endif
+
+#ifndef POLYBAR_FG
+#define POLYBAR_FG #CCCCCC
+#endif
+
+#ifndef POLYBAR_FOCUSED_DESKTOP
+#define POLYBAR_FOCUSED_DESKTOP COLOR_02
+#endif
+
+polybar.background: POLYBAR_BG
+polybar.foreground: POLYBAR_FG
+polybar.focusedDesktop: POLYBAR_FOCUSED_DESKTOP
+
+! vim:ft=xdefaults

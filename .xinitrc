@@ -1,6 +1,6 @@
 #!/bin/bash
 
-[[ -f ~/.config/Xresources ]] && xrdb -load ~/.config/Xresources
+xrdb -I$HOME/.config/xthemes ~/.config/Xresources
 picom &
 autokey-gtk &
 dunst &

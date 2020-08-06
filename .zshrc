@@ -52,6 +52,8 @@ setopt appendhistory
 
 alias git-dot='git --git-dir=$HOME/.git-dotfiles/ --work-tree=$HOME'
 
+alias xreload="xrdb -I$HOME/.config/xthemes ~/.config/Xresources"
+
 # }}}
 # {{{ Theme
 

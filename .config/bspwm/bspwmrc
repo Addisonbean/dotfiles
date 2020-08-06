@@ -27,10 +27,20 @@ bspc config focus_follows_pointer true
 
 bspc config single_monocle true
 
-bspc rule -a Project-slippi desktop='^8' state=floating follow=on
+ssize=$(xdpyinfo  | grep -oP 'dimensions:\s+\K\S+')
+swidth=$(echo $ssize | cut -d "x" -f 1)
+sheight=$(echo $ssize | cut -d "x" -f 2)
+
+posx=$((swidth / 6))
+posy=$((sheight / 6))
+sizex=$(($posx * 4))
+sizey=$(($posy * 4))
+
+bspc rule -a Project-slippi state=fullscreen
+bspc rule -a Ranger state=floating state=floating rectangle="${sizex}x${sizey}+${posx}+${posy}"
 bspc rule -a Sxiv state=fullscreen
 bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc config external_rules_command ~/.config/bspwm/external_rules.sh
+# bspc config external_rules_command ~/.config/bspwm/external_rules.sh
 
 # Don't let windows steal focus, could be useful...
 # bspc config ignore_ewmh_focus true

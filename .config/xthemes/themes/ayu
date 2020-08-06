@@ -1,0 +1,39 @@
+! black
+#define COLOR_00 #0A0E14
+! red
+#define COLOR_01 #FF3333
+! green
+#define COLOR_02 #ABD94C
+! yellow
+#define COLOR_03 #E6B450
+! blue
+#define COLOR_04 #59C2FF
+! magenta
+#define COLOR_05 #A37ACC
+! cyan
+#define COLOR_06 #39BAE6
+! gray/white
+#define COLOR_07 #B3B1AD
+
+! bright-black
+#define COLOR_08 #0A0E14
+! bright-red
+#define COLOR_09 #F51818
+! bright-green
+#define COLOR_10 #86B300
+! bright-yellow
+#define COLOR_11 #FFEE99
+! bright-blue
+#define COLOR_12 #399EE6
+! bright-magenta
+#define COLOR_13 #A37ACC
+! bright-cyan
+#define COLOR_14 #5CCFE6
+! bright gray/white
+#define COLOR_15 #CBCCC6
+
+! Misc. Settings
+
+#define ST_ALPHA 0.9
+
+! vim:ft=xdefaults

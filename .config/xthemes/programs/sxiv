@@ -1,0 +1,12 @@
+#ifndef SXIV_FG
+#define SXIV_FG #bbbbbb
+#endif
+
+#ifndef SXIV_BG
+#define SXIV_BG #222222
+#endif
+
+Sxiv.foreground: SXIV_FG
+Sxiv.background: SXIV_BG
+
+! vim:ft=xdefaults
