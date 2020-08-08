@@ -8,10 +8,8 @@ if [ -n "$1" ]; then
 	ln -sf "$HOME/.config/xthemes/themes/$1" "$HOME/.config/xthemes/themes/default"
 fi
 xrdb -I$HOME/.config/xthemes ~/.config/Xresources
-# feh --no-fehbg --bg-fill "$HOME/.config/xthemes/wallpapers/$(xrdb -query | grep 'my_desktop.wallpaper' | cut -f 2)"
 feh --no-fehbg --bg-fill "$HOME/.config/xthemes/wallpapers/$(xval my_desktop.wallpaper)"
 killall polybar && polybar -r default > /dev/null 2>&1 & disown
-# killall dunst && dunst > /dev/null 2>&1 & disown
 killall dunst && dunst \
 	-cb "$(xval dunst.background)" \
 	-lb "$(xval dunst.background)" \

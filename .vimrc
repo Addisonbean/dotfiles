@@ -407,7 +407,12 @@ let g:equinusocio_material_style = 'pure'
 
 set background=dark
 
-color ayu
+let s:xcolorscheme = system('xrdb -query | grep "vim.colorscheme" | cut -f 2')
+if !empty(s:xcolorscheme)
+    execute "color " . s:xcolorscheme
+else
+    color ayu
+endif
 
 hi clear SignColumn
 hi LineNr guifg=grey ctermfg=grey

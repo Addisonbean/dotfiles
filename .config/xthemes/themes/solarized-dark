@@ -34,8 +34,10 @@
 
 ! Misc. Settings
 
-#define ST_ALPHA 0.97
+#define ST_ALPHA 0.95
 
 #define POLYBAR_FOCUSED_DESKTOP COLOR_03
+
+#define VIM_COLORSCHEME base16-solarized-dark
 
 ! vim:ft=xdefaults

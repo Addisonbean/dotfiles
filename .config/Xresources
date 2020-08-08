@@ -10,3 +10,4 @@ my_desktop.wallpaper: MY_WALLPAPER
 #include "programs/polybar"
 #include "programs/st"
 #include "programs/sxiv"
+#include "programs/vim"

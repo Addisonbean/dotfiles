@@ -1,0 +1,7 @@
+#ifndef VIM_COLORSCHEME
+#define VIM_COLORSCHEME ayu
+#endif
+
+vim.colorscheme: VIM_COLORSCHEME
+
+! vim:ft=xdefaults
