@@ -1,15 +1,23 @@
 # Misc. Settings {{{
 
+# TODO: explain everything w/ comments...
+
 autoload -Uz colors && colors
 
 zmodload zsh/complist
 zstyle ':completion:*' menu select
 autoload -U compinit && compinit
-# export ZLS_COLORS="no 30;37:fi 30;37"
+setopt globdots
 
-# TODO: explain these lines in comments...
+bindkey -r '^h'
+bindkey -M menuselect '^h' vi-backwards-char
+bindkey -M menuselect '^k' vi-up-line-or-history
+bindkey -M menuselect '^l' vi-forward-char
+bindkey -M menuselect '^j' vi-down-line-or-history
 
 bindkey -v
+# Recommended for vi mode, but what does it do???
+# export KEYTIMEOUT=1
 
 unsetopt share_history
 setopt histignorespace
@@ -22,16 +30,6 @@ bindkey "^[OB" down-line-or-search
 
 bindkey "^k" up-line-or-search
 bindkey "^j" down-line-or-search
-
-# unalias l
-# unalias ll
-# unalias la
-# unalias lsa
-
-# alias untar="tar -xvzf"
-
-# [[ "$ZSHRC_LOADED" == "true" ]] || fortune | cowsay
-# ZSHRC_LOADED="true"
 
 alias pbcopy="xclip -selection clipboard"
 alias pbpaste="xclip -selection clipboard -o"
@@ -51,8 +49,7 @@ SAVEHIST=10000
 setopt appendhistory
 
 alias git-dot='git --git-dir=$HOME/.git-dotfiles/ --work-tree=$HOME'
-
-alias xreload="xrdb -I$HOME/.config/xthemes ~/.config/Xresources"
+alias xtheme="$HOME/.config/xthemes/xtheme.sh"
 
 # }}}
 # {{{ Theme
@@ -101,33 +98,6 @@ export LS_COLORS="di=34:ln=35:so=33:pi=33:ex=31:bd=33:cd=33:su=37:sg=37:tw=37:ow
 
 export PATH="${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/bin:$PATH"
 export PATH="${CABAL_DIR}/bin:$PATH"
-
-# [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
-
-# export PATH="$HOME/.rbenv/bin:$PATH"
-# eval "$(rbenv init -)"
-#
-# export PYENV_ROOT="$HOME/.pyenv"
-# export PATH="$PYENV_ROOT/bin:$PATH"
-# if command -v pyenv 1>/dev/null 2>&1; then
-# 	eval "$(pyenv init -)"
-# fi
-
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# eval "$(fasd --init auto)"
-
-# export PATH="$HOME/.jenv/bin:$PATH"
-# eval "$(jenv init -)"
-
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# export PATH="$HOME/.idris2/bin:$PATH"
-
-# export SPICETIFY_INSTALL="/home/addison/spicetify-cli"
-# export PATH="$SPICETIFY_INSTALL:$PATH"
 
 # }}}
 

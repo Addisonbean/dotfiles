@@ -36,4 +36,6 @@
 
 #define ST_ALPHA 0.9
 
+#define MY_WALLPAPER abstract.jpg
+
 ! vim:ft=xdefaults

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/zsh
 
 _NET_WM_STRUT_PARTIAL=1
 

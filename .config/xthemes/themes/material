@@ -1,0 +1,45 @@
+! Taken kinda from here: https://material-ui.com/customization/color/
+
+! black
+#define COLOR_00 #212121
+! red
+#define COLOR_01 #f44336
+! green
+#define COLOR_02 #4caf50
+! yellow
+#define COLOR_03 #ffeb3b
+! blue
+#define COLOR_04 #03a9f4
+! magenta
+#define COLOR_05 #9c27b0
+! cyan
+#define COLOR_06 #00bcd4
+! gray/white
+#define COLOR_07 #f5f5f5
+
+! bright-black
+#define COLOR_08 #272c34
+! bright-red
+#define COLOR_09 #ff1744
+! bright-green
+#define COLOR_10 #00e676
+! bright-yellow
+#define COLOR_11 #ffea00
+! bright-blue
+#define COLOR_12 #00b0ff
+! bright-magenta
+#define COLOR_13 #d500f9
+! bright-cyan
+#define COLOR_14 #00e5ff
+! bright gray/white
+#define COLOR_15 #fafafa
+
+! Misc. Settings
+
+#define ST_ALPHA 0.94
+
+#define MY_WALLPAPER blue-mountains.jpg
+
+#define POLYBAR_BG #263238
+
+! vim:ft=xdefaults

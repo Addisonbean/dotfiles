@@ -12,6 +12,7 @@
 !.config/Xresources
 !.config/xthemes/
 !.config/xthemes/**
+.config/xthemes/themes/default
 !.config/xmodmaprc
 
 !.config/bspwm/

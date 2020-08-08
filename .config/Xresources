@@ -1,4 +1,10 @@
-#include "themes/ayu"
+#include "themes/default"
+
+#ifndef MY_WALLPAPER
+#define MY_WALLPAPER abstract.jpg
+#endif
+
+my_desktop.wallpaper: MY_WALLPAPER
 
 #include "programs/st"
 #include "programs/polybar"
