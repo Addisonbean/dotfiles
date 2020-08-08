@@ -4,6 +4,7 @@
 
 autoload -Uz colors && colors
 
+fpath+=(~/.config/zsh/completions)
 zmodload zsh/complist
 zstyle ':completion:*' menu select
 autoload -U compinit && compinit

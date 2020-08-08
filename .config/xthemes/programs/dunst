@@ -1,0 +1,12 @@
+#ifndef DUNST_FG
+#define DUNST_FG COLOR_02
+#endif
+
+#ifndef DUNST_BG
+#define DUNST_BG COLOR_00
+#endif
+
+dunst.foreground: DUNST_FG
+dunst.background: DUNST_BG
+
+! vim:ft=xdefaults

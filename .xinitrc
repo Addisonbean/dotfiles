@@ -1,6 +1,6 @@
 #!/usr/bin/zsh
 
-~/.config/xthemes/xtheme.sh ayu
+~/.config/xthemes/xtheme.sh material
 picom &
 autokey-gtk &
 dunst &

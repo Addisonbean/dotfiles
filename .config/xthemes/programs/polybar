@@ -1,9 +1,9 @@
 #ifndef POLYBAR_BG
-#define POLYBAR_BG #881A0A0A
+#define POLYBAR_BG COLOR_00
 #endif
 
 #ifndef POLYBAR_FG
-#define POLYBAR_FG #CCCCCC
+#define POLYBAR_FG COLOR_07
 #endif
 
 #ifndef POLYBAR_FOCUSED_DESKTOP

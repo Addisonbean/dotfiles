@@ -38,4 +38,9 @@
 
 #define MY_WALLPAPER abstract.jpg
 
+#define DUNST_BG #0A0E14F0
+
+#define POLYBAR_BG #881A0A0A
+#define POLYBAR_FG #CCCCCC
+
 ! vim:ft=xdefaults

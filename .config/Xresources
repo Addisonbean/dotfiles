@@ -6,6 +6,7 @@
 
 my_desktop.wallpaper: MY_WALLPAPER
 
-#include "programs/st"
+#include "programs/dunst"
 #include "programs/polybar"
+#include "programs/st"
 #include "programs/sxiv"
