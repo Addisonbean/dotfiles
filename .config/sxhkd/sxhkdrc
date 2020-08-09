@@ -15,10 +15,10 @@ super + {t,shift + t,s,f}
 # 	bspc desktop -f {prev,next}.local
 
 super + p
-	rofi -show drun
+	rofi -show drun -show-icons
 
 super + m
-	rofi -show window
+	rofi -show window -show-icons
 
 super + Tab
 	bspc node -f last

@@ -34,10 +34,16 @@
 
 ! Misc. Settings
 
-#define ST_ALPHA 0.95
+#define ST_ALPHA 0.9
 
 #define POLYBAR_FOCUSED_DESKTOP COLOR_03
+#define POLYBAR_PRIMARY_FONT scientifica:size=14:style=Medium:antialias=false;3
 
 #define VIM_COLORSCHEME base16-solarized-dark
+
+#define MY_WALLPAPER alley.jpeg
+
+#define SPOTIFY_BUTTON_HOVER_BG COLOR_03
+#define SPOTIFY_BUTTON_HELD_BG COLOR_03
 
 ! vim:ft=xdefaults

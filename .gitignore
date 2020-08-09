@@ -37,4 +37,10 @@
 !.config/tmux/
 !.config/tmux/**
 
+!.config/spicetify/
+!.config/spicetify/config.ini
+!.config/spicetify/Themes/
+!.config/spicetify/Themes/Xresources/
+!.config/spicetify/Themes/Xresources/**
+
 *.pyc

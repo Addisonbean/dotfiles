@@ -10,8 +10,13 @@
 #define POLYBAR_FOCUSED_DESKTOP COLOR_02
 #endif
 
+#ifndef POLYBAR_PRIMARY_FONT
+#define POLYBAR_PRIMARY_FONT iosevka:size=12;2
+#endif
+
 polybar.background: POLYBAR_BG
 polybar.foreground: POLYBAR_FG
 polybar.focusedDesktop: POLYBAR_FOCUSED_DESKTOP
+polybar.primaryFont: POLYBAR_PRIMARY_FONT
 
 ! vim:ft=xdefaults

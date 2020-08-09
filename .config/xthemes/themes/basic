@@ -36,7 +36,7 @@
 
 ! Misc. Settings
 
-#define ST_ALPHA 0.95
+#define ST_ALPHA 0.92
 
 #define MY_WALLPAPER blue-mountains.jpg
 

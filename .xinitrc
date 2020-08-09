@@ -1,6 +1,6 @@
 #!/usr/bin/zsh
 
-~/.config/xthemes/xtheme.sh material
+~/.config/xthemes/xtheme.sh solarized-dark
 picom &
 autokey-gtk &
 dunst &

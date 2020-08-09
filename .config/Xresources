@@ -8,6 +8,7 @@ my_desktop.wallpaper: MY_WALLPAPER
 
 #include "programs/dunst"
 #include "programs/polybar"
+#include "programs/spotify"
 #include "programs/st"
 #include "programs/sxiv"
 #include "programs/vim"

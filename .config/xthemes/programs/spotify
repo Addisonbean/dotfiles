@@ -1,0 +1,67 @@
+#ifndef SPOTIFY_FOREGROUND
+#define SPOTIFY_FOREGROUND COLOR_02
+#endif
+
+#ifndef SPOTIFY_FOREGROUND2
+#define SPOTIFY_FOREGROUND2 COLOR_07
+#endif
+
+#ifndef SPOTIFY_BACKGROUND
+#define SPOTIFY_BACKGROUND COLOR_00
+#endif
+
+#ifndef SPOTIFY_BUTTON_BG
+#define SPOTIFY_BUTTON_BG COLOR_07
+#endif
+
+#ifndef SPOTIFY_SLIDER_BG
+#define SPOTIFY_SLIDER_BG COLOR_08
+#endif
+
+#ifndef SPOTIFY_BUTTON_HOVER_BG
+#define SPOTIFY_BUTTON_HOVER_BG COLOR_07
+#endif
+
+#ifndef SPOTIFY_SELECTION_BG
+#define SPOTIFY_SELECTION_BG COLOR_08
+#endif
+
+#ifndef SPOTIFY_BUTTON_HELD_FG
+#define SPOTIFY_BUTTON_HELD_FG COLOR_07
+#endif
+
+#ifndef SPOTIFY_BUTTON_HELD_BG
+#define SPOTIFY_BUTTON_HELD_BG COLOR_02
+#endif
+
+#ifndef SPOTIFY_SELECTED_BUTTON
+#define SPOTIFY_SELECTED_BUTTON COLOR_05
+#endif
+
+#ifndef SPOTIFY_BACKGROUND_MISC
+#define SPOTIFY_BACKGROUND_MISC COLOR_01
+#endif
+
+#ifndef SPOTIFY_BACKGROUND_MISC_HOVER
+#define SPOTIFY_BACKGROUND_MISC_HOVER COLOR_13
+#endif
+
+#ifndef SPOTIFY_PRESERVE_1
+#define SPOTIFY_PRESERVE_1 #FFFFFF
+#endif
+
+*spotify_foreground: SPOTIFY_FOREGROUND
+*spotify_foreground2: SPOTIFY_FOREGROUND2
+*spotify_background: SPOTIFY_BACKGROUND
+*spotify_button_bg: SPOTIFY_BUTTON_BG
+*spotify_slider_bg: SPOTIFY_SLIDER_BG
+*spotify_button_hover_bg: SPOTIFY_BUTTON_HOVER_BG
+*spotify_selection_bg: SPOTIFY_SELECTION_BG
+*spotify_button_held_fg: SPOTIFY_BUTTON_HELD_FG
+*spotify_button_held_bg: SPOTIFY_BUTTON_HELD_BG
+*spotify_selected_button: SPOTIFY_SELECTED_BUTTON
+*spotify_background_misc: SPOTIFY_BACKGROUND_MISC
+*spotify_background_misc_hover: SPOTIFY_BACKGROUND_MISC_HOVER
+*spotify_preserve_1: SPOTIFY_PRESERVE_1
+
+! vim:ft=xdefaults
