@@ -15,3 +15,5 @@ export CABAL_DIR="$XDG_DATA_HOME/cabal"
 export LESSHISTFILE="/dev/null"
 
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
+
+export _FASD_DATA="$XDG_CACHE_HOME/fasd/history"

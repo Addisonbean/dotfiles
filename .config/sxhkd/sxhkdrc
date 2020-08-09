@@ -24,7 +24,7 @@ super + Tab
 	bspc node -f last
 
 super + bracket{left,right}
-	bspc node -f {prev,next}.local
+	bspc node -f {prev,next}.local.!hidden.window
 
 # Close an window or app
 super + {_,shift + }w

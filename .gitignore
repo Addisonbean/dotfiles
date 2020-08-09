@@ -9,6 +9,9 @@
 !.config/
 .config/**
 
+!.config/pulse/
+!.config/pulse/default.pa
+
 !.config/Xresources
 !.config/xthemes/
 !.config/xthemes/**

@@ -11,6 +11,7 @@ autoload -U compinit && compinit
 setopt globdots
 
 bindkey -r '^h'
+# I can't get C-h mapped in menuselect mode...
 bindkey -M menuselect '^h' vi-backwards-char
 bindkey -M menuselect '^k' vi-up-line-or-history
 bindkey -M menuselect '^l' vi-forward-char
@@ -99,6 +100,16 @@ export LS_COLORS="di=34:ln=35:so=33:pi=33:ex=31:bd=33:cd=33:su=37:sg=37:tw=37:ow
 
 export PATH="${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/bin:$PATH"
 export PATH="${CABAL_DIR}/bin:$PATH"
+
+eval "$(fasd --init auto)"
+# Remove all the aliases except `z`
+unalias a
+unalias s
+unalias d
+unalias f
+unalias sd
+unalias sf
+unalias zz
 
 # }}}
 
