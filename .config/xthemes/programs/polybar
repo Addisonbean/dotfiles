@@ -14,9 +14,19 @@
 #define POLYBAR_PRIMARY_FONT iosevka:size=12;2
 #endif
 
+#ifndef POLYBAR_BAR
+#define POLYBAR_BAR default
+#endif
+
+#ifndef POLYBAR_UNDERLINE_SIZE
+#define POLYBAR_UNDERLINE_SIZE 0
+#endif
+
 polybar.background: POLYBAR_BG
 polybar.foreground: POLYBAR_FG
 polybar.focusedDesktop: POLYBAR_FOCUSED_DESKTOP
 polybar.primaryFont: POLYBAR_PRIMARY_FONT
+polybar.bar: POLYBAR_BAR
+polybar.underlineSize: POLYBAR_UNDERLINE_SIZE
 
 ! vim:ft=xdefaults

@@ -13,17 +13,16 @@ alert = #bd2c40
 width = 100%
 height = 34
 font-0 = ${xrdb:polybar.primaryFont:"iosevka:size=12;2"}
-; font-0 = "iosevka:size=13;2"
 ; font-0 = "Fira Code:size=11;2"
 ; font-0 = "Cutive Mono:size=13:style=Regular;2"
 ; font-0 = "IBM Plex Sans:style=Regular:size=12;2"
-; font-0 = "scientifica:size=14:style=Medium:antialias=false;3"
 font-1 = "Font Awesome 5 Free:size=11:style=Solid;2"
 font-2 = "Noto Sans CJK JP:size=11;2"
 background = ${colors.background}
 foreground = ${colors.foreground}
 padding-left = 2
 padding-right = 3
+line-size = ${xrdb:polybar.underlineSize:0}
 
 wm-restack = bspwm
 ; override-redirect = true
@@ -39,16 +38,21 @@ enable-ipc = true
 ; tray-position = right
 ; tray-detached = true
 
+[bar/all-ws]
+inherit = bar/default
+modules-left = bspwm-all-ws
+
 [module/cpu]
 type = internal/cpu
 label = CPU %percentage%%
+label-underline = ${xrdb:ansi.color5}
 interval = 4
 
 [module/network]
 type = internal/network
 interface = ${env:NETWORK_INTERFACE:wlp59s0}
+format-connected-underline = ${xrdb:ansi.color4}
 label-connected = %{A1:st -e nmtui:}%{A}
-; label-disconnected = %{F#FF3333}%{A1:st -e nmtui:}%{F- A}
 label-disconnected = %{F#FF3333}%{A1:st -e nmtui:}%{F- A}
 
 [module/battery]
@@ -60,6 +64,8 @@ poll-interval = 10
 format-full = %{F#cbd14f} <ramp-capacity> %{F-}<label-full>
 format-charging = %{F#cbd14f} <ramp-capacity> %{F-}<label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
+format-full-underline = ${xrdb:ansi.color2}
+format-charging-underline = ${xrdb:ansi.color3}
 
 label-full = %percentage%% (%time%)
 label-charging = %percentage%% (%time%)
@@ -100,15 +106,18 @@ label-separator = "  "
 label-separator-padding = 0
 
 label-focused = %name% %icon%
-; label-focused-foreground = #ABD94C
 label-focused-foreground = ${xrdb:polybar.focusedDesktop:#ABD94C}
-
-; Inverted colors:
-; label-focused = " %name% %icon%  "
-; label-focused-foreground = #D20A0A0A
-; label-focused-background = #ABD94C
-
 label-occupied = %name% %icon%
 label-empty =
 
-vim:ft=dosini
+[module/bspwm-all-ws]
+inherit = module/bspwm
+
+label-separator =
+label-focused = " %name% "
+label-focused-foreground = ${xrdb:ansi.color0}
+label-focused-background = ${xrdb:polybar.focusedDesktop}
+label-occupied = " %name% "
+label-empty = " %name% "
+
+; vim:ft=dosini

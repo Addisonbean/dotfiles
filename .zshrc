@@ -53,6 +53,8 @@ setopt appendhistory
 alias git-dot='git --git-dir=$HOME/.git-dotfiles/ --work-tree=$HOME'
 alias xtheme="$HOME/.config/xthemes/xtheme.sh"
 
+alias wget="wget --hsts-file ~/.config/wget/wget-hsts"
+
 # }}}
 # {{{ Theme
 
