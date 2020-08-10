@@ -41,6 +41,8 @@ enable-ipc = true
 [bar/all-ws]
 inherit = bar/default
 modules-left = bspwm-all-ws
+module-margin-left = 2
+module-margin-right = 0
 
 [module/cpu]
 type = internal/cpu

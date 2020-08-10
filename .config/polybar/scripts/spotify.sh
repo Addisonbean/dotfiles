@@ -15,11 +15,11 @@ if [ "$running" != "" ]; then
     artist=$(playerctl metadata artist)
     song=$(playerctl metadata title)
 
-    if [ $(echo -n "$icon $artist · $song" | wc -c) -gt 40 ]; then
+    if [ $(echo -n "$artist · $song" | wc -c) -lt 40 ]; then
         msg="$icon $artist · $song"
     else
         artist=$(echo -n "$artist" | colrm 15)
-        msg="$icon $artist · $song" | colrm 41
+        msg="$icon $(echo -n "$artist · $song" | colrm 41)"
     fi
 
     echo -n "%{u$green}$msg%{-u}"
