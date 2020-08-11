@@ -1,5 +1,7 @@
 #include "themes/default"
 
+#include "color_defs"
+
 #ifndef MY_WALLPAPER
 #define MY_WALLPAPER abstract.jpg
 #endif

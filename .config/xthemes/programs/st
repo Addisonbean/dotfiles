@@ -7,11 +7,11 @@
 #endif
 
 #ifndef ST_BG
-#define ST_BG COLOR_00
+#define ST_BG COLOR_BG
 #endif
 
 #ifndef ST_FG
-#define ST_FG COLOR_07
+#define ST_FG COLOR_FG
 #endif
 
 st.color0: COLOR_00

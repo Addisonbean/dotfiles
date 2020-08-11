@@ -1,0 +1,39 @@
+! Required colors:
+
+#define COLOR_00 COLOR_BLACK
+#define COLOR_01 COLOR_RED
+#define COLOR_02 COLOR_GREEN
+#define COLOR_03 COLOR_YELLOW
+#define COLOR_04 COLOR_BLUE
+#define COLOR_05 COLOR_MAGENTA
+#define COLOR_06 COLOR_CYAN
+#define COLOR_07 COLOR_WHITE
+
+#define COLOR_08 COLOR_B_BLACK
+#define COLOR_09 COLOR_B_RED
+#define COLOR_10 COLOR_B_GREEN
+#define COLOR_11 COLOR_B_YELLOW
+#define COLOR_12 COLOR_B_BLUE
+#define COLOR_13 COLOR_B_MAGENTA
+#define COLOR_14 COLOR_B_CYAN
+#define COLOR_15 COLOR_B_WHITE
+
+! Optional colors:
+
+! COLOR_BROWN
+! COLOR_ORANGE
+! COLOR_PINK
+! COLOR_TAN
+! COLOR_PURPLE
+
+! Misc. aliases
+
+#ifndef COLOR_BG
+#define COLOR_BG COLOR_00
+#endif
+
+#ifndef COLOR_FG
+#define COLOR_FG COLOR_07
+#endif
+
+! vim:ft=xdefaults

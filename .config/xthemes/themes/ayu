@@ -1,36 +1,20 @@
-! black
-#define COLOR_00 #0A0E14
-! red
-#define COLOR_01 #FF3333
-! green
-#define COLOR_02 #ABD94C
-! yellow
-#define COLOR_03 #E6B450
-! blue
-#define COLOR_04 #59C2FF
-! magenta
-#define COLOR_05 #A37ACC
-! cyan
-#define COLOR_06 #39BAE6
-! gray/white
-#define COLOR_07 #B3B1AD
+#define COLOR_BLACK #0A0E14
+#define COLOR_RED #FF3333
+#define COLOR_GREEN #ABD94C
+#define COLOR_YELLOW #E6B450
+#define COLOR_BLUE #59C2FF
+#define COLOR_MAGENTA #A37ACC
+#define COLOR_CYAN #39BAE6
+#define COLOR_WHITE #B3B1AD
 
-! bright-black
-#define COLOR_08 #0A0E14
-! bright-red
-#define COLOR_09 #F51818
-! bright-green
-#define COLOR_10 #86B300
-! bright-yellow
-#define COLOR_11 #FFEE99
-! bright-blue
-#define COLOR_12 #399EE6
-! bright-magenta
-#define COLOR_13 #A37ACC
-! bright-cyan
-#define COLOR_14 #5CCFE6
-! bright gray/white
-#define COLOR_15 #CBCCC6
+#define COLOR_B_BLACK #0A0E14
+#define COLOR_B_RED #F51818
+#define COLOR_B_GREEN #86B300
+#define COLOR_B_YELLOW #FFEE99
+#define COLOR_B_BLUE #399EE6
+#define COLOR_B_MAGENTA #A37ACC
+#define COLOR_B_CYAN #5CCFE6
+#define COLOR_B_WHITE #CBCCC6
 
 ! Misc. Settings
 
