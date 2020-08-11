@@ -3,7 +3,7 @@
 _NET_WM_STRUT_PARTIAL=1
 
 killall sxhkd; sxhkd &
-[ -z "$(pidof polybar)" ] && polybar -r default &
+# [ -z "$(pidof polybar)" ] && polybar -r default &
 
 bspc monitor -d 1 2 3 4 5 6
 # bspc monitor -d 1a 2a 3a

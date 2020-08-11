@@ -417,6 +417,7 @@ endif
 hi clear SignColumn
 hi LineNr guifg=grey ctermfg=grey
 hi Normal guibg=NONE ctermbg=NONE
+hi StatusLine guibg=NONE ctermbg=NONE
 
 " Favs
 "   ayu

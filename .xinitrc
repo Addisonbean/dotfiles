@@ -3,7 +3,6 @@
 ~/.config/xthemes/xtheme.sh solarized-dark
 picom &
 autokey-gtk &
-dunst &
 xsetroot -cursor_name left_ptr &
 redshift -c ~/.config/redshift.conf &
 xmodmap ~/.config/xmodmaprc &

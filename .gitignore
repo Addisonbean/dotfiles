@@ -46,4 +46,8 @@
 !.config/spicetify/Themes/Xresources/
 !.config/spicetify/Themes/Xresources/**
 
+!.local/
+!.local/bin/
+!.local/bin/**
+
 *.pyc
