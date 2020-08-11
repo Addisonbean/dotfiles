@@ -1,0 +1,64 @@
+#define COLOR_BLACK #5D4E35
+#define COLOR_RED #A06365
+#define COLOR_GREEN #177337
+#define COLOR_YELLOW #8C5D4C
+#define COLOR_BLUE #2FA0B1
+#define COLOR_MAGENTA #513B3C
+#define COLOR_CYAN #AFD1D7
+#define COLOR_WHITE #EED6D7
+! #define COLOR_WHITE #C1BEBD
+
+#define COLOR_B_BLACK #28231C
+#define COLOR_B_RED #A06365
+#define COLOR_B_GREEN #177337
+#define COLOR_B_YELLOW #8C5D4C
+#define COLOR_B_BLUE #A6C5CA
+#define COLOR_B_MAGENTA #513B3C
+#define COLOR_B_CYAN #AFD1D7
+#define COLOR_B_WHITE #C1BEBD
+
+! Optional Colors
+
+#define COLOR_PINK #E2BBBC
+#define COLOR_BROWN #8C5D4C
+! #define COLOR_PURPLE #730353
+! #define COLOR_ORANGE #C75F28
+! #define COLOR_PINK #D8BCBC
+
+! Misc. Settings
+
+#define COLOR_BG COLOR_PINK
+#define COLOR_FG COLOR_BLACK
+
+#define ST_ALPHA 1.0
+
+#define MY_WALLPAPER cherry-1.jpeg
+
+#define VIM_COLORSCHEME strawberry-light
+
+#define POLYBAR_BG COLOR_RED
+#define POLYBAR_FG COLOR_PINK
+#define POLYBAR_BAR all-ws
+#define POLYBAR_FOCUSED_DESKTOP COLOR_PINK
+
+#define DUNST_BG COLOR_PINK
+#define DUNST_FG COLOR_BROWN
+
+#define BSPWM_NORMAL_BORDER COLOR_PINK
+#define BSPWM_FOCUSED_BORDER COLOR_RED
+
+#define BSPWM_GAP 30
+
+! TODO: change these in ../programs/spotify, but make sure it doesnt mess up
+! any existing themes
+#define SPOTIFY_FOREGROUND COLOR_FG
+#define SPOTIFY_FOREGROUND2 COLOR_RED
+#define SPOTIFY_BACKGROUND COLOR_BG
+#define SPOTIFY_BUTTON_BG COLOR_RED
+#define SPOTIFY_SELECTION_BG COLOR_WHITE
+#define SPOTIFY_SLIDER_BG COLOR_RED
+
+! TODO:
+! Change tmux color
+
+! vim:ft=xdefaults

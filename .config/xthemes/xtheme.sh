@@ -22,3 +22,4 @@ dunst \
 	-nf "$(xval dunst.foreground)" \
 	-bf "$(xval dunst.foreground)" \
 	> /dev/null 2>&1 & disown
+bspc wm -r & disown

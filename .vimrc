@@ -15,6 +15,8 @@ Plug 'skbolton/embark'
 Plug 'Rigellute/shades-of-purple.vim'
 Plug 'srcery-colors/srcery-vim'
 Plug 'chuling/equinusocio-material.vim'
+Plug 'nightsense/strawberry'
+Plug 'nightsense/vimspectr'
 
 " Language Specific:
 
@@ -416,6 +418,7 @@ endif
 
 hi clear SignColumn
 hi LineNr guifg=grey ctermfg=grey
+hi LineNr guibg=NONE
 hi Normal guibg=NONE ctermbg=NONE
 hi StatusLine guibg=NONE ctermbg=NONE
 

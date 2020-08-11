@@ -1,5 +1,9 @@
 #!/usr/bin/zsh
 
+function xval() {
+	xrdb -query | grep "bspwm.$1" | cut -f 2
+}
+
 _NET_WM_STRUT_PARTIAL=1
 
 killall sxhkd; sxhkd &
@@ -13,12 +17,12 @@ bspc desktop 2 -l tiled
 
 bspc rule -r "*"
 
-bspc config border_width         3
-bspc config window_gap          15
+bspc config border_width 3
+bspc config window_gap "$(xval gap)"
 
-bspc config active_border_color '#33415E'
-bspc config normal_border_color '#33415E'
-bspc config focused_border_color '#BBBBBB'
+bspc config active_border_color "$(xval normalBorder)"
+bspc config normal_border_color "$(xval normalBorder)"
+bspc config focused_border_color "$(xval focusedBorder)"
 
 bspc config split_ratio          0.5
 bspc config borderless_monocle   true

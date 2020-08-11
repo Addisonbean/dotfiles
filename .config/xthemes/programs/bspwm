@@ -1,0 +1,17 @@
+#ifndef BSPWM_NORMAL_BORDER
+#define BSPWM_NORMAL_BORDER #33415E
+#endif
+
+#ifndef BSPWM_FOCUSED_BORDER
+#define BSPWM_FOCUSED_BORDER #BBBBBB
+#endif
+
+#ifndef BSPWM_GAP
+#define BSPWM_GAP 15
+#endif
+
+bspwm.normalBorder: BSPWM_NORMAL_BORDER
+bspwm.focusedBorder: BSPWM_FOCUSED_BORDER
+bspwm.gap: BSPWM_GAP
+
+! vim:ft=xdefaults
