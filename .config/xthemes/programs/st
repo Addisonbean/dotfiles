@@ -14,6 +14,14 @@
 #define ST_FG COLOR_FG
 #endif
 
+#ifndef ST_FONT
+#define ST_FONT Fira Code:pixelsize=16:antialias=true:autohint=true
+#endif
+
+#ifndef ST_BORDER_WIDTH
+#define ST_BORDER_WIDTH 20
+#endif
+
 st.color0: COLOR_00
 st.color1: COLOR_01
 st.color2: COLOR_02
@@ -32,7 +40,9 @@ st.color14: COLOR_14
 st.color15: COLOR_15
 st.foreground: ST_FG
 st.background: ST_BG
-st.cursorColor: ST_CURSOR
+st.cursorbg: ST_CURSOR
 st.alpha: ST_ALPHA
+st.font: ST_FONT
+st.borderpx: ST_BORDER_WIDTH
 
 ! vim:ft=xdefaults

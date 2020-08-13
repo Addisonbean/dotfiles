@@ -9,6 +9,7 @@ if [ -n "$1" ]; then
 fi
 xrdb -I$HOME/.config/xthemes ~/.config/Xresources
 feh --no-fehbg --bg-fill "$HOME/.config/xthemes/wallpapers/$(xval my_desktop.wallpaper)"
+killall -s SIGUSR1 st
 spicetify update
 killall polybar
 polybar -r "$(xval polybar.bar)" > /dev/null 2>&1 & disown
