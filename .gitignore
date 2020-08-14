@@ -46,6 +46,9 @@
 !.config/spicetify/Themes/Xresources/
 !.config/spicetify/Themes/Xresources/**
 
+!.config/autokey/
+!.config/autokey/**
+
 !.local/
 !.local/bin/
 !.local/bin/**
