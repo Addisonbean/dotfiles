@@ -1,0 +1,40 @@
+! Mostly taken from here: https://github.com/voronianski/oceanic-next-color-scheme
+
+#define COLOR_BLACK   #1B2B34
+#define COLOR_RED     #EC5f67
+#define COLOR_GREEN   #99C794
+#define COLOR_YELLOW  #FAC863
+#define COLOR_BLUE    #6699CC
+#define COLOR_MAGENTA #C594C5
+#define COLOR_CYAN    #5FB3B3
+#define COLOR_WHITE   #CDD3DE
+
+#define COLOR_B_BLACK   #65737E
+#define COLOR_B_RED     #EC5f67
+#define COLOR_B_GREEN   #99C794
+#define COLOR_B_YELLOW  #FAC863
+#define COLOR_B_BLUE    #6699CC
+#define COLOR_B_MAGENTA #C594C5
+#define COLOR_B_CYAN    #5FB3B3
+#define COLOR_B_WHITE   #D8DEE9
+
+! Optional colors
+
+#define COLOR_ORANGE   #F99157
+#define COLOR_BROWN    #AB7967
+#define COLOR_BG       #1A2B34
+
+! Misc. Settings
+
+#define ST_ALPHA 0.92
+
+#define MY_WALLPAPER cool-sky.jpeg
+
+#define POLYBAR_BG #F81A2B34
+
+#define VIM_COLORSCHEME base16-oceanicnext
+
+#define BSPWM_NORMAL_BORDER COLOR_BG
+#define BSPWM_FOCUSED_BORDER #C0C5CE
+
+! vim:ft=xdefaults

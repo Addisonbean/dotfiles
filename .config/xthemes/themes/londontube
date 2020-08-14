@@ -1,0 +1,29 @@
+! Taken kinda from here: https://material-ui.com/customization/color/
+
+#define COLOR_BLACK   #231f20
+#define COLOR_RED     #ee2e24
+#define COLOR_GREEN   #00853e
+#define COLOR_YELLOW  #ffd204
+#define COLOR_BLUE    #009ddc
+#define COLOR_MAGENTA #98005d
+#define COLOR_CYAN    #85cebc
+#define COLOR_WHITE   #d9d8d8
+
+#define COLOR_B_BLACK   #737171
+#define COLOR_B_RED     #ee2e24
+#define COLOR_B_GREEN   #00853e
+#define COLOR_B_YELLOW  #ffd204
+#define COLOR_B_BLUE    #009ddc
+#define COLOR_B_MAGENTA #98005d
+#define COLOR_B_CYAN    #85cebc
+#define COLOR_B_WHITE   #ffffff
+
+! Misc. Settings
+
+#define ST_ALPHA 0.95
+
+#define MY_WALLPAPER cool-sky.jpeg
+
+#define POLYBAR_BG #F0231f20
+
+! vim:ft=xdefaults

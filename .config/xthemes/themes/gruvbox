@@ -1,0 +1,39 @@
+#define COLOR_BLACK   #1d2021
+#define COLOR_RED     #cc241d
+#define COLOR_GREEN   #98971a
+#define COLOR_YELLOW  #d79921
+#define COLOR_BLUE    #458588
+#define COLOR_MAGENTA #b16286
+#define COLOR_CYAN    #689d6a
+#define COLOR_WHITE   #a89984
+
+#define COLOR_B_BLACK   #928374
+#define COLOR_B_RED     #fb4934
+#define COLOR_B_GREEN   #b8bb26
+#define COLOR_B_YELLOW  #fabd2f
+#define COLOR_B_BLUE    #83a598
+#define COLOR_B_MAGENTA #d3869b
+#define COLOR_B_CYAN    #8ec07c
+#define COLOR_B_WHITE   #ebdbb2
+
+! Optional colors
+
+#define COLOR_ORANGE   #d65d0e
+#define COLOR_B_ORANGE #fe8019
+
+! Misc. Settings
+
+#define ST_ALPHA 0.94
+
+#define MY_WALLPAPER cool-sky.jpeg
+
+#define POLYBAR_BG #F01d2021
+
+#define VIM_COLORSCHEME gruvbox
+
+#define POLYBAR_PRIMARY_FONT scientifica:size=14:style=Medium:antialias=false;3
+#define ST_FONT scientifica:size=16:style=Medium:antialias=false
+
+#define SPOTIFY_SELECTION_BG #3c3836
+
+! vim:ft=xdefaults

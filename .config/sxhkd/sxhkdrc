@@ -37,7 +37,11 @@ super + space
 	bspc desktop -l next
 
 XF86AudioPlay
-	[ -z "$(pidof spotify)" ] && bspc desktop --focus ^3 && spotify; playerctl play-pause
+	[ -z "$(pidof spotify)" ] && bspc desktop --focus ^3 && spotify; \
+	dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+
+XF86AudioPlay + alt
+	playerctl play-pause
 
 XF86Audio{Lower,Raise}Volume
 	~/.local/bin/volume.sh {down,up}
@@ -56,6 +60,9 @@ super + shift + Delete
 
 super + {Left,Right}
 	desk=`bspc query -D -d focused`; bspc desktop -m {prev,next}; bspc monitor -f {prev,next}; bspc desktop -f $desk
+
+super + e
+	rofimoji
 
 # super + {left,right}
 # 	desk=`bspc query -D -d focused`; \

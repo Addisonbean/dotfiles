@@ -1,6 +1,6 @@
 #!/usr/bin/zsh
 
-~/.config/xthemes/xtheme.sh solarized-dark
+~/.config/xthemes/xtheme.sh oceanic-next
 picom &
 autokey-gtk &
 xsetroot -cursor_name left_ptr &
