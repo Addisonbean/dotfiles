@@ -49,6 +49,9 @@ XF86Audio{Lower,Raise}Volume
 XF86AudioMute
 	~/.local/bin/volume.sh toggle
 
+alt + {XF86AudioMute,XF86AudioLowerVolume,XF86AudioRaiseVolume}
+	pavucontrol
+
 XF86MonBrightness{Down,Up}
 	~/.local/bin/brightness.sh {down,up}
 

@@ -31,6 +31,7 @@
 #define MY_WALLPAPER cool-sky.jpeg
 
 #define POLYBAR_BG #F81A2B34
+#define POLYBAR_MODULE_SEPARATOR /
 
 #define VIM_COLORSCHEME base16-oceanicnext
 

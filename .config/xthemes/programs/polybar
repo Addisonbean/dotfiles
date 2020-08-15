@@ -22,11 +22,16 @@
 #define POLYBAR_UNDERLINE_SIZE 0
 #endif
 
+#ifndef POLYBAR_MODULE_SEPARATOR
+#define POLYBAR_MODULE_SEPARATOR ''
+#endif
+
 polybar.background: POLYBAR_BG
 polybar.foreground: POLYBAR_FG
 polybar.focusedDesktop: POLYBAR_FOCUSED_DESKTOP
 polybar.primaryFont: POLYBAR_PRIMARY_FONT
 polybar.bar: POLYBAR_BAR
 polybar.underlineSize: POLYBAR_UNDERLINE_SIZE
+polybar.moduleSeparator: POLYBAR_MODULE_SEPARATOR
 
 ! vim:ft=xdefaults

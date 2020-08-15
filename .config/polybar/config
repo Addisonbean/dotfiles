@@ -30,8 +30,9 @@ wm-restack = bspwm
 modules-left = bspwm
 modules-center = date
 modules-right = battery cpu network spotify
-module-margin-left = 1
+module-margin-left = 2
 module-margin-right = 2
+separator = ${xrdb:polybar.moduleSeparator:}
 
 enable-ipc = true
 
