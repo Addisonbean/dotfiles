@@ -32,7 +32,7 @@
 #define VIM_COLORSCHEME gruvbox
 
 #define POLYBAR_PRIMARY_FONT scientifica:size=14:style=Medium:antialias=false;3
-#define ST_FONT scientifica:size=16:style=Medium:antialias=false
+#define ST_FONT scientifica:size=18:style=Medium:antialias=false
 
 #define SPOTIFY_SELECTION_BG #3c3836
 
