@@ -23,7 +23,7 @@
 #endif
 
 #ifndef POLYBAR_MODULE_SEPARATOR
-#define POLYBAR_MODULE_SEPARATOR ''
+#define POLYBAR_MODULE_SEPARATOR
 #endif
 
 polybar.background: POLYBAR_BG
@@ -31,7 +31,22 @@ polybar.foreground: POLYBAR_FG
 polybar.focusedDesktop: POLYBAR_FOCUSED_DESKTOP
 polybar.primaryFont: POLYBAR_PRIMARY_FONT
 polybar.bar: POLYBAR_BAR
-polybar.underlineSize: POLYBAR_UNDERLINE_SIZE
+! polybar.underlineSize: POLYBAR_UNDERLINE_SIZE
 polybar.moduleSeparator: POLYBAR_MODULE_SEPARATOR
+
+! For the powerline thing...
+! polybar.moduleBg: COLOR_FG
+! polybar.moduleFg: COLOR_BG
+
+polybar.moduleBg: COLOR_BG
+polybar.moduleFg: COLOR_FG
+
+polybar.moduleMarginLeft: 2
+polybar.moduleMarginRight: 2
+
+! If these are set, the module margins should be too
+! If not set, module margins MUST be 0
+polybar.noFslash:
+polybar.noBslash:
 
 ! vim:ft=xdefaults
