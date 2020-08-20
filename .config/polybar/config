@@ -16,7 +16,7 @@ alert = #bd2c40
 width = 100%
 height = 34
 font-0 = ${xrdb:polybar.primaryFont:"iosevka:size=12;2"}
-font-1 = "Font Awesome 5 Free:size=11:style=Solid;2"
+font-1 = "Font Awesome 5 Free Solid:size=11:style=Solid;2"
 font-2 = "Noto Sans CJK JP:size=11;2"
 font-3 = "Inconsolata Nerd Font Mono:size=18;3"
 background = ${colors.background}
@@ -79,7 +79,7 @@ format-foreground = ${colors.module-fg}
 
 [module/network]
 type = internal/network
-interface = ${env:NETWORK_INTERFACE:wlp59s0}
+interface = ${env:NETWORK_INTERFACE:wlp2s0}
 format-connected-underline = ${xrdb:ansi.color4}
 label-connected = %{A1:st -e nmtui:}%{A}
 label-disconnected = %{F#FF3333}%{A1:st -e nmtui:}%{F- A}
@@ -91,6 +91,7 @@ format-disconnected-foreground = ${colors.module-fg}
 
 [module/battery]
 type = internal/battery
+battery = BAT1
 poll-interval = 10
 
 time-format = %H:%M
