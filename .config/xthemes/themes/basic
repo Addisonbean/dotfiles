@@ -25,5 +25,6 @@
 #define MY_WALLPAPER blue-mountains.jpg
 
 #define POLYBAR_BG #263238
+#define POLYBAR_RIGHT_MODULES_STYLE 2
 
 ! vim:ft=xdefaults

@@ -26,27 +26,57 @@
 #define POLYBAR_MODULE_SEPARATOR
 #endif
 
+#ifndef POLYBAR_RIGHT_MODULES_STYLE
+#define POLYBAR_RIGHT_MODULES_STYLE 0
+! notice the if doesnt end here
+
+#ifndef POLYBAR_MODULE_BG
+#define POLYBAR_MODULE_BG POLYBAR_BG
+#endif
+
+#ifndef POLYBAR_MODULE_FG
+#define POLYBAR_MODULE_FG POLYBAR_FG
+#endif
+
+#ifndef POLYBAR_MODULE_MARGIN_LEFT
+#define POLYBAR_MODULE_MARGIN_LEFT 2
+#endif
+
+#ifndef POLYBAR_MODULE_MARGIN_RIGHT
+#define POLYBAR_MODULE_MARGIN_RIGHT 2
+#endif
+
+#else
+
+! Invert module bg and fg by default
+#ifndef POLYBAR_MODULE_BG
+#define POLYBAR_MODULE_BG POLYBAR_FG
+#endif
+
+#ifndef POLYBAR_MODULE_FG
+#define POLYBAR_MODULE_FG POLYBAR_BG
+#endif
+
+! Margins mess up the module prefix and suffix
+#define POLYBAR_MODULE_MARGIN_LEFT 0
+#define POLYBAR_MODULE_MARGIN_RIGHT 0
+
+#endif
+
 polybar.background: POLYBAR_BG
 polybar.foreground: POLYBAR_FG
 polybar.focusedDesktop: POLYBAR_FOCUSED_DESKTOP
 polybar.primaryFont: POLYBAR_PRIMARY_FONT
 polybar.bar: POLYBAR_BAR
-! polybar.underlineSize: POLYBAR_UNDERLINE_SIZE
+polybar.underlineSize: POLYBAR_UNDERLINE_SIZE
 polybar.moduleSeparator: POLYBAR_MODULE_SEPARATOR
 
-! For the powerline thing...
-! polybar.moduleBg: COLOR_FG
-! polybar.moduleFg: COLOR_BG
+polybar.moduleBg: POLYBAR_MODULE_BG
+polybar.moduleFg: POLYBAR_MODULE_FG
 
-polybar.moduleBg: COLOR_BG
-polybar.moduleFg: COLOR_FG
+polybar.moduleMarginLeft: POLYBAR_MODULE_MARGIN_LEFT
+polybar.moduleMarginRight: POLYBAR_MODULE_MARGIN_RIGHT
 
-polybar.moduleMarginLeft: 2
-polybar.moduleMarginRight: 2
-
-! If these are set, the module margins should be too
-! If not set, module margins MUST be 0
-polybar.noFslash:
-polybar.noBslash:
+polybar.modulesRight: mprefix-POLYBAR_RIGHT_MODULES_STYLE battery msuffix-POLYBAR_RIGHT_MODULES_STYLE mprefix-POLYBAR_RIGHT_MODULES_STYLE cpu msuffix-POLYBAR_RIGHT_MODULES_STYLE mprefix-POLYBAR_RIGHT_MODULES_STYLE network msuffix-POLYBAR_RIGHT_MODULES_STYLE spotify
 
 ! vim:ft=xdefaults

@@ -30,10 +30,9 @@ wm-restack = bspwm
 
 modules-left = bspwm
 modules-center = date
-; modules-right = start-bslash battery end-bslash start-bslash cpu end-bslash start-bslash network end-bslash spotify
-modules-right = battery cpu network spotify
-module-margin-left = ${xrdb:moduleMarginLeft:2}
-module-margin-right = ${xrdb:moduleMarginRight:2}
+modules-right = ${xrdb:polybar.modulesRight:battery cpu network spotify}
+module-margin-left = ${xrdb:polybar.moduleMarginLeft:2}
+module-margin-right = ${xrdb:polybar.moduleMarginRight:2}
 separator = ${xrdb:polybar.moduleSeparator:}
 
 enable-ipc = true
@@ -41,33 +40,39 @@ enable-ipc = true
 ; tray-position = right
 ; tray-detached = true
 
+; TODO: control `modules-right` from Xresources
 [bar/all-ws]
 inherit = bar/default
 modules-left = bspwm-all-ws
-; module-margin-left = 2
-; module-margin-right = 0
 
 [module/separators]
 type = custom/text
 content-font = 4
-content-background = ${colors.module-bg}
-content-foreground = ${colors.background}
+content-foreground = ${colors.module-bg}
 
-[module/start-fslash]
+[module/mprefix-0]
 inherit = module/separators
-content = ${xrdb:polybar.noFslash: }
+content =
 
-[module/end-fslash]
+[module/msuffix-0]
 inherit = module/separators
-content = ${xrdb:polybar.noFslash: }
+content =
 
-[module/start-bslash]
+[module/mprefix-1]
 inherit = module/separators
-content = ${xrdb:polybar.noBslash: }
+content = "%{R} %{R-}"
 
-[module/end-bslash]
+[module/msuffix-1]
 inherit = module/separators
-content = ${xrdb:polybar.noBslash: }
+content = "%{R} %{R-}"
+
+[module/mprefix-2]
+inherit = module/separators
+content = "%{R} %{R-}"
+
+[module/msuffix-2]
+inherit = module/separators
+content = "%{R} %{R-}"
 
 [module/cpu]
 type = internal/cpu
@@ -137,8 +142,8 @@ click-left = wmctrl -xa spotify
 ; TODO: why does this break w/ format-background/foreground???
 format = <label>
 format-padding = 2
-; format-background = ${colors.moduleBg}
-; format-foreground = ${colors.moduleFg}
+; format-background = ${colors.module-bg}
+; format-foreground = ${colors.module-fg}
 
 [module/bspwm]
 type = internal/bspwm
