@@ -49,6 +49,14 @@
 !.config/autokey/
 !.config/autokey/**
 
+!.config/gtk-3.0/
+!.config/gtk-3.0/**
+
+!.config/zsh/
+!.config/zsh/**
+
+!.config/user-dirs.dirs
+
 !.local/
 !.local/bin/
 !.local/bin/**
