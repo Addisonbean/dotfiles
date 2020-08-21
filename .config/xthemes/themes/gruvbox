@@ -28,10 +28,12 @@
 #define MY_WALLPAPER cool-sky.jpeg
 
 #define POLYBAR_BG #F01d2021
+#define POLYBAR_PRIMARY_FONT scientifica:size=14:style=Medium:antialias=false;3
+#define POLYBAR_MODULE_MARGIN_LEFT 1
+#define POLYBAR_MODULE_MARGIN_RIGHT 1
 
 #define VIM_COLORSCHEME gruvbox
 
-#define POLYBAR_PRIMARY_FONT scientifica:size=14:style=Medium:antialias=false;3
 #define ST_FONT scientifica:size=18:style=Medium:antialias=false
 
 #define SPOTIFY_SELECTION_BG #3c3836

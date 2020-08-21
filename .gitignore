@@ -57,8 +57,14 @@
 
 !.config/user-dirs.dirs
 
+!.config/picom/
+!.config/picom/**
+
 !.local/
 !.local/bin/
 !.local/bin/**
+!.local/share/
+!.local/share/applications/
+!.local/share/applications/*.desktop
 
 *.pyc
