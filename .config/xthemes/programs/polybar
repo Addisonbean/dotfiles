@@ -63,6 +63,22 @@
 
 #endif
 
+#ifndef POLYBAR_CENTER_MODULES
+#define POLYBAR_CENTER_MODULES date
+#endif
+
+#ifndef POLYBAR_RIGHT_MODULES
+#define POLYBAR_RIGHT_MODULES mprefix-POLYBAR_RIGHT_MODULES_STYLE battery msuffix-POLYBAR_RIGHT_MODULES_STYLE mprefix-POLYBAR_RIGHT_MODULES_STYLE cpu msuffix-POLYBAR_RIGHT_MODULES_STYLE mprefix-POLYBAR_RIGHT_MODULES_STYLE network msuffix-POLYBAR_RIGHT_MODULES_STYLE spotify
+#endif
+
+#ifndef POLYBAR_PADDING_LEFT
+#define POLYBAR_PADDING_LEFT 2
+#endif
+
+#ifndef POLYBAR_PADDING_RIGHT
+#define POLYBAR_PADDING_RIGHT 3
+#endif
+
 polybar.background: POLYBAR_BG
 polybar.foreground: POLYBAR_FG
 polybar.focusedDesktop: POLYBAR_FOCUSED_DESKTOP
@@ -71,12 +87,16 @@ polybar.bar: POLYBAR_BAR
 polybar.underlineSize: POLYBAR_UNDERLINE_SIZE
 polybar.moduleSeparator: POLYBAR_MODULE_SEPARATOR
 
+polybar.paddingLeft: POLYBAR_PADDING_LEFT
+polybar.paddingRight: POLYBAR_PADDING_RIGHT
+
 polybar.moduleBg: POLYBAR_MODULE_BG
 polybar.moduleFg: POLYBAR_MODULE_FG
 
 polybar.moduleMarginLeft: POLYBAR_MODULE_MARGIN_LEFT
 polybar.moduleMarginRight: POLYBAR_MODULE_MARGIN_RIGHT
 
-polybar.modulesRight: mprefix-POLYBAR_RIGHT_MODULES_STYLE battery msuffix-POLYBAR_RIGHT_MODULES_STYLE mprefix-POLYBAR_RIGHT_MODULES_STYLE cpu msuffix-POLYBAR_RIGHT_MODULES_STYLE mprefix-POLYBAR_RIGHT_MODULES_STYLE network msuffix-POLYBAR_RIGHT_MODULES_STYLE spotify
+polybar.modulesCenter: POLYBAR_CENTER_MODULES
+polybar.modulesRight: POLYBAR_RIGHT_MODULES
 
 ! vim:ft=xdefaults

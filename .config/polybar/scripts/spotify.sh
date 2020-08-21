@@ -12,10 +12,13 @@ if [ "$running" != "" ]; then
 
     # Try not to cut, then cut artist, then song
     # colrm works like cut but handles unicode better
-    artist=$(playerctl metadata artist)
-    song=$(playerctl metadata title)
+    artist="$(playerctl metadata artist | tr -d "\n")"
+    song="$(playerctl metadata title | tr -d "\n")"
 
-    if [ $(echo -n "$artist · $song" | wc -c) -lt 40 ]; then
+    if [ -z "$artist" ]; then
+        msg="$icon (no music)"
+        # msg=""
+    elif [ $(echo -n "$artist · $song" | wc -c) -lt 40 ]; then
         msg="$icon $artist · $song"
     else
         artist=$(echo -n "$artist" | colrm 15)

@@ -8,9 +8,9 @@ if [ -n "$1" ]; then
 	ln -sf "$HOME/.config/xthemes/themes/$1" "$HOME/.config/xthemes/themes/default"
 fi
 xrdb -I$HOME/.config/xthemes ~/.config/Xresources
-feh --no-fehbg --bg-fill "$HOME/.config/xthemes/wallpapers/$(xval my_desktop.wallpaper)"
+feh --no-fehbg --bg-fill "$HOME/.config/xthemes/wallpapers/$(xval my_desktop.wallpaper)" &
 killall -s SIGUSR1 st
-spicetify update
+spicetify update &
 killall polybar
 polybar -r "$(xval polybar.bar)" > /dev/null 2>&1 & disown
 killall dunst
