@@ -2,7 +2,7 @@
 
 running=$(pidof spotify)
 if [ "$running" != "" ]; then
-    icon=""
+    icon="%{T2}%{F-}"
 
     green="$(xrdb -query | grep 'ansi.color2' | cut -f 2)"
 

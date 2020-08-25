@@ -3,7 +3,6 @@
 
 !.zshrc
 !.zprofile
-!.vimrc
 !.xinitrc
 
 !.config/
@@ -59,6 +58,16 @@
 
 !.config/picom/
 !.config/picom/**
+
+!.config/nvim/
+!.config/nvim/init.vim
+!.config/nvim/plugged/
+!.config/nvim/plugged/lightline.vim/
+.config/nvim/plugged/lightline.vim/**
+!.config/nvim/plugged/lightline.vim/autoload/
+!.config/nvim/plugged/lightline.vim/autoload/lightline/
+!.config/nvim/plugged/lightline.vim/autoload/lightline/colorscheme/
+!.config/nvim/plugged/lightline.vim/autoload/lightline/colorscheme/custom.vim
 
 !.local/
 !.local/bin/

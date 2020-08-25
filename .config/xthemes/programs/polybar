@@ -79,6 +79,10 @@
 #define POLYBAR_PADDING_RIGHT 3
 #endif
 
+#ifndef POLYBAR_LEFT_MODULES
+#define POLYBAR_LEFT_MODULES desktop-icons
+#endif
+
 polybar.background: POLYBAR_BG
 polybar.foreground: POLYBAR_FG
 polybar.focusedDesktop: POLYBAR_FOCUSED_DESKTOP
@@ -96,6 +100,7 @@ polybar.moduleFg: POLYBAR_MODULE_FG
 polybar.moduleMarginLeft: POLYBAR_MODULE_MARGIN_LEFT
 polybar.moduleMarginRight: POLYBAR_MODULE_MARGIN_RIGHT
 
+polybar.modulesLeft: POLYBAR_LEFT_MODULES
 polybar.modulesCenter: POLYBAR_CENTER_MODULES
 polybar.modulesRight: POLYBAR_RIGHT_MODULES
 

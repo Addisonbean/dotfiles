@@ -28,7 +28,7 @@ line-size = ${xrdb:polybar.underlineSize:0}
 wm-restack = bspwm
 ; override-redirect = true
 
-modules-left = bspwm
+modules-left = ${xrdb:polybar.modulesLeft:bspwm}
 modules-center = ${xrdb:polybar.modulesCenter:date}
 modules-right = ${xrdb:polybar.modulesRight:battery cpu network spotify}
 module-margin-left = ${xrdb:polybar.moduleMarginLeft:2}
@@ -40,10 +40,13 @@ enable-ipc = true
 ; tray-position = right
 ; tray-detached = true
 
-; TODO: control `modules-right` from Xresources
-[bar/all-ws]
+[bar/smaller]
 inherit = bar/default
-modules-left = bspwm-all-ws
+height = 28
+font-0 = ${xrdb:polybar.primaryFont:"iosevka:size=12;2"}
+font-1 = "Font Awesome 5 Free Solid:size=11:style=Solid;2"
+font-2 = "Noto Sans CJK JP:size=11;2"
+font-3 = "Inconsolata Nerd Font Mono:size=18;3"
 
 [module/separators]
 type = custom/text
@@ -182,7 +185,7 @@ label-focused-foreground = ${xrdb:polybar.focusedDesktop:#ABD94C}
 label-occupied = %name% %icon%
 label-empty =
 
-[module/bspwm-all-ws]
+[module/all-desktops]
 inherit = module/bspwm
 
 label-separator =
@@ -191,5 +194,11 @@ label-focused-foreground = ${xrdb:ansi.color0}
 label-focused-background = ${xrdb:polybar.focusedDesktop}
 label-occupied = " %name% "
 label-empty = " %name% "
+
+[module/all-desktops-wide]
+inherit = module/all-desktops
+label-focused = "  %name%  "
+label-occupied =  "  %name%  "
+label-empty = "  %name%  "
 
 ; vim:ft=dosini

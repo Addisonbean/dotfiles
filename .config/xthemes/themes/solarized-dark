@@ -23,7 +23,7 @@
 #define POLYBAR_FOCUSED_DESKTOP COLOR_03
 #define POLYBAR_PRIMARY_FONT scientifica:size=14:style=Medium:antialias=false;3
 #define POLYBAR_UNDERLINE_SIZE 2
-#define POLYBAR_BAR all-ws
+#define POLYBAR_LEFT_MODULES all-desktops
 
 #define VIM_COLORSCHEME base16-solarized-dark
 

@@ -1,16 +1,14 @@
 #!/usr/bin/zsh
 
 function xval() {
-	xrdb -query | grep "bspwm.$1" | cut -f 2
+	xrdb -query | grep "$1" | cut -f 2
 }
 
 _NET_WM_STRUT_PARTIAL=1
 
 killall sxhkd; sxhkd &
-# [ -z "$(pidof polybar)" ] && polybar -r default &
 
 bspc monitor -d 1 2 3 4 5 6
-# bspc monitor -d 1a 2a 3a
 
 bspc desktop 1 -l monocle
 bspc desktop 2 -l tiled
@@ -18,11 +16,11 @@ bspc desktop 2 -l tiled
 bspc rule -r "*"
 
 bspc config border_width 3
-bspc config window_gap "$(xval gap)"
+bspc config window_gap "$(xval bspwm.gap)"
 
-bspc config active_border_color "$(xval normalBorder)"
-bspc config normal_border_color "$(xval normalBorder)"
-bspc config focused_border_color "$(xval focusedBorder)"
+bspc config active_border_color "$(xval bspwm.normalBorder)"
+bspc config normal_border_color "$(xval bspwm.normalBorder)"
+bspc config focused_border_color "$(xval bspwm.focusedBorder)"
 
 bspc config split_ratio          0.5
 bspc config borderless_monocle   true
@@ -50,7 +48,8 @@ bspc config external_rules_command ~/.config/bspwm/external_rules.sh
 # bspc config ignore_ewmh_focus true
 
 # Ugly hack for when I change polybar's size...
-bspc config -m focused top_padding "$(xprop -name "polybar-default_eDP-1" _NET_WM_STRUT | awk -e '{ print $5 }' | cut -d ',' -f 1)"
+polybar_bar_name="$(xval polybar.bar)"
+bspc config -m focused top_padding "$(xprop -name "polybar-${polybar_bar_name}_eDP-1" _NET_WM_STRUT | awk -e '{ print $5 }' | cut -d ',' -f 1)"
 
 # Hmmmm...
 # polybar-msg cmd hide
