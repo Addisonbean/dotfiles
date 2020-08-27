@@ -41,7 +41,7 @@ sizey=$(($posy * 4))
 bspc rule -a Project-slippi state=fullscreen
 bspc rule -a Ranger state=floating state=floating rectangle="${sizex}x${sizey}+${posx}+${posy}"
 bspc rule -a Sxiv state=fullscreen
-bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Gimp state=floating follow=on
 bspc config external_rules_command ~/.config/bspwm/external_rules.sh
 
 # Don't let windows steal focus, could be useful...

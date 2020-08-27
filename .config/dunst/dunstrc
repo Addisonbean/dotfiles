@@ -393,6 +393,12 @@
 #    msg_urgency = critical
 #    fullscreen = show
 
+[volume_notifications]
+    appname = "volume-change"
+    # format = "%b"
+    # format = "%s %b"
+    format = "<span font='Monospace 14'>%s</span> %b"
+
 #[espeak]
 #    summary = "*"
 #    script = dunst_espeak.sh

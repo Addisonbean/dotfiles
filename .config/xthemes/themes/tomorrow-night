@@ -28,7 +28,9 @@
 #define ST_ALPHA 0.95
 #define ST_FONT SF Mono:size=13:style=Regular:antialias=true
 
-#define MY_WALLPAPER cool-sky.jpeg
+! #define MY_WALLPAPER city-0.jpeg
+! #define MY_WALLPAPER more-mountains.jpeg
+#define MY_WALLPAPER fog.jpeg
 
 #define POLYBAR_PRIMARY_FONT Ubuntu:size=12:style=Light;2
 #define POLYBAR_FOCUSED_DESKTOP COLOR_BLUE

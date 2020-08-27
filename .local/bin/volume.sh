@@ -20,8 +20,9 @@ function volume_change_notification() {
 	fi
 
 	msg="$dashes$(echo -e '\u252B')$spaces$percent"
+	icon="$1"
 
-	dunstify -r 2593 -t 1500 -u normal "$msg"
+	dunstify -a "volume-change" -r 2593 -t 1500 -u normal "$icon" "$msg"
 }
 
 function mute_toggle_notification() {
@@ -29,17 +30,17 @@ function mute_toggle_notification() {
 	if [ $? -eq 0 ]; then
 		dunstify -r 2593 -t 1500 -u normal "Muted"
 	else
-		amixer -D pulse sget Master | get_level | volume_change_notification
+		amixer -D pulse sget Master | get_level | volume_change_notification ""
 	fi
 }
 
 
 case "$1" in
 	up)
-		amixer -D pulse sset Master 5%+ | get_level | volume_change_notification
+		amixer -D pulse sset Master 5%+ | get_level | volume_change_notification ""
 		;;
 	down)
-		amixer -D pulse sset Master 5%- | get_level | volume_change_notification
+		amixer -D pulse sset Master 5%- | get_level | volume_change_notification ""
 		;;
 	toggle)
 		amixer -D pulse sset Master toggle | mute_toggle_notification
