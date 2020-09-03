@@ -55,6 +55,7 @@
 !.config/zsh/**
 
 !.config/user-dirs.dirs
+!.config/mimeapps.list
 
 !.config/picom/
 !.config/picom/**

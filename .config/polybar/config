@@ -35,6 +35,10 @@ module-margin-left = ${xrdb:polybar.moduleMarginLeft:2}
 module-margin-right = ${xrdb:polybar.moduleMarginRight:2}
 separator = ${xrdb:polybar.moduleSeparator:}
 
+; offset-x = 10
+; offset-y = 10
+; width = 100%:-20
+
 enable-ipc = true
 
 ; tray-position = right

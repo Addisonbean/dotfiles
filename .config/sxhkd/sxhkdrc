@@ -67,6 +67,12 @@ super + {Left,Right}
 super + e
 	rofimoji
 
+Print
+	scrot
+
+alt + Print
+	scrot -s
+
 # super + {left,right}
 # 	desk=`bspc query -D -d focused`; \
 # 	bspc desktop -m {prev,next}; \

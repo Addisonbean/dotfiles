@@ -405,8 +405,14 @@ let g:lightline = {
 
 " Remove the middle part of the status line that's empty
 let s:new_theme = g:lightline#colorscheme#ayu_dark#palette
-let s:new_theme.normal.middle = [[ 'NONE', 'NONE', 'NONE', 'NONE' ]]
-let s:new_theme.inactive.middle = [[ 'NONE', 'NONE', 'NONE', 'NONE' ]]
+
+let s:new_theme.normal.middle = [[ '1', '1', '1', '1' ]]
+let s:new_theme.inactive.middle = [[ '1', '1', '1', '1' ]]
+" let s:new_theme.normal.middle = [[ 'NONE', 'NONE', 'NONE', 'NONE' ]]
+" let s:new_theme.inactive.middle = [[ 'NONE', 'NONE', 'NONE', 'NONE' ]]
+
+" let s:new_theme. = system('xrdb -query | grep "vim.colorscheme" | cut -f 2')
+
 let g:lightline#colorscheme#ayu_dark#palette = s:new_theme
 
 " }}}
@@ -421,7 +427,7 @@ autocmd FileType gitcommit setlocal spell
 autocmd FileType elm,haskell setlocal tabstop=2
 autocmd FileType text setlocal expandtab tabstop=2 shiftwidth=2
 autocmd FileType markdown setlocal tabstop=2
-autocmd FileType markdown Goyo
+" autocmd FileType markdown Goyo
 autocmd FileType html,css,vue setlocal iskeyword+=-
 autocmd FileType html syntax sync fromstart
 
