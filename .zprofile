@@ -18,3 +18,7 @@ export LESSHISTFILE="/dev/null"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 
 export _FASD_DATA="$XDG_CACHE_HOME/fasd/history"
+
+if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+	exec startx
+fi

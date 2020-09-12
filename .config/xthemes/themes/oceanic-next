@@ -26,12 +26,13 @@
 
 ! Misc. Settings
 
-#define ST_ALPHA 0.92
+#define ST_ALPHA 0.9
 
-#define MY_WALLPAPER cool-sky.jpeg
+#define MY_WALLPAPER more-waves.jpeg
 
-#define POLYBAR_BG #F81A2B34
+#define POLYBAR_BG #EA1A2B34
 #define POLYBAR_MODULE_SEPARATOR /
+#define POLYBAR_PADDING_LEFT 5
 
 #define VIM_COLORSCHEME base16-oceanicnext
 

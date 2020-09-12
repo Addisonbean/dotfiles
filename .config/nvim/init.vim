@@ -33,12 +33,10 @@ Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 
 " General:
 
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'tpope/vim-sleuth'
 Plug 'tomtom/tcomment_vim'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -49,6 +47,12 @@ Plug 'mjbrownie/swapit'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-repeat'
 Plug 'itchyny/lightline.vim'
+if has('nvim-0.5')
+	Plug 'neovim/nvim-lspconfig'
+	Plug 'nvim-treesitter/nvim-treesitter'
+else
+	Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+end
 
 call plug#end()
 
@@ -68,6 +72,9 @@ set updatetime=500
 
 " Show the sign column even when no signs are present
 set signcolumn=yes
+
+" For LanguageClient-neovim
+set hidden
 
 " Use tilde as an operator, which can be preceded by a motion
 " Ex. ~w to change the case of a word
@@ -117,13 +124,8 @@ if has('termguicolors')
 	set termguicolors
 endif
 
-if !has('nvim')
-	try
-		set cryptmethod=blowfish2
-	catch
-		set cryptmethod=blowfish
-	endtry
-endif
+" Use spaces instead of ~ at the end of the buffer
+set fcs=eob:\ 
 
 let g:python_recommended_style = 0
 
@@ -245,8 +247,8 @@ command! PushVimrc !gist -u 0eceeb962ac315fc6166f0ab0cb081d0 ~/.vimrc
 
 " Thanks to https://stackoverflow.com/a/4293538/1525759
 function WriteCreatingDirs()
-    execute ':silent !mkdir -p %:h'
-    write
+	execute ':silent !mkdir -p %:h'
+	write
 endfunction
 command! WD call WriteCreatingDirs()
 
@@ -324,61 +326,63 @@ autocmd! User GoyoLeave call <SID>goyo_leave()
 " }}}
 " neoclide/coc.nvim {{{
 
- let g:coc_global_extensions = [
-    \'coc-rust-analyzer',
-    \'coc-tsserver',
-    \'coc-vetur',
-    \'coc-json',
-    \'coc-java',
-    \]
+if !has('nvim-0.5')
+	let g:coc_global_extensions = [
+	\'coc-rust-analyzer',
+	\'coc-tsserver',
+	\'coc-vetur',
+	\'coc-json',
+	\'coc-java',
+	\]
 
-autocmd FileType rust,vue,typescript,json,java call s:coc_settings()
+	autocmd FileType rust,vue,typescript,json,java call s:coc_settings()
 
-function! s:coc_settings()
-	" Navigation to the definition for the symbol under the cursor
-	nmap <silent><buffer> gd <Plug>(coc-definition)
+	function! s:coc_settings()
+		" Navigation to the definition for the symbol under the cursor
+		nmap <silent><buffer> gd <Plug>(coc-definition)
 
-	" Navigation to the type definition for the symbol under the cursor
-	nmap <silent><buffer> gy <Plug>(coc-type-definition)
+		" Navigation to the type definition for the symbol under the cursor
+		nmap <silent><buffer> gy <Plug>(coc-type-definition)
 
-	" Navigation to the implementation(s) for the symbol under the cursor
-	nmap <silent><buffer> gi <Plug>(coc-implementation)
+		" Navigation to the implementation(s) for the symbol under the cursor
+		nmap <silent><buffer> gi <Plug>(coc-implementation)
 
-	" Navigation to references to the symbol under the cursor
-	nmap <silent><buffer> gr <Plug>(coc-references)
+		" Navigation to references to the symbol under the cursor
+		nmap <silent><buffer> gr <Plug>(coc-references)
 
-	" Rename the symbol under the cursor, including all it's other usages
-	" (This can act surprising sometimes. For example, if renaming
-	" a property or method in an interface implementation, it won't rename
-	" the corresponding name in the interface definition nor in other
-	" implementations. Updating the symbol from the interface will update
-	" the implementations though.)
-	nmap <buffer> <leader>rn <Plug>(coc-rename)
+		" Rename the symbol under the cursor, including all it's other usages
+		" (This can act surprising sometimes. For example, if renaming
+		" a property or method in an interface implementation, it won't rename
+		" the corresponding name in the interface definition nor in other
+		" implementations. Updating the symbol from the interface will update
+		" the implementations though.)
+		nmap <buffer> <leader>rn <Plug>(coc-rename)
 
-	" Display documentation for the symbol under the cursor
-	nnoremap <silent><buffer> K :call CocAction('doHover')<cr>
+		" Display documentation for the symbol under the cursor
+		nnoremap <silent><buffer> K :call CocAction('doHover')<cr>
 
-	" Get a type-aware list of possible completions/suggestions
-	inoremap <silent><buffer><expr> <C-n> coc#refresh()
+		" Get a type-aware list of possible completions/suggestions
+		inoremap <silent><buffer><expr> <C-n> coc#refresh()
 
-	" Navigate between error diagnostics
-	nmap <silent><buffer> [e <Plug>(coc-diagnostic-prev)
-	nmap <silent><buffer> ]e <Plug>(coc-diagnostic-next)
+		" Navigate between error diagnostics
+		nmap <silent><buffer> [e <Plug>(coc-diagnostic-prev)
+		nmap <silent><buffer> ]e <Plug>(coc-diagnostic-next)
 
-	" Open up the code action menu for the a selection or motion
-	xmap <buffer> <leader>a <Plug>(coc-codeaction-selected)
-	nmap <buffer> <leader>a <Plug>(coc-codeaction-selected)
+		" Open up the code action menu for the a selection or motion
+		xmap <buffer> <leader>a <Plug>(coc-codeaction-selected)
+		nmap <buffer> <leader>a <Plug>(coc-codeaction-selected)
 
-	" Apply a "quick fix" for the current line
-	nmap <buffer> <leader>qf <Plug>(coc-fix-current)
+		" Apply a "quick fix" for the current line
+		nmap <buffer> <leader>qf <Plug>(coc-fix-current)
 
-	" Function and class text objects
-	" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-	xmap if <Plug>(coc-funcobj-i)
-	omap if <Plug>(coc-funcobj-i)
-	xmap af <Plug>(coc-funcobj-a)
-	omap af <Plug>(coc-funcobj-a)
-endfunc
+		" Function and class text objects
+		" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+		xmap if <Plug>(coc-funcobj-i)
+		omap if <Plug>(coc-funcobj-i)
+		xmap af <Plug>(coc-funcobj-a)
+		omap af <Plug>(coc-funcobj-a)
+	endfunc
+end
 
 " }}}
 " junegunn/vim-easy-align {{{
@@ -393,15 +397,15 @@ nmap ga <Plug>(EasyAlign)
 " itchyny/lightline.vim {{{
 
 let g:lightline = {
-    \ 'colorscheme': 'ayu_dark',
-    \ 'active': {
-    \   'right': [ [ 'lineinfo' ],
-    \              [ 'filetype' ] ]
-    \ },
-    \ 'inactive': {
-    \   'right': [ [ 'filetype' ] ]
-    \ },
-    \ }
+	\ 'colorscheme': 'ayu_dark',
+	\ 'active': {
+	\   'right': [ [ 'lineinfo' ],
+	\			  [ 'filetype' ] ]
+	\ },
+	\ 'inactive': {
+	\   'right': [ [ 'filetype' ] ]
+	\ },
+	\ }
 
 " Remove the middle part of the status line that's empty
 let s:new_theme = g:lightline#colorscheme#ayu_dark#palette
@@ -432,6 +436,60 @@ autocmd FileType html,css,vue setlocal iskeyword+=-
 autocmd FileType html syntax sync fromstart
 
 " }}}
+" LSP {{{
+
+if has('nvim-0.5')
+lua <<EOF
+require'nvim_lsp'.ccls.setup{}
+require'nvim_lsp'.cssls.setup{}
+require'nvim_lsp'.ghcide.setup{}
+require'nvim_lsp'.html.setup{}
+require'nvim_lsp'.pyls.setup{}
+require'nvim_lsp'.rust_analyzer.setup{}
+require'nvim_lsp'.vimls.setup{}
+EOF
+
+	autocmd FileType c,cpp,haskell,html,python,rust,vim call s:lsp_setup()
+
+	function! s:lsp_setup()
+	nnoremap <silent> gd	<cmd>lua vim.lsp.buf.declaration()<cr>
+	nnoremap <silent> <C-]> <cmd>lua vim.lsp.buf.definition()<cr>
+	nnoremap <silent> gD	<cmd>lua vim.lsp.buf.implementation()<cr>
+	nnoremap <silent> gr	<cmd>lua vim.lsp.buf.references()<cr>
+	nnoremap <silent> gy	<cmd>lua vim.lsp.buf.type_definition()<cr>
+	nnoremap <silent> K	 <cmd>lua vim.lsp.buf.hover()<cr>
+	nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<cr>
+
+	setlocal omnifunc=v:lua.vim.lsp.omnifunc
+	endfunc
+end
+
+" }}}
+" Tree Sitter {{{
+
+if has('nvim-0.5')
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+	highlight = {
+		enable = true,
+		disable = { "rust" },
+	},
+	textobjects = {
+		select = {
+			enable = true,
+			keymaps = {
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
+				["ac"] = "@class.outer",
+				["ic"] = "@class.inner",
+			},
+		},
+	},
+}
+EOF
+end
+
+" }}}
 " Colorschemes {{{
 
 let g:seoul256_background = 233
@@ -443,9 +501,9 @@ set background=dark
 
 let s:xcolorscheme = system('xrdb -query | grep "vim.colorscheme" | cut -f 2')
 if !empty(s:xcolorscheme)
-    execute "color " . s:xcolorscheme
+	execute "color " . s:xcolorscheme
 else
-    color ayu
+	color ayu
 endif
 
 hi clear SignColumn
@@ -517,21 +575,20 @@ hi StatusLine guibg=NONE cterm=NONE
 "   - This may help: https://vi.stackexchange.com/a/3817/8749
 " - More helpful comments, act like this file is for someone else
 " - Can I use .vimrc instead of CocConfig to set "suggestions.autoTrigger"
-" - Also how to automate CocInstall
 " - Document what isn't automated in this file (like CocInstall)
-" - Set up the ale linter for Rust, and maybe other languages too
 " - Anything else labeled "TODO"
 " - Get a markdown viewer in vim (idk if this exists without using a browser)
 " - NERDTree open directory w/ space
 " - Use different bindings for copying to clipboard (\ gets annoying)
 " - Check this out: https://learnvimscriptthehardway.stevelosh.com/chapters/49.html
 " - Can I try to fold by syntax but fallback on indent?
-" - Something to download newest vimrc and replace the old one if there are no
-"   differences between the 2nd oldest and this one? Or something at least to
-"   automate that process...
 " - Make a snippet/shortcut for `{\n|\n},` where `|` is the cursor (and get
 "   the cursor indention right. Also a version for `({ ... })`
-" - Get a haskell language server for coc.nvim
+"   - NO WAIT: change <C-l> to expand the `{}` pair anywhere on the line (or
+"   find the last occurrence of `}`?
+" - Fallback to not crash on systems without xrdb
+
+noh
 
 " }}}
 

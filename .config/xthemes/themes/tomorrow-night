@@ -9,7 +9,7 @@
 #define COLOR_CYAN    #81a2be
 #define COLOR_WHITE   #ffffff
 
-#define COLOR_B_BLACK   #1d1f21
+#define COLOR_B_BLACK   #777777
 #define COLOR_B_RED     #cc6666
 #define COLOR_B_GREEN   #b5bd68
 #define COLOR_B_YELLOW  #f0c674
@@ -25,12 +25,13 @@
 
 ! Misc. Settings
 
-#define ST_ALPHA 0.95
+#define ST_ALPHA 0.92
 #define ST_FONT SF Mono:size=13:style=Regular:antialias=true
 
 ! #define MY_WALLPAPER city-0.jpeg
 ! #define MY_WALLPAPER more-mountains.jpeg
-#define MY_WALLPAPER fog.jpeg
+! #define MY_WALLPAPER fog.jpeg
+#define MY_WALLPAPER cherry-2.jpeg
 
 #define POLYBAR_PRIMARY_FONT Ubuntu:size=12:style=Light;2
 #define POLYBAR_FOCUSED_DESKTOP COLOR_BLUE
@@ -40,6 +41,8 @@
 #define POLYBAR_PADDING_RIGHT 0
 #define POLYBAR_LEFT_MODULES all-desktops-wide
 #define POLYBAR_BAR smaller
+
+#define SPOTIFY_SELECTION_BG #333333
 
 #define VIM_COLORSCHEME base16-tomorrow-night
 
