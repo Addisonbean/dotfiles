@@ -25,7 +25,7 @@ padding-left = ${xrdb:polybar.paddingLeft:2}
 padding-right = ${xrdb:polybar.paddingRight:3}
 line-size = ${xrdb:polybar.underlineSize:0}
 
-wm-restack = desktop-icons
+wm-restack = bspwm
 ; override-redirect = true
 
 modules-left = ${xrdb:polybar.modulesLeft:desktop-icons}
