@@ -26,7 +26,7 @@
 ! Misc. Settings
 
 #define ST_ALPHA 0.92
-#define ST_FONT SF Mono:size=13:style=Regular:antialias=true
+#define ST_FONT ST_FONT_SF
 
 #define MY_WALLPAPER cherry-2.jpeg
 

@@ -24,6 +24,7 @@
 ! Misc. Settings
 
 #define ST_ALPHA 0.94
+#define ST_FONT ST_FONT_SCIENTIFIA
 
 #define MY_WALLPAPER cool-sky.jpeg
 
@@ -33,8 +34,6 @@
 #define POLYBAR_MODULE_MARGIN_RIGHT 1
 
 #define VIM_COLORSCHEME gruvbox
-
-#define ST_FONT scientifica:size=18:style=Medium:antialias=false
 
 #define SPOTIFY_SELECTION_BG #3c3836
 

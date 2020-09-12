@@ -18,6 +18,7 @@ Plug 'chuling/equinusocio-material.vim'
 Plug 'nightsense/strawberry'
 Plug 'nightsense/vimspectr'
 Plug 'addisonbean/amber'
+Plug 'metalelf0/base16-black-metal-scheme'
 
 " Language Specific:
 
@@ -145,7 +146,7 @@ nnoremap <silent> <C-s> :set spell!<cr>
 
 " Open ~/.vimrc in a new verical buffer
 " nnoremap <silent> <leader>ev :vnew ~/.vimrc<cr>
-nnoremap <silent> <leader>ev :vnew $MYVIMRC<cr>
+nnoremap <silent> <leader>ev :e $MYVIMRC<cr>
 
 " Reload ~/.config/nvim/init.vim
 nnoremap <silent> <leader>rv :source $MYVIMRC <bar> doautocmd BufRead<cr>

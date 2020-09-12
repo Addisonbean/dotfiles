@@ -15,7 +15,7 @@
 #endif
 
 #ifndef ST_FONT
-#define ST_FONT Fira Code:pixelsize=18:antialias=true:autohint=true
+#define ST_FONT ST_FONT_FIRA_CODE
 #endif
 
 #ifndef ST_BORDER_WIDTH

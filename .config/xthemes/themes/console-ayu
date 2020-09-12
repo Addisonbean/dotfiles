@@ -19,7 +19,7 @@
 ! Misc. Settings
 
 #define ST_ALPHA 1.0
-#define ST_FONT Terminus (TTF):pixelsize=18=true:autohint=true
+#define ST_FONT ST_FONT_TERMINUS
 
 ! TODO: make polybar look more hacker like...
 #define POLYBAR_PRIMARY_FONT Terminus (TTF):size=12;2
