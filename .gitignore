@@ -70,6 +70,9 @@
 !.config/nvim/plugged/lightline.vim/autoload/lightline/colorscheme/
 !.config/nvim/plugged/lightline.vim/autoload/lightline/colorscheme/custom.vim
 
+!.config/htop/
+!.config/htop/**
+
 !.local/
 !.local/bin/
 !.local/bin/**

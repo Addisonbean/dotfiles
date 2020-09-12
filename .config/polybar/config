@@ -169,16 +169,18 @@ format-padding = 2
 ; format-background = ${colors.module-bg}
 ; format-foreground = ${colors.module-fg}
 
-[module/desktop-icons]
+[module/bspwm]
 type = internal/bspwm
+pin-workspaces = false
+enable-scroll = false
+
+[module/desktop-icons]
+inherit = module/bspwm
 
 ws-icon-0 = 1;
 ws-icon-1 = 2;
 ws-icon-2 = 3;
 ws-icon-3 = 4;
-
-pin-workspaces = false
-enable-scroll = false
 
 label-separator = "     "
 label-separator-padding = 0
@@ -189,9 +191,11 @@ label-occupied = %name%  %icon%
 label-empty =
 
 [module/all-desktops]
-inherit = module/desktop-icons
+inherit = module/bspwm
 
 label-separator =
+label-separator-padding = 0
+
 label-focused = " %name% "
 label-focused-foreground = ${xrdb:ansi.color0}
 label-focused-background = ${xrdb:polybar.focusedDesktop}

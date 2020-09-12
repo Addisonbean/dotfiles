@@ -2,6 +2,11 @@
 #define VIM_COLORSCHEME ayu
 #endif
 
+#ifndef VIM_TRANSPARENT_BG
+#define VIM_TRANSPARENT_BG true
+#endif
+
 vim.colorscheme: VIM_COLORSCHEME
+vim.transparent-bg: VIM_TRANSPARENT_BG
 
 ! vim:ft=xdefaults

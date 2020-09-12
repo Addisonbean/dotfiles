@@ -1,0 +1,41 @@
+#define COLOR_ORANGE #ff8700
+#define COLOR_BROWN #875f00
+#define COLOR_B_GREEN #afaf00
+#define COLOR_B_ORANGE #d75f00
+
+#define COLOR_BLACK #121212
+#define COLOR_RED #af0000
+#define COLOR_GREEN #5f5f00
+#define COLOR_YELLOW #ffaf00
+#define COLOR_BLUE COLOR_B_ORANGE
+#define COLOR_MAGENTA COLOR_ORANGE
+#define COLOR_CYAN COLOR_ORANGE
+#define COLOR_WHITE COLOR_ORANGE
+
+#define COLOR_B_BLACK COLOR_ORANGE
+#define COLOR_B_RED #af0000
+#define COLOR_B_GREEN #afaf00
+#define COLOR_B_YELLOW #ffaf00
+#define COLOR_B_BLUE COLOR_B_ORANGE
+#define COLOR_B_MAGENTA COLOR_ORANGE
+#define COLOR_B_CYAN COLOR_ORANGE
+#define COLOR_B_WHITE COLOR_ORANGE
+
+! Misc. Settings
+
+#define ST_ALPHA 1.0
+#define ST_FONT Terminus (TTF):pixelsize=18=true:autohint=true
+
+! TODO: make polybar look more hacker like...
+#define POLYBAR_PRIMARY_FONT Terminus (TTF):size=12;2
+#define POLYBAR_LEFT_MODULES all-desktops
+
+#define MY_WALLPAPER amber-bg.png
+
+#define BSPWM_FOCUSED_BORDER #222222
+#define BSPWM_NORMAL_BORDER #1a1a1a
+
+#define VIM_COLORSCHEME amber-muted
+#define VIM_TRANSPARENT_BG false
+
+! vim:ft=xdefaults

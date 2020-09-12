@@ -17,6 +17,7 @@ Plug 'srcery-colors/srcery-vim'
 Plug 'chuling/equinusocio-material.vim'
 Plug 'nightsense/strawberry'
 Plug 'nightsense/vimspectr'
+Plug 'addisonbean/amber'
 
 " Language Specific:
 
@@ -506,11 +507,14 @@ else
 	color ayu
 endif
 
-hi clear SignColumn
-hi LineNr guifg=grey ctermfg=grey
-hi LineNr guibg=NONE
-hi Normal guibg=NONE ctermbg=NONE
-hi StatusLine guibg=NONE cterm=NONE
+let s:alpha = system('xrdb -query | grep "vim.transparent-bg" | cut -f 2')
+if s:alpha ==? "true\n"
+	hi clear SignColumn
+	hi LineNr guifg=grey ctermfg=grey
+	hi LineNr guibg=NONE
+	hi Normal guibg=NONE ctermbg=NONE
+	hi StatusLine guibg=NONE cterm=NONE
+endif
 
 " This should work in neovim v0.5 apparently
 " hi EndOfBuffer guifg=NONE cterm=NONE
