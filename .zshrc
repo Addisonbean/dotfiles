@@ -26,6 +26,7 @@ setopt histignorespace
 
 setopt correct
 setopt extended_glob
+setopt interactive_comments
 
 bindkey "^[OA" up-line-or-search
 bindkey "^[OB" down-line-or-search

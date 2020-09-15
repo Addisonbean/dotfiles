@@ -430,7 +430,7 @@ autocmd BufRead,BufNewFile *.jbuilder setlocal filetype=ruby
 autocmd BufRead,BufNewFile *.rasi setlocal filetype=css
 
 autocmd FileType gitcommit setlocal spell
-autocmd FileType elm,haskell setlocal tabstop=2
+autocmd FileType elm,haskell setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd FileType text setlocal expandtab tabstop=2 shiftwidth=2
 autocmd FileType markdown setlocal tabstop=2
 " autocmd FileType markdown Goyo
