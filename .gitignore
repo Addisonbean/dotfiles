@@ -73,6 +73,9 @@
 !.config/htop/
 !.config/htop/**
 
+!.config/zathura/
+!.config/zathura/**
+
 !.local/
 !.local/bin/
 !.local/bin/**

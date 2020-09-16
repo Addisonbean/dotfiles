@@ -75,9 +75,6 @@ set updatetime=500
 " Show the sign column even when no signs are present
 set signcolumn=yes
 
-" For LanguageClient-neovim
-set hidden
-
 " Use tilde as an operator, which can be preceded by a motion
 " Ex. ~w to change the case of a word
 set tildeop
@@ -101,6 +98,12 @@ set number
 " Display tabs as 4 spaces
 set tabstop=4
 
+" Insert 4 spaces when using expandtab
+set shiftwidth=4
+
+" Use tabs instead of spaces
+set noexpandtab
+
 " Only redraw when necessary
 set lazyredraw
 
@@ -121,6 +124,10 @@ set modeline
 set modelines=1
 
 set backspace=2
+
+" Ignore case in searches
+" Can be disabled temporarily by using \C in the search
+set ignorecase
 
 if has('termguicolors')
 	set termguicolors
@@ -454,15 +461,15 @@ EOF
 	autocmd FileType c,cpp,haskell,html,python,rust,vim call s:lsp_setup()
 
 	function! s:lsp_setup()
-	nnoremap <silent> gd	<cmd>lua vim.lsp.buf.declaration()<cr>
-	nnoremap <silent> <C-]> <cmd>lua vim.lsp.buf.definition()<cr>
-	nnoremap <silent> gD	<cmd>lua vim.lsp.buf.implementation()<cr>
-	nnoremap <silent> gr	<cmd>lua vim.lsp.buf.references()<cr>
-	nnoremap <silent> gy	<cmd>lua vim.lsp.buf.type_definition()<cr>
-	nnoremap <silent> K	 <cmd>lua vim.lsp.buf.hover()<cr>
-	nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<cr>
+		nnoremap <silent> gd	<cmd>lua vim.lsp.buf.declaration()<cr>
+		nnoremap <silent> <C-]> <cmd>lua vim.lsp.buf.definition()<cr>
+		nnoremap <silent> gD	<cmd>lua vim.lsp.buf.implementation()<cr>
+		nnoremap <silent> gr	<cmd>lua vim.lsp.buf.references()<cr>
+		nnoremap <silent> gy	<cmd>lua vim.lsp.buf.type_definition()<cr>
+		nnoremap <silent> K	 <cmd>lua vim.lsp.buf.hover()<cr>
+		nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<cr>
 
-	setlocal omnifunc=v:lua.vim.lsp.omnifunc
+		setlocal omnifunc=v:lua.vim.lsp.omnifunc
 	endfunc
 end
 
@@ -490,6 +497,9 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 end
+
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 
 " }}}
 " Colorschemes {{{
