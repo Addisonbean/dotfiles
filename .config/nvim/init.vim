@@ -436,7 +436,7 @@ nnoremap <silent> <C-a><C-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-a><C-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-a><C-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-a><C-l> :TmuxNavigateRight<cr>
-nnoremap <silent> <C-a><C-a> :TmuxNavigatePrevious<cr>
+nnoremap <silent> <C-a><C-w> :TmuxNavigatePrevious<cr>
 
 " }}}
 

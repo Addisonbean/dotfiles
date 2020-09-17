@@ -18,6 +18,7 @@ bindkey -M menuselect '^l' vi-forward-char
 bindkey -M menuselect '^j' vi-down-line-or-history
 
 bindkey -v
+
 # Recommended for vi mode, but what does it do???
 # export KEYTIMEOUT=1
 
@@ -42,7 +43,6 @@ alias grep="grep --color"
 alias feh="feh --no-fehbg"
 alias less="less -R"
 
-autoload -Uz vcs_info
 autoload -Uz add-zsh-hook
 setopt prompt_subst
 
@@ -57,15 +57,11 @@ alias xtheme="$HOME/.config/xthemes/xtheme.sh"
 alias wget="wget --hsts-file ~/.config/wget/wget-hsts"
 
 # }}}
-# {{{ Theme
+# {{{ Prompt
 
 # Adapted from: https://github.com/slashbeast/conf-mgmt/blob/master/roles/home_files/files/DOTzshrc#L208
+# TODO: indicate if in a rebase or merge
 function set_git_prompt() {
-	# if [ "$PWD" = "$HOME" ]; then
-	# 	unset git_prompt
-	# 	return
-	# fi
-	
 	if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
 		unset git_prompt
 		return
@@ -74,29 +70,24 @@ function set_git_prompt() {
 	local git_status_dirty git_branch
 
 	if [ "$(git --no-optional-locks status --untracked-files='no' --porcelain)" ]; then
-		git_status_dirty=' %F{red}*'
+		git_status_dirty=' %F{red}x%f'
 	else
 		unset git_status_dirty
 	fi
 
 	git_branch="$(git symbolic-ref HEAD 2>/dev/null)"
 	git_branch="${git_branch#refs/heads/}"
+	git_commit="$(git rev-parse --short HEAD)"
+	git_branch="${git_branch:-$git_commit}"
 
-	git_branch="${git_branch:-no branch}"
-
-	git_prompt="(${git_branch}${git_status_dirty}%f)"
-
-	# return "$git_prompt"
+	git_prompt="(${git_branch}${git_status_dirty})"
 }
 
-# add-zsh-hook precmd set_git_prompt
+add-zsh-hook precmd set_git_prompt
 
-# modified "simple" theme from oh-my-zsh
-export PROMPT="%F{blue}%1~%f${git_prompt} "
+# Modified "simple" theme from oh-my-zsh
+export PROMPT="%F{blue}%1~%f\${git_prompt} "
 export LS_COLORS="di=34:ln=35:so=33:pi=33:ex=31:bd=33:cd=33:su=37:sg=37:tw=37:ow=37"
-
-# export LSCOLORS="gxfxcxdxbxegedabagacad"
-# export LS_COLORS='di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:'
 
 # }}}
 # Exports, path changes, and software-setup {{{
