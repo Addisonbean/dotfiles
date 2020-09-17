@@ -41,8 +41,6 @@ Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-sleuth'
 Plug 'tomtom/tcomment_vim'
-Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 Plug 'mjbrownie/swapit'
@@ -205,6 +203,9 @@ nnoremap <space> za
 cnoremap <C-j> <down>
 cnoremap <C-k> <up>
 
+" Add a markdown/reST heading
+nnoremap <leader>h ^v$hyo<esc>p==^v$hr
+
 " Stop s, x, d, and c from copying {{{
 
 nnoremap s "_s
@@ -250,16 +251,19 @@ command! NoHexdump %!xxd -r
 " TODO: use `open` when on macOS
 command! Open !xdg-open %:t
 
-" Update my .vimrc on gist.github.com
-" TODO: add a nice error msg if `gist` isn't found
-command! PushVimrc !gist -u 0eceeb962ac315fc6166f0ab0cb081d0 ~/.vimrc
-
 " Thanks to https://stackoverflow.com/a/4293538/1525759
 function WriteCreatingDirs()
 	execute ':silent !mkdir -p %:h'
 	write
 endfunction
 command! WD call WriteCreatingDirs()
+
+function PdfView()
+	let l:fname = system("echo -n $RANDOM")
+	execute '!pandoc -s % -o /tmp/' . l:fname . '.pdf && xdg-open /tmp/' . l:fname . '.pdf && rm /tmp/' . l:fname . '.pdf'
+endfunction
+
+command! Pdf call PdfView()
 
 " }}}
 " Plugin setup {{{
@@ -291,12 +295,6 @@ nnoremap <silent> <C-p> :call SearchFiles()<cr>
 " Rather than loading syntax files for all preprocessors and
 " trying each one, attempt to detect which need to be loaded
 let g:vue_pre_processors = 'detect_on_enter'
-
-" }}}
-" preservim/nerdtree {{{
-
-" Toggle the nerd tree view viewer
-nnoremap <silent> <leader>n :NERDTreeToggle<cr>
 
 " }}}
 " junegunn/goyo.vim {{{
@@ -438,11 +436,15 @@ autocmd BufRead,BufNewFile *.rasi setlocal filetype=css
 
 autocmd FileType gitcommit setlocal spell
 autocmd FileType elm,haskell setlocal tabstop=2 shiftwidth=2 expandtab
-autocmd FileType text setlocal expandtab tabstop=2 shiftwidth=2
 autocmd FileType markdown setlocal tabstop=2
 " autocmd FileType markdown Goyo
 autocmd FileType html,css,vue setlocal iskeyword+=-
 autocmd FileType html syntax sync fromstart
+
+autocmd FileType markdown,rst,text
+	\ setlocal tabstop=2 shiftwidth=2 expandtab |
+	\ inoremap <buffer> <C-l> <esc>o-<space><esc>O<esc>jo<esc>kA |
+	\ nnoremap <buffer> <C-l> o-<space><esc>O<esc>jo<esc>kA
 
 " }}}
 " LSP {{{
@@ -593,7 +595,6 @@ endif
 " - Document what isn't automated in this file (like CocInstall)
 " - Anything else labeled "TODO"
 " - Get a markdown viewer in vim (idk if this exists without using a browser)
-" - NERDTree open directory w/ space
 " - Use different bindings for copying to clipboard (\ gets annoying)
 " - Check this out: https://learnvimscriptthehardway.stevelosh.com/chapters/49.html
 " - Can I try to fold by syntax but fallback on indent?
@@ -602,6 +603,7 @@ endif
 "   - NO WAIT: change <C-l> to expand the `{}` pair anywhere on the line (or
 "   find the last occurrence of `}`?
 " - Fallback to not crash on systems without xrdb
+" - Only case-insensitive autocomplete in txt/md/rst???
 
 noh
 

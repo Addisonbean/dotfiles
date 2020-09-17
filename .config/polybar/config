@@ -91,7 +91,7 @@ content = "%{R} %{R-}"
 
 [module/cpu]
 type = internal/cpu
-label = %percentage%%
+label = %{A1:st -e htop:}%percentage%%%{A}
 label-underline = ${xrdb:ansi.color5}
 interval = 4
 format-background = ${colors.module-bg}
