@@ -47,6 +47,7 @@ Plug 'mjbrownie/swapit'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-repeat'
 Plug 'itchyny/lightline.vim'
+Plug 'christoomey/vim-tmux-navigator'
 if has('nvim-0.5')
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'nvim-treesitter/nvim-treesitter'
@@ -425,6 +426,17 @@ let s:new_theme.inactive.middle = [[ '1', '1', '1', '1' ]]
 " let s:new_theme. = system('xrdb -query | grep "vim.colorscheme" | cut -f 2')
 
 let g:lightline#colorscheme#ayu_dark#palette = s:new_theme
+
+" }}}
+" christoomey/vim-tmux-navigator {{{
+
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <C-a><C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-a><C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-a><C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-a><C-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <C-a><C-a> :TmuxNavigatePrevious<cr>
 
 " }}}
 
