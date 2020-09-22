@@ -76,6 +76,9 @@ Print
 alt + Print
 	~/.local/bin/screenshot.sh -s
 
+shift + control + Delete
+	systemctl suspend
+
 # super + {left,right}
 # 	desk=`bspc query -D -d focused`; \
 # 	bspc desktop -m {prev,next}; \

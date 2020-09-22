@@ -19,6 +19,7 @@ Plug 'nightsense/strawberry'
 Plug 'nightsense/vimspectr'
 Plug 'addisonbean/amber'
 Plug 'metalelf0/base16-black-metal-scheme'
+Plug 'co1ncidence/bliss', { 'rtp': 'vim' }
 
 " Language Specific:
 
@@ -408,9 +409,13 @@ let g:lightline = {
 	\ 'colorscheme': 'ayu_dark',
 	\ 'active': {
 	\   'right': [ [ 'lineinfo' ],
-	\			  [ 'filetype' ] ]
+	\              [ 'filetype' ] ],
+	\   'left': [ [ 'mode', 'paste' ],
+	\             [ 'readonly', 'filename', 'modified' ] ]
 	\ },
 	\ 'inactive': {
+	\   'left': [ [ ],
+	\             [ 'filename', 'modified' ] ],
 	\   'right': [ [ 'filetype' ] ]
 	\ },
 	\ }

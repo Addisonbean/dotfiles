@@ -1,3 +1,7 @@
+#ifndef BSPWM_BORDER_SIZE
+#define BSPWM_BORDER_SIZE 2
+#endif
+
 #ifndef BSPWM_NORMAL_BORDER
 #define BSPWM_NORMAL_BORDER #33415E
 #endif
@@ -10,6 +14,7 @@
 #define BSPWM_GAP 15
 #endif
 
+bspwm.borderSize: BSPWM_BORDER_SIZE
 bspwm.normalBorder: BSPWM_NORMAL_BORDER
 bspwm.focusedBorder: BSPWM_FOCUSED_BORDER
 bspwm.gap: BSPWM_GAP
