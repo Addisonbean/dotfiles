@@ -1,7 +1,8 @@
 export EDITOR="nvim"
 export VISUAL="$EDITOR"
 export BROWSER="google-chrome-stable"
-export MANPAGER='nvim +Man!'
+export MANPAGER="nvim +Man!"
+export TERMINAL="st"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"

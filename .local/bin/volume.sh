@@ -38,9 +38,11 @@ function mute_toggle_notification() {
 case "$1" in
 	up)
 		amixer -D pulse sset Master 5%+ | get_level | volume_change_notification ""
+		amixer -D pulse sset Master on
 		;;
 	down)
 		amixer -D pulse sset Master 5%- | get_level | volume_change_notification ""
+		amixer -D pulse sset Master on
 		;;
 	toggle)
 		amixer -D pulse sset Master toggle | mute_toggle_notification
