@@ -1,6 +1,6 @@
 #define ST_FONT_FIRA_CODE Fira Code:pixelsize=20:antialias=true:autohint=true
 #define ST_FONT_TERMINUS Terminus (TTF):pixelsize=22=:antialias=true:autohint=true
 #define ST_FONT_SCIENTIFIA scientifica:size=18:style=Medium:antialias=false
-#define ST_FONT_SF SF Mono:size=14:style=Regular:antialias=true
+#define ST_FONT_SF SF Mono:size=15:style=Regular:antialias=true
 
 ! vim:ft=xdefaults

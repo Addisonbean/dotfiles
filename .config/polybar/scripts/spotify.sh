@@ -2,18 +2,20 @@
 
 running=$(pidof spotify)
 if [ "$running" != "" ]; then
+    playerctl="playerctl --player playerctld"
+
     icon="%{T2}%{F-}"
 
     green="$(xrdb -query | grep 'ansi.color2' | cut -f 2)"
 
-    if [ "$(playerctl status)" = "Playing" ]; then
+    if [ "$($playerctl status)" = "Playing" ]; then
         icon="%{F$green}$icon%{F-}"
     fi
 
     # Try not to cut, then cut artist, then song
     # colrm works like cut but handles unicode better
-    artist="$(playerctl metadata artist | tr -d "\n")"
-    song="$(playerctl metadata title | tr -d "\n")"
+    artist="$($playerctl metadata artist | tr -d "\n")"
+    song="$($playerctl metadata title | tr -d "\n")"
 
     if [ -z "$artist" ]; then
         msg="$icon (no music)"

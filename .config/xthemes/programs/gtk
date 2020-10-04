@@ -1,0 +1,7 @@
+#ifndef GTK_THEME
+#define GTK_THEME Ant-Dracula
+#endif
+
+gtk.theme: GTK_THEME
+
+! vim:ft=xdefaults

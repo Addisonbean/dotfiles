@@ -1,0 +1,53 @@
+! Taken kinda from here: https://material-ui.com/customization/color/
+
+! How to change the gtk theme???
+! Also change bspwm borders
+
+! Also maybe change the green???
+! Or desktop the polybar green to another color...
+
+#define COLOR_BLACK   #1b1918
+#define COLOR_RED     #f22c40
+#define COLOR_GREEN   #7b9726
+#define COLOR_YELLOW  #c38418
+#define COLOR_BLUE    #407ee7
+#define COLOR_MAGENTA #c33ff3
+#define COLOR_CYAN    #3d97b8
+#define COLOR_WHITE   #e6e2e0
+
+#define COLOR_B_BLACK   #2c2421
+#define COLOR_B_RED     #f22c40
+#define COLOR_B_GREEN   #7b9726
+#define COLOR_B_YELLOW  #c38418
+#define COLOR_B_BLUE    #407ee7
+#define COLOR_B_MAGENTA #c33ff3
+#define COLOR_B_CYAN    #3d97b8
+#define COLOR_B_WHITE   #9c9491
+
+! Optional Colors
+
+#define COLOR_ORANGE #df5320
+#define COLOR_PURPLE #6666ea
+
+! Misc. Settings
+
+#define ST_ALPHA 0.80
+#define ST_CURSOR COLOR_YELLOW
+#define ST_FONT ST_FONT_FIRA_CODE
+
+#define ST_BG #B0B0B0
+#define ST_FG COLOR_BG
+
+#define MY_WALLPAPER mountain-fog.jpeg
+
+#define POLYBAR_BG #80e6e2e0
+#define POLYBAR_FG COLOR_BG
+#define POLYBAR_LEFT_MODULES all-desktops-wide
+
+#define POLYBAR_PRIMARY_FONT Ubuntu:size=12:style=Light;2
+
+#define VIM_COLORSCHEME base16-atelier-forest-light
+
+#define GTK_THEME Sierra-light
+
+! vim:ft=xdefaults

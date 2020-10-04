@@ -18,14 +18,15 @@
 }
 
 #window {
-  font: "SF Pro Text Regular 12";
+  font: "SF Mono Regular 12";
+  /* font: "Fira Code 12"; */
   location: 0;
   background-color: @backgroundcolor;
   border-color: @accentcolor;
   border: 1;
   border-radius: 0;
   padding: 16 14;
-  width: 640;
+  /* width: @width; */
 }
 
 #element {
@@ -56,3 +57,13 @@
 #entry {
   padding: 2 8 8;
 }
+
+/* custom */
+
+#element-icon {
+  width: 40px;
+}
+
+/* #element-text { */
+/*   text-color: red; */
+/* } */

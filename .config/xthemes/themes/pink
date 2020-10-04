@@ -1,0 +1,53 @@
+! Colors taken from vimspectr300-light
+! See https://coolors.co/fff5fa-f0dde6-997f8c-7d5e6d-33222b-1f1218
+! and https://coolors.co/e04d38-e07638-699e34-349e90-4286c9-a565c9-e0708c
+
+#define COLOR_BLACK   #1F1218
+#define COLOR_RED     #E04D38
+#define COLOR_GREEN   #699E34
+#define COLOR_YELLOW  #E07638
+#define COLOR_BLUE    #4286C9
+#define COLOR_MAGENTA #A565C9
+#define COLOR_CYAN    #349E90
+! #define COLOR_WHITE   #F0DDE6
+#define COLOR_WHITE   #F0DDE6
+
+#define COLOR_B_BLACK   #997F8C
+#define COLOR_B_RED     #E56756
+#define COLOR_B_GREEN   #7FBF40
+#define COLOR_B_YELLOW  #E58A56
+#define COLOR_B_BLUE    #5D97D1
+#define COLOR_B_MAGENTA #B27BD1
+#define COLOR_B_CYAN    #40BFAE
+#define COLOR_B_WHITE   #FFF5FA
+
+! Optional Colors
+
+#define COLOR_PINK #E4869E
+
+! Misc. Settings
+
+#define ST_ALPHA 0.75
+#define ST_CURSOR COLOR_PINK
+#define ST_FONT ST_FONT_SF
+
+#define ST_BG #C0C0C0
+#define ST_FG COLOR_BG
+
+#define MY_WALLPAPER anime.jpg
+
+#define POLYBAR_BG #901F1218
+#define POLYBAR_FOCUSED_DESKTOP COLOR_PINK
+#define POLYBAR_LEFT_MODULES all-desktops-wide
+#define POLYBAR_PRIMARY_FONT Ubuntu:size=12:style=Light;2
+
+#define BSPWM_NORMAL_BORDER COLOR_WHITE
+#define BSPWM_FOCUSED_BORDER #7D5E6D
+#define BSPWM_GAPLESS_MONOCLE false
+#define BSPWM_GAP 25
+
+#define VIM_COLORSCHEME vimspectr330-light
+
+#define GTK_THEME Adwaita-Pink
+
+! vim:ft=xdefaults

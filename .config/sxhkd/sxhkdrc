@@ -15,10 +15,10 @@ super + {t,shift + t,s,f}
 # 	bspc desktop -f {prev,next}.local
 
 super + p
-	rofi -show drun -show-icons -i
+	rofi -show drun -show-icons -i -width 640
 
 super + m
-	rofi -show window -show-icons -i
+	rofi -show window -show-icons -i -width 960
 
 super + Tab
 	bspc node -f last
@@ -38,10 +38,13 @@ super + space
 
 XF86AudioPlay
 	[ -z "$(pidof spotify)" ] && bspc desktop --focus ^3 && spotify; \
-	dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+	playerctl --player spotify play-pause
+	# dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
 XF86AudioPlay + alt
-	playerctl play-pause
+	playerctl --player chrome play-pause
+	# playerctl --player playerctld play-pause
+	# playerctl play-pause
 
 XF86Audio{Lower,Raise}Volume
 	~/.local/bin/volume.sh {down,up}

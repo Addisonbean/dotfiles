@@ -14,9 +14,14 @@
 #define BSPWM_GAP 15
 #endif
 
+#ifndef BSPWM_GAPLESS_MONOCLE
+#define BSPWM_GAPLESS_MONOCLE true
+#endif
+
 bspwm.borderSize: BSPWM_BORDER_SIZE
 bspwm.normalBorder: BSPWM_NORMAL_BORDER
 bspwm.focusedBorder: BSPWM_FOCUSED_BORDER
 bspwm.gap: BSPWM_GAP
+bspwm.gaplessMonocle: BSPWM_GAPLESS_MONOCLE
 
 ! vim:ft=xdefaults
