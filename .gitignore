@@ -76,8 +76,8 @@
 !.config/zathura/
 !.config/zathura/**
 
-!.config/xsettingsd/
-!.config/xsettingsd/xsettingsd.conf
+# !.config/xsettingsd/
+# !.config/xsettingsd/xsettingsd.conf
 
 !.local/
 !.local/bin/
