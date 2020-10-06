@@ -32,4 +32,6 @@
 
 #define VIM_COLORSCHEME ayu
 
+#define GTK_THEME Midnight-Gray
+
 ! vim:ft=xdefaults

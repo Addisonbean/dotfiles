@@ -33,4 +33,6 @@
 #define VIM_COLORSCHEME base16-black-metal-bathory
 #define VIM_TRANSPARENT_BG false
 
+#define GTK_THEME Midnight-Gray
+
 ! vim:ft=xdefaults

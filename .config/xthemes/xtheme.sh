@@ -8,7 +8,13 @@ if [ -n "$1" ]; then
 	ln -sf "$HOME/.config/xthemes/themes/$1" "$HOME/.config/xthemes/themes/default"
 fi
 xrdb -I$HOME/.config/xthemes ~/.config/Xresources
-sed -i "s|Net/ThemeName.*|Net/ThemeName \"$(xval gtk.theme)\"|" ~/.config/xsettingsd/xsettingsd.conf
+mkdir -p ~/.config/xsettingsd
+touch ~/.config/xsettingsd/xsettingsd.conf
+if [ -z "$(grep Net/ThemeName ~/.config/xsettingsd/xsettingsd.conf)" ]; then
+	echo "Net/ThemeName \"$(xval gtk.theme)\"" >> ~/.config/xsettingsd/xsettingsd.conf
+else
+	sed -i "s|Net/ThemeName.*|Net/ThemeName \"$(xval gtk.theme)\"|" ~/.config/xsettingsd/xsettingsd.conf
+fi
 xsettingsd & disown
 (sleep 2 && killall xsettingsd) > /dev/null 2>&1 & disown
 feh --no-fehbg --bg-fill "$HOME/.config/xthemes/wallpapers/$(xval my_desktop.wallpaper)" &

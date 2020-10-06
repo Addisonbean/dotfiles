@@ -71,7 +71,7 @@ super + e
 	rofimoji
 
 super + x
-	~/.config/xthemes/xtheme.sh
+	~/.local/bin/xtheme-picker.sh
 
 Print
 	~/.local/bin/screenshot.sh

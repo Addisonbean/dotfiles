@@ -38,4 +38,6 @@
 #define VIM_COLORSCHEME amber-muted
 #define VIM_TRANSPARENT_BG false
 
+#define GTK_THEME Midnight-Gray
+
 ! vim:ft=xdefaults
