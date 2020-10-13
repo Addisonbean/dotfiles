@@ -29,7 +29,8 @@ bspc config focus_follows_pointer true
 
 bspc config single_monocle true
 
-ssize=$(xdpyinfo  | grep -oP 'dimensions:\s+\K\S+')
+# TODO: use the focused monitor rather than the primary monitor
+ssize=$(xrandr | fgrep '*' | head -1 | awk '{print $1}')
 swidth=$(echo $ssize | cut -d "x" -f 1)
 sheight=$(echo $ssize | cut -d "x" -f 2)
 
@@ -39,17 +40,17 @@ sizex=$(($posx * 4))
 sizey=$(($posy * 4))
 
 bspc rule -a Project-slippi state=fullscreen
-bspc rule -a Ranger state=floating state=floating rectangle="${sizex}x${sizey}+${posx}+${posy}"
+bspc rule -a Ranger state=floating rectangle="${sizex}x${sizey}+${posx}+${posy}"
 bspc rule -a Sxiv state=fullscreen
+bspc rule -a Gpick state=floating
 bspc rule -a Gimp state=floating follow=on
-bspc config external_rules_command ~/.config/bspwm/external_rules.sh
 
 # Don't let windows steal focus, could be useful...
 # bspc config ignore_ewmh_focus true
 
 # Ugly hack for when polybar shrinks
 polybar_bar_name="$(xval polybar.bar)"
-bspc config -m focused top_padding "$(xprop -name "polybar-${polybar_bar_name}_eDP1" _NET_WM_STRUT | awk -e '{ print $5 }' | cut -d ',' -f 1)"
+bspc config -m focused top_padding "$(xprop -name "polybar-${polybar_bar_name}_eDP-1" _NET_WM_STRUT | awk -e '{ print $5 }' | cut -d ',' -f 1)"
 
 # Hmmmm...
 # polybar-msg cmd hide

@@ -20,6 +20,7 @@ Plug 'nightsense/vimspectr'
 Plug 'addisonbean/amber'
 Plug 'metalelf0/base16-black-metal-scheme'
 Plug 'co1ncidence/bliss', { 'rtp': 'vim' }
+Plug 'logico/typewriter-vim'
 
 " Language Specific:
 

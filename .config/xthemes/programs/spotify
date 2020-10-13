@@ -1,7 +1,16 @@
+! Foreground for
+! - "Fans Also Like"
+! - friends feed names
+! - the played part of the slider
+! - heart icons
+! - playlist and artist names for the current page
+! - hovered songs
+! TODO: separate these...
 #ifndef SPOTIFY_FOREGROUND
 #define SPOTIFY_FOREGROUND COLOR_02
 #endif
 
+! Foreground for playlists, tracks, and more
 #ifndef SPOTIFY_FOREGROUND2
 #define SPOTIFY_FOREGROUND2 COLOR_07
 #endif
@@ -10,18 +19,26 @@
 #define SPOTIFY_BACKGROUND COLOR_00
 #endif
 
+! The "Play" buttons on playlists and artists and highlight color
+! for selected tabs on artist pages
 #ifndef SPOTIFY_BUTTON_BG
 #define SPOTIFY_BUTTON_BG COLOR_07
 #endif
 
+! Color of unplayed part of the slider AND
+! foreground color of unavailable songs
+! TODO: separate those
 #ifndef SPOTIFY_SLIDER_BG
 #define SPOTIFY_SLIDER_BG COLOR_08
 #endif
 
+! Color of buttons like "Play" when hovered AND foreground color of the current track
+! TODO: separate those
 #ifndef SPOTIFY_BUTTON_HOVER_BG
 #define SPOTIFY_BUTTON_HOVER_BG COLOR_07
 #endif
 
+! Background of selected tracks
 #ifndef SPOTIFY_SELECTION_BG
 #define SPOTIFY_SELECTION_BG COLOR_08
 #endif
@@ -42,6 +59,7 @@
 #define SPOTIFY_BACKGROUND_MISC COLOR_01
 #endif
 
+! The "Learn more" button bg and alert backgrounds
 #ifndef SPOTIFY_BACKGROUND_MISC_HOVER
 #define SPOTIFY_BACKGROUND_MISC_HOVER COLOR_13
 #endif
