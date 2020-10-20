@@ -13,6 +13,7 @@ my_desktop.wallpaper: MY_WALLPAPER
 #include "programs/bspwm"
 #include "programs/dunst"
 #include "programs/gtk"
+#include "programs/picom"
 #include "programs/polybar"
 #include "programs/rofi"
 #include "programs/spotify"

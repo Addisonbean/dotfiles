@@ -32,4 +32,6 @@
 #define SPOTIFY_BUTTON_HOVER_BG COLOR_03
 #define SPOTIFY_BUTTON_HELD_BG COLOR_03
 
+#define GTK_THEME NumixSolarizedDarkMagenta
+
 ! vim:ft=xdefaults

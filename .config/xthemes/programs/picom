@@ -1,0 +1,27 @@
+#ifndef PICOM_SHADOW
+#define PICOM_SHADOW false
+#endif
+
+#ifndef PICOM_SHADOW_RADIUS
+#define PICOM_SHADOW_RADIUS 2
+#endif
+
+#ifndef PICOM_SHADOW_OFFSET_X
+#define PICOM_SHADOW_OFFSET_X 3
+#endif
+
+#ifndef PICOM_SHADOW_OFFSET_Y
+#define PICOM_SHADOW_OFFSET_Y 3
+#endif
+
+#ifndef PICOM_SHADOW_OPACITY
+#define PICOM_SHADOW_OPACITY 0.3
+#endif
+
+picom.shadow: PICOM_SHADOW
+picom.shadowRadius: PICOM_SHADOW_RADIUS
+picom.shadowOffsetX: PICOM_SHADOW_OFFSET_X
+picom.shadowOffsetY: PICOM_SHADOW_OFFSET_Y
+picom.shadowOpacity: PICOM_SHADOW_OPACITY
+
+! vim:ft=xdefaults

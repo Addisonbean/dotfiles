@@ -68,6 +68,9 @@ super + {Left,Right}
 	desk=`bspc query -D -d focused`; bspc desktop -m {prev,next}; bspc monitor -f {prev,next}; bspc desktop -f $desk
 
 super + e
+	st -c Ranger -e ranger
+
+super + j
 	rofimoji
 
 super + x

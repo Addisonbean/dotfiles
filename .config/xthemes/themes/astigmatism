@@ -64,4 +64,6 @@
 #define SPOTIFY_BUTTON_HOVER_BG COLOR_CYAN
 #define SPOTIFY_SLIDER_BG #888888
 
+#define PICOM_SHADOW true
+
 ! vim:ft=xdefaults

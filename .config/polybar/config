@@ -143,7 +143,7 @@ ramp-capacity-4 = 
 
 [module/date]
 type  = internal/date
-label = "    %time%   %date%"
+label = "   %time%   %date%"
 date  = %b %d, %Y
 time  = %I:%M %p
 date-alt  = %a. %b %d, %Y
