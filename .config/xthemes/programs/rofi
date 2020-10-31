@@ -1,3 +1,7 @@
-rofi.theme: ayu-dark
+#ifndef ROFI_THEME
+#define ROFI_THEME blurry
+#endif
+
+rofi.theme: ROFI_THEME
 
 ! vim:filetype=xdefaults

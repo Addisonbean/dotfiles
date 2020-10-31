@@ -2,9 +2,10 @@ rofi.matching: fuzzy
 rofi.terminal: st
 rofi.kb-row-up: Up,Control+k,Control+p
 rofi.kb-row-down: Down,Control+j,Control+n
-# rofi.theme: purple
-# rofi.theme: ayu-dark
+rofi.kb-row-left: Control+h
+rofi.kb-row-right: Control+l
 
-# Unmap old C-j and C-k bindings
+# Unmap old bindings for C-h, C-j, C-k, and C-l
 rofi.kb-remove-to-eol: 
 rofi.kb-accept-entry: Return
+rofi.kb-remove-char-back: BackSpace,Shift+BackSpace
