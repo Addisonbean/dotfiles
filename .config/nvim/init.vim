@@ -21,6 +21,7 @@ Plug 'addisonbean/amber'
 Plug 'metalelf0/base16-black-metal-scheme'
 Plug 'co1ncidence/bliss', { 'rtp': 'vim' }
 Plug 'logico/typewriter-vim'
+Plug 'arcticicestudio/nord-vim'
 
 " Language Specific:
 

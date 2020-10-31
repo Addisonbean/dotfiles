@@ -75,9 +75,9 @@ function set_git_prompt() {
 		unset git_status_dirty
 	fi
 
-	git_branch="$(git symbolic-ref HEAD 2>/dev/null)"
+	git_branch="$(git symbolic-ref HEAD 2> /dev/null)"
 	git_branch="${git_branch#refs/heads/}"
-	git_commit="$(git rev-parse --short HEAD)"
+	git_commit="$(git rev-parse --short HEAD 2> /dev/null)"
 	git_branch="${git_branch:-$git_commit}"
 
 	git_prompt="(${git_branch}${git_status_dirty})"

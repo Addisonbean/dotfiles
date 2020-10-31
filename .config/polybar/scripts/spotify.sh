@@ -27,7 +27,11 @@ if [ "$running" != "" ]; then
         msg="$icon $(echo -n "$artist · $song" | colrm 41)"
     fi
 
-    echo -n "%{u$green}$msg%{-u}"
+    if [ "$1" == "--no-underline" ]; then
+        echo -n "$msg"
+    else
+        echo -n "%{u$green}$msg%{-u}"
+    fi
 else
     false
 fi

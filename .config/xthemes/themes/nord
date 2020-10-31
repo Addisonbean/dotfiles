@@ -1,0 +1,45 @@
+! Based on nord: https://www.nordtheme.com/
+
+#define COLOR_BLACK      #333333
+#define COLOR_RED        #BF616A
+#define COLOR_GREEN      #A3BE8C
+#define COLOR_YELLOW     #EBCB8B
+#define COLOR_BLUE       #5E81AC
+#define COLOR_MAGENTA    #B48EAD
+#define COLOR_CYAN       #88C0D0
+#define COLOR_WHITE      #ECEFF4
+
+#define COLOR_B_BLACK    #6A7893
+#define COLOR_B_RED      #BF616A
+#define COLOR_B_GREEN    #A3BE8C
+#define COLOR_B_YELLOW   #EBCB8B
+#define COLOR_B_BLUE     #5E81AC
+#define COLOR_B_MAGENTA  #B48EAD
+#define COLOR_B_CYAN     #88C0D0
+#define COLOR_B_WHITE    #ECEFF4
+
+! Misc. Settings
+
+#define MY_WALLPAPER more-mountains.jpg
+
+#define ST_ALPHA 0.84
+#define ST_FONT ST_FONT_FIRA_CODE
+#define ST_BORDER_WIDTH 50
+
+#define POLYBAR_BAR float
+#define POLYBAR_BG #00000000
+#define POLYBAR_FG #555555
+#define POLYBAR_FOCUSED_DESKTOP #00555555
+
+#define BSPWM_GAPLESS_MONOCLE false
+#define BSPWM_GAP 20
+#define BSPWM_BORDER_SIZE 1
+
+#define BSPWM_FOCUSED_BORDER #888888
+#define BSPWM_NORMAL_BORDER #333333
+
+#define VIM_COLORSCHEME nord
+
+#define GTK_THEME Arc-Dark
+
+! vim:ft=xdefaults

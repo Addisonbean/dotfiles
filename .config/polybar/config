@@ -12,21 +12,25 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
-[bar/default]
-width = 100%
-height = 34
+[bar/base]
 font-0 = ${xrdb:polybar.primaryFont:"iosevka:size=12;2"}
 font-1 = "Font Awesome 5 Free Solid:size=11:style=Solid;2"
 font-2 = "Noto Sans CJK JP:size=11;2"
 font-3 = "Inconsolata Nerd Font Mono:size=18;3"
 background = ${colors.background}
 foreground = ${colors.foreground}
+
+enable-ipc = true
+wm-restack = bspwm
+; override-redirect = true
+
+[bar/default]
+inherit = bar/base
+width = 100%
+height = 34
 padding-left = ${xrdb:polybar.paddingLeft:2}
 padding-right = ${xrdb:polybar.paddingRight:3}
 line-size = ${xrdb:polybar.underlineSize:0}
-
-wm-restack = bspwm
-; override-redirect = true
 
 modules-left = ${xrdb:polybar.modulesLeft:desktop-icons}
 modules-center = ${xrdb:polybar.modulesCenter:date}
@@ -39,8 +43,6 @@ separator = ${xrdb:polybar.moduleSeparator:}
 ; offset-y = 10
 ; width = 100%:-20
 
-enable-ipc = true
-
 ; tray-position = right
 ; tray-detached = true
 
@@ -51,6 +53,21 @@ font-0 = ${xrdb:polybar.primaryFont:"iosevka:size=12;2"}
 font-1 = "Font Awesome 5 Free Solid:size=11:style=Solid;2"
 font-2 = "Noto Sans CJK JP:size=11;2"
 font-3 = "Inconsolata Nerd Font Mono:size=18;3"
+
+[bar/float]
+inherit = bar/base
+background =
+foreground = ${colors.foreground}
+width = 100%:-40
+offset-x = 20
+offset-y = 10
+height = 34
+line-size = 1
+
+modules-left = all-desktops-wide-float
+modules-center = spotify-float
+modules-right = battery-float cpu-float network-float date-float
+separator =
 
 [module/separators]
 type = custom/text
@@ -97,6 +114,14 @@ interval = 4
 format-background = ${colors.module-bg}
 format-foreground = ${colors.module-fg}
 
+[module/cpu-float]
+inherit = module/cpu
+label = "   %{A1:st -e htop:}%percentage%%%{A}   "
+interval = 4
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+label-underline =
+
 [module/network]
 type = internal/network
 interface = ${env:NETWORK_INTERFACE:wlan0}
@@ -108,6 +133,14 @@ format-connected-background = ${colors.module-bg}
 format-connected-foreground = ${colors.module-fg}
 format-disconnected-background = ${colors.module-bg}
 format-disconnected-foreground = ${colors.module-fg}
+
+[module/network-float]
+type = internal/network
+interface = ${env:NETWORK_INTERFACE:wlan0}
+label-connected = "   %{A1:connman-gtk:}%{A}   "
+label-disconnected = "   %{F#FF3333}%{A1:connman-gtk:}%{F- A}   "
+format-connected-background = ${colors.background}
+format-disconnected-background = ${colors.background}
 
 [module/battery]
 type = internal/battery
@@ -141,6 +174,19 @@ ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
 
+[module/battery-float]
+inherit = module/battery
+format-full = "<ramp-capacity>  <label-full>   "
+format-charging = "<ramp-capacity>  <label-charging>   "
+format-discharging = "<ramp-capacity>  <label-discharging>   "
+ramp-capacity-0 = "   "
+ramp-capacity-1 = "   "
+ramp-capacity-2 = "   "
+ramp-capacity-3 = "   "
+ramp-capacity-4 = "   "
+format-full-underline =
+format-charging-underline =
+
 [module/date]
 type  = internal/date
 label = "   %time%   %date%"
@@ -148,6 +194,12 @@ date  = %b %d, %Y
 time  = %I:%M %p
 date-alt  = %a. %b %d, %Y
 time-alt  = %I:%M:%S %p
+
+[module/date-float]
+inherit = module/date-module
+label = "   %date%  |  %time%   "
+format-background = ${colors.background}
+format-foreground =
 
 [module/date-module]
 type  = internal/date
@@ -168,6 +220,10 @@ format = <label>
 format-padding = 2
 ; format-background = ${colors.module-bg}
 ; format-foreground = ${colors.module-fg}
+
+[module/spotify-float]
+inherit = module/spotify
+exec = ~/.config/polybar/scripts/spotify.sh --no-underline
 
 [module/bspwm]
 type = internal/bspwm
@@ -205,6 +261,14 @@ label-empty = " %name% "
 [module/all-desktops-wide]
 inherit = module/all-desktops
 label-focused = "  %name%  "
+label-occupied =  "  %name%  "
+label-empty = "  %name%  "
+
+[module/all-desktops-wide-float]
+inherit = module/all-desktops
+label-focused = "  %name%  "
+label-focused-foreground =
+label-focused-underline = ${colors.foreground}
 label-occupied =  "  %name%  "
 label-empty = "  %name%  "
 

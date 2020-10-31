@@ -23,16 +23,19 @@ xsettingsd & disown
 sed -i "s/gtk-theme-name = .*/gtk-theme-name = $(xval gtk.theme)/" ~/.config/gtk-3.0/settings.ini
 
 # Feh/wallpaper
-feh --no-fehbg --bg-fill "$HOME/.config/xthemes/wallpapers/$(xval my_desktop.wallpaper)" &
+feh --no-fehbg --bg-fill "$HOME/.config/xthemes/wallpapers/$(xval my_desktop.wallpaper)" & disown
+
+# Betterlockscreen
+betterlockscreen -u "$HOME/.config/xthemes/wallpapers/$(xval my_desktop.wallpaper)" & disown
 
 # St
 killall -s SIGUSR1 st
 
 # Spicetify
-spicetify update > /dev/null &
+spicetify update > /dev/null & disown
 
 # Polybar
-killall polybar
+killall -q polybar
 polybar -r "$(xval polybar.bar)" > /dev/null 2>&1 & disown
 
 # Dunst

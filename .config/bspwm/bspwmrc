@@ -1,5 +1,7 @@
 #!/usr/bin/zsh
 
+MONITOR=$(xrandr --listmonitors | grep '*' | awk '{print $4}')
+
 function xval() {
 	xrdb -query | grep "$1" | cut -f 2
 }
@@ -8,7 +10,7 @@ _NET_WM_STRUT_PARTIAL=1
 
 killall sxhkd; sxhkd &
 
-bspc monitor -d 1 2 3 4 5 6
+bspc monitor "$MONITOR" -d 1 2 3 4 5 6
 
 bspc desktop 1 -l monocle
 bspc desktop 2 -l tiled
@@ -44,13 +46,16 @@ bspc rule -a Ranger state=floating rectangle="${sizex}x${sizey}+${posx}+${posy}"
 bspc rule -a Sxiv state=fullscreen
 bspc rule -a Gpick state=floating
 bspc rule -a Gimp state=floating follow=on
+bspc rule -a steam follow=no
 
 # Don't let windows steal focus, could be useful...
 # bspc config ignore_ewmh_focus true
 
-# Ugly hack for when polybar shrinks
+# Get rid of the gap on all monitors except the main one
+xrandr --listmonitors | sed 1,1d | awk '{ print $4 }' | xargs -L1 -I '{}' bspc config -m {} top_padding 0
+
 polybar_bar_name="$(xval polybar.bar)"
-bspc config -m focused top_padding "$(xprop -name "polybar-${polybar_bar_name}_eDP-1" _NET_WM_STRUT | awk -e '{ print $5 }' | cut -d ',' -f 1)"
+bspc config -m "$MONITOR" top_padding "$(xprop -name "polybar-${polybar_bar_name}_${MONITOR}" _NET_WM_STRUT | awk -e '{ print $5 }' | cut -d ',' -f 1)"
 
 # Hmmmm...
 # polybar-msg cmd hide

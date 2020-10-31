@@ -10,7 +10,7 @@ mkdir -p "$screenshots_dir"
 screenshot_path="$screenshots_dir/screenshot-$(date +"%FT%T,%N").png"
 shotgun $sel "$screenshot_path"
 
-action="$(dunstify -t 2000 --action "default,Open" "Screenshot saved." "$screenshot_path")"
+action="$(dunstify -t 3000 --action "default,Open" "Screenshot saved." "$screenshot_path")"
 if [ "$action" -eq 2 ]; then
 	xdg-open "$screenshots_dir"
 fi

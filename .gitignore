@@ -76,6 +76,9 @@
 !.config/zathura/
 !.config/zathura/**
 
+!.config/herbstluftwm/
+!.config/herbstluftwm/**
+
 # !.config/xsettingsd/
 # !.config/xsettingsd/xsettingsd.conf
 
