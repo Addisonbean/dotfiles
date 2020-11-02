@@ -1,0 +1,14 @@
+configuration {
+	terminal: "st";
+	matching: "fuzzy";
+
+	kb-row-left: "Control+h";
+	kb-row-right: "Control+l";
+	kb-row-up: "Up,Control+k,Control+p";
+	kb-row-down: "Down,Control+j,Control+n";
+
+	/* Unmap old bindings for C-h, C-j, C-k, and C-l */
+	kb-remove-char-back: "BackSpace,Shift+BackSpace";
+	kb-remove-to-eol: "";
+	kb-accept-entry: "Return";
+}
