@@ -108,7 +108,7 @@ content = "%{R} %{R-}"
 
 [module/cpu]
 type = internal/cpu
-label = %{A1:st -e htop:}%percentage%%%{A}
+label = %{A1:(st -e htop) & disown:}%percentage%%%{A}
 label-underline = ${xrdb:ansi.color5}
 interval = 4
 format-background = ${colors.module-bg}
@@ -116,7 +116,7 @@ format-foreground = ${colors.module-fg}
 
 [module/cpu-float]
 inherit = module/cpu
-label = "   %{A1:st -e htop:}%percentage%%%{A}   "
+label = "   %{A1:(st -e htop) & disown:}%percentage%%%{A}   "
 interval = 4
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
@@ -126,8 +126,8 @@ label-underline =
 type = internal/network
 interface = ${env:NETWORK_INTERFACE:wlan0}
 format-connected-underline = ${xrdb:ansi.color4}
-label-connected = %{A1:connman-gtk:}%{A}
-label-disconnected = %{F#FF3333}%{A1:connman-gtk:}%{F- A}
+label-connected = %{A1:connman-gtk & disown:}%{A}
+label-disconnected = %{F#FF3333}%{A1:connman-gtk & disown:}%{F- A}
 
 format-connected-background = ${colors.module-bg}
 format-connected-foreground = ${colors.module-fg}
@@ -137,8 +137,8 @@ format-disconnected-foreground = ${colors.module-fg}
 [module/network-float]
 type = internal/network
 interface = ${env:NETWORK_INTERFACE:wlan0}
-label-connected = "   %{A1:connman-gtk:}%{A}   "
-label-disconnected = "   %{F#FF3333}%{A1:connman-gtk:}%{F- A}   "
+label-connected = "   %{A1:connman-gtk & disown:}%{A}   "
+label-disconnected = "   %{F#FF3333}%{A1:connman-gtk & disown:}%{F- A}   "
 format-connected-background = ${colors.background}
 format-disconnected-background = ${colors.background}
 

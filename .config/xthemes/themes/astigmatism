@@ -38,7 +38,8 @@
 #define ST_CURSOR COLOR_BLUE
 #define ST_BORDER_WIDTH 50
 
-#define POLYBAR_BG #D0D0D0
+! #define POLYBAR_BG #D0D0D0
+#define POLYBAR_BG COLOR_BG
 #define POLYBAR_FG COLOR_FG
 #define POLYBAR_PRIMARY_FONT Terminus (TTF):size=13;2
 #define POLYBAR_LEFT_MODULES all-desktops

@@ -168,8 +168,11 @@ vnoremap <leader>d "+d
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 
+" TODO: is there a more general way to do this?
 " Remap <C-a> since that's my tmux prefix and <C-c> is useless by default
 nnoremap <C-c> <C-a>
+vnoremap <C-c> <C-a>
+vnoremap g<C-c> g<C-a>
 
 " Unhighlight all text
 nnoremap <silent> <C-h> :noh<cr>
@@ -461,7 +464,7 @@ autocmd FileType html,css,vue setlocal iskeyword+=-
 autocmd FileType html syntax sync fromstart
 
 autocmd FileType markdown,rst,text
-	\ setlocal tabstop=2 shiftwidth=2 expandtab |
+	\ setlocal tabstop=2 shiftwidth=2 expandtab linebreak |
 	\ inoremap <buffer> <C-l> <esc>o-<space><esc>O<esc>jo<esc>kA |
 	\ nnoremap <buffer> <C-l> o-<space><esc>O<esc>jo<esc>kA
 
