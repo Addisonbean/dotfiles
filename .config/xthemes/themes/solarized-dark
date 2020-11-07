@@ -7,7 +7,7 @@
 #define COLOR_CYAN #2aa198
 #define COLOR_WHITE #eee8d5
 
-#define COLOR_B_BLACK #073642
+#define COLOR_B_BLACK #094554
 #define COLOR_B_RED #cb4b16
 #define COLOR_B_GREEN #859900
 #define COLOR_B_YELLOW #b58900

@@ -35,6 +35,7 @@ Plug 'ElmCast/elm-vim', { 'for': 'elm' }
 Plug 'edwinb/idris2-vim', { 'for': 'idr' }
 Plug 'pangloss/vim-javascript', { 'for': 'js' }
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+Plug 'lervag/vimtex', { 'for': 'latex' }
 
 " General:
 
