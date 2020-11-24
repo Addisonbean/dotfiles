@@ -9,7 +9,6 @@ Plug 'morhetz/gruvbox'
 Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'ronny/birds-of-paradise.vim'
-Plug 'lifepillar/vim-wwdc16-theme'
 Plug 'ayu-theme/ayu-vim'
 Plug 'skbolton/embark'
 Plug 'Rigellute/shades-of-purple.vim'
@@ -22,6 +21,7 @@ Plug 'metalelf0/base16-black-metal-scheme'
 Plug 'co1ncidence/bliss', { 'rtp': 'vim' }
 Plug 'logico/typewriter-vim'
 Plug 'arcticicestudio/nord-vim'
+Plug 'arzg/vim-colors-xcode'
 
 " Language Specific:
 
@@ -182,8 +182,8 @@ nnoremap <silent> <C-h> :noh<cr>
 nnoremap <silent> <C-q> :set relativenumber!<cr>
 
 " Use ctrl-j and ctrl-k to navigate completion menus
-inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "j"
-inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "k"
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
 " Use ctrl-_ and ctrl-\ to split a window horizontally/vertically
 nnoremap <silent> <C-_> :new<cr>
@@ -474,13 +474,13 @@ autocmd FileType markdown,rst,text
 
 if has('nvim-0.5')
 lua <<EOF
-require'nvim_lsp'.ccls.setup{}
-require'nvim_lsp'.cssls.setup{}
-require'nvim_lsp'.ghcide.setup{}
-require'nvim_lsp'.html.setup{}
-require'nvim_lsp'.pyls.setup{}
-require'nvim_lsp'.rust_analyzer.setup{}
-require'nvim_lsp'.vimls.setup{}
+require'lspconfig'.ccls.setup{}
+require'lspconfig'.cssls.setup{}
+require'lspconfig'.ghcide.setup{}
+require'lspconfig'.html.setup{}
+require'lspconfig'.pyls.setup{}
+require'lspconfig'.rust_analyzer.setup{}
+require'lspconfig'.vimls.setup{}
 EOF
 
 	autocmd FileType c,cpp,haskell,html,python,rust,vim call s:lsp_setup()
@@ -553,7 +553,7 @@ if s:alpha ==? "true\n"
 endif
 
 " This should work in neovim v0.5 apparently
-" hi EndOfBuffer guifg=NONE cterm=NONE
+hi EndOfBuffer guifg=NONE cterm=NONE
 
 " Favs
 "   ayu

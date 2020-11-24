@@ -26,7 +26,7 @@ sed -i "s/gtk-theme-name = .*/gtk-theme-name = $(xval gtk.theme)/" ~/.config/gtk
 feh --no-fehbg --bg-fill "$HOME/.config/xthemes/wallpapers/$(xval my_desktop.wallpaper)" & disown
 
 # Betterlockscreen
-betterlockscreen -u "$HOME/.config/xthemes/wallpapers/$(xval my_desktop.wallpaper)" & disown
+betterlockscreen -u "$HOME/.config/xthemes/wallpapers/$(xval my_desktop.wallpaper)" -r 1920x1080 & disown
 
 # St
 killall -s SIGUSR1 st

@@ -7,9 +7,14 @@ if [ "$running" != "" ]; then
     icon="%{T2}%{F-}"
 
     green="$(xrdb -query | grep 'ansi.color2' | cut -f 2)"
+    shouldClip="$(xrdb -query | grep 'polybar.clipSpotifyModule' | cut -f 2)"
 
-    if [ "$($playerctl status)" = "Playing" ]; then
+    status="$($playerctl status)"
+    if [ "$status" = "Playing" ]; then
         icon="%{F$green}$icon%{F-}"
+    elif [ "$status" = "Stopped" ]; then
+        echo
+        exit
     fi
 
     # Try not to cut, then cut artist, then song
@@ -18,9 +23,9 @@ if [ "$running" != "" ]; then
     song="$($playerctl metadata title | tr -d "\n")"
 
     if [ -z "$artist" ]; then
-        msg="$icon (no music)"
-        # msg=""
-    elif [ $(echo -n "$artist · $song" | wc -c) -lt 40 ]; then
+        echo
+        exit
+    elif [ "$shouldClip" = "false" ] || [ $(echo -n "$artist · $song" | wc -c) -lt 40 ]; then
         msg="$icon $artist · $song"
     else
         artist=$(echo -n "$artist" | colrm 15)

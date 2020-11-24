@@ -17,6 +17,9 @@ font-0 = ${xrdb:polybar.primaryFont:"iosevka:size=12;2"}
 font-1 = "Font Awesome 5 Free Solid:size=11:style=Solid;2"
 font-2 = "Noto Sans CJK JP:size=11;2"
 font-3 = "Inconsolata Nerd Font Mono:size=18;3"
+font-4 = "Inconsolata Nerd Font Mono:size=14;1"
+font-5 = "Inconsolata Nerd Font Mono:size=26;3"
+font-6 = "Font Awesome 5 Free Solid:size=11:style=Solid;1"
 background = ${colors.background}
 foreground = ${colors.foreground}
 
@@ -68,6 +71,18 @@ modules-left = all-desktops-wide-float
 modules-center = spotify-float
 modules-right = battery-float cpu-float network-float date-float
 separator =
+
+[bar/macos]
+inherit = bar/base
+height = 34
+padding-left = 5
+padding-right = 3
+
+modules-left = btw-i-use-arch macos-desktops
+modules-center = spotify
+modules-right = battery cpu network date-module
+
+module-margin-right = 6
 
 [module/separators]
 type = custom/text
@@ -126,8 +141,8 @@ label-underline =
 type = internal/network
 interface = ${env:NETWORK_INTERFACE:wlan0}
 format-connected-underline = ${xrdb:ansi.color4}
-label-connected = %{A1:connman-gtk & disown:}%{A}
-label-disconnected = %{F#FF3333}%{A1:connman-gtk & disown:}%{F- A}
+label-connected = %{T7}%{A1:connman-gtk & disown:}%{A T-}
+label-disconnected = %{T7}%{F#FF3333}%{A1:connman-gtk & disown:}%{F- A T-}
 
 format-connected-background = ${colors.module-bg}
 format-connected-foreground = ${colors.module-fg}
@@ -137,8 +152,8 @@ format-disconnected-foreground = ${colors.module-fg}
 [module/network-float]
 type = internal/network
 interface = ${env:NETWORK_INTERFACE:wlan0}
-label-connected = "   %{A1:connman-gtk & disown:}%{A}   "
-label-disconnected = "   %{F#FF3333}%{A1:connman-gtk & disown:}%{F- A}   "
+label-connected = "   %{T7}%{A1:connman-gtk & disown:}%{A T-}   "
+label-disconnected = "   %{T7}%{F#FF3333}%{A1:connman-gtk & disown:}%{F- A T-}   "
 format-connected-background = ${colors.background}
 format-disconnected-background = ${colors.background}
 
@@ -168,11 +183,17 @@ label-full = %percentage%%  (%time%)
 label-charging = %percentage%%  (%time%)
 label-discharging = %percentage%%  (%time%)
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
+ramp-capacity-0 = %{T5}%{T-}
+ramp-capacity-1 = %{T5}%{T-}
+ramp-capacity-2 = %{T5}%{T-}
+ramp-capacity-3 = %{T5}%{T-}
+ramp-capacity-4 = %{T5}%{T-}
+
+; ramp-capacity-0 = 
+; ramp-capacity-1 = 
+; ramp-capacity-2 = 
+; ramp-capacity-3 = 
+; ramp-capacity-4 = 
 
 [module/battery-float]
 inherit = module/battery
@@ -211,7 +232,7 @@ format-foreground = ${colors.module-fg}
 
 [module/spotify]
 type = custom/script
-interval = 2
+interval = 1
 exec = ~/.config/polybar/scripts/spotify.sh
 click-left = wmctrl -xa spotify
 
@@ -271,5 +292,21 @@ label-focused-foreground =
 label-focused-underline = ${colors.foreground}
 label-occupied =  "  %name%  "
 label-empty = "  %name%  "
+
+[module/macos-desktops]
+inherit = module/bspwm
+format = "<label-state>    "
+label-separator = "    "
+
+label-focused = 
+label-occupied = 
+label-empty = 
+label-focused-foreground = #BBBBBB
+label-occupied-foreground = #4A4A4A
+label-empty-foreground = #4A4A4A
+
+[module/btw-i-use-arch]
+type = custom/text
+content = %{F#1793d1}%{T6}%{T-}%{F-}
 
 ; vim:ft=dosini

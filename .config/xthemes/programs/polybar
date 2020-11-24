@@ -83,6 +83,10 @@
 #define POLYBAR_LEFT_MODULES desktop-icons
 #endif
 
+#ifndef POLYBAR_CLIP_SPOTIFY_MODULE
+#define POLYBAR_CLIP_SPOTIFY_MODULE true
+#endif
+
 polybar.background: POLYBAR_BG
 polybar.foreground: POLYBAR_FG
 polybar.focusedDesktop: POLYBAR_FOCUSED_DESKTOP
@@ -103,5 +107,7 @@ polybar.moduleMarginRight: POLYBAR_MODULE_MARGIN_RIGHT
 polybar.modulesLeft: POLYBAR_LEFT_MODULES
 polybar.modulesCenter: POLYBAR_CENTER_MODULES
 polybar.modulesRight: POLYBAR_RIGHT_MODULES
+
+polybar.clipSpotifyModule: POLYBAR_CLIP_SPOTIFY_MODULE
 
 ! vim:ft=xdefaults

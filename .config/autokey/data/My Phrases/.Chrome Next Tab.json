@@ -25,7 +25,7 @@
         "hotKey": "<right>"
     },
     "filter": {
-        "regex": "google-chrome.Google-chrome",
+        "regex": "chromium.Chromium",
         "isRecursive": false
     },
     "sendMode": "kb"

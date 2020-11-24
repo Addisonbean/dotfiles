@@ -1,0 +1,43 @@
+#define COLOR_BLACK   #494d5c
+#define COLOR_RED     #bb383a
+#define COLOR_GREEN   #94c66e
+#define COLOR_YELLOW  #d28e5d
+#define COLOR_BLUE    #8884c5
+#define COLOR_MAGENTA #b73999
+#define COLOR_CYAN    #00aba4
+#define COLOR_WHITE   #e7e8eb
+
+#define COLOR_B_BLACK   #7f869e
+#define COLOR_B_RED     #bb383a
+#define COLOR_B_GREEN   #94c66e
+#define COLOR_B_YELLOW  #d28e5d
+#define COLOR_B_BLUE    #8884c5
+#define COLOR_B_MAGENTA #b73999
+#define COLOR_B_CYAN    #00aba4
+#define COLOR_B_WHITE   #e7e8eb
+
+! Misc. Settings
+
+#define COLOR_BG #1b1918
+
+#define ST_ALPHA 0.78
+#define ST_FONT ST_FONT_SF
+
+#define MY_WALLPAPER apple.png
+
+#define POLYBAR_PRIMARY_FONT Ubuntu:size=13:style=Light:antialias=true;2
+#define POLYBAR_BAR macos
+#define POLYBAR_BG #C61b1918
+#define POLYBAR_CLIP_SPOTIFY_MODULE false
+
+#define PICOM_SHADOW true
+#define PICOM_SHADOW_OFFSET_X -3
+#define PICOM_SHADOW_OFFSET_Y -3
+#define PICOM_SHADOW_RADIUS 10
+#define PICOM_SHADOW_OPACITY 0.1
+
+#define VIM_COLORSCHEME xcodewwdc
+
+#define GTK_THEME Sierra-dark
+
+! vim:ft=xdefaults

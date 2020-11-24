@@ -36,13 +36,13 @@ super + {_,shift + }{1-9}
 super + space
 	bspc desktop -l next
 
-XF86AudioPlay
+{XF86AudioPlay,XF86AudioMicMute}
 	[ -z "$(pidof spotify)" ] && bspc desktop --focus ^3 && spotify; \
 	playerctl --player spotify play-pause
 	# dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
-XF86AudioPlay + alt
-	playerctl --player chrome play-pause
+{XF86AudioPlay,XF86AudioMicMute} + alt
+	playerctl --player chromium play-pause
 	# playerctl --player playerctld play-pause
 	# playerctl play-pause
 
