@@ -15,7 +15,7 @@ super + {t,shift + t,s,f}
 # 	bspc desktop -f {prev,next}.local
 
 super + p
-	rofi -show drun -show-icons -i -width 640
+	rofi -show drun -show-icons -i -width 640 -theme blurry-app-launcher
 
 super + m
 	rofi -show window -show-icons -i -width 960

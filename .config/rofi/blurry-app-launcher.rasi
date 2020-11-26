@@ -10,9 +10,6 @@ configuration {
     fullscreen:          false;
     hide-scrollbar:      true;
     sidebar-mode:        false;
-    window-format: "{w} | {c}\n{t}";
-    eh: 2;
-    /* window-thumbnail: true; */
 }
 
 * {
@@ -33,7 +30,8 @@ window {
     border-radius:    8px;
     border-color:     #333;
     border:           1px solid;
-    /* width:            50%; */
+    height:           60%;
+    width:            50%;
     location:         center;
     anchor:           center;
     x-offset:         0;
@@ -45,6 +43,8 @@ prompt {
     padding:          0px 8px 0px 4px;
     background-color: @background;
     text-color:       @foreground;
+    /* font:             "FantasqueSansMono Nerd Font 16"; */
+    /* font:             "Fira Code 24"; */
 }
 
 inputbar {
@@ -76,13 +76,12 @@ case-indicator {
 
 
 listview {
-    background-color: @background;
-    spacing: 4px;
-    cycle: true;
-    dynamic: false;
-    columns: 5;
-    lines: 1;
-    layout: vertical;
+    background-color:               @background;
+    columns:                        5;
+    spacing:                        4px;
+    cycle:                          false;
+    dynamic:                        true;
+    layout:                         vertical;
 }
 
 mainbox {
@@ -97,7 +96,7 @@ element {
     text-color:                     @foreground;
     orientation:                    vertical;
     border-radius:                  6px;
-    padding:                        10px;
+    padding:                        10px 0px 10px 0px;
 }
 
 element-icon {
@@ -119,11 +118,11 @@ element alternate.urgent {
     border-radius:                  9px;
 }
 
-/* element normal.active, */
-/* element alternate.active { */
-/*     background-color:               @background-alt; */
-/*     text-color:                     @foreground; */
-/* } */
+element normal.active,
+element alternate.active {
+    background-color:               @background-alt;
+    text-color:                     @foreground;
+}
 
 element selected {
     background-color:               @background-alt;
@@ -135,7 +134,7 @@ element selected.urgent {
     text-color:                     @foreground;
 }
 
-/* element selected.active { */
-/*     background-color:               @background-alt; */
-/*     color:                          @foreground-selected; */
-/* } */
+element selected.active {
+    background-color:               @background-alt;
+    color:                          @foreground-selected;
+}
