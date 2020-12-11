@@ -22,6 +22,14 @@
 #define ST_BORDER_WIDTH 20
 #endif
 
+#ifndef ST_DISABLE_BOLD
+#define ST_DISABLE_BOLD 0
+#endif
+
+#ifndef ST_DISABLE_ITALIC
+#define ST_DISABLE_ITALIC 1
+#endif
+
 st.color0: COLOR_00
 st.color1: COLOR_01
 st.color2: COLOR_02
@@ -44,5 +52,7 @@ st.cursorbg: ST_CURSOR
 st.alpha: ST_ALPHA
 st.font: ST_FONT
 st.borderpx: ST_BORDER_WIDTH
+st.disablebold: ST_DISABLE_BOLD
+st.disableitalic: ST_DISABLE_ITALIC
 
 ! vim:ft=xdefaults

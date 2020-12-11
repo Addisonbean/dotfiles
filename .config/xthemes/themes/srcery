@@ -1,0 +1,48 @@
+! Inspired by https://github.com/srcery-colors/srcery-vim
+
+! TODO: make polybar more colorful...
+
+#define COLOR_BLACK   #1C1B19
+#define COLOR_RED     #EF2F27
+#define COLOR_GREEN   #519F50
+#define COLOR_YELLOW  #FBB829
+#define COLOR_BLUE    #2C78BF
+#define COLOR_MAGENTA #E02C6D
+#define COLOR_CYAN    #0AAEB3
+#define COLOR_WHITE   #D0BFA1
+
+#define COLOR_B_BLACK   #918175
+#define COLOR_B_RED     #F75341
+#define COLOR_B_GREEN   #98BC37
+#define COLOR_B_YELLOW  #FED06E
+#define COLOR_B_BLUE    #68A8E4
+#define COLOR_B_MAGENTA #FF5C8F
+#define COLOR_B_CYAN    #53FDE9
+#define COLOR_B_WHITE   #FCE8C3
+
+! Optional colors
+
+#define COLOR_ORANGE   #FF5F00
+#define COLOR_B_ORANGE #FF8700
+
+! Misc. Settings
+
+#define ST_ALPHA 1.0
+! #define ST_FONT -Misc-Fixed-Medium-R-SemiCondensed--13-120-75-75-C-60-ISO10646-1
+! #define ST_FONT UW Ttyp0:size=14:style=Medium:antialias=true:autohint=true
+#define ST_DISABLE_BOLD 1
+
+! exact limit tho... :/
+#define POLYBAR_PRIMARY_FONT Terminus (TTF):style=Medium:pixelsize=14;2
+#define POLYBAR_LEFT_MODULES desktop-icons-narrow
+
+#define MY_WALLPAPER srcery.png
+
+#define VIM_COLORSCHEME srcery
+
+#define BSPWM_NORMAL_BORDER #121212
+#define BSPWM_FOCUSED_BORDER COLOR_WHITE
+
+#define GTK_THEME gruvbox-dark-gtk
+
+! vim:ft=xdefaults

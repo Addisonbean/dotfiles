@@ -22,6 +22,8 @@ Plug 'co1ncidence/bliss', { 'rtp': 'vim' }
 Plug 'logico/typewriter-vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'arzg/vim-colors-xcode'
+Plug '~/code/projects/srcery-basic'
+Plug 'pineapplegiant/spaceduck'
 
 " Language Specific:
 
@@ -533,6 +535,7 @@ let g:seoul256_background = 233
 let g:gruvbox_contrast_dark = 'hard'
 let ayucolor = 'dark'
 let g:equinusocio_material_style = 'pure'
+let g:srcery_inverse = 0
 
 set background=dark
 
@@ -553,7 +556,9 @@ if s:alpha ==? "true\n"
 endif
 
 " This should work in neovim v0.5 apparently
-hi EndOfBuffer guifg=NONE cterm=NONE
+hi EndOfBuffer guibg=NONE guifg=NONE cterm=NONE
+
+" Colorscheme list {{{
 
 " Favs
 "   ayu
@@ -607,6 +612,8 @@ hi EndOfBuffer guifg=NONE cterm=NONE
 "   hybrid
 "   summerfruit256
 "   xcode
+
+" }}}
 
 " }}}
 " TODO for this file {{{

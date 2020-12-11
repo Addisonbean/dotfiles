@@ -1,0 +1,51 @@
+! Inspired by https://github.com/srcery-colors/srcery-vim
+
+! TODO: somehow auto pass `-p` to ls for this theme?
+! Maybe via. an imported zsh startup script???
+! Like what I do with setting the default theme
+
+#define COLOR_BLACK   #1C1B19
+#define COLOR_RED     #EF2F27
+#define COLOR_GREEN   #519F50
+#define COLOR_YELLOW  #D0BFA1
+#define COLOR_BLUE    #D0BFA1
+#define COLOR_MAGENTA #D0BFA1
+#define COLOR_CYAN    #D0BFA1
+#define COLOR_WHITE   #D0BFA1
+
+#define COLOR_B_BLACK   #1C1B19
+#define COLOR_B_RED     #EF2F27
+#define COLOR_B_GREEN   #519F50
+#define COLOR_B_YELLOW  #D0BFA1
+#define COLOR_B_BLUE    #D0BFA1
+#define COLOR_B_MAGENTA #D0BFA1
+#define COLOR_B_CYAN    #D0BFA1
+#define COLOR_B_WHITE   #D0BFA1
+
+! #define COLOR_B_BLACK   #918175
+! #define COLOR_B_RED     #F75341
+! #define COLOR_B_GREEN   #98BC37
+! #define COLOR_B_YELLOW  #FCE8C3
+! #define COLOR_B_BLUE    #FCE8C3
+! #define COLOR_B_MAGENTA #FCE8C3
+! #define COLOR_B_CYAN    #FCE8C3
+! #define COLOR_B_WHITE   #FCE8C3
+
+! Misc. Settings
+
+#define ST_ALPHA 1.0
+#define ST_DISABLE_BOLD 1
+
+#define POLYBAR_PRIMARY_FONT Terminus (TTF):style=Medium:pixelsize=14;2
+#define POLYBAR_LEFT_MODULES desktop-icons-narrow
+
+#define MY_WALLPAPER srcery.png
+
+#define VIM_COLORSCHEME srcery-basic
+
+#define BSPWM_NORMAL_BORDER #121212
+#define BSPWM_FOCUSED_BORDER COLOR_WHITE
+
+#define GTK_THEME gruvbox-dark-gtk
+
+! vim:ft=xdefaults

@@ -1,3 +1,5 @@
+; Colors {{{
+
 [colors]
 background = ${xrdb:polybar.background:#881A0A0A}
 foreground = ${xrdb:polybar.foreground:#CCCCCC}
@@ -11,6 +13,9 @@ foreground-alt = #555
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
+
+; }}}
+; Bars {{{
 
 [bar/base]
 font-0 = ${xrdb:polybar.primaryFont:"iosevka:size=12;2"}
@@ -70,7 +75,6 @@ line-size = 1
 modules-left = all-desktops-wide-float
 modules-center = spotify-float
 modules-right = battery-float cpu-float network-float date-float
-separator =
 
 [bar/macos]
 inherit = bar/base
@@ -83,6 +87,9 @@ modules-center = spotify
 modules-right = battery cpu network date-module
 
 module-margin-right = 6
+
+; }}}
+; Separator modules {{{
 
 [module/separators]
 type = custom/text
@@ -121,9 +128,12 @@ content = " %{R} %{R-}"
 inherit = module/separators
 content = "%{R} %{R-}"
 
+; }}}
+; Modules {{{
+
 [module/cpu]
 type = internal/cpu
-label = %{A1:(st -e htop) & disown:}%percentage%%%{A}
+label = %{A1:st -e htop:}%percentage%%%{A}
 label-underline = ${xrdb:ansi.color5}
 interval = 4
 format-background = ${colors.module-bg}
@@ -131,7 +141,7 @@ format-foreground = ${colors.module-fg}
 
 [module/cpu-float]
 inherit = module/cpu
-label = "   %{A1:(st -e htop) & disown:}%percentage%%%{A}   "
+label = "   %{A1:st -e htop:}%percentage%%%{A}   "
 interval = 4
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
@@ -141,8 +151,8 @@ label-underline =
 type = internal/network
 interface = ${env:NETWORK_INTERFACE:wlan0}
 format-connected-underline = ${xrdb:ansi.color4}
-label-connected = %{T7}%{A1:connman-gtk & disown:}%{A T-}
-label-disconnected = %{T7}%{F#FF3333}%{A1:connman-gtk & disown:}%{F- A T-}
+label-connected = %{T7}%{A1:connman-gtk:}%{A T-}
+label-disconnected = %{T7}%{F#FF3333}%{A1:connman-gtk:}%{F- A T-}
 
 format-connected-background = ${colors.module-bg}
 format-connected-foreground = ${colors.module-fg}
@@ -152,8 +162,8 @@ format-disconnected-foreground = ${colors.module-fg}
 [module/network-float]
 type = internal/network
 interface = ${env:NETWORK_INTERFACE:wlan0}
-label-connected = "   %{T7}%{A1:connman-gtk & disown:}%{A T-}   "
-label-disconnected = "   %{T7}%{F#FF3333}%{A1:connman-gtk & disown:}%{F- A T-}   "
+label-connected = "   %{T7}%{A1:connman-gtk:}%{A T-}   "
+label-disconnected = "   %{T7}%{F#FF3333}%{A1:connman-gtk:}%{F- A T-}   "
 format-connected-background = ${colors.background}
 format-disconnected-background = ${colors.background}
 
@@ -179,7 +189,7 @@ format-full-foreground = ${colors.module-fg}
 format-charging-foreground = ${colors.module-fg}
 format-discharging-foreground = ${colors.module-fg}
 
-label-full = %percentage%%  (%time%)
+label-full = %percentage%%
 label-charging = %percentage%%  (%time%)
 label-discharging = %percentage%%  (%time%)
 
@@ -246,6 +256,8 @@ format-padding = 2
 inherit = module/spotify
 exec = ~/.config/polybar/scripts/spotify.sh --no-underline
 
+; Bspwm desktops {{{
+
 [module/bspwm]
 type = internal/bspwm
 pin-workspaces = false
@@ -257,7 +269,6 @@ inherit = module/bspwm
 ws-icon-0 = 1;
 ws-icon-1 = 2;
 ws-icon-2 = 3;
-ws-icon-3 = 4;
 
 label-separator = "     "
 label-separator-padding = 0
@@ -265,6 +276,21 @@ label-separator-padding = 0
 label-focused = %name%  %icon%
 label-focused-foreground = ${xrdb:polybar.focusedDesktop:#ABD94C}
 label-occupied = %name%  %icon%
+label-empty =
+
+[module/desktop-icons-narrow]
+inherit = module/bspwm
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+
+label-separator = "   "
+label-separator-padding = 0
+
+label-focused = %name% %icon%
+label-focused-foreground = ${xrdb:polybar.focusedDesktop:#ABD94C}
+label-occupied = %name% %icon%
 label-empty =
 
 [module/all-desktops]
@@ -305,8 +331,12 @@ label-focused-foreground = #BBBBBB
 label-occupied-foreground = #4A4A4A
 label-empty-foreground = #4A4A4A
 
+; }}}
+
 [module/btw-i-use-arch]
 type = custom/text
 content = %{F#1793d1}%{T6}%{T-}%{F-}
 
-; vim:ft=dosini
+; }}}
+
+; vim:ft=dosini:foldmethod=marker:foldlevel=0

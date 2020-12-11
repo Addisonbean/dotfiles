@@ -1,0 +1,56 @@
+! Inspired by https://github.com/srcery-colors/srcery-vim
+
+! TODO: make polybar more colorful...
+
+#define COLOR_BLACK   #0f111b
+#define COLOR_RED     #e33400
+#define COLOR_GREEN   #5ccc96
+#define COLOR_YELLOW  #f2ce00
+#define COLOR_BLUE    #114fd6
+#define COLOR_MAGENTA #ce6f8f
+#define COLOR_CYAN    #00a3cc
+#define COLOR_WHITE   #ecf0c1
+
+#define COLOR_B_BLACK   #51535a
+#define COLOR_B_RED     #e33400
+#define COLOR_B_GREEN   #5ccc96
+#define COLOR_B_YELLOW  #f2ce00
+#define COLOR_B_BLUE    #114fd6
+#define COLOR_B_MAGENTA #ce6f8f
+#define COLOR_B_CYAN    #00a3cc
+#define COLOR_B_WHITE   #ecf0c1
+
+! Optional colors
+
+! TODO:
+! - orange
+! - purple(s)
+! - pink
+
+! Misc. Settings
+
+#define ST_ALPHA 1.0
+! #define ST_FONT -Misc-Fixed-Medium-R-SemiCondensed--13-120-75-75-C-60-ISO10646-1
+! #define ST_FONT UW Ttyp0:size=14:style=Medium:antialias=true:autohint=true
+
+#define POLYBAR_LEFT_MODULES all-desktops
+
+#define MY_WALLPAPER blurry-lights.jpeg
+
+#define VIM_COLORSCHEME spaceduck
+
+#define BSPWM_NORMAL_BORDER #121212
+#define BSPWM_FOCUSED_BORDER #BCC09A
+#define BSPWM_GAPLESS_MONOCLE false
+#define BSPWM_GAP 25
+
+# gruvbox for gtk maybe??? idk...
+#define GTK_THEME Midnight-BlueNight
+
+! TODO: only make hearts red...
+! #define SPOTIFY_FOREGROUND COLOR_RED
+! #define SPOTIFY_BUTTON_BG COLOR_RED
+#define SPOTIFY_SELECTION_BG #181a2a
+! #define SPOTIFY_SLIDER_BG #51535a
+
+! vim:ft=xdefaults

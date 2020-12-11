@@ -1,0 +1,22 @@
+set realname = "Addison Bean"
+set from = "addisonbean@gmail.com"
+set use_from = yes
+set envelope_from = yes
+
+set smtp_url = "smtps://addisonbean@gmail.com@smtp.gmail.com:465/"
+# set smtp_pass = "<app password>"
+set imap_user = "addisonbean@gmail.com"
+# set imap_pass = "<app password>"
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set ssl_force_tls = yes
+
+# G to get mail
+bind index G imap-fetch-mail
+set editor = "nvim"
+set charset = "utf-8"
+set record = ''
+
+set sort=reverse-date
+
+source "gpg -d ~/.config/mutt/passwords.gpg |"

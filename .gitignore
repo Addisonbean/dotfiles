@@ -79,6 +79,9 @@
 !.config/herbstluftwm/
 !.config/herbstluftwm/**
 
+!.config/mutt/
+!.config/mutt/muttrc
+
 # !.config/xsettingsd/
 # !.config/xsettingsd/xsettingsd.conf
 
