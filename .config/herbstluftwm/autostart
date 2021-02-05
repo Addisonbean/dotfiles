@@ -1,12 +1,20 @@
 #!/usr/bin/env bash
 
+function xval() {
+	xrdb -query | grep "$1" | head -1 | cut -f 2
+}
+
 # TODO:
-# - no border when only one window tiled
-# - anything else???
+# - Sticky floating windows *
+#   - Or at least a way to bring all floating windows to the top
+# - Highlight windows instead of frames (that could fix the ranger issue)
+# - Make ranger open in a new floated frame, and don't float the window (client) itself
+# - Make empty tags/frames less ugly
+#   - Basically, if a frame is empty it's ugly. Fix that... Make it subtle or something...
+# - Auto open new terminals in a new frame (at least when using super+shift+enter)
+# - No border when one window is visible (is this already working???)
 
 # key reference: https://www.cl.cam.ac.uk/~mgk25/ucs/keysymdef.h
-
-# TODO: can I still use Super+Enter in Chrome?
 
 hc() {
     herbstclient "$@"
@@ -14,24 +22,22 @@ hc() {
 
 hc emit_hook reload
 
+# Keybindings {{{
+
 # Remove all existing keybindings
 hc keyunbind --all
 
 # Mod key = Super key
 Mod=Mod4
 
-# Custom actions
-hc keybind $Mod-p spawn rofi -show drun -show-icons -i
+# Herbstluftwm mappings {{{
 
-# Misc crap
 # hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-w close
-hc keybind $Mod-Shift-Return spawn "${TERMINAL:-xterm}"
 
-# Frame/[...] manipulation
-# basic movement in tiling and floating mode
-# focusing clients
+# Frame navigation {{{
+
 hc keybind $Mod-Left  focus left
 hc keybind $Mod-Down  focus down
 hc keybind $Mod-Up    focus up
@@ -41,7 +47,12 @@ hc keybind $Mod-j     focus down
 hc keybind $Mod-k     focus up
 hc keybind $Mod-l     focus right
 
-# moving clients in tiling and floating mode
+# }}}
+# Window repositioning {{{
+
+# "shift" moves tiled windows to different frames
+# and shoves floating windows to different sides of the desktop
+
 hc keybind $Mod-Shift-Left  shift left
 hc keybind $Mod-Shift-Down  shift down
 hc keybind $Mod-Shift-Up    shift up
@@ -51,6 +62,8 @@ hc keybind $Mod-Shift-j     shift down
 hc keybind $Mod-Shift-k     shift up
 hc keybind $Mod-Shift-l     shift right
 
+# }}}
+
 hc keybind $Mod-minus       split   bottom  0.5
 hc keybind $Mod-backslash   split   right   0.5
 
@@ -58,7 +71,7 @@ hc keybind $Mod-backslash   split   right   0.5
 # let the current frame explode into subframes
 hc keybind $Mod-Control-space split explode
 
-# resizing frames and floating clients
+# Resizing frames and floating clients
 resizestep=0.02
 hc keybind $Mod-Control-h       resize left +$resizestep
 hc keybind $Mod-Control-j       resize down +$resizestep
@@ -69,7 +82,7 @@ hc keybind $Mod-Control-Down    resize down +$resizestep
 hc keybind $Mod-Control-Up      resize up +$resizestep
 hc keybind $Mod-Control-Right   resize right +$resizestep
 
-# tags
+# Tags
 tag_names=( {1..9} )
 tag_keys=( {1..9} 0 )
 
@@ -83,23 +96,32 @@ for i in "${!tag_names[@]}" ; do
     fi
 done
 
-# cycle through tags
+# Cycle through tags
 hc keybind $Mod-period use_index +1 --skip-visible
 hc keybind $Mod-comma  use_index -1 --skip-visible
 
-# layouting
+# Window states
 hc keybind $Mod-r remove
-hc keybind $Mod-s floating toggle
-hc keybind $Mod-f fullscreen toggle
+hc keybind $Mod-s       chain . fullscreen off . floating on  . pseudotile off . set_attr clients.focus.floating off
+hc keybind $Mod-f       chain . fullscreen on  . floating off . pseudotile off . set_attr clients.focus.floating off
+hc keybind $Mod-t       chain . fullscreen off . floating off . pseudotile off . set_attr clients.focus.floating off
+hc keybind $Mod-Shift-t chain . fullscreen off . floating off . pseudotile on  . set_attr clients.focus.floating off
+
 # TODO: what's this???
-hc keybind $Mod-Shift-f set_attr clients.focus.floating toggle
-hc keybind $Mod-Shift-t pseudotile toggle
+# hc keybind $Mod-Shift-f set_attr clients.focus.floating toggle
+# hc keybind $Mod-Shift-t pseudotile on
+
+# hc keybind $Mod-s floating toggle
+# hc keybind $Mod-f fullscreen toggle
+# # TODO: what's this???
+# hc keybind $Mod-Shift-f set_attr clients.focus.floating toggle
+# hc keybind $Mod-Shift-t pseudotile toggle
 
 # The following cycles through the available layouts within a frame, but skips
 # layouts, if the layout change wouldn't affect the actual window positions.
 # I.e. if there are two windows within a frame, the grid layout is skipped.
 hc keybind $Mod-space                                                           \
-            or , and . compare tags.focus.curframe_wcount = 2                   \
+            or , and . compare tags.focus.curframe_wcount = 3                   \
                      . cycle_layout +1 vertical horizontal max vertical grid    \
                , cycle_layout +1
 
@@ -115,19 +137,54 @@ hc keybind $Mod-Tab          cycle_all +1
 hc keybind $Mod-Shift-Tab    cycle_all -1
 hc keybind $Mod-bracketleft  cycle -1
 hc keybind $Mod-bracketright cycle 1
-hc keybind $Mod-i jumpto urgent
+
+# }}}
+# Fn/media key mappings {{{
+
+
+hc keybind XF86AudioPlay spawn bash -c '\
+    [ -z "$(pidof spotify)" ] && herbstclient use_index 2 && spotify; \
+    playerctl --player spotify play-pause'
+hc keybind XF86AudioMicMute spawn bash -c '\
+    [ -z "$(pidof spotify)" ] && herbstclient use_index 2 && spotify; \
+    playerctl --player spotify play-pause'
+
+hc keybind XF86AudioLowerVolume spawn ~/.local/bin/volume.sh down
+hc keybind XF86AudioRaiseVolume spawn ~/.local/bin/volume.sh up
+hc keybind XF86AudioMute spawn ~/.local/bin/volume.sh toggle
+hc keybind XF86AudioPlay spawn playerctl --player chromium play-pause
+# hc keybind XF86AudioMicMute spawn playerctl --player chromium play-pause
+hc keybind XF86MonBrightnessUp spawn ~/.local/bin/brightness.sh up
+hc keybind XF86MonBrightnessDown spawn ~/.local/bin/brightness.sh down
+hc keybind Print spawn ~/.local/bin/screenshot.sh
+hc keybind Alt-Print spawn ~/.local/bin/screenshot.sh -s
+
+# }}}
+# Other mappings {{{
+
+hc keybind $Mod-Shift-Return spawn "${TERMINAL:-xterm}"
+hc keybind $Mod-p spawn rofi -show drun -show-icons -i
+hc keybind $Mod-x spawn ~/.local/bin/xtheme-picker.sh
+hc keybind $Mod-e spawn st -c Ranger -e ranger
+hc keybind $Mod-j rofimoji
+
+# }}}
+
+# }}}
+
+hc set focus_follows_mouse on
 
 # theme
 hc attr theme.tiling.reset 1
 hc attr theme.floating.reset 1
 
-hc set frame_border_width 2
-# `frame_border_width` is `0` so these don't matter
-hc set frame_border_active_color '#BBBBBB'
-hc set frame_border_normal_color '#33415E'
+hc set frame_border_width "$(xval herb.borderSize)"
+hc set frame_border_active_color "$(xval herb.focusedBorder)"
+hc set frame_border_normal_color "$(xval herb.normalBorder)"
 
 # Don't show borders for empty frames unless focused
 hc set always_show_frame off
+
 # `frame_bg_transparent` is `off` so these don't matter
 # hc set frame_bg_normal_color '#FF000'
 # hc set frame_bg_active_color '#FF000'
@@ -135,20 +192,24 @@ hc set always_show_frame off
 # Don't show background colors for frames
 hc set frame_bg_transparent on
 hc set frame_transparent_width 5
-hc set frame_gap 4
+hc set frame_gap "$(xval herb.gap)"
 
 hc set window_gap 0
 hc set frame_padding 0
 hc set smart_window_surroundings on
-hc set smart_frame_surroundings on
+hc set smart_frame_surroundings "$(xval herb.smartFrame)"
 hc set mouse_recenter_gap 0
 
 # hc attr theme.active.color '#BBBBBB'
 
 hc attr theme.inner_width 0
 hc attr theme.border_width 2
+# TODO: what's this???
 hc attr theme.color '#33415E'
 hc attr theme.active.color '#BBBBBB'
+# hc attr theme.color "$(xval herb.normalBorder)"
+# hc attr theme.active.color "$(xval herb.focusedBorder)"
+
 # hc attr theme.outer_color '#FF0000'
 
 # hc attr theme.floating.border_width 2
@@ -161,26 +222,29 @@ hc attr theme.active.color '#BBBBBB'
 # Prob not but maybe add a way to toggle it?
 hc set hide_covered_windows off
 
-# rules
+# Window rules {{{
+
 hc unrule -F
+
 #hc rule class=XTerm tag=3 # move all xterms to tag 3
 hc rule focus=on # normally focus new clients
 #hc rule focus=off # normally do not focus new clients
 # give focus to most common terminals
 #hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on
+
+hc rule class='Ranger' floating=on floatplacement=center
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' floating=on
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
+
+# }}}
 
 hc set tree_style '╾│ ├└╼─┐'
 
 # unlock, just to be sure
 hc unlock
 
-# do multi monitor setup here, e.g.:
-# hc set_monitors 1280x1024+0+0 1280x1024+1280+0
-# or simply:
-# hc detect_monitors
+hc detect_monitors
 
 # find the panel
 # panel=~/.config/herbstluftwm/panel.sh
@@ -189,3 +253,5 @@ hc unlock
 #     # start it on each monitor
 #     "$panel" "$monitor" &
 # done
+
+" vim:foldmethod=marker:foldlevel=0

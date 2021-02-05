@@ -258,76 +258,152 @@ exec = ~/.config/polybar/scripts/spotify.sh --no-underline
 
 ; Bspwm desktops {{{
 
-[module/bspwm]
-type = internal/bspwm
+; [module/bspwm]
+; type = internal/bspwm
+; pin-workspaces = false
+; enable-scroll = false
+;
+; [module/desktop-icons]
+; inherit = module/bspwm
+;
+; ws-icon-0 = 1;
+; ws-icon-1 = 2;
+; ws-icon-2 = 3;
+;
+; label-separator = "     "
+; label-separator-padding = 0
+;
+; label-focused = %name%  %icon%
+; label-focused-foreground = ${xrdb:polybar.focusedDesktop:#ABD94C}
+; label-occupied = %name%  %icon%
+; label-empty =
+;
+; [module/desktop-icons-narrow]
+; inherit = module/bspwm
+;
+; ws-icon-0 = 1;
+; ws-icon-1 = 2;
+; ws-icon-2 = 3;
+;
+; label-separator = "   "
+; label-separator-padding = 0
+;
+; label-focused = %name% %icon%
+; label-focused-foreground = ${xrdb:polybar.focusedDesktop:#ABD94C}
+; label-occupied = %name% %icon%
+; label-empty =
+;
+; [module/all-desktops]
+; inherit = module/bspwm
+;
+; label-separator =
+; label-separator-padding = 0
+;
+; label-focused = " %name% "
+; label-focused-foreground = ${xrdb:ansi.color0}
+; label-focused-background = ${xrdb:polybar.focusedDesktop}
+; label-occupied = " %name% "
+; label-empty = " %name% "
+;
+; [module/all-desktops-wide]
+; inherit = module/all-desktops
+; label-focused = "  %name%  "
+; label-occupied =  "  %name%  "
+; label-empty = "  %name%  "
+;
+; [module/all-desktops-wide-float]
+; inherit = module/all-desktops
+; label-focused = "  %name%  "
+; label-focused-foreground =
+; label-focused-underline = ${colors.foreground}
+; label-occupied =  "  %name%  "
+; label-empty = "  %name%  "
+;
+; [module/macos-desktops]
+; inherit = module/bspwm
+; format = "<label-state>    "
+; label-separator = "    "
+;
+; label-focused = 
+; label-occupied = 
+; label-empty = 
+; label-focused-foreground = #BBBBBB
+; label-occupied-foreground = #4A4A4A
+; label-empty-foreground = #4A4A4A
+
+; }}}
+; Bspwm desktops {{{
+
+[module/desktops]
+type = internal/xworkspaces
 pin-workspaces = false
 enable-scroll = false
 
 [module/desktop-icons]
-inherit = module/bspwm
+inherit = module/desktops
 
-ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
+icon-0 = 1;
+icon-1 = 2;
+icon-2 = 3;
 
-label-separator = "     "
-label-separator-padding = 0
+; label-separator = "     "
+; label-separator-padding = 0
 
-label-focused = %name%  %icon%
-label-focused-foreground = ${xrdb:polybar.focusedDesktop:#ABD94C}
+label-active = %name%  %icon%
+label-active-foreground = ${xrdb:polybar.focusedDesktop:#ABD94C}
 label-occupied = %name%  %icon%
 label-empty =
 
 [module/desktop-icons-narrow]
-inherit = module/bspwm
+inherit = module/desktops
 
-ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
+icon-0 = 1;
+icon-1 = 2;
+icon-2 = 3;
 
-label-separator = "   "
-label-separator-padding = 0
+; label-separator = "   "
+; label-separator-padding = 0
 
-label-focused = %name% %icon%
-label-focused-foreground = ${xrdb:polybar.focusedDesktop:#ABD94C}
+label-active = %name% %icon%
+label-active-foreground = ${xrdb:polybar.focusedDesktop:#ABD94C}
 label-occupied = %name% %icon%
 label-empty =
 
 [module/all-desktops]
-inherit = module/bspwm
+inherit = module/desktops
 
-label-separator =
-label-separator-padding = 0
+; label-separator =
+; label-separator-padding = 0
 
-label-focused = " %name% "
-label-focused-foreground = ${xrdb:ansi.color0}
-label-focused-background = ${xrdb:polybar.focusedDesktop}
+label-active = " %name% "
+label-active-foreground = ${xrdb:ansi.color0}
+label-active-background = ${xrdb:polybar.focusedDesktop}
 label-occupied = " %name% "
 label-empty = " %name% "
 
 [module/all-desktops-wide]
 inherit = module/all-desktops
-label-focused = "  %name%  "
+label-active = "  %name%  "
 label-occupied =  "  %name%  "
 label-empty = "  %name%  "
 
 [module/all-desktops-wide-float]
 inherit = module/all-desktops
-label-focused = "  %name%  "
-label-focused-foreground =
-label-focused-underline = ${colors.foreground}
+label-active = "  %name%  "
+label-active-foreground =
+label-active-underline = ${colors.foreground}
 label-occupied =  "  %name%  "
 label-empty = "  %name%  "
 
 [module/macos-desktops]
-inherit = module/bspwm
+inherit = module/desktops
 format = "<label-state>    "
 label-separator = "    "
 
-label-focused = 
+label-active = 
 label-occupied = 
 label-empty = 
-label-focused-foreground = #BBBBBB
+label-active-foreground = #BBBBBB
 label-occupied-foreground = #4A4A4A
 label-empty-foreground = #4A4A4A
 

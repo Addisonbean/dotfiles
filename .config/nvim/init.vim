@@ -1,3 +1,23 @@
+" Intro {{{
+
+" vim-plug is used for installing plugins - https://github.com/junegunn/vim-plug
+"
+" Also I've only tested this in neovim so some of this may not work in vim.
+"
+" A few plugins listed below have dependancies that must be installed separately:
+"
+" neoclide/coc.nvim
+" * node - https://nodejs.org/en
+"
+" junegunn/fzf
+" junegunn/fzf.vim
+" * fzf - https://github.com/junegunn/fzf
+"
+" There's also support for some neovim 0.5 features. For example, neovim's
+" native LSP will be used instead of coc.nvim is you're using neovim 0.5 or
+" later.
+
+" }}}
 " Vim-Plug {{{
 
 call plug#begin("~/.local/share/nvim/plugged")
@@ -27,7 +47,7 @@ Plug 'pineapplegiant/spaceduck'
 
 " Language Specific:
 
-Plug 'mattn/emmet-vim', { 'for': ['html', 'eruby', 'php', 'xml', 'vue', 'js'] }
+Plug 'mattn/emmet-vim', { 'for': ['html', 'eruby', 'php', 'xml', 'vue', 'js', 'typescript', 'typescriptreact'] }
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 Plug 'rudes/vim-java', { 'for': 'java' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
@@ -41,8 +61,6 @@ Plug 'lervag/vimtex', { 'for': 'latex' }
 
 " General:
 
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-sleuth'
@@ -54,11 +72,21 @@ Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-repeat'
 Plug 'itchyny/lightline.vim'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'lifepillar/vim-colortemplate'
+Plug 'vimwiki/vimwiki'
+Plug 'ms-jpq/chadtree'
+Plug 'skywind3000/asyncrun.vim'
 if has('nvim-0.5')
 	Plug 'neovim/nvim-lspconfig'
-	Plug 'nvim-treesitter/nvim-treesitter'
+	Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+
+	Plug 'nvim-lua/popup.nvim'
+	Plug 'nvim-lua/plenary.nvim'
+	Plug 'nvim-telescope/telescope.nvim'
 else
 	Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+	Plug 'junegunn/fzf'
+	Plug 'junegunn/fzf.vim'
 end
 
 call plug#end()
@@ -70,6 +98,9 @@ call plug#end()
 syntax enable
 
 filetype plugin indent on
+
+" Don't unload buffers after closing the window
+set hidden
 
 " Display tabs, trailing spaces, and non-breaking spaces when `list` is set
 set listchars=tab:\|\ ,trail:.,nbsp:-
@@ -298,6 +329,13 @@ endfunc
 
 " Open a file using a fzf file search window
 nnoremap <silent> <C-p> :call SearchFiles()<cr>
+nnoremap <silent> <leader>nf :call SearchFiles()<cr>
+
+" Pick an open buffer to open
+nnoremap <silent> <leader>nb :Buffers<cr>
+
+" Fuzzy search a project for a matching string using `ripgrep`
+nnoremap <silent> <leader>nr :Rg<cr>
 
 " }}}
 " posva/vim-vue {{{
@@ -426,6 +464,9 @@ let g:lightline = {
 	\             [ 'filename', 'modified' ] ],
 	\   'right': [ [ 'filetype' ] ]
 	\ },
+	\ 'enable': {
+	\   'tabline': 0,
+	\ },
 	\ }
 
 " Remove the middle part of the status line that's empty
@@ -452,6 +493,34 @@ nnoremap <silent> <C-a><C-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <C-a><C-w> :TmuxNavigatePrevious<cr>
 
 " }}}
+" vimwiki/vimwiki {{{
+
+let g:vimwiki_list = [
+      \ { 'path': '~/.local/share/vimwiki/default/', 'syntax': 'markdown' }
+      \ ]
+
+let g:vimwiki_folding = 'expr'
+
+function! g:VimwikiRefreshIndex()
+      if expand('%:t') == 'index.wiki'
+              VimwikiRebuildTags
+              VimwikiGenerateTagLinks
+              VimwikiTOC
+      endif
+endfunc
+
+autocmd BufEnter,BufWritePre * if &ft ==# 'vimwiki' | :call g:VimwikiRefreshIndex() | endif
+
+" }}}
+" nvim-telescope/telescope.nvim {{{
+
+nnoremap <leader>ff <cmd>Telescope git_files<cr>
+nnoremap <c-p> <cmd>Telescope git_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fv <cmd>Telescope git_status<cr>
+
+" }}}
 
 " }}}
 " Auto Commands {{{
@@ -466,7 +535,7 @@ autocmd FileType markdown setlocal tabstop=2
 autocmd FileType html,css,vue setlocal iskeyword+=-
 autocmd FileType html syntax sync fromstart
 
-autocmd FileType markdown,rst,text
+autocmd FileType markdown,rst,text,vimwiki
 	\ setlocal tabstop=2 shiftwidth=2 expandtab linebreak |
 	\ inoremap <buffer> <C-l> <esc>o-<space><esc>O<esc>jo<esc>kA |
 	\ nnoremap <buffer> <C-l> o-<space><esc>O<esc>jo<esc>kA
@@ -475,29 +544,44 @@ autocmd FileType markdown,rst,text
 " LSP {{{
 
 if has('nvim-0.5')
-lua <<EOF
-require'lspconfig'.ccls.setup{}
-require'lspconfig'.cssls.setup{}
-require'lspconfig'.ghcide.setup{}
-require'lspconfig'.html.setup{}
-require'lspconfig'.pyls.setup{}
-require'lspconfig'.rust_analyzer.setup{}
-require'lspconfig'.vimls.setup{}
+lua << EOF
+
+local nvim_lsp = require('lspconfig')
+local on_attach = function(client, bufnr)
+	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+	local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+	buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+	local opts = { noremap=true, silent=true }
+	buf_set_keymap('n', '<C-]>', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+	buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+	-- buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
+	buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
+	-- I use telescope.nvim for references via. `gr` instead of this
+	-- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+	buf_set_keymap('n', 'gy', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
+	buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+	buf_set_keymap('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+	buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+	buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+	buf_set_keymap('n', '<leader>gd', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>', opts)
+	buf_set_keymap('n', '<leader>ge', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+	buf_set_keymap('n', '<leader>ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+	buf_set_keymap('i', '<c-n>', '<c-x><c-o>', opts)
+
+
+	-- telescope.nvim mappings
+	buf_set_keymap('n', 'gr', '<cmd>Telescope lsp_references<cr>', opts)
+end
+
+local servers = { 'ccls', 'cssls', 'ghcide', 'html', 'pyls', 'rust_analyzer', 'vimls', 'tsserver' }
+for _, lsp in ipairs(servers) do
+      nvim_lsp[lsp].setup { on_attach = on_attach }
+end
+
 EOF
 
-	autocmd FileType c,cpp,haskell,html,python,rust,vim call s:lsp_setup()
-
-	function! s:lsp_setup()
-		nnoremap <silent> gd	<cmd>lua vim.lsp.buf.declaration()<cr>
-		nnoremap <silent> <C-]> <cmd>lua vim.lsp.buf.definition()<cr>
-		nnoremap <silent> gD	<cmd>lua vim.lsp.buf.implementation()<cr>
-		nnoremap <silent> gr	<cmd>lua vim.lsp.buf.references()<cr>
-		nnoremap <silent> gy	<cmd>lua vim.lsp.buf.type_definition()<cr>
-		nnoremap <silent> K	 <cmd>lua vim.lsp.buf.hover()<cr>
-		nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<cr>
-
-		setlocal omnifunc=v:lua.vim.lsp.omnifunc
-	endfunc
 end
 
 " }}}
@@ -522,7 +606,12 @@ require'nvim-treesitter.configs'.setup {
 		},
 	},
 }
+
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.typescript.used_by = "typescriptreact"
+
 EOF
+
 end
 
 set foldmethod=expr

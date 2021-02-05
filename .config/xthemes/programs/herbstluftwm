@@ -1,0 +1,33 @@
+#ifndef HERB_BORDER_SIZE
+#define HERB_BORDER_SIZE BSPWM_BORDER_SIZE
+#endif
+
+#ifndef HERB_NORMAL_BORDER
+#define HERB_NORMAL_BORDER BSPWM_NORMAL_BORDER
+#endif
+
+#ifndef HERB_FOCUSED_BORDER
+#define HERB_FOCUSED_BORDER BSPWM_FOCUSED_BORDER
+#endif
+
+#ifndef HERB_GAP
+#define HERB_GAP BSPWM_GAP
+#endif
+
+#ifndef HERB_SMART_FRAME
+
+#ifdef BSPWM_GAPLESS_MONOCLE
+#define HERB_SMART_FRAME off
+#else
+#define HERB_SMART_FRAME on
+#endif
+
+#endif
+
+herb.borderSize: HERB_BORDER_SIZE
+herb.normalBorder: HERB_NORMAL_BORDER
+herb.focusedBorder: HERB_FOCUSED_BORDER
+herb.gap: HERB_GAP
+herb.smartFrame: HERB_SMART_FRAME
+
+! vim:ft=xdefaults

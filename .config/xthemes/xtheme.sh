@@ -61,3 +61,6 @@ sed -i -E \
 
 # Bspwm
 bspc wm -r & disown
+
+# Herbstluftwm
+# herbstluftclient reload & disown
