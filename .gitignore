@@ -62,6 +62,7 @@
 
 !.config/nvim/
 !.config/nvim/init.vim
+!.config/nvim/custom.vim
 !.config/nvim/plugged/
 !.config/nvim/plugged/lightline.vim/
 .config/nvim/plugged/lightline.vim/**

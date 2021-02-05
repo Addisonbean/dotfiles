@@ -290,7 +290,7 @@ command! NoHexdump %!xxd -r
 
 " Open the current 
 " TODO: use `open` when on macOS
-command! Open !xdg-open %:t
+command! Open !xdg-open %
 
 " Thanks to https://stackoverflow.com/a/4293538/1525759
 function WriteCreatingDirs()
@@ -530,11 +530,10 @@ autocmd BufRead,BufNewFile *.rasi setlocal filetype=css
 
 autocmd FileType gitcommit setlocal spell
 autocmd FileType elm,haskell setlocal tabstop=2 shiftwidth=2 expandtab
-autocmd FileType markdown setlocal tabstop=2
-" autocmd FileType markdown Goyo
 autocmd FileType html,css,vue setlocal iskeyword+=-
 autocmd FileType html syntax sync fromstart
 
+" autocmd FileType markdown Goyo
 autocmd FileType markdown,rst,text,vimwiki
 	\ setlocal tabstop=2 shiftwidth=2 expandtab linebreak |
 	\ inoremap <buffer> <C-l> <esc>o-<space><esc>O<esc>jo<esc>kA |
@@ -625,29 +624,17 @@ let g:gruvbox_contrast_dark = 'hard'
 let ayucolor = 'dark'
 let g:equinusocio_material_style = 'pure'
 let g:srcery_inverse = 0
-
 set background=dark
 
-let s:xcolorscheme = system('xrdb -query | grep "vim.colorscheme" | cut -f 2')
-if !empty(s:xcolorscheme)
-	execute "color " . s:xcolorscheme
-else
-	color ayu
-endif
+color ayu
 
-let s:alpha = system('xrdb -query | grep "vim.transparent-bg" | cut -f 2')
-if s:alpha ==? "true\n"
-	hi clear SignColumn
-	hi LineNr guifg=grey ctermfg=grey
-	hi LineNr guibg=NONE
-	hi Normal guibg=NONE ctermbg=NONE
-	hi StatusLine guibg=NONE cterm=NONE
+if has('nvim-0.5')
+	hi EndOfBuffer guibg=NONE guifg=NONE cterm=NONE
 endif
-
-" This should work in neovim v0.5 apparently
-hi EndOfBuffer guibg=NONE guifg=NONE cterm=NONE
 
 " Colorscheme list {{{
+
+" This is outdated btw
 
 " Favs
 "   ayu
@@ -714,6 +701,8 @@ hi EndOfBuffer guibg=NONE guifg=NONE cterm=NONE
 " - Document what isn't automated in this file (like CocInstall)
 " - Anything else labeled "TODO"
 " - Get a markdown viewer in vim (idk if this exists without using a browser)
+"   - Zathura will update when the underlying document updates so I
+"     could just regenerate it
 " - Use different bindings for copying to clipboard (\ gets annoying)
 " - Check this out: https://learnvimscriptthehardway.stevelosh.com/chapters/49.html
 " - Can I try to fold by syntax but fallback on indent?
@@ -727,5 +716,10 @@ hi EndOfBuffer guibg=NONE guifg=NONE cterm=NONE
 noh
 
 " }}}
+
+" Load custom options that I don't want on all machines
+if filereadable(expand('~/.config/nvim/custom.vim'))
+	source ~/.config/nvim/custom.vim
+endif
 
 " vim:foldmethod=marker:foldlevel=0
