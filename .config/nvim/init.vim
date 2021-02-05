@@ -1,8 +1,21 @@
 " Intro {{{
 
-" vim-plug is used for installing plugins - https://github.com/junegunn/vim-plug
+" This file will be a lot prettier and easier to read if you have the
+" following lines in your vim config:
 "
-" Also I've only tested this in neovim so some of this may not work in vim.
+" ```
+" set modeline
+" set modelines=1
+" ```
+"
+" `modelines` doesn't actually have to be 1 but it needs to be at least 1.
+"
+" I've only tested this in neovim so some of this may not work in vim.
+" There are also probably quite a few options not explicitly set in here that
+" most people would want that are enabled by default in neovim but not in vim.
+" Basically, this config was made with neovim in mind only.
+"
+" vim-plug is used for installing plugins - https://github.com/junegunn/vim-plug
 "
 " A few plugins listed below have dependancies that must be installed separately:
 "
@@ -44,6 +57,8 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'arzg/vim-colors-xcode'
 Plug '~/code/projects/srcery-basic'
 Plug 'pineapplegiant/spaceduck'
+Plug 'kyazdani42/blue-moon'
+Plug 'danishprakash/vim-yami'
 
 " Language Specific:
 
@@ -125,9 +140,6 @@ set autoread
 " Display the cursor position in the status line
 set ruler
 
-" Highlight search results
-set hlsearch
-
 " Show line numbers
 set number
 
@@ -185,7 +197,7 @@ inoremap <C-l> <cr><cr><esc>k"_S
 " inoremap <C-k> <right><cr><cr><esc>k"_S
 
 " Toggle `spell`
-nnoremap <silent> <C-s> :set spell!<cr>
+nnoremap <silent> <c-s><c-s> :set spell!<cr>
 
 " Open ~/.vimrc in a new verical buffer
 " nnoremap <silent> <leader>ev :vnew ~/.vimrc<cr>
@@ -246,6 +258,35 @@ cnoremap <C-k> <up>
 
 " Add a markdown/reST heading
 nnoremap <leader>h ^v$hyo<esc>p==^v$hr
+
+" Surround words with various things {{{
+
+" I know vim-surround can probably do this but I didn't feel like
+" figuring out how to get it to use these mappings
+
+" Surround the current word with backticks
+nnoremap <c-s>` wbi`<esc>ea`<esc>
+inoremap <c-s>` <esc>wbi`<esc>ea`
+
+" Surround the current word with brackets
+nnoremap <c-s>[ wbi[<esc>ea]<esc>
+inoremap <c-s>[ <esc>wbi[<esc>ea]
+nnoremap <c-s>] wbi[<esc>ea]<esc>
+inoremap <c-s>] <esc>wbi[<esc>ea]
+
+" Surround the current word with parenthesis
+nnoremap <c-s>( wbi(<esc>ea)<esc>
+inoremap <c-s>( <esc>wbi(<esc>ea)
+nnoremap <c-s>) wbi(<esc>ea)<esc>
+inoremap <c-s>) <esc>wbi(<esc>ea)
+
+" Surround the current word with angle brackets
+nnoremap <c-s><lt> wbi<lt><esc>ea><esc>
+inoremap <c-s><lt> <esc>wbi<lt><esc>ea>
+nnoremap <c-s>> wbi<lt><esc>ea><esc>
+inoremap <c-s>> <esc>wbi<lt><esc>ea>
+
+" }}}
 
 " Stop s, x, d, and c from copying {{{
 
@@ -390,11 +431,12 @@ if !has('nvim-0.5')
 	\'coc-java',
 	\]
 
-	autocmd FileType rust,vue,typescript,json,java call s:coc_settings()
+	autocmd FileType rust,vue,typescript,json,java,typescriptreact call s:coc_settings()
 
 	function! s:coc_settings()
 		" Navigation to the definition for the symbol under the cursor
 		nmap <silent><buffer> gd <Plug>(coc-definition)
+		nmap <silent><buffer> <c-]> <Plug>(coc-definition)
 
 		" Navigation to the type definition for the symbol under the cursor
 		nmap <silent><buffer> gy <Plug>(coc-type-definition)
@@ -469,18 +511,6 @@ let g:lightline = {
 	\ },
 	\ }
 
-" Remove the middle part of the status line that's empty
-let s:new_theme = g:lightline#colorscheme#ayu_dark#palette
-
-let s:new_theme.normal.middle = [[ '1', '1', '1', '1' ]]
-let s:new_theme.inactive.middle = [[ '1', '1', '1', '1' ]]
-" let s:new_theme.normal.middle = [[ 'NONE', 'NONE', 'NONE', 'NONE' ]]
-" let s:new_theme.inactive.middle = [[ 'NONE', 'NONE', 'NONE', 'NONE' ]]
-
-" let s:new_theme. = system('xrdb -query | grep "vim.colorscheme" | cut -f 2')
-
-let g:lightline#colorscheme#ayu_dark#palette = s:new_theme
-
 " }}}
 " christoomey/vim-tmux-navigator {{{
 
@@ -496,17 +526,17 @@ nnoremap <silent> <C-a><C-w> :TmuxNavigatePrevious<cr>
 " vimwiki/vimwiki {{{
 
 let g:vimwiki_list = [
-      \ { 'path': '~/.local/share/vimwiki/default/', 'syntax': 'markdown' }
-      \ ]
+	\ { 'path': '~/.local/share/vimwiki/default/', 'syntax': 'markdown' }
+	\ ]
 
 let g:vimwiki_folding = 'expr'
 
 function! g:VimwikiRefreshIndex()
-      if expand('%:t') == 'index.wiki'
-              VimwikiRebuildTags
-              VimwikiGenerateTagLinks
-              VimwikiTOC
-      endif
+	if expand('%:t') == 'index.wiki'
+		VimwikiRebuildTags
+		VimwikiGenerateTagLinks
+		VimwikiTOC
+	endif
 endfunc
 
 autocmd BufEnter,BufWritePre * if &ft ==# 'vimwiki' | :call g:VimwikiRefreshIndex() | endif
@@ -531,7 +561,7 @@ autocmd BufRead,BufNewFile *.rasi setlocal filetype=css
 autocmd FileType gitcommit setlocal spell
 autocmd FileType elm,haskell setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd FileType html,css,vue setlocal iskeyword+=-
-autocmd FileType html syntax sync fromstart
+" autocmd FileType html syntax sync fromstart
 
 " autocmd FileType markdown Goyo
 autocmd FileType markdown,rst,text,vimwiki
@@ -564,6 +594,7 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
 	buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
 	buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+	buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 	buf_set_keymap('n', '<leader>gd', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>', opts)
 	buf_set_keymap('n', '<leader>ge', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 	buf_set_keymap('n', '<leader>ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
@@ -576,11 +607,10 @@ end
 
 local servers = { 'ccls', 'cssls', 'ghcide', 'html', 'pyls', 'rust_analyzer', 'vimls', 'tsserver' }
 for _, lsp in ipairs(servers) do
-      nvim_lsp[lsp].setup { on_attach = on_attach }
+	nvim_lsp[lsp].setup { on_attach = on_attach }
 end
 
 EOF
-
 end
 
 " }}}
@@ -610,7 +640,6 @@ local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.typescript.used_by = "typescriptreact"
 
 EOF
-
 end
 
 set foldmethod=expr
@@ -619,14 +648,14 @@ set foldexpr=nvim_treesitter#foldexpr()
 " }}}
 " Colorschemes {{{
 
+" The colorscheme is set in ~/.config/nvim/custom.vim
+
 let g:seoul256_background = 233
 let g:gruvbox_contrast_dark = 'hard'
 let ayucolor = 'dark'
 let g:equinusocio_material_style = 'pure'
 let g:srcery_inverse = 0
 set background=dark
-
-color ayu
 
 if has('nvim-0.5')
 	hi EndOfBuffer guibg=NONE guifg=NONE cterm=NONE
@@ -694,8 +723,6 @@ endif
 " }}}
 " TODO for this file {{{
 
-" - Find a way to load/source some other file for platform/computer specific stuff
-"   - This may help: https://vi.stackexchange.com/a/3817/8749
 " - More helpful comments, act like this file is for someone else
 " - Can I use .vimrc instead of CocConfig to set "suggestions.autoTrigger"
 " - Document what isn't automated in this file (like CocInstall)
@@ -710,14 +737,12 @@ endif
 "   the cursor indention right. Also a version for `({ ... })`
 "   - NO WAIT: change <C-l> to expand the `{}` pair anywhere on the line (or
 "   find the last occurrence of `}`?
-" - Fallback to not crash on systems without xrdb
 " - Only case-insensitive autocomplete in txt/md/rst???
-
-noh
 
 " }}}
 
-" Load custom options that I don't want on all machines
+" Load custom config that I don't want on all machines
+" TIP: use `gf` while over this path to edit it if it exists
 if filereadable(expand('~/.config/nvim/custom.vim'))
 	source ~/.config/nvim/custom.vim
 endif
