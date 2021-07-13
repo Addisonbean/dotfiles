@@ -36,7 +36,10 @@ spicetify update > /dev/null & disown
 
 # Polybar
 killall -q polybar
-polybar -r "$(xval polybar.bar)" > /dev/null 2>&1 & disown
+while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+for monitor in $(xrandr --query | grep " connected" | cut -d " " -f 1); do
+	MONITOR=$monitor polybar -r "$(xval polybar.bar)" > /dev/null 2>&1 & disown
+done
 
 # Dunst
 killall dunst

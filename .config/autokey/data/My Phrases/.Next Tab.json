@@ -1,10 +1,10 @@
 {
     "type": "phrase",
-    "description": "Chrome Prev Tab",
+    "description": "Next Tab",
     "modes": [
         3
     ],
-    "usageCount": 112,
+    "usageCount": 109,
     "prompt": false,
     "omitTrigger": false,
     "matchCase": false,
@@ -22,10 +22,10 @@
             "<alt>",
             "<ctrl>"
         ],
-        "hotKey": "<left>"
+        "hotKey": "<right>"
     },
     "filter": {
-        "regex": "chromium.Chromium",
+        "regex": "brave-browser.Brave-browser",
         "isRecursive": false
     },
     "sendMode": "kb"

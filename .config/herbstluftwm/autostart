@@ -53,18 +53,18 @@ hc keybind $Mod-l     focus right
 # "shift" moves tiled windows to different frames
 # and shoves floating windows to different sides of the desktop
 
-hc keybind $Mod-Shift-Left  shift left
-hc keybind $Mod-Shift-Down  shift down
-hc keybind $Mod-Shift-Up    shift up
-hc keybind $Mod-Shift-Right shift right
 hc keybind $Mod-Shift-h     shift left
 hc keybind $Mod-Shift-j     shift down
 hc keybind $Mod-Shift-k     shift up
 hc keybind $Mod-Shift-l     shift right
+hc keybind $Mod-Shift-Left  shift left
+hc keybind $Mod-Shift-Down  shift down
+hc keybind $Mod-Shift-Up    shift up
+hc keybind $Mod-Shift-Right shift right
 
 # }}}
 
-hc keybind $Mod-minus       split   bottom  0.5
+hc keybind $Mod-minus       split   bottom  1.5
 hc keybind $Mod-backslash   split   right   0.5
 
 # TODO: what's this???
@@ -133,14 +133,18 @@ hc mousebind $Mod-Button3 resize
 
 # focus
 hc keybind $Mod-BackSpace    cycle_monitor
-hc keybind $Mod-Tab          cycle_all +1
-hc keybind $Mod-Shift-Tab    cycle_all -1
+
+# $Mod-Tab is handled by
+# ~/.config/herbstluftwm/last-window-daemon.sh
+# later in the config
+
+# hc keybind $Mod-Tab          cycle_all +1
+# hc keybind $Mod-Shift-Tab    cycle_all -1
 hc keybind $Mod-bracketleft  cycle -1
 hc keybind $Mod-bracketright cycle 1
 
 # }}}
 # Fn/media key mappings {{{
-
 
 hc keybind XF86AudioPlay spawn bash -c '\
     [ -z "$(pidof spotify)" ] && herbstclient use_index 2 && spotify; \
@@ -148,14 +152,18 @@ hc keybind XF86AudioPlay spawn bash -c '\
 hc keybind XF86AudioMicMute spawn bash -c '\
     [ -z "$(pidof spotify)" ] && herbstclient use_index 2 && spotify; \
     playerctl --player spotify play-pause'
+hc keybind Alt-XF86AudioPlay spawn playerctl --player chromium play-pause
+hc keybind Alt-XF86AudioMicMute spawn playerctl --player chromium play-pause
+hc keybind XF86AudioPrev spawn playerctl previous
+hc keybind XF86AudioNext spawn playerctl next
 
 hc keybind XF86AudioLowerVolume spawn ~/.local/bin/volume.sh down
 hc keybind XF86AudioRaiseVolume spawn ~/.local/bin/volume.sh up
 hc keybind XF86AudioMute spawn ~/.local/bin/volume.sh toggle
-hc keybind XF86AudioPlay spawn playerctl --player chromium play-pause
-# hc keybind XF86AudioMicMute spawn playerctl --player chromium play-pause
+
 hc keybind XF86MonBrightnessUp spawn ~/.local/bin/brightness.sh up
 hc keybind XF86MonBrightnessDown spawn ~/.local/bin/brightness.sh down
+
 hc keybind Print spawn ~/.local/bin/screenshot.sh
 hc keybind Alt-Print spawn ~/.local/bin/screenshot.sh -s
 
@@ -163,10 +171,18 @@ hc keybind Alt-Print spawn ~/.local/bin/screenshot.sh -s
 # Other mappings {{{
 
 hc keybind $Mod-Shift-Return spawn "${TERMINAL:-xterm}"
-hc keybind $Mod-p spawn rofi -show drun -show-icons -i
+hc keybind $Mod-p spawn rofi -show drun -show-icons -i -width 640 -theme blurry-app-launcher
 hc keybind $Mod-x spawn ~/.local/bin/xtheme-picker.sh
 hc keybind $Mod-e spawn st -c Ranger -e ranger
-hc keybind $Mod-j rofimoji
+hc keybind $Mod-m spawn rofi -show window -show-icons -i -width 960
+
+# Notes {{{
+
+hc keybind $Mod-n spawn ~/.local/bin/notes.sh notes
+hc keybind $Mod-Control-n spawn ~/.local/bin/notes.sh tags
+hc keybind $Mod-Alt-n spawn ~/.local/bin/notes.sh commands
+
+# }}}
 
 # }}}
 
@@ -253,5 +269,7 @@ hc detect_monitors
 #     # start it on each monitor
 #     "$panel" "$monitor" &
 # done
+
+Mod=$Mod ~/.config/herbstluftwm/last-window-daemon.sh & disown
 
 " vim:foldmethod=marker:foldlevel=0

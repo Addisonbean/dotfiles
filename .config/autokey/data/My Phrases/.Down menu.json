@@ -24,7 +24,7 @@
         "hotKey": "j"
     },
     "filter": {
-        "regex": "chromium.Chromium",
+        "regex": "brave-browser.Brave-browser",
         "isRecursive": false
     },
     "sendMode": "kb"

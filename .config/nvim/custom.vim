@@ -24,3 +24,9 @@ if s:alpha ==? "true\n"
 	hi Normal guibg=NONE ctermbg=NONE
 	hi StatusLine guibg=NONE cterm=NONE
 endif
+
+if has('nvim')
+	hi EndOfBuffer guibg=NONE guifg=NONE cterm=NONE
+endif
+
+au BufWritePost ~/code/zephan/* make!

@@ -83,6 +83,9 @@
 !.config/mutt/
 !.config/mutt/muttrc
 
+!.config/udev/
+!.config/udev/**
+
 # !.config/xsettingsd/
 # !.config/xsettingsd/xsettingsd.conf
 

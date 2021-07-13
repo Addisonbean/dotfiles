@@ -51,7 +51,7 @@ Plug 'nightsense/strawberry'
 Plug 'nightsense/vimspectr'
 Plug 'addisonbean/amber'
 Plug 'metalelf0/base16-black-metal-scheme'
-Plug 'co1ncidence/bliss', { 'rtp': 'vim' }
+Plug 'co1ncidence/bliss'
 Plug 'logico/typewriter-vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'arzg/vim-colors-xcode'
@@ -59,6 +59,7 @@ Plug '~/code/projects/srcery-basic'
 Plug 'pineapplegiant/spaceduck'
 Plug 'kyazdani42/blue-moon'
 Plug 'danishprakash/vim-yami'
+Plug 'plan9-for-vimspace/acme-colors'
 
 " Language Specific:
 
@@ -73,6 +74,8 @@ Plug 'edwinb/idris2-vim', { 'for': 'idr' }
 Plug 'pangloss/vim-javascript', { 'for': 'js' }
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'lervag/vimtex', { 'for': 'latex' }
+Plug 'puremourning/vimspector'
+Plug 'sbdchd/neoformat'
 
 " General:
 
@@ -90,19 +93,21 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'lifepillar/vim-colortemplate'
 Plug 'vimwiki/vimwiki'
 Plug 'ms-jpq/chadtree'
-Plug 'skywind3000/asyncrun.vim'
-if has('nvim-0.5')
-	Plug 'neovim/nvim-lspconfig'
-	Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase', 'for': 'css' }
+Plug 'tpope/vim-abolish'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
-	Plug 'nvim-lua/popup.nvim'
-	Plug 'nvim-lua/plenary.nvim'
-	Plug 'nvim-telescope/telescope.nvim'
-else
-	Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-	Plug 'junegunn/fzf'
-	Plug 'junegunn/fzf.vim'
-end
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+Plug 'hrsh7th/nvim-compe'
+" A snippet plugin is needed for cssls to support autocomplete
+Plug 'SirVer/ultisnips'
+
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 call plug#end()
 
@@ -177,14 +182,20 @@ set backspace=2
 " Can be disabled temporarily by using \C in the search
 set ignorecase
 
+" Don't open a preview window for completions
+set completeopt=menu
+
 if has('termguicolors')
 	set termguicolors
 endif
 
 " Use spaces instead of ~ at the end of the buffer
-set fcs=eob:\ 
+set fillchars=eob:\ 
 
 let g:python_recommended_style = 0
+
+" Support embedded lua in init.vim
+let g:vimsyn_embed = 'l'
 
 " }}}
 " Custom mappings and commands {{{
@@ -198,6 +209,7 @@ inoremap <C-l> <cr><cr><esc>k"_S
 
 " Toggle `spell`
 nnoremap <silent> <c-s><c-s> :set spell!<cr>
+inoremap <silent> <c-s><c-s> <c-o>:set spell!<cr>
 
 " Open ~/.vimrc in a new verical buffer
 " nnoremap <silent> <leader>ev :vnew ~/.vimrc<cr>
@@ -253,11 +265,15 @@ endfunction
 nnoremap <space> za
 
 " Use ctrl-j and ctrl-k to navigate command mode history
-cnoremap <C-j> <down>
-cnoremap <C-k> <up>
+cnoremap <C-j> <c-n>
+cnoremap <C-k> <c-p>
 
 " Add a markdown/reST heading
 nnoremap <leader>h ^v$hyo<esc>p==^v$hr
+
+" Insert the current date (year -> month -> date so it sorts well)
+inoremap <leader><c-d> <c-r>=strftime('%Y-%m-%d')<cr>
+cnoremap <leader><c-d> <c-r>=strftime('%Y-%m-%d')<cr>
 
 " Surround words with various things {{{
 
@@ -370,13 +386,13 @@ endfunc
 
 " Open a file using a fzf file search window
 nnoremap <silent> <C-p> :call SearchFiles()<cr>
-nnoremap <silent> <leader>nf :call SearchFiles()<cr>
+nnoremap <silent> <leader>rf :call SearchFiles()<cr>
 
 " Pick an open buffer to open
 nnoremap <silent> <leader>nb :Buffers<cr>
 
 " Fuzzy search a project for a matching string using `ripgrep`
-nnoremap <silent> <leader>nr :Rg<cr>
+nnoremap <silent> <leader>rg :Rg<cr>
 
 " }}}
 " posva/vim-vue {{{
@@ -418,6 +434,9 @@ autocmd! User GoyoLeave call <SID>goyo_leave()
 " mattn/emmet-vim {{{
 
 " let g:user_emmet_leader_key = '<leader>e'
+
+" let g:user_emmet_install_global = 0
+" autocmd FileType html,css EmmetInstall
 
 " }}}
 " neoclide/coc.nvim {{{
@@ -526,13 +545,15 @@ nnoremap <silent> <C-a><C-w> :TmuxNavigatePrevious<cr>
 " vimwiki/vimwiki {{{
 
 let g:vimwiki_list = [
-	\ { 'path': '~/.local/share/vimwiki/default/', 'syntax': 'markdown' }
+	\ { 'path': '~/.local/share/vimwiki/default/', 'syntax': 'markdown', 'ext': '.md' },
+	\ { 'path': '~/documents/notes/', 'syntax': 'markdown', 'ext': '.md' }
 	\ ]
 
 let g:vimwiki_folding = 'expr'
+let g:vimwiki_conceal_onechar_markers = 0
 
 function! g:VimwikiRefreshIndex()
-	if expand('%:t') == 'index.wiki'
+	if expand('%:t') == 'index.md'
 		VimwikiRebuildTags
 		VimwikiGenerateTagLinks
 		VimwikiTOC
@@ -540,6 +561,8 @@ function! g:VimwikiRefreshIndex()
 endfunc
 
 autocmd BufEnter,BufWritePre * if &ft ==# 'vimwiki' | :call g:VimwikiRefreshIndex() | endif
+
+autocmd FileType vimwiki nmap <buffer> <c-]> <cr>
 
 " }}}
 " nvim-telescope/telescope.nvim {{{
@@ -549,6 +572,66 @@ nnoremap <c-p> <cmd>Telescope git_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fv <cmd>Telescope git_status<cr>
+
+" }}}
+" puremourning/vimspector {{{
+
+let g:vimspector_enable_mappings = 'HUMAN'
+
+" }}}
+" ms-jpg/chadtree {{{
+
+let g:chadtree_settings = {
+	\ 'keymap': {
+	\   'primary': ['<space>', '<enter>'],
+	\ },
+	\ }
+
+" }}}
+" hrsh7th/nvim-compe {{{
+
+" Required options for this plugin
+set completeopt=menuone,noselect
+
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.autocomplete = v:false
+let g:compe.debug = v:false
+let g:compe.min_length = 1
+let g:compe.preselect = 'enable'
+let g:compe.throttle_time = 80
+let g:compe.source_timeout = 200
+let g:compe.incomplete_delay = 400
+let g:compe.max_abbr_width = 100
+let g:compe.max_kind_width = 100
+let g:compe.max_menu_width = 100
+let g:compe.documentation = v:true
+
+let g:compe.source = {}
+let g:compe.source.path = v:true
+let g:compe.source.buffer = v:true
+let g:compe.source.calc = v:true
+let g:compe.source.nvim_lsp = v:true
+let g:compe.source.nvim_lua = v:true
+let g:compe.source.vsnip = v:false
+
+inoremap <silent><expr> <c-space> compe#complete()
+inoremap <silent><expr> <cr>      compe#confirm('<cr>')
+" inoremap <silent><expr> <c-e>     compe#close('<c-e>')
+inoremap <silent><expr> <c-d>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <c-u>     compe#scroll({ 'delta': -4 })
+
+" }}}
+" glacambre/firenvim {{{
+
+if exists('g:started_by_firenvim')
+	set guifont=Fira_Code:h20
+endif
+
+" }}}
+" RRethy/vim-hexokinase {{{
+
+let g:Hexokinase_highlighters = ['backgroundfull']
 
 " }}}
 
@@ -576,7 +659,7 @@ if has('nvim-0.5')
 lua << EOF
 
 local nvim_lsp = require('lspconfig')
-local on_attach = function(client, bufnr)
+on_attach = function(client, bufnr)
 	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 	local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
@@ -598,17 +681,42 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap('n', '<leader>gd', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>', opts)
 	buf_set_keymap('n', '<leader>ge', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 	buf_set_keymap('n', '<leader>ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+	buf_set_keymap('v', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 	buf_set_keymap('i', '<c-n>', '<c-x><c-o>', opts)
-
 
 	-- telescope.nvim mappings
 	buf_set_keymap('n', 'gr', '<cmd>Telescope lsp_references<cr>', opts)
 end
 
+client_capabilities = vim.lsp.protocol.make_client_capabilities()
+client_capabilities.textDocument.codeAction = {
+	dynamicRegistration = false;
+	codeActionLiteralSupport = {
+		codeActionKind = {
+			valueSet = {
+				'',
+				'quickfix',
+				'refactor',
+				'refactor.extract',
+				'refactor.inline',
+				'refactor.rewrite',
+				'source',
+				'source.organizeImports',
+			}
+		}
+	}
+}
+client_capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 local servers = { 'ccls', 'cssls', 'ghcide', 'html', 'pyls', 'rust_analyzer', 'vimls', 'tsserver' }
 for _, lsp in ipairs(servers) do
-	nvim_lsp[lsp].setup { on_attach = on_attach }
+	nvim_lsp[lsp].setup {
+		on_attach = on_attach,
+		capabilities = client_capabilities,
+	}
 end
+
+-- ['', 'quickfix', 'refactor', 'refactor.extract', 'refactor.inline', 'refactor.rewrite', 'source', 'source.organizeImports']
 
 EOF
 end
@@ -656,10 +764,6 @@ let ayucolor = 'dark'
 let g:equinusocio_material_style = 'pure'
 let g:srcery_inverse = 0
 set background=dark
-
-if has('nvim-0.5')
-	hi EndOfBuffer guibg=NONE guifg=NONE cterm=NONE
-endif
 
 " Colorscheme list {{{
 
@@ -723,8 +827,6 @@ endif
 " }}}
 " TODO for this file {{{
 
-" - More helpful comments, act like this file is for someone else
-" - Can I use .vimrc instead of CocConfig to set "suggestions.autoTrigger"
 " - Document what isn't automated in this file (like CocInstall)
 " - Anything else labeled "TODO"
 " - Get a markdown viewer in vim (idk if this exists without using a browser)
@@ -736,7 +838,7 @@ endif
 " - Make a snippet/shortcut for `{\n|\n},` where `|` is the cursor (and get
 "   the cursor indention right. Also a version for `({ ... })`
 "   - NO WAIT: change <C-l> to expand the `{}` pair anywhere on the line (or
-"   find the last occurrence of `}`?
+"     find the last occurrence of `}`?
 " - Only case-insensitive autocomplete in txt/md/rst???
 
 " }}}

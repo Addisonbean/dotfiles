@@ -1,6 +1,6 @@
 set selection-clipboard clipboard
 map <C-h> nohlsearch
 
-set recolor-lightcolor          "#D0BFA1" # bg
-set recolor-darkcolor           "#1C1B19" # fg
-set recolor                     true
+# set recolor-lightcolor          "#D0BFA1" # bg
+# set recolor-darkcolor           "#1C1B19" # fg
+# set recolor                     true

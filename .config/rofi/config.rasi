@@ -1,6 +1,7 @@
 configuration {
 	terminal: "st";
 	matching: "fuzzy";
+	monitor: "-1";
 
 	kb-row-left: "Control+h";
 	kb-row-right: "Control+l";

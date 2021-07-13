@@ -85,6 +85,15 @@ alt + Print
 shift + control + Delete
 	systemctl suspend
 
+super + n
+	~/.local/bin/notes.sh notes
+
+super + control + n
+	~/.local/bin/notes.sh tags
+
+super + alt + n
+	~/.local/bin/notes.sh commands
+
 # super + {left,right}
 # 	desk=`bspc query -D -d focused`; \
 # 	bspc desktop -m {prev,next}; \

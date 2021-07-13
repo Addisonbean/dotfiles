@@ -1,6 +1,6 @@
 export EDITOR="nvim"
 export VISUAL="$EDITOR"
-export BROWSER="chromium"
+export BROWSER="brave"
 export MANPAGER="nvim +Man!"
 export TERMINAL="st"
 
@@ -30,7 +30,7 @@ export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 
 export _FASD_DATA="$XDG_CACHE_HOME/fasd/history"
 
-[[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]
+# [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]
 
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
 	exec startx
