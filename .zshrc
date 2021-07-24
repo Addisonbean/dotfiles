@@ -32,8 +32,8 @@ setopt interactive_comments
 bindkey "^[OA" up-line-or-search
 bindkey "^[OB" down-line-or-search
 
-bindkey "^k" up-line-or-search
-bindkey "^j" down-line-or-search
+bindkey "^p" up-line-or-search
+bindkey "^n" down-line-or-search
 
 alias pbcopy="xclip -selection clipboard"
 alias pbpaste="xclip -selection clipboard -o"

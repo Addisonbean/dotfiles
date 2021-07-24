@@ -95,5 +95,7 @@
 !.local/share/
 !.local/share/applications/
 !.local/share/applications/ranger.desktop
+!.local/share/themes/
+!.local/share/themes/**
 
 *.pyc
