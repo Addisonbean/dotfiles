@@ -100,10 +100,12 @@ Map('n', '<c-a><c-w>', '<cmd>TmuxNavigatePrevious<cr>')
 
 -- TODO: use XDG_DIRS or for ~/Documents or maybe even an env variable for the notes dir
 
--- vim.g.vimwiki_list = {
--- 	{ path = '~/.local/share/vimwiki/default/', syntax = 'markdown', ext = '.md' },
--- 	{ path = '~/Documents/notes/', syntax = 'markdown', ext = '.md' },
--- }
+local vimwiki_notes_dir = vim.env.XDG_DOCUMENTS_DIR .. '/notes'
+
+vim.g.vimwiki_list = {
+	{ path = '~/.local/share/vimwiki/default/', syntax = 'markdown', ext = '.md' },
+	{ path = vimwiki_notes_dir, syntax = 'markdown', ext = '.md' },
+}
 
 vim.g.vimwiki_folding = 'expr'
 vim.g.vimwiki_conceal_onechar_markers = 0
@@ -116,7 +118,7 @@ function _G.vimwiki_refresh_index()
 	end
 end
 
-vim.cmd [[autocmd BufEnter,BufWritePre * if &ft ==# 'vimwiki' | :call v:lua.vimwiki_refresh_index) | endif]]
+vim.cmd [[autocmd BufEnter,BufWritePre * if &ft ==# 'vimwiki' | :call v:lua.vimwiki_refresh_index() | endif]]
 vim.cmd [[autocmd FileType vimwiki nmap <buffer> <c-]> <cr>]]
 
 -- }}}
@@ -128,6 +130,20 @@ Map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
 Map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
 Map('n', '<leader>fv', '<cmd>Telescope git_status<cr>')
 
+local actions = require('telescope.actions')
+
+require('telescope').setup {
+	defaults = {
+		mappings = {
+			i = {
+				['<c-q>'] = actions.send_selected_to_qflist + actions.open_qflist,
+			},
+			n = {
+				['<c-q>'] = actions.send_selected_to_qflist + actions.open_qflist,
+			},
+		},
+	},
+}
 -- }}}
 -- puremourning/vimspector {{{
 
@@ -189,34 +205,77 @@ local function lualine_lsp_info()
 	if vim.lsp.buf.server_ready() then return 'LSP' else return '' end
 end
 
-local function lualine_readonly()
-	if vim.o.readonly then return '[RO]' else return '' end
-end
-
 local function lualine_paste()
 	if vim.o.paste then return 'PASTE' else return '' end
 end
+
+local theme = require('lualine_theme')
 
 require('lualine').setup {
 	options = {
 		icons_enabled = false,
 		component_separators = '|',
 		section_separators = '',
+		theme = theme,
 	},
 	sections = {
 		lualine_a = { 'mode', lualine_paste },
-		lualine_b = { 'filename', lualine_readonly },
+		lualine_b = { 'filename' },
 		lualine_c = {},
 
 		lualine_x = {},
 		lualine_y = { 'filetype', lualine_lsp_info },
-		-- TODO:
-		-- lualine_z = { 'lineinfo' },
+		lualine_z = { 'location' },
+	},
+	inactive_sections = {
+		lualine_a = {},
+		lualine_b = { 'filename' },
+		lualine_c = {},
+
+		lualine_x = {},
+		lualine_y = { 'filetype', lualine_lsp_info },
 		lualine_z = {},
 	},
-	-- tabline = {},
 }
 
 -- }}}
+-- lewis6991/gitsigns.nvim {{{
+
+require('gitsigns').setup()
+
+-- }}}
+-- mfussenegger/nvim-dap {{{
+
+local dap = require('dap')
+
+dap.adapters.netcoredbg = {
+  type = 'executable',
+  command = 'netcoredbg',
+  -- command = '/Users/addison.bean/misc/netcoredbg/netcoredbg',
+  args = {'--interpreter=vscode'}
+}
+
+dap.configurations.cs = {
+  {
+    type = "netcoredbg",
+    name = "launch - netcoredbg",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+    end,
+  },
+}
+
+-- }}}
+
+-- Colorscheme options
+
+vim.g.seoul256_background = 233
+vim.g.gruvbox_contrast_dark = 'hard'
+vim.cmd('let ayucolor = "dark"')
+vim.g.equinusocio_material_style = 'pure'
+vim.g.srcery_inverse = 0
+vim.o.background = 'dark'
+
 
 -- vim:foldmethod=marker:foldlevel=0

@@ -36,40 +36,41 @@ local function language_feature_plugins(use)
 	use { 'pangloss/vim-javascript', ft = 'js' }
 	use { 'leafgarland/typescript-vim', ft = 'typescript' }
 	use { 'lervag/vimtex', ft = 'latex' }
-	use { 'puremourning/vimspector', fn = 'vimspector#Continue' }
-	use { 'sbdchd/neoformat' }
+	use { 'mfussenegger/nvim-dap' }
+	use { 'sbdchd/neoformat', cmd = 'Neoformat' }
 end
 
 local function misc_plugins(use)
 	use 'tpope/vim-surround'
-	use 'airblade/vim-gitgutter'
+	use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
 	use 'tpope/vim-sleuth'
 	use 'tomtom/tcomment_vim'
-	use { 'junegunn/goyo.vim', cmd = 'Goyo' }
+	use { 'Pocco81/TrueZen.nvim', cmd = { 'TZAtaraxis', 'TZMinimalist', 'TZFocus' } }
 	use { 'junegunn/limelight.vim', cmd = 'Limelight' }
 	use 'mjbrownie/swapit'
 	use 'junegunn/vim-easy-align'
 	use 'tpope/vim-repeat'
-	-- use 'itchyny/lightline.vim'
 	use 'hoob3rt/lualine.nvim'
 	use 'christoomey/vim-tmux-navigator'
 	use 'lifepillar/vim-colortemplate'
 	use 'vimwiki/vimwiki'
-	use 'ms-jpq/chadtree'
+	-- use { 'ms-jpq/chadtree', cmd = { 'CHADopen', 'CHADdeps', 'CHADhelp' }, run = 'python3 -m chadtree deps', branch = 'chad' }
 	use { 'RRethy/vim-hexokinase', ft = 'css', run = 'make hexokinase' }
 	use 'tpope/vim-abolish'
 	use { 'junegunn/fzf.vim', requires = 'junegunn/fzf' }
 	use 'neovim/nvim-lspconfig'
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+	use 'nvim-treesitter/nvim-treesitter-textobjects'
 	use {
 		'nvim-telescope/telescope.nvim',
 		requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } },
 	}
 	use 'AndrewRadev/splitjoin.vim'
-	-- Why did I have this???
-	-- use 'hrsh7th/nvim-compe'
-	-- -- " A snippet usein is needed for cssls to support autocomplete
-	-- use 'SirVer/ultisnips'
+
+	-- use 'karb94/neoscroll.nvim'
+
+	-- A snippet plugin is needed for cssls to support autocomplete
+	-- use { 'SirVer/ultisnips', requires = { 'hrsh7th/nvim-compe' } }
 end
 
 return require('packer').startup(function(use)

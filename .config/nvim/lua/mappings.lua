@@ -12,10 +12,10 @@ Map('i', '<c-s><c-s>', '<cmd>set spell!<cr>', { silent = true })
 -- TODO: these are broken
 
 -- Open config
-Map('n', '<leader>ev', ':e $MYVIMRC<cr>', { silent = true })
+Map('n', '<leader>ev', '<cmd>e $MYVIMRC<cr>')
 
 -- Reload config
-Map('n', '<leader>rv', ':source $MYVIMRC <bar> doautocmd BufRead<cr>')
+Map('n', '<leader>rv', '<cmd>source $MYVIMRC <bar> doautocmd BufRead<cr>')
 
 -- {{{ Copy/paste/cut stuff
 
@@ -72,9 +72,9 @@ Map('n', '<c-c>', '<c-c>')
 Map('v', '<c-c>', '<c-c>')
 Map('v', 'g<c-c>', 'g<c-a>')
 
--- Unhighlight all text
-Map('n', '<c-h>', '<cmd>noh<cr>')
-Map('i', '<c-h>', '<cmd>noh<cr>')
+-- Unhighlight all text and clear the command line
+Map('n', '<c-h>', '<cmd>noh <bar> echo ""<cr>')
+Map('i', '<c-h>', '<cmd>noh <bar> echo ""<cr>')
 
 -- Toggle line numbers
 Map('n', '<c-q>', '<cmd>set number!<cr>')
@@ -98,8 +98,11 @@ Map('n', '<space>', 'za')
 -- Add a markdown/reST heading
 Map('n', '<leader>h', '^v$hyo<esc>p==^v$hr')
 
--- TODO: change this, but also use `map!` or maybe `abbr`
+-- Select the previously pasted or edited text
+Map('n', 'gp', '`[v`]')
+
+-- TODO: change this, but also maybe use `abbr`
 -- Insert the current date (year -> month -> date so it sorts well)
-Map('!', '<c-d><c-d>', [[<c-r>=strftime('%Y-%m-%d')<cr>]])
+-- Map('!', '<c-d><c-d>', [[<c-r>=strftime('%Y-%m-%d')<cr>]])
 
 -- vim:foldmethod=marker:foldlevel=0

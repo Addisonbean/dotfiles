@@ -1,18 +1,19 @@
 -- TODO:
 
+-- Don't crash on missing modules
+-- Fix <c-p> in non git directories
+-- Fix lualine_theme.lua in git (like be able to update it without affecting git's status)
+-- Make a gitsubmodule for ~/.config/nvim to more easily update my config on various computers???
 -- review what options should/shouldn't be buffer/window local
--- Better copy/paste mappings (visual too)
--- Use `<cmd>` instead of `:` or `<c-o>:` for mappings
--- Make a util module for functions like `map` and stuff?
 -- Get xresources data via. lua (if available)
 -- Toggle block comments
--- Fix <c-p> in non git directories
+--   https://github.com/JoosepAlviste/nvim-ts-context-commentstring/blob/main/lua/ts_context_commentstring/integrations/vim_commentary.lua
+-- Use packers's `config` to configure plugins
+-- Put stuff like `Map` into a util module and import to fix lsp errors
+-- Have the mappings (and other stuff) reload when reloading config
 
 -- From old config:
--- - [ ] Fix \rv and \ev mappings
--- - stuff in ~/.config/nvim/custom.vim
---   - [ ] lightline thing... (lualine)
---   - [ ] set lightline theme
+--   [ ] auto commands
 
 -- TODO: is this needed? Does neovim do this for me?
 math.randomseed(os.time())
@@ -47,5 +48,6 @@ require('mappings')
 require('commands')
 require('lsp')
 require('treesitter')
+require('autocommands')
 
 if isModuleAvailable('custom') then require('custom') end
