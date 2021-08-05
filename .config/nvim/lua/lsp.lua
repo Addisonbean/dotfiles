@@ -46,28 +46,14 @@ capabilities.textDocument.codeAction = {
 }
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
--- Lua
-
--- TODO: assume it's in the path
--- local sumneko_root_path = vim.fn.stdpath('data')..'/lsp-servers/lua-language-server'
--- local sumneko_binary = sumneko_root_path..'/bin/'..system_name..'/lua-language-server'
+-- Lua settings
 
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
--- C#
-local pid = vim.fn.getpid()
-local omnisharp_bin = "/Users/addison.bean/work/misc/omnisharp-osx/run"
-
 local extra_settings = {
-    omnisharp = {
-	cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) },
-	-- root_dir = nvim_lsp.util.root_pattern("*.sln"),
-    },
-    sumneko_lua = {
-	-- cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" };
-	cmd = { 'lua-language-server' };
+    lua = {
 	settings = {
 	    Lua = {
 		runtime = {
@@ -89,17 +75,21 @@ local extra_settings = {
     },
 }
 
-local servers = { 'cssls', 'ghcide', 'html', 'pylsp', 'rust_analyzer', 'vimls', 'tsserver', 'bashls', 'omnisharp', 'sumneko_lua' }
-for _, lsp in ipairs(servers) do
+-- local servers = { 'cssls', 'ghcide', 'html', 'pylsp', 'rust_analyzer', 'vimls', 'tsserver', 'bashls', 'omnisharp', 'sumneko_lua' }
+
+-- Use `:LspInstall` to install servers via. `kabouzeid/nvim-lspinstall`
+require'lspinstall'.setup()
+local servers = require'lspinstall'.installed_servers()
+for _, server in pairs(servers) do
     -- TODO: make a `merge` util function
     local settings = {
 	on_attach = on_attach,
 	capabilities = capabilities,
     }
-    if extra_settings[lsp] ~= nil then
-	for k,v in pairs(extra_settings[lsp]) do
+    if extra_settings[server] ~= nil then
+	for k,v in pairs(extra_settings[server]) do
 	    settings[k] = v
 	end
     end
-    nvim_lsp[lsp].setup(settings)
+    nvim_lsp[server].setup(settings)
 end

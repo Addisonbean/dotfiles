@@ -1,89 +1,91 @@
+local map = require('util').map
+
 -- This doesn't include mappings for plugins.
 -- To see where a mapping is created, use `:map <mapping>`
 
 -- Opens something like {} up to a multiline kinda thing then puts the cursor in the middle
-Map('n', '<c-l>', 'i<cr><cr><esc>k"_S', { silent = true })
-Map('i', '<c-l>', '<cr><cr><esc>k"_S', { silent = true })
+map('n', '<c-l>', 'i<cr><cr><esc>k"_S', { silent = true })
+map('i', '<c-l>', '<cr><cr><esc>k"_S', { silent = true })
 
 -- Toggle `spell`
-Map('n', '<c-s><c-s>', '<cmd>set spell!<cr>', { silent = true })
-Map('i', '<c-s><c-s>', '<cmd>set spell!<cr>', { silent = true })
+map('n', '<c-s><c-s>', '<cmd>set spell!<cr>', { silent = true })
+map('i', '<c-s><c-s>', '<cmd>set spell!<cr>', { silent = true })
 
 -- TODO: these are broken
 
 -- Open config
-Map('n', '<leader>ev', '<cmd>e $MYVIMRC<cr>')
+map('n', '<leader>ev', '<cmd>e $MYVIMRC<cr>')
 
 -- Reload config
-Map('n', '<leader>rv', '<cmd>source $MYVIMRC <bar> doautocmd BufRead<cr>')
+map('n', '<leader>rv', '<cmd>source $MYVIMRC <bar> doautocmd BufRead<cr>')
 
 -- {{{ Copy/paste/cut stuff
 
 -- Use `<leader>s` to copy/cut/paste from the system clipboard
-Map('v', '<leader>sy', '"+y')
-Map('v', '<leader>sd', '"+d')
-Map('n', '<leader>sY', '"+Y')
-Map('n', '<leader>sp', '"+p')
-Map('n', '<leader>sP', '"+P')
+map('v', '<leader>sy', '"+y')
+map('v', '<leader>sd', '"+d')
+map('n', '<leader>sY', '"+Y')
+map('n', '<leader>sp', '"+p')
+map('n', '<leader>sP', '"+P')
 
 -- Stop s, x, d, and c from copying
-Map('n', 's', '"_s')
-Map('n', 'S', '"_S')
-Map('n', 'd', '"_d')
-Map('n', 'D', '"_D')
-Map('n', 'c', '"_c')
-Map('n', 'C', '"_C')
-Map('n', 'x', '"_x')
-Map('n', 'X', '"_X')
+map('n', 's', '"_s')
+map('n', 'S', '"_S')
+map('n', 'd', '"_d')
+map('n', 'D', '"_D')
+map('n', 'c', '"_c')
+map('n', 'C', '"_C')
+map('n', 'x', '"_x')
+map('n', 'X', '"_X')
 
-Map('v', 's', '"_s')
-Map('v', 'S', '"_S')
-Map('v', 'd', '"_d')
-Map('v', 'D', '"_D')
-Map('v', 'c', '"_c')
-Map('v', 'C', '"_C')
-Map('v', 'x', '"_x')
-Map('v', 'X', '"_X')
+map('v', 's', '"_s')
+map('v', 'S', '"_S')
+map('v', 'd', '"_d')
+map('v', 'D', '"_D')
+map('v', 'c', '"_c')
+map('v', 'C', '"_C')
+map('v', 'x', '"_x')
+map('v', 'X', '"_X')
 
 -- Prefix s, x, d, and c with <leader> to copy
-Map('n', '<leader>s', 's')
-Map('n', '<leader>S', 'S')
-Map('n', '<leader>d', 'd')
-Map('n', '<leader>D', 'D')
-Map('n', '<leader>c', 'c')
-Map('n', '<leader>C', 'C')
-Map('n', '<leader>x', 'x')
-Map('n', '<leader>X', 'X')
+map('n', '<leader>s', 's')
+map('n', '<leader>S', 'S')
+map('n', '<leader>d', 'd')
+map('n', '<leader>D', 'D')
+map('n', '<leader>c', 'c')
+map('n', '<leader>C', 'C')
+map('n', '<leader>x', 'x')
+map('n', '<leader>X', 'X')
 
-Map('v', '<leader>s', 's')
-Map('v', '<leader>S', 'S')
-Map('v', '<leader>d', 'd')
-Map('v', '<leader>D', 'D')
-Map('v', '<leader>c', 'c')
-Map('v', '<leader>C', 'C')
-Map('v', '<leader>x', 'x')
-Map('v', '<leader>X', 'X')
+map('v', '<leader>s', 's')
+map('v', '<leader>S', 'S')
+map('v', '<leader>d', 'd')
+map('v', '<leader>D', 'D')
+map('v', '<leader>c', 'c')
+map('v', '<leader>C', 'C')
+map('v', '<leader>x', 'x')
+map('v', '<leader>X', 'X')
 
 -- }}}
 
 -- TODO: is there a more general way to do this?
 -- Remap <C-a> since that's my tmux prefix and <C-c> is useless by default
-Map('n', '<c-c>', '<c-c>')
-Map('v', '<c-c>', '<c-c>')
-Map('v', 'g<c-c>', 'g<c-a>')
+map('n', '<c-c>', '<c-c>')
+map('v', '<c-c>', '<c-c>')
+map('v', 'g<c-c>', 'g<c-a>')
 
 -- Unhighlight all text and clear the command line
-Map('n', '<c-h>', '<cmd>noh <bar> echo ""<cr>')
-Map('i', '<c-h>', '<cmd>noh <bar> echo ""<cr>')
+map('n', '<c-h>', '<cmd>noh <bar> echo ""<cr>')
+map('i', '<c-h>', '<cmd>noh <bar> echo ""<cr>')
 
 -- Toggle line numbers
-Map('n', '<c-q>', '<cmd>set number!<cr>')
+map('n', '<c-q>', '<cmd>set number!<cr>')
 
 -- Use [<space> and ]<space> to add a new line above/below the current line
 -- (Thanks to https://vi.stackexchange.com/a/3891/8749 for extracting this
 -- from the tpope/vim-unimpaired plugin)
-Map('n', '[<space>', [[<cmd>put!=repeat([''],v:count)<bar>']+1<cr>]])
-Map('n', ']<space>', [[<cmd>put =repeat([''],v:count)<bar>'[-1<cr>]])
+map('n', '[<space>', [[<cmd>put!=repeat([''],v:count)<bar>']+1<cr>]])
+map('n', ']<space>', [[<cmd>put =repeat([''],v:count)<bar>'[-1<cr>]])
 
 -- Maybe just type `:norm @q` out normally when I need to do this?
 -- xnoremap <silent> @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
@@ -93,13 +95,13 @@ Map('n', ']<space>', [[<cmd>put =repeat([''],v:count)<bar>'[-1<cr>]])
 -- endfunction
 
 -- Use <space> to toggle a fold
-Map('n', '<space>', 'za')
+map('n', '<space>', 'za')
 
 -- Add a markdown/reST heading
-Map('n', '<leader>h', '^v$hyo<esc>p==^v$hr')
+map('n', '<leader>h', '^v$hyo<esc>p==^v$hr')
 
 -- Select the previously pasted or edited text
-Map('n', 'gp', '`[v`]')
+map('n', 'gp', '`[v`]')
 
 -- TODO: change this, but also maybe use `abbr`
 -- Insert the current date (year -> month -> date so it sorts well)

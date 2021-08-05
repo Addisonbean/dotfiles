@@ -54,11 +54,11 @@ local function misc_plugins(use)
 	use 'christoomey/vim-tmux-navigator'
 	use 'lifepillar/vim-colortemplate'
 	use 'vimwiki/vimwiki'
-	-- use { 'ms-jpq/chadtree', cmd = { 'CHADopen', 'CHADdeps', 'CHADhelp' }, run = 'python3 -m chadtree deps', branch = 'chad' }
 	use { 'RRethy/vim-hexokinase', ft = 'css', run = 'make hexokinase' }
 	use 'tpope/vim-abolish'
 	use { 'junegunn/fzf.vim', requires = 'junegunn/fzf' }
 	use 'neovim/nvim-lspconfig'
+	use { 'kabouzeid/nvim-lspinstall', requires = 'neovim/nvim-lspconfig' }
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 	use 'nvim-treesitter/nvim-treesitter-textobjects'
 	use {

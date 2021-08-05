@@ -1,10 +1,12 @@
--- This file includes plugin settings and plugin mappings
+-- This file includes plugin settings AND plugin mappings
+
+local map = require('util').map
 
 -- tomtom/tcomment_vim {{{
 
 -- Comment/uncomment the current line
-Map('n', '<leader>\\', ':TComment<cr>', { silent = true })
-Map('x', '<leader>\\', ':TComment<cr>', { silent = true })
+map('n', '<leader>\\', ':TComment<cr>', { silent = true })
+map('x', '<leader>\\', ':TComment<cr>', { silent = true })
 
 -- TODO: why does this work for multiple lines?
 -- Map('n', '<leader>\\', '<cmd>TComment<cr>')
@@ -26,14 +28,14 @@ function _G.search_files()
 end
 
 -- Open a file using a fzf file search window
-Map('n', '<c-p>', '<cmd>call v:lua.search_files()<cr>')
-Map('n', '<leader>rf', '<cmd>call v:lua.search_files()<cr>')
+map('n', '<c-p>', '<cmd>call v:lua.search_files()<cr>')
+map('n', '<leader>rf', '<cmd>call v:lua.search_files()<cr>')
 
 -- Pick an open buffer to open
-Map('n', '<leader>nb', '<cmd>Buffers<cr>')
+map('n', '<leader>nb', '<cmd>Buffers<cr>')
 
 -- Fuzzy search a project for a matching string using `ripgrep`
-Map('n', '<leader>rg', '<cmd>Rg<cr>')
+map('n', '<leader>rg', '<cmd>Rg<cr>')
 
 -- }}}
 -- posva/vim-vue {{{
@@ -41,37 +43,6 @@ Map('n', '<leader>rg', '<cmd>Rg<cr>')
 -- Rather than loading syntax files for all preprocessors and
 -- trying each one, attempt to detect which need to be loaded
 vim.g.vue_pre_processors = 'detect_on_enter'
-
--- }}}
--- junegunn/goyo.vim {{{
-
-vim.g.goyo_width = 100
-
-vim.g.goyo_linenr = 1
-
--- https://github.com/junegunn/goyo.vim/wiki/Customization#ensure-q-to-quit-even-when-goyo-is-active
-
-function _G.goyo_enter()
-	vim.b.quitting = 0
-	vim.b.quitting_bang = 0
-	vim.cmd 'autocmd QuitPre <buffer> let b:quitting = 1'
-	vim.cmd 'cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!'
-end
-
-function _G.goyo_leave()
-	-- if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-
-	-- if vim.b.quitting then
-	-- 	if vim.b.quitting_bang then
-	-- 		vim.cmd 'qa!'
-	-- 	else
-	-- 		vim.cmd 'qa'
-	-- 	end
-	-- end
-end
-
-vim.cmd 'autocmd! User GoyoEnter call <sid>goyo_enter()'
-vim.cmd 'autocmd! User GoyoLeave call <sid>goyo_leave()'
 
 -- }}}
 -- junegunn/vim-easy-align {{{
@@ -89,23 +60,25 @@ vim.cmd 'autocmd! User GoyoLeave call <sid>goyo_leave()'
 
 vim.g.tmux_navigator_no_mappings = true
 
-Map('n', '<c-a><c-h>', '<cmd>TmuxNavigateLeft<cr>')
-Map('n', '<c-a><c-j>', '<cmd>TmuxNavigateDown<cr>')
-Map('n', '<c-a><c-k>', '<cmd>TmuxNavigateUp<cr>')
-Map('n', '<c-a><c-l>', '<cmd>TmuxNavigateRight<cr>')
-Map('n', '<c-a><c-w>', '<cmd>TmuxNavigatePrevious<cr>')
+map('n', '<c-a><c-h>', '<cmd>TmuxNavigateLeft<cr>')
+map('n', '<c-a><c-j>', '<cmd>TmuxNavigateDown<cr>')
+map('n', '<c-a><c-k>', '<cmd>TmuxNavigateUp<cr>')
+map('n', '<c-a><c-l>', '<cmd>TmuxNavigateRight<cr>')
+map('n', '<c-a><c-w>', '<cmd>TmuxNavigatePrevious<cr>')
 
 -- }}}
 -- vimwiki/vimwiki {{{
 
 -- TODO: use XDG_DIRS or for ~/Documents or maybe even an env variable for the notes dir
 
-local vimwiki_notes_dir = vim.env.XDG_DOCUMENTS_DIR .. '/notes'
-
 vim.g.vimwiki_list = {
 	{ path = '~/.local/share/vimwiki/default/', syntax = 'markdown', ext = '.md' },
-	{ path = vimwiki_notes_dir, syntax = 'markdown', ext = '.md' },
 }
+
+if vim.env.XDG_DOCUMENTS_DIR ~= nil then
+	local vimwiki_notes_dir = vim.env.XDG_DOCUMENTS_DIR .. '/notes'
+	table.insert(vim.g.vimwiki_list, { path = vimwiki_notes_dir, syntax = 'markdown', ext = '.md' })
+end
 
 vim.g.vimwiki_folding = 'expr'
 vim.g.vimwiki_conceal_onechar_markers = 0
@@ -124,11 +97,11 @@ vim.cmd [[autocmd FileType vimwiki nmap <buffer> <c-]> <cr>]]
 -- }}}
 -- nvim-telescope/telescope.nvim {{{
 
-Map('n', '<leader>ff', '<cmd>Telescope git_files<cr>')
-Map('n', '<c-p>', '<cmd>Telescope git_files<cr>')
-Map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
-Map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
-Map('n', '<leader>fv', '<cmd>Telescope git_status<cr>')
+map('n', '<leader>ff', '<cmd>Telescope git_files<cr>')
+map('n', '<c-p>', '<cmd>Telescope git_files<cr>')
+map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
+map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
+map('n', '<leader>fv', '<cmd>Telescope git_status<cr>')
 
 local actions = require('telescope.actions')
 
@@ -148,15 +121,6 @@ require('telescope').setup {
 -- puremourning/vimspector {{{
 
 vim.g.vimspector_enable_mappings = 'HUMAN'
-
--- }}}
--- ms-jpg/chadtree {{{
-
-vim.g.chadtree_settings = {
-	keymap = {
-		primary = { '<space>', '<enter>' },
-	},
-}
 
 -- }}}
 -- hrsh7th/nvim-compe {{{
@@ -249,21 +213,21 @@ require('gitsigns').setup()
 local dap = require('dap')
 
 dap.adapters.netcoredbg = {
-  type = 'executable',
-  command = 'netcoredbg',
-  -- command = '/Users/addison.bean/misc/netcoredbg/netcoredbg',
-  args = {'--interpreter=vscode'}
+	type = 'executable',
+	command = 'netcoredbg',
+	-- command = '/Users/addison.bean/misc/netcoredbg/netcoredbg',
+	args = {'--interpreter=vscode'}
 }
 
 dap.configurations.cs = {
-  {
-    type = "netcoredbg",
-    name = "launch - netcoredbg",
-    request = "launch",
-    program = function()
-      return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
-    end,
-  },
+	{
+		type = "netcoredbg",
+		name = "launch - netcoredbg",
+		request = "launch",
+		program = function()
+			return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+		end,
+	},
 }
 
 -- }}}
@@ -276,6 +240,5 @@ vim.cmd('let ayucolor = "dark"')
 vim.g.equinusocio_material_style = 'pure'
 vim.g.srcery_inverse = 0
 vim.o.background = 'dark'
-
 
 -- vim:foldmethod=marker:foldlevel=0

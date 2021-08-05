@@ -5,6 +5,10 @@ vim.cmd 'command! W w'
 vim.cmd 'command! Q q'
 vim.cmd 'command! X x'
 
+-- TODO: is this needed? Does neovim do this for me?
+-- For the `PdfView` command
+math.randomseed(os.time())
+
 function _G.PdfView()
     local fname = tostring(math.random(0, 100000))
     -- TODO: use https://github.com/hishamhm/f-strings
