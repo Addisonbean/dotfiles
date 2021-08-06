@@ -13,11 +13,12 @@ local function colorscheme_plugins(use)
 	use 'nightsense/vimspectr'
 	use 'addisonbean/amber'
 	use 'metalelf0/base16-black-metal-scheme'
-	use 'co1ncidence/bliss'
+	-- This isn't on GitHub anymore :(
+	-- use 'co1ncidence/bliss'
 	use 'logico/typewriter-vim'
 	use 'arcticicestudio/nord-vim'
 	use 'arzg/vim-colors-xcode'
-	use '~/code/projects/srcery-basic'
+	-- use '~/code/projects/srcery-basic'
 	use 'pineapplegiant/spaceduck'
 	use 'kyazdani42/blue-moon'
 	use 'danishprakash/vim-yami'
@@ -38,11 +39,13 @@ local function language_feature_plugins(use)
 	use { 'lervag/vimtex', ft = 'latex' }
 	use { 'mfussenegger/nvim-dap' }
 	use { 'sbdchd/neoformat', cmd = 'Neoformat' }
+	-- use { 'whatyouhide/vim-textobj-xmlattr', requires = 'kana/vim-textobj-user' }
+	use { 'inside/vim-textobj-jsxattr', requires = 'kana/vim-textobj-user', ft = { 'xml', 'html', 'typescriptreact' } }
 end
 
 local function misc_plugins(use)
 	use 'tpope/vim-surround'
-	use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+	use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }
 	use 'tpope/vim-sleuth'
 	use 'tomtom/tcomment_vim'
 	use { 'Pocco81/TrueZen.nvim', cmd = { 'TZAtaraxis', 'TZMinimalist', 'TZFocus' } }
@@ -63,7 +66,7 @@ local function misc_plugins(use)
 	use 'nvim-treesitter/nvim-treesitter-textobjects'
 	use {
 		'nvim-telescope/telescope.nvim',
-		requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } },
+		requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
 	}
 	use 'AndrewRadev/splitjoin.vim'
 

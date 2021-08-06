@@ -49,10 +49,6 @@ vim.o.completeopt = 'menuone,noselect'
 
 vim.o.termguicolors = true
 
--- TODO: is this still needed in 0.5?
--- Use spaces instead of ~ at the end of the buffer
--- vim.o.fillchars = { eob = '\\' }
-
 -- TODO: describe... (see `:h ft-python-plugin`)
 vim.g.python_recommended_style = 0
 

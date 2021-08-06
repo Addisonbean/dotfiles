@@ -3,6 +3,10 @@ local map = require('util').map
 -- This doesn't include mappings for plugins.
 -- To see where a mapping is created, use `:map <mapping>`
 
+--  Use `jk` to enter normal mode
+map('i', 'jk', '<esc>')
+map('v', 'jk', '<esc>')
+
 -- Opens something like {} up to a multiline kinda thing then puts the cursor in the middle
 map('n', '<c-l>', 'i<cr><cr><esc>k"_S', { silent = true })
 map('i', '<c-l>', '<cr><cr><esc>k"_S', { silent = true })
@@ -102,6 +106,10 @@ map('n', '<leader>h', '^v$hyo<esc>p==^v$hr')
 
 -- Select the previously pasted or edited text
 map('n', 'gp', '`[v`]')
+
+-- TODO: maybe make this a text-object so I can do something
+-- like `yil` to "yank inner line"
+map('n', '<leader>vl', '^v$h')
 
 -- TODO: change this, but also maybe use `abbr`
 -- Insert the current date (year -> month -> date so it sorts well)
