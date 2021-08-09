@@ -4,16 +4,16 @@ local map = require('util').map
 -- To see where a mapping is created, use `:map <mapping>`
 
 --  Use `jk` to enter normal mode
-map('i', 'jk', '<esc>')
-map('v', 'jk', '<esc>')
+-- map('i', 'jk', '<esc>')
+-- map('v', 'jk', '<esc>')
 
 -- Opens something like {} up to a multiline kinda thing then puts the cursor in the middle
 map('n', '<c-l>', 'i<cr><cr><esc>k"_S', { silent = true })
 map('i', '<c-l>', '<cr><cr><esc>k"_S', { silent = true })
 
 -- Toggle `spell`
-map('n', '<c-s><c-s>', '<cmd>set spell!<cr>', { silent = true })
-map('i', '<c-s><c-s>', '<cmd>set spell!<cr>', { silent = true })
+map('n', '<c-s><c-s>', '<cmd>set spell!<cr>')
+map('i', '<c-s><c-s>', '<cmd>set spell!<cr>')
 
 -- TODO: these are broken
 

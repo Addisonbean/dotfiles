@@ -81,15 +81,12 @@ local extra_settings = {
 require'lspinstall'.setup()
 local servers = require'lspinstall'.installed_servers()
 for _, server in pairs(servers) do
-    -- TODO: make a `merge` util function
     local settings = {
 	on_attach = on_attach,
 	capabilities = capabilities,
     }
     if extra_settings[server] ~= nil then
-	for k,v in pairs(extra_settings[server]) do
-	    settings[k] = v
-	end
+	settings = vim.tbl_extend('force', settings, extra_settings[server])
     end
     nvim_lsp[server].setup(settings)
 end

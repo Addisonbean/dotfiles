@@ -28,7 +28,7 @@ function _G.search_files()
 end
 
 -- Open a file using a fzf file search window
-map('n', '<c-p>', '<cmd>call v:lua.search_files()<cr>')
+-- map('n', '<c-p>', '<cmd>call v:lua.search_files()<cr>')
 map('n', '<leader>rf', '<cmd>call v:lua.search_files()<cr>')
 
 -- Pick an open buffer to open
@@ -97,8 +97,22 @@ vim.cmd [[autocmd FileType vimwiki nmap <buffer> <c-]> <cr>]]
 -- }}}
 -- nvim-telescope/telescope.nvim {{{
 
+function _G.search_files()
+	-- If in a git repo and there is at least one commit use `git_files`, otherwise use `find_files`
+	local handle = io.popen('[ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = "true" ] && [ "$(git count-objects | head -c 1)" -ne 0 ] && echo -n true')
+	local result = handle:read('*a')
+	handle:close()
+	if result == 'true' then
+		vim.cmd 'Telescope git_files'
+	else
+		vim.cmd 'Telescope find_files'
+	end
+end
+
+map('n', '<c-p>', '<cmd>call v:lua.search_files()<cr>')
+
+-- map('n', '<c-p>', '<cmd>Telescope git_files<cr>')
 map('n', '<leader>ff', '<cmd>Telescope git_files<cr>')
-map('n', '<c-p>', '<cmd>Telescope git_files<cr>')
 map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
 map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
 map('n', '<leader>fv', '<cmd>Telescope git_status<cr>')
@@ -240,5 +254,12 @@ vim.cmd('let ayucolor = "dark"')
 vim.g.equinusocio_material_style = 'pure'
 vim.g.srcery_inverse = 0
 vim.o.background = 'dark'
+
+vim.cmd [[
+	augroup colorscheme_fixes
+		au!
+		au ColorScheme spaceduck hi Comment ctermfg=237 guifg=#575b73
+	augroup END
+]]
 
 -- vim:foldmethod=marker:foldlevel=0

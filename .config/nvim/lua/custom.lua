@@ -1,13 +1,13 @@
-vim.cmd [[
-let alpha = system('xrdb -query | grep "vim.transparent-bg" | cut -f 2')
-if alpha ==? "true\n"
-    hi clear SignColumn
-    hi LineNr guifg=grey ctermfg=grey
-    hi LineNr guibg=NONE
-    hi Normal guibg=NONE ctermbg=NONE
-    hi StatusLine guibg=NONE cterm=NONE
-endif
-]]
+-- vim.cmd [[
+-- let alpha = system('xrdb -query | grep "vim.transparent-bg" | cut -f 2')
+-- if alpha ==? "true\n"
+--     hi clear SignColumn
+--     hi LineNr guifg=grey ctermfg=grey
+--     hi LineNr guibg=NONE
+--     hi Normal guibg=NONE ctermbg=NONE
+--     hi StatusLine guibg=NONE cterm=NONE
+-- endif
+-- ]]
 
 vim.cmd 'hi EndOfBuffer guibg=NONE guifg=NONE cterm=NONE'
 
@@ -24,16 +24,26 @@ for k, v in string.gmatch(res, "([^%s:]+):%s+([^\n]+)") do
     xres[k] = v
 end
 
-vim.cmd('color ' .. xres['vim.colorscheme'])
-
 local alpha = xres['vim.transparent-bg'] == 'true'
 if alpha then
     -- Whyyyyyy doesn't this work...
     vim.cmd [[
-	hi clear SignColumn
-	hi LineNr guifg=grey ctermfg=grey
-	hi LineNr guibg=NONE
-	hi Normal guibg=NONE ctermbg=NONE
-	hi StatusLine guibg=NONE cterm=NONE
+	augroup clear_bg
+	    au!
+	    au ColorScheme * hi clear SignColumn
+	    hi LineNr guifg=grey ctermfg=grey
+	    hi LineNr guibg=NONE
+	    hi Normal guibg=NONE ctermbg=NONE
+	    hi StatusLine guibg=NONE cterm=NONE
+	augroup END
     ]]
 end
+
+-- vim.cmd [[
+--     augroup colorscheme
+-- 	au!
+-- 	au ColorScheme * hi clear SignColumn
+--     augroup END
+-- ]]
+
+vim.cmd('color ' .. xres['vim.colorscheme'])

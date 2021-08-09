@@ -1,6 +1,5 @@
 -- TODO:
 
--- Fix <c-p> in non git directories
 -- Fix lualine_theme.lua in git
 --   Like be able to update it without affecting git's status/read values from the environment or something not tracked in git
 -- Make a gitsubmodule for ~/.config/nvim to more easily update my config on various computers???
@@ -10,6 +9,7 @@
 -- Toggle block comments
 --   https://github.com/JoosepAlviste/nvim-ts-context-commentstring/blob/main/lua/ts_context_commentstring/integrations/vim_commentary.lua
 -- Don't crash on missing or broken modules
+-- Find new binding for emmet expansion things... (not `<c-y>`)
 
 -- When reloading this file, reload all my modules in case they've changed
 for k, _ in ipairs({

@@ -18,7 +18,7 @@ local function colorscheme_plugins(use)
 	use 'logico/typewriter-vim'
 	use 'arcticicestudio/nord-vim'
 	use 'arzg/vim-colors-xcode'
-	-- use '~/code/projects/srcery-basic'
+	use '~/code/projects/srcery-basic'
 	use 'pineapplegiant/spaceduck'
 	use 'kyazdani42/blue-moon'
 	use 'danishprakash/vim-yami'
@@ -63,7 +63,7 @@ local function misc_plugins(use)
 	use 'neovim/nvim-lspconfig'
 	use { 'kabouzeid/nvim-lspinstall', requires = 'neovim/nvim-lspconfig' }
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-	use 'nvim-treesitter/nvim-treesitter-textobjects'
+	use { 'nvim-treesitter/nvim-treesitter-textobjects', requires = 'nvim-treesitter/nvim-treesitter' }
 	use {
 		'nvim-telescope/telescope.nvim',
 		requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
