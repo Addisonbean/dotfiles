@@ -23,6 +23,7 @@ local function colorscheme_plugins(use)
 	use 'kyazdani42/blue-moon'
 	use 'danishprakash/vim-yami'
 	use 'plan9-for-vimspace/acme-colors'
+	use 'mangeshrex/uwu.vim'
 end
 
 local function language_feature_plugins(use)
@@ -38,9 +39,12 @@ local function language_feature_plugins(use)
 	use { 'leafgarland/typescript-vim', ft = 'typescript' }
 	use { 'lervag/vimtex', ft = 'latex' }
 	use { 'mfussenegger/nvim-dap' }
+	-- use { 'Pocco81/DAPInstall.nvim', requires = 'mfussenegger/nvim-dap' }
 	use { 'sbdchd/neoformat', cmd = 'Neoformat' }
 	-- use { 'whatyouhide/vim-textobj-xmlattr', requires = 'kana/vim-textobj-user' }
 	use { 'inside/vim-textobj-jsxattr', requires = 'kana/vim-textobj-user', ft = { 'xml', 'html', 'typescriptreact' } }
+	use { 'pirmd/gemini.vim', ft = 'gemini' }
+	use { 'rodjek/vim-puppet', ft = 'puppet' }
 end
 
 local function misc_plugins(use)
@@ -61,7 +65,7 @@ local function misc_plugins(use)
 	use 'tpope/vim-abolish'
 	use { 'junegunn/fzf.vim', requires = 'junegunn/fzf' }
 	use 'neovim/nvim-lspconfig'
-	use { 'kabouzeid/nvim-lspinstall', requires = 'neovim/nvim-lspconfig' }
+	-- use { 'kabouzeid/nvim-lspinstall', requires = 'neovim/nvim-lspconfig' }
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 	use { 'nvim-treesitter/nvim-treesitter-textobjects', requires = 'nvim-treesitter/nvim-treesitter' }
 	use {
@@ -69,6 +73,7 @@ local function misc_plugins(use)
 		requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
 	}
 	use 'AndrewRadev/splitjoin.vim'
+	use { 'simrat39/symbols-outline.nvim', cmd = { 'SymbolsOutline', 'SymbolsOutlineOpen' } }
 
 	-- use 'karb94/neoscroll.nvim'
 

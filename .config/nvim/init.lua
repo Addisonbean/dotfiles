@@ -10,6 +10,7 @@
 --   https://github.com/JoosepAlviste/nvim-ts-context-commentstring/blob/main/lua/ts_context_commentstring/integrations/vim_commentary.lua
 -- Don't crash on missing or broken modules
 -- Find new binding for emmet expansion things... (not `<c-y>`)
+-- Check this out https://stackoverflow.com/questions/2440149/override-colorscheme
 
 -- When reloading this file, reload all my modules in case they've changed
 for k, _ in ipairs({

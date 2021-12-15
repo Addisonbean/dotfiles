@@ -54,3 +54,6 @@ vim.g.python_recommended_style = 0
 
 -- Support embedded lua in init.vim
 vim.g.vimsyn_embed = 'l'
+
+-- Jump to the previously used window when jumping to errors with quickfix commands
+vim.g.switchbuf = 'uselast'

@@ -7,8 +7,8 @@ configuration {
     threads:             0;
     scroll-method:       0;
     disable-history:     false;
-    fullscreen:          false;
-    hide-scrollbar:      true;
+    /* fullscreen:          false; */
+    /* hide-scrollbar:      true; */
     sidebar-mode:        false;
 }
 
@@ -100,6 +100,10 @@ element {
 }
 
 element-icon {
+	background-color: @background;
+	text-color: inherit;
+	horizontal-align: 0.5;
+	vertical-align: 0.5;
     size:                           64px;
     border:                         0px;
 }
@@ -109,6 +113,8 @@ element-text {
     horizontal-align:               0.5;
     vertical-align:                 0.5;
     margin:                         5px 10px 0px 10px;
+	background-color: @background;
+	text-color: inherit;
 }
 
 element normal.urgent,

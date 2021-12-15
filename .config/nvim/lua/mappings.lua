@@ -15,11 +15,10 @@ map('i', '<c-l>', '<cr><cr><esc>k"_S', { silent = true })
 map('n', '<c-s><c-s>', '<cmd>set spell!<cr>')
 map('i', '<c-s><c-s>', '<cmd>set spell!<cr>')
 
--- TODO: these are broken
-
 -- Open config
 map('n', '<leader>ev', '<cmd>e $MYVIMRC<cr>')
 
+-- TODO: this doesn't actually reload the lua...
 -- Reload config
 map('n', '<leader>rv', '<cmd>source $MYVIMRC <bar> doautocmd BufRead<cr>')
 
@@ -74,8 +73,8 @@ map('v', '<leader>X', 'X')
 
 -- TODO: is there a more general way to do this?
 -- Remap <C-a> since that's my tmux prefix and <C-c> is useless by default
-map('n', '<c-c>', '<c-c>')
-map('v', '<c-c>', '<c-c>')
+map('n', '<c-c>', '<c-a>')
+map('v', '<c-c>', '<c-a>')
 map('v', 'g<c-c>', 'g<c-a>')
 
 -- Unhighlight all text and clear the command line
@@ -111,8 +110,17 @@ map('n', 'gp', '`[v`]')
 -- like `yil` to "yank inner line"
 map('n', '<leader>vl', '^v$h')
 
--- TODO: change this, but also maybe use `abbr`
+-- Open netrw for the directory of the current file
+map('n', '-', ':e %:h<cr>', { silent = true })
+
 -- Insert the current date (year -> month -> date so it sorts well)
--- Map('!', '<c-d><c-d>', [[<c-r>=strftime('%Y-%m-%d')<cr>]])
+-- `!` mode is insert + command mode
+map('!', '<c-\\><c-d>', [[<c-r>=strftime('%Y-%m-%d')<cr>]], { silent = true })
+
+-- Make `<c-r>` start a new undo block
+map('i', '<c-r>', '<c-g>u<c-r>')
+
+-- neovim 0.6.0 remaps this
+vim.cmd 'unmap Y'
 
 -- vim:foldmethod=marker:foldlevel=0

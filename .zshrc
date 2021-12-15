@@ -10,7 +10,7 @@ zstyle ':completion:*' menu select
 autoload -U compinit && compinit
 setopt globdots
 
-bindkey -r '^h'
+# bindkey -r '^h'
 # I can't get C-h mapped in menuselect mode...
 bindkey -M menuselect '^h' vi-backwards-char
 bindkey -M menuselect '^k' vi-up-line-or-history

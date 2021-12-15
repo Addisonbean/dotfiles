@@ -1,4 +1,11 @@
 configuration {
+	/* Unmap old bindings for C-h, C-j, C-k, and C-l */
+	kb-remove-char-back: "BackSpace,Shift+BackSpace";
+	kb-remove-to-eol: "";
+	kb-accept-entry: "Return";
+	kb-move-word-back: "Alt-b";
+	kb-mode-complete: "";
+
 	terminal: "st";
 	matching: "fuzzy";
 	monitor: "-1";
@@ -7,9 +14,6 @@ configuration {
 	kb-row-right: "Control+l";
 	kb-row-up: "Up,Control+k,Control+p";
 	kb-row-down: "Down,Control+j,Control+n";
-
-	/* Unmap old bindings for C-h, C-j, C-k, and C-l */
-	kb-remove-char-back: "BackSpace,Shift+BackSpace";
-	kb-remove-to-eol: "";
-	kb-accept-entry: "Return";
 }
+
+@theme "blurry"

@@ -26,15 +26,14 @@ end
 
 local alpha = xres['vim.transparent-bg'] == 'true'
 if alpha then
-    -- Whyyyyyy doesn't this work...
     vim.cmd [[
 	augroup clear_bg
 	    au!
 	    au ColorScheme * hi clear SignColumn
-	    hi LineNr guifg=grey ctermfg=grey
-	    hi LineNr guibg=NONE
-	    hi Normal guibg=NONE ctermbg=NONE
-	    hi StatusLine guibg=NONE cterm=NONE
+	    au ColorScheme * hi LineNr guifg=grey ctermfg=grey
+	    au ColorScheme * hi LineNr guibg=NONE
+	    au ColorScheme * hi Normal guibg=NONE ctermbg=NONE
+	    au ColorScheme * hi StatusLine guibg=NONE cterm=NONE
 	augroup END
     ]]
 end

@@ -1,6 +1,7 @@
 -- This file includes plugin settings AND plugin mappings
 
 local map = require('util').map
+local bufmap = require('util').bufmap
 
 -- tomtom/tcomment_vim {{{
 

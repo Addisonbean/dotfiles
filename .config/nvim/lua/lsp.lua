@@ -75,11 +75,12 @@ local extra_settings = {
     },
 }
 
--- local servers = { 'cssls', 'ghcide', 'html', 'pylsp', 'rust_analyzer', 'vimls', 'tsserver', 'bashls', 'omnisharp', 'sumneko_lua' }
+local servers = { 'cssls', 'ghcide', 'html', 'pylsp', 'rust_analyzer', 'vimls', 'tsserver', 'bashls', 'omnisharp', 'sumneko_lua' }
 
 -- Use `:LspInstall` to install servers via. `kabouzeid/nvim-lspinstall`
-require'lspinstall'.setup()
-local servers = require'lspinstall'.installed_servers()
+-- require'lspinstall'.setup()
+-- local servers = require'lspinstall'.installed_servers()
+
 for _, server in pairs(servers) do
     local settings = {
 	on_attach = on_attach,

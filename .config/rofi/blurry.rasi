@@ -7,8 +7,8 @@ configuration {
     threads:             0;
     scroll-method:       0;
     disable-history:     false;
-    fullscreen:          false;
-    hide-scrollbar:      true;
+    /* fullscreen:          false; */
+    /* hide-scrollbar:      true; */
     sidebar-mode:        false;
     window-format: "{w} | {c}\n{t}";
     eh: 2;
@@ -101,11 +101,17 @@ element {
 }
 
 element-icon {
+	background-color: 				@background;
+	text-color:       				inherit;
+	horizontal-align:               0.5;
+	vertical-align:                 0.5;
     size:                           64px;
     border:                         0px;
 }
 
 element-text {
+	background-color: 				@background;
+	text-color:       				inherit;
     expand:                         true;
     horizontal-align:               0.5;
     vertical-align:                 0.5;
