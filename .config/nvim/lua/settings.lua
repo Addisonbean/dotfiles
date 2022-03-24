@@ -57,3 +57,8 @@ vim.g.vimsyn_embed = 'l'
 
 -- Jump to the previously used window when jumping to errors with quickfix commands
 vim.g.switchbuf = 'uselast'
+
+vim.g.smartcase = true
+
+-- Use the case of the typed text when inserting autocompleted text
+vim.g.infercase = true

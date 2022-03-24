@@ -52,8 +52,12 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
+-- C# settings
+local pid = vim.fn.getpid()
+-- local omnisharp_bin = "/path/to/omnisharp-repo/run"
+
 local extra_settings = {
-    lua = {
+    sumneko_lua = {
 	settings = {
 	    Lua = {
 		runtime = {
@@ -73,9 +77,16 @@ local extra_settings = {
 	    },
 	},
     },
+    hls = {
+	root_dir = require'lspconfig'.util.root_pattern("*"),
+	-- root_dir = root_pattern("*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml", ".")
+    },
+    omnisharp = {
+	cmd = { "omnisharp", "--languageserver" , "--hostPID", tostring(pid) },
+    },
 }
 
-local servers = { 'cssls', 'ghcide', 'html', 'pylsp', 'rust_analyzer', 'vimls', 'tsserver', 'bashls', 'omnisharp', 'sumneko_lua' }
+local servers = { 'cssls', 'hls', 'html', 'pylsp', 'rust_analyzer', 'vimls', 'tsserver', 'bashls', 'omnisharp', 'sumneko_lua', 'eslint', 'terraformls' }
 
 -- Use `:LspInstall` to install servers via. `kabouzeid/nvim-lspinstall`
 -- require'lspinstall'.setup()

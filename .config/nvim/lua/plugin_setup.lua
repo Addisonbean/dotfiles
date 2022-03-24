@@ -220,7 +220,32 @@ require('lualine').setup {
 -- }}}
 -- lewis6991/gitsigns.nvim {{{
 
-require('gitsigns').setup()
+require('gitsigns').setup {
+	on_attach = function(bufnr)
+		-- Navigation
+		map('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", { expr = true })
+		map('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true })
+
+		-- Actions
+		map('n', '<leader>hs', ':Gitsigns stage_hunk<CR>', { silent = true })
+		map('v', '<leader>hs', ':Gitsigns stage_hunk<CR>', { silent = true })
+		map('n', '<leader>hr', ':Gitsigns reset_hunk<CR>', { silent = true })
+		map('v', '<leader>hr', ':Gitsigns reset_hunk<CR>', { silent = true })
+		map('n', '<leader>hS', '<cmd>Gitsigns stage_buffer<CR>', { silent = true })
+		map('n', '<leader>hu', '<cmd>Gitsigns undo_stage_hunk<CR>', { silent = true })
+		map('n', '<leader>hR', '<cmd>Gitsigns reset_buffer<CR>', { silent = true })
+		map('n', '<leader>hp', '<cmd>Gitsigns preview_hunk<CR>', { silent = true })
+		map('n', '<leader>hb', '<cmd>lua require"gitsigns".blame_line{full=true}<CR>', { silent = true })
+		map('n', '<leader>tb', '<cmd>Gitsigns toggle_current_line_blame<CR>', { silent = true })
+		map('n', '<leader>hd', '<cmd>Gitsigns diffthis<CR>', { silent = true })
+		map('n', '<leader>hD', '<cmd>lua require"gitsigns".diffthis("~")<CR>', { silent = true })
+		map('n', '<leader>td', '<cmd>Gitsigns toggle_deleted<CR>', { silent = true })
+
+		-- Text object
+		map('o', 'ih', ':<C-U>Gitsigns select_hunk<CR>', { silent = true })
+		map('x', 'ih', ':<C-U>Gitsigns select_hunk<CR>', { silent = true })
+	end
+}
 
 -- }}}
 -- mfussenegger/nvim-dap {{{
@@ -244,6 +269,11 @@ dap.configurations.cs = {
 		end,
 	},
 }
+
+-- }}}
+-- {{{ Addisonbean/loclist-toc-nvim
+
+require('loclist-toc-nvim').setup{}
 
 -- }}}
 

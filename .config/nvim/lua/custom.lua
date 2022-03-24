@@ -38,11 +38,13 @@ if alpha then
     ]]
 end
 
--- vim.cmd [[
---     augroup colorscheme
--- 	au!
--- 	au ColorScheme * hi clear SignColumn
---     augroup END
--- ]]
+-- TODO: only apply when using a theme that wants this...
+-- Maybe even have a vim startup script to source after the init.lua for each theme...
+vim.cmd [[
+    augroup colorscheme
+	au!
+	au ColorScheme vimspectr330-light hi Normal guifg=grey ctermfg=grey
+    augroup END
+]]
 
 vim.cmd('color ' .. xres['vim.colorscheme'])

@@ -39,12 +39,14 @@ local function language_feature_plugins(use)
 	use { 'leafgarland/typescript-vim', ft = 'typescript' }
 	use { 'lervag/vimtex', ft = 'latex' }
 	use { 'mfussenegger/nvim-dap' }
-	-- use { 'Pocco81/DAPInstall.nvim', requires = 'mfussenegger/nvim-dap' }
 	use { 'sbdchd/neoformat', cmd = 'Neoformat' }
 	-- use { 'whatyouhide/vim-textobj-xmlattr', requires = 'kana/vim-textobj-user' }
 	use { 'inside/vim-textobj-jsxattr', requires = 'kana/vim-textobj-user', ft = { 'xml', 'html', 'typescriptreact' } }
 	use { 'pirmd/gemini.vim', ft = 'gemini' }
 	use { 'rodjek/vim-puppet', ft = 'puppet' }
+	use { 'addisonbean/loclist-toc-nvim' }
+	-- use '~/code/projects/loclist-toc-nvim/'
+	use { 'hashivim/vim-terraform', ft = 'terraform' }
 end
 
 local function misc_plugins(use)
@@ -65,7 +67,6 @@ local function misc_plugins(use)
 	use 'tpope/vim-abolish'
 	use { 'junegunn/fzf.vim', requires = 'junegunn/fzf' }
 	use 'neovim/nvim-lspconfig'
-	-- use { 'kabouzeid/nvim-lspinstall', requires = 'neovim/nvim-lspconfig' }
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 	use { 'nvim-treesitter/nvim-treesitter-textobjects', requires = 'nvim-treesitter/nvim-treesitter' }
 	use {

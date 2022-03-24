@@ -5,12 +5,11 @@
 -- Make a gitsubmodule for ~/.config/nvim to more easily update my config on various computers???
 -- Use packers's `config` to configure plugins
 -- Audit plugin_setup and remove stuff for plugins I don't use anymore...
--- Review what options should/shouldn't be buffer/window local
 -- Toggle block comments
 --   https://github.com/JoosepAlviste/nvim-ts-context-commentstring/blob/main/lua/ts_context_commentstring/integrations/vim_commentary.lua
 -- Don't crash on missing or broken modules
 -- Find new binding for emmet expansion things... (not `<c-y>`)
--- Check this out https://stackoverflow.com/questions/2440149/override-colorscheme
+-- Auto add `silent = true` when mapping (confirm there's no where I wouldn't want this)
 
 -- When reloading this file, reload all my modules in case they've changed
 for k, _ in ipairs({

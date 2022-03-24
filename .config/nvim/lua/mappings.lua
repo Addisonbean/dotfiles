@@ -123,4 +123,10 @@ map('i', '<c-r>', '<c-g>u<c-r>')
 -- neovim 0.6.0 remaps this
 vim.cmd 'unmap Y'
 
+map('i', '<c-r>', '<c-g>u<c-r>')
+map('i', '.', '<c-g>u.')
+map('i', '!', '<c-g>u!')
+map('i', '?', '<c-g>u?')
+map('i', '<cr>', '<c-g>u<cr>')
+
 -- vim:foldmethod=marker:foldlevel=0

@@ -26,7 +26,7 @@ sed -i "s/gtk-theme-name = .*/gtk-theme-name = $(xval gtk.theme)/" ~/.config/gtk
 feh --no-fehbg --bg-fill "$HOME/.config/xthemes/wallpapers/$(xval my_desktop.wallpaper)" & disown
 
 # Betterlockscreen
-betterlockscreen -u "$HOME/.config/xthemes/wallpapers/$(xval my_desktop.wallpaper)" -r 1920x1080 & disown
+betterlockscreen -u "$HOME/.config/xthemes/wallpapers/$(xval my_desktop.wallpaper)" & disown
 
 # St
 killall -s SIGUSR1 st
@@ -62,8 +62,5 @@ sed -i -E \
 	-e "s/^shadow-opacity = .+;\$/shadow-opacity = $(xval picom.shadowOpacity);/" \
 	~/.config/picom/picom.conf
 
-# Bspwm
-bspc wm -r & disown
-
 # Herbstluftwm
-# herbstluftclient reload & disown
+herbstclient reload & disown
