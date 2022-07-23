@@ -26,11 +26,13 @@ if [ "$running" != "" ]; then
         echo
         exit
     elif [ "$shouldClip" = "false" ] || [ $(echo -n "$artist · $song" | wc -c) -lt 40 ]; then
-        msg="$icon $artist · $song"
+        track_info="$artist · $song"
     else
         artist=$(echo -n "$artist" | colrm 15)
-        msg="$icon $(echo -n "$artist · $song" | colrm 41)"
+        track_info="$(echo -n "$artist · $song" | colrm 41)"
     fi
+
+    msg="$icon %{T1}$track_info%{T-}"
 
     if [ "$1" == "--no-underline" ]; then
         echo -n "$msg"

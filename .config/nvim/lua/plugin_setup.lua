@@ -275,6 +275,17 @@ dap.configurations.cs = {
 
 require('loclist-toc-nvim').setup{}
 
+vim.cmd [[autocmd FileType markdown,vimwiki nnoremap <buffer> <silent> <leader>tt :lua require('loclist-toc-nvim').make_markdown_toc()<cr>]]
+
+-- }}}
+-- {{{ farconics/victionary
+
+vim.g['victionary#map_defaults'] = false
+
+-- nmap <mapping> <Plug>(victionary#define_under_cursor)
+
+map('n', 'K', '')
+
 -- }}}
 
 -- Colorscheme options

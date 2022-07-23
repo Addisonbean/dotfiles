@@ -36,6 +36,9 @@
 !.config/rofi/
 !.config/rofi/**
 
+# Tracked via. xthemes template
+.config/rofi/themes/theme.rasi
+
 !.config/tmux/
 !.config/tmux/**
 
@@ -48,8 +51,9 @@
 !.config/autokey/
 !.config/autokey/**
 
-!.config/gtk-3.0/
-!.config/gtk-3.0/**
+# Tracked via. xthemes template
+# !.config/gtk-3.0/
+# !.config/gtk-3.0/**
 
 !.config/zsh/
 !.config/zsh/**
@@ -57,8 +61,9 @@
 !.config/user-dirs.dirs
 !.config/mimeapps.list
 
-!.config/picom/
-!.config/picom/**
+# Tracked via. xthemes template
+# !.config/picom/
+# !.config/picom/**
 
 !.config/nvim/
 !.config/nvim/init.vim
@@ -90,6 +95,7 @@
 !.config/udev/
 !.config/udev/**
 
+# Tracked via. xthemes template
 # !.config/xsettingsd/
 # !.config/xsettingsd/xsettingsd.conf
 

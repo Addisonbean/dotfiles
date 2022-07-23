@@ -16,4 +16,5 @@ configuration {
 	kb-row-down: "Down,Control+j,Control+n";
 }
 
+@import "theme"
 @theme "blurry"

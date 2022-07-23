@@ -36,4 +36,8 @@
 #define COLOR_FG COLOR_07
 #endif
 
+#ifndef COLOR_ACCENT
+#define COLOR_ACCENT COLOR_YELLOW
+#endif
+
 ! vim:ft=xdefaults

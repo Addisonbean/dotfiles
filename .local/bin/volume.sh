@@ -1,6 +1,8 @@
 #!/bin/zsh
 
 # TODO: clean this up
+# TODO: using `pactl set-sink-volume @DEFAULT_SINK@ +x%` and `pactl get-sink-volume @DEFAULT_SINK@` would be easier I think...
+# - Maybe it wouldn't be cleaner, but more resilient I believe...
 
 function get_level() {
 	cat | grep "%" | head -n 1 | cut -d '[' -f 2 | cut -d '%' -f 1

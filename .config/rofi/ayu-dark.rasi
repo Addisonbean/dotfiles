@@ -4,66 +4,51 @@
 
 /* Adapted from https://github.com/dnordstrom/dotfiles/blob/master/rofi/ayu-dark.rasi */
 
+@import "theme"
+
 * {
-  accentcolor: #e6b450;
-  backgroundcolor: #0a0e14f5;
-  separatorcolor: transparent;
-  /* foregroundcolor: #b3b1ad; */
-  foregroundcolor: #707a8c;
-  background-color: #1b2733;
-  selectioncolor: #fafafa;
-  
-  background-color: transparent;
-  text-color: @foregroundcolor;
+	text-color: @v-fg-color;
+	background-color: @v-bg-color;
 }
 
 #window {
-  font: "SF Mono Regular 12";
-  /* font: "Fira Code 12"; */
-  location: 0;
-  background-color: @backgroundcolor;
-  border-color: @accentcolor;
-  border: 1;
-  border-radius: 0;
-  padding: 16 14;
-  /* width: @width; */
+	font: @v-font;
+	/* font: "Fira Code 12"; */
+	location: 0;
+	border-color: @v-accent-color;
+	border: 1;
+	border-radius: 0;
+	padding: 16 14;
+	/* width: @width; */
 }
 
-#element {
-  spacing: 2;
-  padding: 8;
+element {
+	text-color: @v-fg-color;
+	spacing: 2;
+	padding: 8;
+	children: [element-text];
 }
 
-#element.selected.normal {
-  text-color: @selectioncolor;
-  background-color: #1b2733;
+element selected, element element-text {
+	background-color: @v-selection-bg-color;
+	text-color: @v-selection-fg-color;
 }
 
-#element.selected.active {
-  text-color: @selectioncolor;
-  background-color: #1b2733;
+element-text, element-icon {
+	background-color: inherit;
+	text-color: inherit;
 }
 
-#inputbar {
-  border: none;
-  children: [prompt, entry];
+inputbar {
+	border: none;
+	children: [prompt, entry];
 }
 
-#prompt {
-  color: @accentcolor;
-  padding: 2 8 8;
+prompt {
+	color: @v-accent-color;
+	padding: 2 8 8;
 }
 
-#entry {
-  padding: 2 8 8;
+entry {
+	/* padding: 2 8 8; */
 }
-
-/* custom */
-
-#element-icon {
-  width: 40px;
-}
-
-/* #element-text { */
-/*   text-color: red; */
-/* } */

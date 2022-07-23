@@ -2,6 +2,36 @@
 #define ROFI_THEME blurry
 #endif
 
+#ifndef ROFI_FONT
+#define ROFI_FONT ROFI_FONT_SF
+#endif
+
+#ifndef ROFI_ACCENT_COLOR
+#define ROFI_ACCENT_COLOR COLOR_ACCENT
+#endif
+
+#ifndef ROFI_BG_COLOR
+#define ROFI_BG_COLOR COLOR_BG
+#endif
+
+#ifndef ROFI_FG_COLOR
+#define ROFI_FG_COLOR COLOR_FG
+#endif
+
+#ifndef ROFI_SELECTION_BG_COLOR
+#define ROFI_SELECTION_BG_COLOR COLOR_FG
+#endif
+
+#ifndef ROFI_SELECTION_FG_COLOR
+#define ROFI_SELECTION_FG_COLOR COLOR_BG
+#endif
+
 rofi.theme: ROFI_THEME
+rofi.font: ROFI_FONT
+rofi.accentColor: ROFI_ACCENT_COLOR
+rofi.bgColor: ROFI_BG_COLOR
+rofi.fgColor: ROFI_FG_COLOR
+rofi.selectionBgColor: ROFI_SELECTION_BG_COLOR
+rofi.selectionFgColor: ROFI_SELECTION_FG_COLOR
 
 ! vim:filetype=xdefaults

@@ -44,7 +44,7 @@
 #define BSPWM_GAPLESS_MONOCLE false
 #define BSPWM_GAP 25
 
-# gruvbox for gtk maybe??? idk...
+! # gruvbox for gtk maybe??? idk...
 #define GTK_THEME Midnight-BlueNight
 
 ! TODO: only make hearts red...
@@ -52,5 +52,13 @@
 ! #define SPOTIFY_BUTTON_BG COLOR_RED
 #define SPOTIFY_SELECTION_BG #181a2a
 ! #define SPOTIFY_SLIDER_BG #51535a
+
+#define ROFI_THEME blurry
+#define ROFI_FONT ROFI_FONT_SF
+#define ROFI_ACCENT_COLOR #e6b450
+#define ROFI_BG_COLOR #0a0e14f5
+#define ROFI_FG_COLOR #707a8c
+#define ROFI_SELECTION_BG_COLOR #1b2733
+#define ROFI_SELECTION_FG_COLOR #fafafa
 
 ! vim:ft=xdefaults

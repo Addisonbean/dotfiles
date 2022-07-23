@@ -47,6 +47,7 @@ local function language_feature_plugins(use)
 	use { 'addisonbean/loclist-toc-nvim' }
 	-- use '~/code/projects/loclist-toc-nvim/'
 	use { 'hashivim/vim-terraform', ft = 'terraform' }
+	use { 'farconics/victionary', ft = { 'text', 'markdown' } }
 end
 
 local function misc_plugins(use)

@@ -3,6 +3,7 @@ augroup my_autocommands
     au!
 
     au BufRead,BufNewFile *.gmi,*.gemini setlocal filetype=gemini
+    au BufRead,BufNewFile *.rasi setlocal filetype=rasi iskeyword +=-
 
     au BufRead ~/.config/nvim/init.lua setlocal path+=~/.config/nvim,~/.config/nvim/lua
 
@@ -17,6 +18,8 @@ augroup my_autocommands
     au FileType less setlocal iskeyword+=@
     
     au FileType vimwiki,text,markdown setlocal linebreak expandtab shiftwidth=2 tabstop=2
+
+    au FileType vimwiki,text,markdown,gemini nmap <buffer> K <Plug>(victionary#define_under_cursor)
     
     au FileType haskell setlocal expandtab tabstop=2 shiftwidth=2
 augroup END
