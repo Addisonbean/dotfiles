@@ -76,6 +76,7 @@ local function misc_plugins(use)
 	}
 	use 'AndrewRadev/splitjoin.vim'
 	use { 'simrat39/symbols-outline.nvim', cmd = { 'SymbolsOutline', 'SymbolsOutlineOpen' } }
+	use 'chrisbra/Colorizer'
 
 	-- use 'karb94/neoscroll.nvim'
 

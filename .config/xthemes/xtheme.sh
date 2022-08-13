@@ -12,7 +12,7 @@ fi
 xrdb -I$HOME/.config/xthemes ~/.config/xthemes/Xresources
 
 # Copy over various templates to edit in place for programs that can't easily read from xresources
-~/.config/xthemes/config-templates/apply.sh
+~/.config/xthemes/templates/apply.sh
 
 # xsettingsd
 xsettingsd & disown
@@ -48,6 +48,9 @@ dunst \
 	-nf "$(xval dunst.foreground)" \
 	-bf "$(xval dunst.foreground)" \
 	> /dev/null 2>&1 & disown
+
+# neovim lualine plugin
+~/.config/xthemes/update-lualine.py
 
 # herbstluftwm
 herbstclient reload & disown

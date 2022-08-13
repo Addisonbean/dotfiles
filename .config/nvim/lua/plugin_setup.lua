@@ -287,6 +287,11 @@ vim.g['victionary#map_defaults'] = false
 map('n', 'K', '')
 
 -- }}}
+-- {{{ chrisbra/Colorizer
+
+map('n', '<leader>sh', '<cmd>ColorToggle<cr>')
+
+-- }}}
 
 -- Colorscheme options
 

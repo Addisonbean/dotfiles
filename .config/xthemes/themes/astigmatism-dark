@@ -2,12 +2,6 @@
 ! https://www.reddit.com/r/unixporn/comments/j87kxb/cwm_astigmatism_friendly/
 
 ! TODO:
-! Fix these colors: b&w colors
-! Make a dark varient
-! Also, maybe make my own vim color scheme?
-! What about gtk...? Its not retro/ugly-in-a-cool-way enough
-! - Maybe start from one of those gtk theme generator things
-! like I did with the "pink" theme
 
 #define COLOR_BLACK      #333333
 #define COLOR_RED        #C77B63
@@ -27,36 +21,36 @@
 #define COLOR_B_CYAN     #60ADB3
 #define COLOR_B_WHITE    #999999
 
-#define COLOR_BLUE_WP #8FBCBB
-#define COLOR_BG #D9D9D9
-#define COLOR_FG #555555
+#define COLOR_BG #161616
+! #define COLOR_COLOR_WP #212121
+#define COLOR_FG #BBBBBB
+
+#define AUX_SELECTION_BG #212121
 
 ! Misc. Settings
-
-#define AUX_SELECTION_BG #C4C4C4
 
 #define ST_ALPHA 1.0
 #define ST_FONT ST_FONT_FIRA_CODE
 #define ST_CURSOR COLOR_BLUE
 #define ST_BORDER_WIDTH 50
 
-! #define POLYBAR_BG #D0D0D0
 #define POLYBAR_BG COLOR_BG
 #define POLYBAR_FG COLOR_FG
 #define POLYBAR_PRIMARY_FONT Terminus (TTF):size=13;2
 #define POLYBAR_LEFT_MODULES all-desktops
-#define POLYBAR_FOCUSED_DESKTOP #76a6a5
+#define POLYBAR_FOCUSED_DESKTOP COLOR_CYAN
 
-#define MY_WALLPAPER blue-ish.png
+#define MY_WALLPAPER checker-191919-393939.png
 
 #define BSPWM_FOCUSED_BORDER #D08770
 #define BSPWM_NORMAL_BORDER #A9A9A9
 #define BSPWM_GAPLESS_MONOCLE false
 #define BSPWM_GAP 25
 
-#define VIM_COLORSCHEME typewriter
+#define VIM_COLORSCHEME typewriter-night
 
-#define GTK_THEME Emacs
+! TODO: generate a gtk theme...
+#define GTK_THEME Midnight-BlueNight
 
 #define SPOTIFY_FOREGROUND COLOR_FG
 #define SPOTIFY_FOREGROUND2 COLOR_FG
@@ -66,8 +60,6 @@
 #define SPOTIFY_BUTTON_BG COLOR_GREEN
 #define SPOTIFY_BUTTON_HOVER_BG COLOR_CYAN
 #define SPOTIFY_SLIDER_BG #888888
-
-#define PICOM_SHADOW true
 
 #define ROFI_ACCENT_COLOR COLOR_MAGENTA
 #define ROFI_SELECTION_FG_COLOR COLOR_FG

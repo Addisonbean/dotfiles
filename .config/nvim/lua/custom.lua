@@ -1,14 +1,3 @@
--- vim.cmd [[
--- let alpha = system('xrdb -query | grep "vim.transparent-bg" | cut -f 2')
--- if alpha ==? "true\n"
---     hi clear SignColumn
---     hi LineNr guifg=grey ctermfg=grey
---     hi LineNr guibg=NONE
---     hi Normal guibg=NONE ctermbg=NONE
---     hi StatusLine guibg=NONE cterm=NONE
--- endif
--- ]]
-
 vim.cmd 'hi EndOfBuffer guibg=NONE guifg=NONE cterm=NONE'
 
 -- for result in string.gmatch("vim: 123\nvim2: 1234\n", "[^%s:]+:%s+([^\n]+)") do print(result) end
@@ -44,6 +33,8 @@ vim.cmd [[
     augroup colorscheme
 	au!
 	au ColorScheme vimspectr330-light hi Normal guifg=grey ctermfg=grey
+	au ColorScheme typewriter-night hi clear CursorLine
+	au ColorScheme typewriter-night hi CursorLine gui=NONE guibg=#333333
     augroup END
 ]]
 
