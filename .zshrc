@@ -42,6 +42,7 @@ alias ls="ls --color"
 alias grep="grep --color"
 alias feh="feh --no-fehbg"
 alias less="less -R"
+alias wget="wget --hsts-file ~/.config/wget/wget-hsts"
 
 autoload -Uz add-zsh-hook
 setopt prompt_subst
@@ -53,8 +54,7 @@ setopt appendhistory
 
 alias git-dot='git --git-dir=$HOME/.git-dotfiles/ --work-tree=$HOME'
 alias xtheme="$HOME/.config/xthemes/xtheme.sh"
-
-alias wget="wget --hsts-file ~/.config/wget/wget-hsts"
+alias x="xdg-open"
 
 # }}}
 # {{{ Prompt
@@ -94,6 +94,9 @@ export LS_COLORS="di=34:ln=35:so=33:pi=33:ex=31:bd=33:cd=33:su=37:sg=37:tw=37:ow
 
 export PATH="${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/bin:$PATH"
 export PATH="${CABAL_DIR}/bin:$PATH"
+
+export GOPATH="$HOME/.local/share/go"
+export PATH="$PATH:$GOPATH/bin"
 
 eval "$(fasd --init auto)"
 # Remove all the aliases except `z`

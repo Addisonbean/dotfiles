@@ -6,7 +6,6 @@
 # rg --json + jq ???
 # rofi -e for errors
 
-theme=ayu-dark
 notes_dir=~/documents/notes
 
 open-file() {
@@ -14,7 +13,7 @@ open-file() {
 }
 
 rofi-dialog() {
-	rofi -theme "$theme" -dmenu -sort -i -p "$1"
+	rofi -dmenu -sort -i -p "$1"
 }
 
 while [[ $# -gt 0 ]]; do
@@ -36,7 +35,7 @@ while [[ $# -gt 0 ]]; do
 	tags)
 		tag="$(rg --no-filename -e '^(:[^:]+)+:' "$notes_dir" | tr ':' '\n' | sort | uniq | sed '0,/^$/{//d}' | rofi-dialog "Tags")"
 		if [ -n "$tag" ]; then
-			note="$(rg ":${tag}:" "$notes_dir" | cut -d ':' -f 1 | xargs -n1 -d '\n' basename | rofi-dialog "Notes")"
+			note="$(rg ":${tag}:" "$notes_dir" | cut -d ':' -f 1 | xargs -n1 -d '\n' basename | uniq | rofi-dialog "Notes")"
 			[ -n "$note" ] && open-file "$notes_dir/$note"
 		fi
 		shift

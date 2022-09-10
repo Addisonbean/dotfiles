@@ -20,7 +20,7 @@ function make_config() {
 
 # rofi
 
-rofi_config="$HOME/.config/rofi/themes/theme.rasi"
+rofi_config="$HOME/.config/rofi/variables.rasi"
 make_config "rofi.rasi" "$rofi_config" "//"
 
 sed -i -E \

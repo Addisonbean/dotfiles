@@ -3,6 +3,6 @@
 #define ST_FONT_SCIENTIFIA scientifica:size=18:style=Medium:antialias=false
 #define ST_FONT_SF SF Mono:size=15:style=Regular:antialias=true
 
-#define ROFI_FONT_SF SF Mono Regular 12
+#define ROFI_FONT_SF SF Mono Regular 14
 
 ! vim:ft=xdefaults

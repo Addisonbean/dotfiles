@@ -11,14 +11,22 @@ fi
 bluetoothctl power on
 sleep 1
 
-device="$(bluetoothctl paired-devices | rofi -dmenu -i -p "Choose a device:" | cut -f 2 -d " ")"
+# device="$(bluetoothctl paired-devices | rofi -dmenu -i -p "Choose a device:" | cut -f 2 -d " ")"
+device="$(bluetoothctl devices | rofi -dmenu -i -p "Choose a device:" | cut -f 2 -d " ")"
 
 if [ -z "$device" ]; then
 	bluetoothctl power off
 	exit
 fi
 
-if ! bluetoothctl connect "$device"; then
+# if ! bluetoothctl connect "$device"; then
+# 	rofi -e "Could not connect to device..."
+# 	bluetoothctl power off
+# fi
+
+if bluetoothctl connect "$device"; then
+	rofi -e "Connected"
+else
 	rofi -e "Could not connect to device..."
 	bluetoothctl power off
 fi

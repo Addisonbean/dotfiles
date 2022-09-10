@@ -1,10 +1,6 @@
-/**
- * Ayu Dark theme ported for rofi
- */
-
 /* Adapted from https://github.com/dnordstrom/dotfiles/blob/master/rofi/ayu-dark.rasi */
 
-@import "theme"
+@import "variables"
 
 * {
 	text-color: @v-fg-color;
@@ -19,7 +15,8 @@
 	border: 1;
 	border-radius: 0;
 	padding: 16 14;
-	/* width: @width; */
+	height: 70%;
+	width: 800px;
 }
 
 element {

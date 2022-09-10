@@ -1,3 +1,5 @@
+# Note to self: this file isn't being used, see herbstluftwm config for keybindings
+
 # Restart bspwm (+ sxhkd b/c my bspwmrc)
 super + shift + r
 	bspc wm -r

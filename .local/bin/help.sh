@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
 
-theme=ayu-dark
-
 rofi-dialog() {
-	rofi -theme "$theme" -dmenu -sort -i -p "$1"
+	rofi -dmenu -sort -i -p "$1"
 }
 
 while [[ $# -gt 0 ]]; do
 	case "$1" in
 	commands)
-		cmd="$(echo -e "detect-timezone\nreset-timezone\nwifi-portal" | rofi-dialog "Commands")"
+		cmd="$(echo -e "detect-timezone\nreset-timezone\nwifi-portal\nbluetooth" | rofi-dialog "Commands")"
 		[ -n "$cmd" ] && "$0" "$cmd"
 		shift
 	;;
@@ -23,6 +21,10 @@ while [[ $# -gt 0 ]]; do
 	;;
 	wifi-portal)
 		xdg-open http://192.168.1.1/
+		shift
+	;;
+	bluetooth)
+		~/.local/bin/bluetooth.sh
 		shift
 	;;
 	adjust-sleep)
