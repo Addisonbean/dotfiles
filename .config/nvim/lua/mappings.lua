@@ -123,6 +123,7 @@ map('i', '<c-r>', '<c-g>u<c-r>')
 -- neovim 0.6.0 remaps this
 vim.cmd 'unmap Y'
 
+-- TODO: start a new undo chain *after* pasting here, in addition to before
 map('i', '<c-r>', '<c-g>u<c-r>')
 map('i', '.', '<c-g>u.')
 map('i', '!', '<c-g>u!')

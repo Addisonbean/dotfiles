@@ -1,7 +1,7 @@
 #!/usr/bin/zsh
 
 ~/.config/xthemes/xtheme.sh
-picom --experimental-backends &
+picom &
 autokey-gtk &
 xsetroot -cursor_name left_ptr &
 # redshift -c ~/.config/redshift.conf &

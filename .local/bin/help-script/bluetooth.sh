@@ -2,20 +2,24 @@
 
 # TODO: make this a polybar applet???
 
-# if  no bluetooth...
+source "$HOME/.local/bin/help-script/util.sh"
+
+# if no bluetooth...
 if ! systemctl is-enabled bluetooth.service > /dev/null; then
-	rofi -e "Error: bluetooth service isn't running..."
+	notify-rofi "Error: bluetooth service isn't running..."
 	exit
 fi
 
 bluetoothctl power on
 sleep 1
 
-# device="$(bluetoothctl paired-devices | rofi -dmenu -i -p "Choose a device:" | cut -f 2 -d " ")"
-device="$(bluetoothctl devices | rofi -dmenu -i -p "Choose a device:" | cut -f 2 -d " ")"
+device="$(bluetoothctl devices | rofi-selection "Choose a device:" | cut -f 2 -d " ")"
 
 if [ -z "$device" ]; then
-	bluetoothctl power off
+	# TODO: only do this if bluetooth was already off
+	# Or maybe if nothing is currently connected...
+
+	# bluetoothctl power off
 	exit
 fi
 
@@ -25,9 +29,9 @@ fi
 # fi
 
 if bluetoothctl connect "$device"; then
-	rofi -e "Connected"
+	notify "Connected"
 else
-	rofi -e "Could not connect to device..."
+	notify "Could not connect to device..."
 	bluetoothctl power off
 fi
 

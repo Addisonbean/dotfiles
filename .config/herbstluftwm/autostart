@@ -179,7 +179,7 @@ hc keybind $Mod-p spawn rofi -show drun -show-icons -i -width 640 -theme blurry-
 hc keybind $Mod-x spawn ~/.local/bin/xtheme-picker.sh
 hc keybind $Mod-e spawn st -c Ranger -e ranger
 hc keybind $Mod-m spawn rofi -theme blurry -show window -show-icons -i -width 960
-hc keybind $Mod-g spawn ~/.local/bin/help.sh commands
+hc keybind $Mod-g spawn ~/.local/bin/help-script/help.sh commands
 
 # Notes {{{
 

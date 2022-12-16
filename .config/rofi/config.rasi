@@ -8,7 +8,9 @@ configuration {
 
 	terminal: "st";
 	matching: "fuzzy";
-	monitor: "-1";
+
+	// TODO: -5 seems to do what I'd think -1 does (-1 is what I want)
+	monitor: "-5";
 
 	kb-row-left: "Control+h";
 	kb-row-right: "Control+l";
