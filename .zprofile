@@ -32,6 +32,8 @@ export _FASD_DATA="$XDG_CACHE_HOME/fasd/history"
 
 # [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]
 
+source "$HOME/.config/zprofile-secret"
+
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
 	exec startx
 fi

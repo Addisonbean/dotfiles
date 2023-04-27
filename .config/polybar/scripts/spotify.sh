@@ -4,7 +4,7 @@ running=$(pidof spotify)
 if [ "$running" != "" ]; then
     playerctl="playerctl --player playerctld"
 
-    icon="%{T2}%{F-}"
+    icon="%{T2}%{T-}"
 
     green="$(xrdb -query | grep 'ansi.color2' | cut -f 2)"
     shouldClip="$(xrdb -query | grep 'polybar.clipSpotifyModule' | cut -f 2)"

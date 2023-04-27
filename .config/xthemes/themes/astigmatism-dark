@@ -50,7 +50,7 @@
 #define VIM_COLORSCHEME typewriter-night
 
 ! TODO: generate a gtk theme...
-#define GTK_THEME Midnight-BlueNight
+#define GTK_THEME Midnight-Night
 
 #define SPOTIFY_FOREGROUND COLOR_FG
 #define SPOTIFY_FOREGROUND2 COLOR_FG

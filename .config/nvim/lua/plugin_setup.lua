@@ -83,6 +83,7 @@ end
 
 vim.g.vimwiki_folding = 'expr'
 vim.g.vimwiki_conceal_onechar_markers = 0
+-- vim.g.vimwiki_conceallevel = 2
 
 function _G.vimwiki_refresh_index()
 	if vim.fn.expand('%:t') == 'index.md' then
@@ -290,6 +291,16 @@ map('n', 'K', '')
 -- {{{ chrisbra/Colorizer
 
 map('n', '<leader>sh', '<cmd>ColorToggle<cr>')
+
+-- }}}
+-- {{{ Konfekt/FastFold
+
+vim.g.markdown_folding = 1
+
+-- }}}
+-- {{{ gu-fan/riv.vim
+
+vim.g.riv_projects = { { path = '~/documents/notes' } }
 
 -- }}}
 

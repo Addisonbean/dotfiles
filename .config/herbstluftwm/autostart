@@ -131,6 +131,7 @@ hc keybind $Mod-space                                                           
 
 # mouse
 hc mouseunbind --all
+# This one isn't working...
 hc mousebind $Mod-Button1 move
 hc mousebind $Mod-Button2 zoom
 hc mousebind $Mod-Button3 resize

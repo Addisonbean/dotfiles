@@ -6,7 +6,13 @@
 #define VIM_TRANSPARENT_BG true
 #endif
 
+#ifndef VIM_TEXT_FG
+! This is awkwardly used... Anything other than "default" will be treated like a color value
+#define VIM_TEXT_FG default
+#endif
+
 vim.colorscheme: VIM_COLORSCHEME
 vim.transparent-bg: VIM_TRANSPARENT_BG
+vim.text-fg: VIM_TEXT_FG
 
 ! vim:ft=xdefaults

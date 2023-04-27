@@ -16,8 +16,13 @@ require'nvim-treesitter.configs'.setup {
     },
 }
 
-local ft_to_parser = require'nvim-treesitter.parsers'.filetype_to_parsername
-ft_to_parser.typescriptreact = 'typescript'
+-- local ft_to_parser = require'nvim-treesitter.parsers'.filetype_to_parsername
+-- ft_to_parser.typescriptreact = 'typescript'
+
+-- Which one replaces the code above??? Idk...
+
+-- vim.treesitter.language.register('typescriptreact', 'typescript')
+-- vim.treesitter.language.register('typescript', 'typescriptreact')
 
 vim.o.foldmethod = 'expr'
 vim.o.foldexpr = 'nvim_treesitter#foldexpr()'

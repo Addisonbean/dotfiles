@@ -32,7 +32,7 @@ case "$action" in
 			exit
 		fi
 
-		# TODO: send a dunst notification when the mounting is done
+		# TODO: send a dunst notification when the mounting is done (w/ the mount point or something. Open it in ranger???)
 		# borg mount "/mnt/backup/borg::$choice" "$BORG_MOUNT_POINT"
 		# or maybe...
 		# borg mount -o uid=1000,gid=1000 "/mnt/backup/borg::$choice" "$BORG_MOUNT_POINT"

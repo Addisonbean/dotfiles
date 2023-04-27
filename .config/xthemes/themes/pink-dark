@@ -2,6 +2,8 @@
 ! See https://coolors.co/fff5fa-f0dde6-997f8c-7d5e6d-33222b-1f1218
 ! and https://coolors.co/e04d38-e07638-699e34-349e90-4286c9-a565c9-e0708c
 
+! TODO: I like this color, and should work it into here: #471d31
+
 #define COLOR_BLACK   #1F1218
 #define COLOR_RED     #E56756
 #define COLOR_GREEN   #7FBF40
@@ -26,7 +28,7 @@
 
 ! Misc. Settings
 
-#define ST_ALPHA 0.75
+#define ST_ALPHA 0.8
 #define ST_CURSOR COLOR_PINK
 #define ST_FONT ST_FONT_SF
 
@@ -46,7 +48,10 @@
 
 ! The colors on the light theme stand out more
 #define VIM_COLORSCHEME vimspectr330-light
+#define VIM_TEXT_FG #cccccc
 
 #define GTK_THEME Adwaita-Pink-Dark
+
+#define ROFI_BG_COLOR #471d31
 
 ! vim:ft=xdefaults

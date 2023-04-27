@@ -45,7 +45,7 @@
 #define BSPWM_GAP 25
 
 ! # gruvbox for gtk maybe??? idk...
-#define GTK_THEME Midnight-BlueNight
+#define GTK_THEME Midnight-Night
 
 ! TODO: only make hearts red...
 ! #define SPOTIFY_FOREGROUND COLOR_RED

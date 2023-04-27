@@ -16,15 +16,17 @@ local function on_attach(client, bufnr)
     buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
     buf_set_keymap('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
     buf_set_keymap('i', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-    buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-    buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-    buf_set_keymap('n', '[D', '<cmd>lua vim.lsp.diagnostic.goto_prev({ severity_limit = "Error" })<CR>', opts)
-    buf_set_keymap('n', ']D', '<cmd>lua vim.lsp.diagnostic.goto_next({ severity_limit = "Error" })<CR>', opts)
+    buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+    buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+    buf_set_keymap('n', '[D', '<cmd>lua vim.diagnostic.goto_prev({ severity_limit = "Error" })<CR>', opts)
+    buf_set_keymap('n', ']D', '<cmd>lua vim.diagnostic.goto_next({ severity_limit = "Error" })<CR>', opts)
     buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-    buf_set_keymap('n', '<leader>gd', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>', opts)
-    buf_set_keymap('n', '<leader>gE', '<cmd>lua vim.lsp.diagnostic.set_loclist({ workspace = true, severity_limit = "Error" })<CR>', opts)
-    buf_set_keymap('n', '<leader>ge', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+    buf_set_keymap('n', '<leader>gd', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
+    buf_set_keymap('n', '<leader>gE', '<cmd>lua vim.diagnostic.setloclist({ workspace = true, severity_limit = "Error" })<CR>', opts)
+    buf_set_keymap('n', '<leader>ge', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
     buf_set_keymap('n', '<leader>ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+
+    -- TODO: Should I be using the `range argument here?
     buf_set_keymap('v', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 
     -- telescope.nvim mappings
@@ -86,7 +88,7 @@ local extra_settings = {
     },
 }
 
-local servers = { 'cssls', 'hls', 'html', 'pylsp', 'rust_analyzer', 'vimls', 'tsserver', 'bashls', 'omnisharp', 'sumneko_lua', 'eslint', 'terraformls' }
+local servers = { 'cssls', 'hls', 'html', 'pylsp', 'rust_analyzer', 'vimls', 'tsserver', 'bashls', 'omnisharp', 'lua_ls', 'eslint', 'terraformls' }
 
 -- Use `:LspInstall` to install servers via. `kabouzeid/nvim-lspinstall`
 -- require'lspinstall'.setup()

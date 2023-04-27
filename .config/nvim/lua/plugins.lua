@@ -7,7 +7,7 @@ local function colorscheme_plugins(use)
 	use 'ayu-theme/ayu-vim'
 	use 'skbolton/embark'
 	use 'Rigellute/shades-of-purple.vim'
-	use 'srcery-colors/srcery-vim'
+	use { 'srcery-colors/srcery-vim', as = 'srcery' }
 	use 'chuling/equinusocio-material.vim'
 	use 'nightsense/strawberry'
 	use 'nightsense/vimspectr'
@@ -48,6 +48,7 @@ local function language_feature_plugins(use)
 	-- use '~/code/projects/loclist-toc-nvim/'
 	use { 'hashivim/vim-terraform', ft = 'terraform' }
 	use { 'farconics/victionary', ft = { 'text', 'markdown' } }
+	use { 'Rykka/riv.vim', ft = 'rst' }
 end
 
 local function misc_plugins(use)
@@ -82,6 +83,8 @@ local function misc_plugins(use)
 
 	-- A snippet plugin is needed for cssls to support autocomplete
 	-- use { 'SirVer/ultisnips', requires = { 'hrsh7th/nvim-compe' } }
+
+	use 'Konfekt/FastFold'
 end
 
 return require('packer').startup(function(use)

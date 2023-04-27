@@ -11,14 +11,25 @@ vim.cmd 'command! X x'
 -- For the `PdfView` command
 math.randomseed(os.time())
 
-function _G.PdfView()
-    local fname = tostring(math.random(0, 100000))
+function PdfView(fpath)
     -- TODO: use https://github.com/hishamhm/f-strings
-    local cmd = '!pandoc -s % -o /tmp/' .. fname .. '.pdf && xdg-open /tmp/' .. fname .. '.pdf && rm /tmp/' .. fname .. '.pdf'
-    os.execute(cmd)
-end
 
-vim.cmd 'command! Pdf call PdfView()'
+    local delete = false
+    if fpath == nil then
+	local number = tostring(math.random(0, 100000))
+	fpath = '/tmp/' .. number .. '.pdf'
+	delete = true
+    end
+
+    local cmd = '!pandoc -s % -o ' .. fpath .. ' && xdg-open ' .. fpath
+    if delete then
+	cmd = cmd .. ' && rm ' .. fpath
+    end
+
+    vim.cmd(cmd)
+end
+vim.api.nvim_create_user_command('Preview', function() PdfView() end , {})
+vim.api.nvim_create_user_command('MakePdf', function(opts) PdfView(opts.args) end, { nargs = 1 })
 
 -- Thanks to https://stackoverflow.com/a/4293538/1525759
 -- function WriteCreatingDirs()

@@ -9,7 +9,8 @@ local res = fd:read('*a')
 fd:close()
 
 local xres = {}
-for k, v in string.gmatch(res, "([^%s:]+):%s+([^\n]+)") do
+-- for k, v in string.gmatch(res, "([^%s:]+):%s+([^\n]+)") do
+for k, v in string.gmatch(res, "([^%s:]+):%s*([^\n]+)") do
     xres[k] = v
 end
 
@@ -39,3 +40,8 @@ vim.cmd [[
 ]]
 
 vim.cmd('color ' .. xres['vim.colorscheme'])
+
+local text_color = xres['vim.text-fg']
+if text_color ~= 'default' then
+    vim.cmd('hi Normal guifg=' .. text_color)
+end
