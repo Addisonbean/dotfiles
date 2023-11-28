@@ -20,7 +20,7 @@ augroup my_autocommands
     au FileType vimwiki,text,markdown setlocal linebreak expandtab shiftwidth=2 tabstop=2
 
     au FileType vimwiki,text,markdown,gemini nmap <buffer> K <Plug>(victionary#define_under_cursor)
-    
+
     au FileType haskell setlocal expandtab tabstop=2 shiftwidth=2
 augroup END
 ]]

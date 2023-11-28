@@ -1,96 +1,112 @@
-local function colorscheme_plugins(use)
-	use 'chriskempson/base16-vim'
-	use 'morhetz/gruvbox'
-	use 'tyrannicaltoucan/vim-deep-space'
-	use 'tyrannicaltoucan/vim-quantum'
-	use 'ronny/birds-of-paradise.vim'
-	use 'ayu-theme/ayu-vim'
-	use 'skbolton/embark'
-	use 'Rigellute/shades-of-purple.vim'
-	use { 'srcery-colors/srcery-vim', as = 'srcery' }
-	use 'chuling/equinusocio-material.vim'
-	use 'nightsense/strawberry'
-	use 'nightsense/vimspectr'
-	use 'addisonbean/amber'
-	use 'metalelf0/base16-black-metal-scheme'
-	-- This isn't on GitHub anymore :(
-	-- use 'co1ncidence/bliss'
-	use 'logico/typewriter-vim'
-	use 'arcticicestudio/nord-vim'
-	use 'arzg/vim-colors-xcode'
-	use '~/code/projects/srcery-basic'
-	use 'pineapplegiant/spaceduck'
-	use 'kyazdani42/blue-moon'
-	use 'danishprakash/vim-yami'
-	use 'plan9-for-vimspace/acme-colors'
-	use 'mangeshrex/uwu.vim'
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
+vim.opt.rtp:prepend(lazypath)
 
-local function language_feature_plugins(use)
-	use { 'mattn/emmet-vim', ft = { 'html', 'eruby', 'php', 'xml', 'vue', 'js', 'typescript', 'typescriptreact' } }
-	use { 'neovimhaskell/haskell-vim', ft = 'haskell' }
-	use { 'rudes/vim-java', ft = 'java' }
-	use { 'cespare/vim-toml', ft = 'toml' }
-	use { 'posva/vim-vue', ft = 'vue' }
-	use { 'maxmellon/vim-jsx-pretty', ft = 'js' }
-	use { 'ElmCast/elm-vim', ft = 'elm' }
-	use { 'edwinb/idris2-vim', ft = 'idr' }
-	use { 'pangloss/vim-javascript', ft = 'js' }
-	use { 'leafgarland/typescript-vim', ft = 'typescript' }
-	use { 'lervag/vimtex', ft = 'latex' }
-	use { 'mfussenegger/nvim-dap' }
-	use { 'sbdchd/neoformat', cmd = 'Neoformat' }
-	-- use { 'whatyouhide/vim-textobj-xmlattr', requires = 'kana/vim-textobj-user' }
-	use { 'inside/vim-textobj-jsxattr', requires = 'kana/vim-textobj-user', ft = { 'xml', 'html', 'typescriptreact' } }
-	use { 'pirmd/gemini.vim', ft = 'gemini' }
-	use { 'rodjek/vim-puppet', ft = 'puppet' }
-	use { 'addisonbean/loclist-toc-nvim' }
-	-- use '~/code/projects/loclist-toc-nvim/'
-	use { 'hashivim/vim-terraform', ft = 'terraform' }
-	use { 'farconics/victionary', ft = { 'text', 'markdown' } }
-	use { 'Rykka/riv.vim', ft = 'rst' }
-end
+require('lazy').setup({
 
-local function misc_plugins(use)
-	use 'tpope/vim-surround'
-	use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }
-	use 'tpope/vim-sleuth'
-	use 'tomtom/tcomment_vim'
-	use { 'Pocco81/TrueZen.nvim', cmd = { 'TZAtaraxis', 'TZMinimalist', 'TZFocus' } }
-	use { 'junegunn/limelight.vim', cmd = 'Limelight' }
-	use 'mjbrownie/swapit'
-	use 'junegunn/vim-easy-align'
-	use 'tpope/vim-repeat'
-	use 'hoob3rt/lualine.nvim'
-	use 'christoomey/vim-tmux-navigator'
-	use 'lifepillar/vim-colortemplate'
-	use 'vimwiki/vimwiki'
-	use { 'RRethy/vim-hexokinase', ft = 'css', run = 'make hexokinase' }
-	use 'tpope/vim-abolish'
-	use { 'junegunn/fzf.vim', requires = 'junegunn/fzf' }
-	use 'neovim/nvim-lspconfig'
-	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-	use { 'nvim-treesitter/nvim-treesitter-textobjects', requires = 'nvim-treesitter/nvim-treesitter' }
-	use {
+	-- Colorschemes
+
+	{ 'chriskempson/base16-vim', lazy = true },
+	{ 'morhetz/gruvbox', lazy = true },
+	{ 'tyrannicaltoucan/vim-deep-space', lazy = true },
+	{ 'tyrannicaltoucan/vim-quantum', lazy = true },
+	{ 'ronny/birds-of-paradise.vim', lazy = true },
+	{ 'ayu-theme/ayu-vim', lazy = true },
+	{ 'skbolton/embark', lazy = true },
+	{ 'Rigellute/shades-of-purple.vim', lazy = true },
+	{ 'srcery-colors/srcery-vim', name = 'srcery', lazy = true },
+	{ 'chuling/equinusocio-material.vim', lazy = true },
+	{ 'nightsense/strawberry', lazy = true },
+	{ 'nightsense/vimspectr', lazy = true },
+	{ 'addisonbean/amber', lazy = true },
+	{ 'metalelf0/base16-black-metal-scheme', lazy = true },
+	-- This isn't on GitHub anymore :(,
+	-- 'co1ncidence/bliss',
+	{ 'logico/typewriter-vim', lazy = true },
+	{ 'arcticicestudio/nord-vim', lazy = true },
+	{ 'arzg/vim-colors-xcode', lazy = true },
+	{ dir = '~/code/projects/srcery-basic', lazy = true },
+	{ 'pineapplegiant/spaceduck', lazy = true },
+	{ 'kyazdani42/blue-moon', lazy = true },
+	{ 'danishprakash/vim-yami', lazy = true },
+	{ 'plan9-for-vimspace/acme-colors', lazy = true },
+	{ 'mangeshrex/uwu.vim', lazy = true },
+
+	-- Language specific
+
+	{ 'mattn/emmet-vim', ft = { 'html', 'eruby', 'php', 'xml', 'vue', 'js', 'typescript', 'typescriptreact' } },
+	{ 'neovimhaskell/haskell-vim', ft = 'haskell' },
+	{ 'rudes/vim-java', ft = 'java' },
+	{ 'cespare/vim-toml', ft = 'toml' },
+	{ 'posva/vim-vue', ft = 'vue' },
+	{ 'maxmellon/vim-jsx-pretty', ft = 'js' },
+	{ 'ElmCast/elm-vim', ft = 'elm' },
+	{ 'edwinb/idris2-vim', ft = 'idr' },
+	{ 'pangloss/vim-javascript', ft = 'js' },
+	{ 'leafgarland/typescript-vim', ft = 'typescript' },
+	{ 'lervag/vimtex', ft = 'latex' },
+	{ 'mfussenegger/nvim-dap' },
+	{ 'sbdchd/neoformat', cmd = 'Neoformat' },
+	-- { 'whatyouhide/vim-textobj-xmlattr', dependencies = 'kana/vim-textobj-user' },
+	{ 'inside/vim-textobj-jsxattr', dependencies = 'kana/vim-textobj-user', ft = { 'xml', 'html', 'typescriptreact' } },
+	{ 'pirmd/gemini.vim', ft = 'gemini' },
+	{ 'rodjek/vim-puppet', ft = 'puppet' },
+	{ 'addisonbean/loclist-toc-nvim' },
+	-- '~/code/projects/loclist-toc-nvim/',
+	{ 'hashivim/vim-terraform', ft = 'terraform' },
+	{ 'farconics/victionary', ft = { 'text', 'markdown' } },
+	{ 'Rykka/riv.vim', ft = 'rst' },
+
+	-- Misc plugins
+
+	'tpope/vim-surround',
+	{ 'lewis6991/gitsigns.nvim', dependencies = 'nvim-lua/plenary.nvim' },
+	'tpope/vim-sleuth',
+	'tomtom/tcomment_vim',
+	{ 'Pocco81/TrueZen.nvim', cmd = { 'TZAtaraxis', 'TZMinimalist', 'TZFocus' } },
+	{ 'junegunn/limelight.vim', cmd = 'Limelight' },
+	'mjbrownie/swapit',
+	'junegunn/vim-easy-align',
+	'tpope/vim-repeat',
+	'hoob3rt/lualine.nvim',
+	'christoomey/vim-tmux-navigator',
+	'lifepillar/vim-colortemplate',
+	'vimwiki/vimwiki',
+	{ 'RRethy/vim-hexokinase', ft = 'css', build = 'make hexokinase' },
+	'tpope/vim-abolish',
+	{ 'junegunn/fzf.vim', dependencies = 'junegunn/fzf' },
+	'neovim/nvim-lspconfig',
+	{ 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+	{ 'nvim-treesitter/nvim-treesitter-textobjects', dependencies = 'nvim-treesitter/nvim-treesitter' },
+	{
 		'nvim-telescope/telescope.nvim',
-		requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
-	}
-	use 'AndrewRadev/splitjoin.vim'
-	use { 'simrat39/symbols-outline.nvim', cmd = { 'SymbolsOutline', 'SymbolsOutlineOpen' } }
-	use 'chrisbra/Colorizer'
+		dependencies = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
+	},
+	'AndrewRadev/splitjoin.vim',
+	{ 'simrat39/symbols-outline.nvim', cmd = { 'SymbolsOutline', 'SymbolsOutlineOpen' } },
+	'chrisbra/Colorizer',
 
-	-- use 'karb94/neoscroll.nvim'
+	-- 'karb94/neoscroll.nvim',
 
 	-- A snippet plugin is needed for cssls to support autocomplete
-	-- use { 'SirVer/ultisnips', requires = { 'hrsh7th/nvim-compe' } }
+	-- { 'SirVer/ultisnips', dependencies = { 'hrsh7th/nvim-compe' } },
 
-	use 'Konfekt/FastFold'
-end
+	'Konfekt/FastFold',
+})
 
-return require('packer').startup(function(use)
-	use 'wbthomason/packer.nvim'
-
-	colorscheme_plugins(use)
-	language_feature_plugins(use)
-	misc_plugins(use)
-end)
+-- return require('packer').startup(function(use)
+-- 	use 'wbthomason/packer.nvim'
+--
+-- 	colorscheme_plugins(use)
+-- 	language_feature_plugins(use)
+-- 	misc_plugins(use)
+-- end)

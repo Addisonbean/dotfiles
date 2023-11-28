@@ -297,10 +297,15 @@ map('n', '<leader>sh', '<cmd>ColorToggle<cr>')
 
 vim.g.markdown_folding = 1
 
+
+
+-- vim.opt.sessionoptions:remove('folds')
+
 -- }}}
 -- {{{ gu-fan/riv.vim
 
 vim.g.riv_projects = { { path = '~/documents/notes' } }
+vim.cmd [[autocmd BufEnter *.md setlocal foldexpr=MarkdownFold() foldmethod=expr]]
 
 -- }}}
 

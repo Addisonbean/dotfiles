@@ -4,8 +4,8 @@
 picom &
 autokey-gtk &
 xsetroot -cursor_name left_ptr &
-# redshift -c ~/.config/redshift.conf &
+redshift &
 xmodmap ~/.config/xmodmaprc &
 xbanish &
-# exec bspwm
+
 exec herbstluftwm

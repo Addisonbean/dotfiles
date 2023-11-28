@@ -157,8 +157,8 @@ hc keybind XF86AudioPlay spawn bash -c '\
 hc keybind XF86AudioMicMute spawn bash -c '\
     [ -z "$(pidof spotify)" ] && herbstclient use_index 2 && spotify; \
     playerctl --player spotify play-pause'
-hc keybind Alt-XF86AudioPlay spawn playerctl --player chromium play-pause
-hc keybind Alt-XF86AudioMicMute spawn playerctl --player chromium play-pause
+hc keybind Alt-XF86AudioPlay spawn playerctl --player brave play-pause
+hc keybind Alt-XF86AudioMicMute spawn playerctl --player brave play-pause
 hc keybind XF86AudioPrev spawn playerctl previous
 hc keybind XF86AudioNext spawn playerctl next
 
