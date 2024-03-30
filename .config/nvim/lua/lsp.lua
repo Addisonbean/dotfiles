@@ -1,37 +1,44 @@
 local nvim_lsp = require('lspconfig')
 
-local function on_attach(client, bufnr)
-    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-    local opts = { noremap=true, silent=true }
-    buf_set_keymap('n', '<C-]>', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-    buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
+    -- Buffer local mappings.
+    local opts = { buffer = ev.buf, silent = true }
+    vim.keymap.set('n', '<C-]>', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
     -- I use telescope.nvim for references via. `gr` instead of this
     -- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-    buf_set_keymap('n', 'gy', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-    buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-    buf_set_keymap('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-    buf_set_keymap('i', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-    buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-    buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-    buf_set_keymap('n', '[D', '<cmd>lua vim.diagnostic.goto_prev({ severity_limit = "Error" })<CR>', opts)
-    buf_set_keymap('n', ']D', '<cmd>lua vim.diagnostic.goto_next({ severity_limit = "Error" })<CR>', opts)
-    buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-    buf_set_keymap('n', '<leader>gd', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
-    buf_set_keymap('n', '<leader>gE', '<cmd>lua vim.diagnostic.setloclist({ workspace = true, severity_limit = "Error" })<CR>', opts)
-    buf_set_keymap('n', '<leader>ge', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-    buf_set_keymap('n', '<leader>ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+    vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<c-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('i', '<c-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+    vim.keymap.set('n', '[D', function()
+	vim.diagnostic.goto_prev({ severity_limit = "Error" })
+    end, opts)
+    vim.keymap.set('n', ']D', function()
+	vim.diagnostic.goto_next({ severity_limit = "Error" })
+    end, opts)
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set('n', '<leader>gd', vim.diagnostic.open_float, opts)
+    vim.keymap.set('n', '<leader>gE', function()
+	vim.diagnostic.setloclist({ workspace = true, severity_limit = "Error" })
+    end, opts)
+    vim.keymap.set('n', '<leader>ge', vim.diagnostic.setloclist, opts)
+    vim.keymap.set('n', '<leader>ga', vim.lsp.buf.code_action, opts)
 
     -- TODO: Should I be using the `range argument here?
-    buf_set_keymap('v', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+    vim.keymap.set('v', 'ga', vim.lsp.buf.code_action, opts)
 
     -- telescope.nvim mappings
-    buf_set_keymap('n', 'gr', '<cmd>Telescope lsp_references<cr>', opts)
-end
+    vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', opts)
+  end,
+})
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.codeAction = {
@@ -58,8 +65,11 @@ table.insert(runtime_path, 'lua/?/init.lua')
 local pid = vim.fn.getpid()
 -- local omnisharp_bin = "/path/to/omnisharp-repo/run"
 
+-- typescript/vue/volar settings
+local vue_language_server_path = '/usr/lib/node_modules/@vue/language-server'
+
 local extra_settings = {
-    sumneko_lua = {
+    lua_ls = {
 	settings = {
 	    Lua = {
 		runtime = {
@@ -86,17 +96,24 @@ local extra_settings = {
     omnisharp = {
 	cmd = { "omnisharp", "--languageserver" , "--hostPID", tostring(pid) },
     },
+    tsserver = {
+	init_options = {
+	    plugins = {
+		{
+		    name = '@vue/typescript-plugin',
+		    location = vue_language_server_path,
+		    languages = { 'vue' },
+		},
+	    },
+	},
+	filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+    },
 }
 
-local servers = { 'cssls', 'hls', 'html', 'pylsp', 'rust_analyzer', 'vimls', 'tsserver', 'bashls', 'omnisharp', 'lua_ls', 'eslint', 'terraformls' }
-
--- Use `:LspInstall` to install servers via. `kabouzeid/nvim-lspinstall`
--- require'lspinstall'.setup()
--- local servers = require'lspinstall'.installed_servers()
+local servers = { 'cssls', 'hls', 'html', 'pylsp', 'rust_analyzer', 'vimls', 'tsserver', 'bashls', 'omnisharp', 'lua_ls', 'eslint', 'terraformls', 'volar' }
 
 for _, server in pairs(servers) do
     local settings = {
-	on_attach = on_attach,
 	capabilities = capabilities,
     }
     if extra_settings[server] ~= nil then

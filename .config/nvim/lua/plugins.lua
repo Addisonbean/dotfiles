@@ -80,7 +80,7 @@ require('lazy').setup({
 	'hoob3rt/lualine.nvim',
 	'christoomey/vim-tmux-navigator',
 	'lifepillar/vim-colortemplate',
-	'vimwiki/vimwiki',
+	-- 'vimwiki/vimwiki',
 	{ 'RRethy/vim-hexokinase', ft = 'css', build = 'make hexokinase' },
 	'tpope/vim-abolish',
 	{ 'junegunn/fzf.vim', dependencies = 'junegunn/fzf' },
@@ -101,12 +101,40 @@ require('lazy').setup({
 	-- { 'SirVer/ultisnips', dependencies = { 'hrsh7th/nvim-compe' } },
 
 	'Konfekt/FastFold',
+	{
+		"epwalsh/obsidian.nvim",
+		version = "*",
+		lazy = true,
+		ft = "markdown",
+		event = {
+			'BufReadPre ' .. vim.env.XDG_DOCUMENTS_DIR .. '/obsidian/**.md',
+			'BufNewFile ' .. vim.env.XDG_DOCUMENTS_DIR .. '/obsidian/**.md',
+		},
+		dependencies = {
+			'nvim-lua/plenary.nvim', -- required
+			'hrsh7th/nvim-cmp',
+		},
+		opts = {
+			templates = {
+				subdir = 'templates'
+			},
+			workspaces = {
+				{
+					name = 'notes',
+					path = vim.env.XDG_DOCUMENTS_DIR .. '/obsidian',
+				},
+			},
+			-- completion = {
+            --
+			-- },
+			mappings = {
+				["<c-space>"] = {
+					action = function()
+						return require("obsidian").util.toggle_checkbox()
+					end,
+					opts = { buffer = true },
+				},
+			},
+		},
+	},
 })
-
--- return require('packer').startup(function(use)
--- 	use 'wbthomason/packer.nvim'
---
--- 	colorscheme_plugins(use)
--- 	language_feature_plugins(use)
--- 	misc_plugins(use)
--- end)

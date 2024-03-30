@@ -24,7 +24,7 @@ function volume_change_notification() {
 	msg="$dashes$(echo -e '\u252B')$spaces$percent"
 	icon="$1"
 
-	dunstify -a "volume-change" -r 2593 -t 1500 -u normal "$icon" "$msg"
+	dunstify -a "volume-change" -r 2593 -t 1500 -u normal "$icon " "$msg"
 }
 
 function mute_toggle_notification() {
@@ -39,14 +39,15 @@ function mute_toggle_notification() {
 
 case "$1" in
 	up)
-		amixer -D pulse sset Master 5%+ | get_level | volume_change_notification ""
-		amixer -D pulse sset Master on
+		pactl set-sink-volume @DEFAULT_SINK@ +5%
+		amixer | get_level | volume_change_notification ""
 		;;
 	down)
-		amixer -D pulse sset Master 5%- | get_level | volume_change_notification ""
-		amixer -D pulse sset Master on
+		pactl set-sink-volume @DEFAULT_SINK@ -5%
+		amixer | get_level | volume_change_notification ""
 		;;
 	toggle)
-		amixer -D pulse sset Master toggle | mute_toggle_notification
+		pactl set-sink-mute @DEFAULT_SINK@ toggle
+		amixer | mute_toggle_notification
 		;;
 esac

@@ -62,3 +62,5 @@ vim.o.smartcase = true
 
 -- Use the case of the typed text when inserting autocompleted text
 vim.o.infercase = true
+
+vim.o.conceallevel = 1

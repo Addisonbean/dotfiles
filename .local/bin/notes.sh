@@ -24,7 +24,7 @@ while [[ $# -gt 0 ]]; do
 		shift
 	;;
 	notes)
-		note="$(ls -ctp "$NOTES_DIR" | rofi-dialog "Notes")"
+		note="$(ls -tp "$NOTES_DIR" | rofi-dialog "Notes")"
 		[ -n "$note" ] && nt-open-note "$NOTES_DIR/$note"
 		shift
 	;;

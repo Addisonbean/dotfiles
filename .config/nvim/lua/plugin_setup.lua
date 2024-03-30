@@ -96,6 +96,9 @@ end
 vim.cmd [[autocmd BufEnter,BufWritePre * if &ft ==# 'vimwiki' | :call v:lua.vimwiki_refresh_index() | endif]]
 vim.cmd [[autocmd FileType vimwiki nmap <buffer> <c-]> <cr>]]
 
+vim.cmd [[nmap <f13> <Plug>VimwikiGoBackLink]]
+vim.cmd [[nmap <Backspace> <Plug>VimwikiRemoveHeaderLevel]]
+
 -- }}}
 -- nvim-telescope/telescope.nvim {{{
 

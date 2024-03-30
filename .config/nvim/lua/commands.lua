@@ -15,7 +15,7 @@ function PdfView(fpath)
     -- TODO: use https://github.com/hishamhm/f-strings
 
     local delete = false
-    if fpath == nil then
+    if fpath == nil or fpath == '' then
 	local number = tostring(math.random(0, 100000))
 	fpath = '/tmp/' .. number .. '.pdf'
 	delete = true
@@ -29,7 +29,7 @@ function PdfView(fpath)
     vim.cmd(cmd)
 end
 vim.api.nvim_create_user_command('Preview', function() PdfView() end , {})
-vim.api.nvim_create_user_command('MakePdf', function(opts) PdfView(opts.args) end, { nargs = 1 })
+vim.api.nvim_create_user_command('MakePdf', function(opts) PdfView(opts.args) end, { nargs = '?' })
 
 -- Thanks to https://stackoverflow.com/a/4293538/1525759
 -- function WriteCreatingDirs()
