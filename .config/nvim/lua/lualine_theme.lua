@@ -10,13 +10,13 @@ local colors = {
 	-- lightgray = '#504945',
 	-- inactivegray = '#7c6f64',
 
-	red = '#C77B63',
-	green = '#A1B33E',
-	blue = '#76A6A5',
-	yellow = '#C2B44F',
+	red = '#ff595e',
+	green = '#8ac926',
+	blue = '#1982c4',
+	yellow = '#ffca4a',
 	magenta = '#ffee99',
-	bg = '#161616',
-	fg = '#BBBBBB',
+	bg = '#3a2b2f',
+	fg = '#fffbf0',
 }
 
 return {

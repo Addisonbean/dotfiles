@@ -11,35 +11,37 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local lazy_colors = true
+
 require('lazy').setup({
 
 	-- Colorschemes
 
-	{ 'chriskempson/base16-vim', lazy = true },
-	{ 'morhetz/gruvbox', lazy = true },
-	{ 'tyrannicaltoucan/vim-deep-space', lazy = true },
-	{ 'tyrannicaltoucan/vim-quantum', lazy = true },
-	{ 'ronny/birds-of-paradise.vim', lazy = true },
-	{ 'ayu-theme/ayu-vim', lazy = true },
-	{ 'skbolton/embark', lazy = true },
-	{ 'Rigellute/shades-of-purple.vim', lazy = true },
-	{ 'srcery-colors/srcery-vim', name = 'srcery', lazy = true },
-	{ 'chuling/equinusocio-material.vim', lazy = true },
-	{ 'nightsense/strawberry', lazy = true },
-	{ 'nightsense/vimspectr', lazy = true },
-	{ 'addisonbean/amber', lazy = true },
-	{ 'metalelf0/base16-black-metal-scheme', lazy = true },
+	{ 'chriskempson/base16-vim', lazy = lazy_colors },
+	{ 'morhetz/gruvbox', lazy = lazy_colors },
+	{ 'tyrannicaltoucan/vim-deep-space', lazy = lazy_colors },
+	{ 'tyrannicaltoucan/vim-quantum', lazy = lazy_colors },
+	{ 'ronny/birds-of-paradise.vim', lazy = lazy_colors },
+	{ 'ayu-theme/ayu-vim', lazy = lazy_colors },
+	{ 'skbolton/embark', lazy = lazy_colors },
+	{ 'Rigellute/shades-of-purple.vim', lazy = lazy_colors },
+	{ 'srcery-colors/srcery-vim', name = 'srcery', lazy = lazy_colors },
+	{ 'chuling/equinusocio-material.vim', lazy = lazy_colors },
+	{ 'nightsense/strawberry', lazy = lazy_colors },
+	{ 'nightsense/vimspectr', lazy = lazy_colors },
+	{ 'addisonbean/amber', lazy = lazy_colors },
+	{ 'metalelf0/base16-black-metal-scheme', lazy = lazy_colors },
 	-- This isn't on GitHub anymore :(,
 	-- 'co1ncidence/bliss',
-	{ 'logico/typewriter-vim', lazy = true },
-	{ 'arcticicestudio/nord-vim', lazy = true },
-	{ 'arzg/vim-colors-xcode', lazy = true },
-	{ dir = '~/code/projects/srcery-basic', lazy = true },
-	{ 'pineapplegiant/spaceduck', lazy = true },
-	{ 'kyazdani42/blue-moon', lazy = true },
-	{ 'danishprakash/vim-yami', lazy = true },
-	{ 'plan9-for-vimspace/acme-colors', lazy = true },
-	{ 'mangeshrex/uwu.vim', lazy = true },
+	{ 'logico/typewriter-vim', lazy = lazy_colors },
+	{ 'arcticicestudio/nord-vim', lazy = lazy_colors },
+	{ 'arzg/vim-colors-xcode', lazy = lazy_colors },
+	{ dir = '~/code/projects/srcery-basic', lazy = lazy_colors },
+	{ 'pineapplegiant/spaceduck', lazy = lazy_colors },
+	{ 'kyazdani42/blue-moon', lazy = lazy_colors },
+	{ 'danishprakash/vim-yami', lazy = lazy_colors },
+	{ 'plan9-for-vimspace/acme-colors', lazy = lazy_colors },
+	{ 'mangeshrex/uwu.vim', lazy = lazy_colors },
 
 	-- Language specific
 

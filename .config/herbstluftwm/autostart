@@ -179,7 +179,8 @@ hc keybind $Mod-Shift-Return spawn "${TERMINAL:-xterm}"
 hc keybind $Mod-p spawn rofi -show drun -show-icons -i -width 640 -theme blurry-app-launcher
 hc keybind $Mod-x spawn ~/.local/bin/xtheme-picker.sh
 hc keybind $Mod-e spawn st -c Ranger -e ranger
-hc keybind $Mod-j spawn rofimoji
+# This conflicts, find a new mapping...
+# hc keybind $Mod-j spawn rofimoji
 hc keybind $Mod-m spawn rofi -theme blurry -show window -show-icons -i -width 960
 hc keybind $Mod-g spawn ~/.local/bin/help-script/help.sh commands
 
@@ -229,7 +230,8 @@ hc attr theme.inner_width 0
 hc attr theme.border_width 2
 # TODO: what's this???
 hc attr theme.color '#33415E'
-hc attr theme.active.color '#BBBBBB'
+hc attr theme.active.color "$(xval herb.focusedWindowBorder)"
+# hc attr theme.active.color '#BBBBBB'
 # hc attr theme.color "$(xval herb.normalBorder)"
 # hc attr theme.active.color "$(xval herb.focusedBorder)"
 

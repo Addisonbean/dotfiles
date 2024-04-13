@@ -10,6 +10,10 @@
 #define HERB_FOCUSED_BORDER BSPWM_FOCUSED_BORDER
 #endif
 
+#ifndef HERB_FOCUSED_WINDOW_BORDER
+#define HERB_FOCUSED_WINDOW_BORDER #bbbbbb
+#endif
+
 #ifndef HERB_GAP
 #define HERB_GAP BSPWM_GAP
 #endif
@@ -27,6 +31,7 @@
 herb.borderSize: HERB_BORDER_SIZE
 herb.normalBorder: HERB_NORMAL_BORDER
 herb.focusedBorder: HERB_FOCUSED_BORDER
+herb.focusedWindowBorder: HERB_FOCUSED_WINDOW_BORDER
 herb.gap: HERB_GAP
 herb.smartFrame: HERB_SMART_FRAME
 
