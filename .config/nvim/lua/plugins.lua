@@ -101,11 +101,22 @@ require('lazy').setup({
 	-- { 'SirVer/ultisnips', dependencies = { 'hrsh7th/nvim-compe' } },
 
 	'Konfekt/FastFold',
+
+	-- This isn't working :/
+	-- {
+	-- 	'hrsh7th/nvim-cmp',
+	-- 	opts = {
+	-- 		mapping = {
+	-- 			["<C-n>"] = require'cmp'.mapping.select_next_item({ behavior = require'cmp'.SelectBehavior.Select }),
+	-- 			["<C-p>"] = require'cmp'.mapping.select_prev_item({ behavior = require'cmp'.SelectBehavior.Select }),
+	-- 		},
+	-- 	},
+	-- },
 	{
-		"epwalsh/obsidian.nvim",
+		'epwalsh/obsidian.nvim',
 		version = "*",
 		lazy = true,
-		ft = "markdown",
+		ft = 'markdown',
 		event = {
 			'BufReadPre ' .. vim.env.XDG_DOCUMENTS_DIR .. '/obsidian/**.md',
 			'BufNewFile ' .. vim.env.XDG_DOCUMENTS_DIR .. '/obsidian/**.md',
@@ -124,9 +135,10 @@ require('lazy').setup({
 					path = vim.env.XDG_DOCUMENTS_DIR .. '/obsidian',
 				},
 			},
-			-- completion = {
-            --
-			-- },
+			ui = {
+				checkboxes = {},
+				bullets = {},
+			},
 			mappings = {
 				["<c-space>"] = {
 					action = function()
@@ -134,7 +146,23 @@ require('lazy').setup({
 					end,
 					opts = { buffer = true },
 				},
+				["gf"] = {
+					action = function()
+						return require("obsidian").util.gf_passthrough()
+					end,
+					opts = { noremap = false, expr = true, buffer = true },
+				},
+				["<cr>"] = {
+					action = function()
+						-- Or the smart action?
+						return require("obsidian").util.gf_passthrough()
+					end,
+					opts = { noremap = false, expr = true, buffer = true },
+				},
 			},
+			follow_url_func = function(url)
+				vim.fn.jobstart({ 'xdg-open', url })  -- linux
+			end,
 		},
 	},
 })

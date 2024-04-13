@@ -108,14 +108,26 @@ local extra_settings = {
 	},
 	filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
     },
+    ltex = {
+	ltex = {
+	    language = 'en-US',
+	    disabledRules = {
+		['en-US'] = {
+		    'TO_DO_HYPHEN',
+		    'MORFOLOGIK_RULE_EN_US',
+		},
+	    },
+	},
+    },
 }
 
-local servers = { 'cssls', 'hls', 'html', 'pylsp', 'rust_analyzer', 'vimls', 'tsserver', 'bashls', 'omnisharp', 'lua_ls', 'eslint', 'terraformls', 'volar' }
+local servers = { 'cssls', 'hls', 'html', 'pylsp', 'rust_analyzer', 'vimls', 'tsserver', 'bashls', 'omnisharp', 'lua_ls', 'eslint', 'terraformls', 'volar', 'ltex' }
 
 for _, server in pairs(servers) do
     local settings = {
 	capabilities = capabilities,
     }
+    -- TODO: don't autostart ltex?
     if extra_settings[server] ~= nil then
 	settings = vim.tbl_extend('force', settings, extra_settings[server])
     end
