@@ -1,3 +1,4 @@
+! Settings this to `xresources` will use the `VIM_BASE_X` colors below
 #ifndef VIM_COLORSCHEME
 #define VIM_COLORSCHEME ayu
 #endif
@@ -11,8 +12,96 @@
 #define VIM_TEXT_FG default
 #endif
 
+! Colors used for the xresources theme
+
+! Background
+#ifndef VIM_BASE_0
+#define VIM_BASE_0 COLOR_BLACK
+#endif
+
+#ifndef VIM_BASE_1
+#define VIM_BASE_1 COLOR_RED
+#endif
+
+#ifndef VIM_BASE_2
+#define VIM_BASE_2 COLOR_MAGENTA
+#endif
+
+! Comments, non-text
+#ifndef VIM_BASE_3
+#define VIM_BASE_3 COLOR_B_BLACK
+#endif
+
+#ifndef VIM_BASE_4
+#define VIM_BASE_4 COLOR_BLUE
+#endif
+
+! Normal, text
+#ifndef VIM_BASE_5
+#define VIM_BASE_5 COLOR_WHITE
+#endif
+
+#ifndef VIM_BASE_6
+#define VIM_BASE_6 COLOR_CYAN
+#endif
+
+#ifndef VIM_BASE_7
+#define VIM_BASE_7 COLOR_WHITE
+#endif
+
+! Errors, identifiers, statements
+#ifndef VIM_BASE_8
+#define VIM_BASE_8 COLOR_RED
+#endif
+
+#ifndef VIM_BASE_9
+#define VIM_BASE_9 COLOR_B_RED
+#endif
+
+#ifndef VIM_BASE_A
+#define VIM_BASE_A COLOR_YELLOW
+#endif
+
+! Strings
+#ifndef VIM_BASE_B
+#define VIM_BASE_B COLOR_GREEN
+#endif
+
+#ifndef VIM_BASE_C
+#define VIM_BASE_C COLOR_CYAN
+#endif
+
+! Titles, functions, includes
+#ifndef VIM_BASE_D
+#define VIM_BASE_D COLOR_BLUE
+#endif
+
+#ifndef VIM_BASE_E
+#define VIM_BASE_E COLOR_MAGENTA
+#endif
+
+#ifndef VIM_BASE_F
+#define VIM_BASE_F COLOR_B_WHITE
+#endif
+
 vim.colorscheme: VIM_COLORSCHEME
 vim.transparent-bg: VIM_TRANSPARENT_BG
 vim.text-fg: VIM_TEXT_FG
+vim.base0: VIM_BASE_0
+vim.base1: VIM_BASE_1
+vim.base2: VIM_BASE_2
+vim.base3: VIM_BASE_3
+vim.base4: VIM_BASE_4
+vim.base5: VIM_BASE_5
+vim.base6: VIM_BASE_6
+vim.base7: VIM_BASE_7
+vim.base8: VIM_BASE_8
+vim.base9: VIM_BASE_9
+vim.baseA: VIM_BASE_A
+vim.baseB: VIM_BASE_B
+vim.baseC: VIM_BASE_C
+vim.baseD: VIM_BASE_D
+vim.baseE: VIM_BASE_E
+vim.baseF: VIM_BASE_F
 
 ! vim:ft=xdefaults

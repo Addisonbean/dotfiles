@@ -48,9 +48,11 @@
 
 ! The colors on the light theme stand out more
 #define VIM_COLORSCHEME vimspectr330-light
-#define VIM_TEXT_FG #cccccc
+#define VIM_TEXT_FG #d5cebc
+! #define VIM_TEXT_FG #cccccc
 
-#define GTK_THEME Adwaita-Pink-Dark
+#define GTK_THEME xresources
+#define THEMIX_BG #51263c
 
 #define ROFI_BG_COLOR #471d31
 

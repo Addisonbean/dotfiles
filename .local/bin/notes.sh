@@ -30,6 +30,8 @@ while [[ $# -gt 0 ]]; do
 	;;
 	tags)
 		# TODO: make this work for files inside subdirectories
+		#       it also doesn't work with obsidian tags
+		#       (same for "untagged")
 		tag="$(rg --no-filename -e '^(:[^:]+)+:' "$NOTES_DIR" | tr ':' '\n' | sort | uniq | sed '0,/^$/{//d}' | rofi-dialog "Tags")"
 		if [ -n "$tag" ]; then
 			note="$(rg ":${tag}:" "$NOTES_DIR" | cut -d ':' -f 1 | xargs -n1 -d '\n' basename | uniq | rofi-dialog "Notes")"

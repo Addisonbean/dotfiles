@@ -49,6 +49,11 @@
 
 #define VIM_COLORSCHEME vimspectr330-light
 
-#define GTK_THEME Adwaita-Pink
+#define GTK_THEME xresources
+#define THEMIX_BG COLOR_WHITE
+#define THEMIX_FG COLOR_BLACK
+#define THEMIX_HEADER_BG #f7ecf1
+#define THEMIX_HEADER_FG COLOR_BLACK
+#define THEMIX_COLOR_ADJUST lighten
 
 ! vim:ft=xdefaults

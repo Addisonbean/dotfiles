@@ -1,85 +1,91 @@
-! Foreground for
-! - "Fans Also Like"
-! - friends feed names
-! - the played part of the slider
-! - heart icons
-! - playlist and artist names for the current page
-! - hovered songs
-! TODO: separate these...
-#ifndef SPOTIFY_FOREGROUND
-#define SPOTIFY_FOREGROUND COLOR_02
+! Mainly song titles + playlist names
+#ifndef SPOTIFY_TEXT
+#define SPOTIFY_TEXT COLOR_WHITE
 #endif
 
-! Foreground for playlists, tracks, and more
-#ifndef SPOTIFY_FOREGROUND2
-#define SPOTIFY_FOREGROUND2 COLOR_07
+! Most text besides song titles and playlist names
+#ifndef SPOTIFY_SUBTEXT
+#define SPOTIFY_SUBTEXT COLOR_WHITE
 #endif
 
-#ifndef SPOTIFY_BACKGROUND
-#define SPOTIFY_BACKGROUND COLOR_00
+! Most backgrounds
+#ifndef SPOTIFY_MAIN
+#define SPOTIFY_MAIN COLOR_B_BLACK
 #endif
 
-! The "Play" buttons on playlists and artists and highlight color
-! for selected tabs on artist pages
-#ifndef SPOTIFY_BUTTON_BG
-#define SPOTIFY_BUTTON_BG COLOR_07
+! The background behind the sections and stuff
+#ifndef SPOTIFY_SIDEBAR
+#define SPOTIFY_SIDEBAR COLOR_BLACK
 #endif
 
-! Color of unplayed part of the slider AND
-! foreground color of unavailable songs
-! TODO: separate those
-#ifndef SPOTIFY_SLIDER_BG
-#define SPOTIFY_SLIDER_BG COLOR_08
+! Not sure where this is used except when loading the home page
+#ifndef SPOTIFY_PLAYER
+#define SPOTIFY_PLAYER COLOR_BLACK
 #endif
 
-! Color of buttons like "Play" when hovered AND foreground color of the current track
-! TODO: separate those
-#ifndef SPOTIFY_BUTTON_HOVER_BG
-#define SPOTIFY_BUTTON_HOVER_BG COLOR_07
+! The bg color of popups (ex. when editing a playlist), empty playlist bg color
+#ifndef SPOTIFY_CARD
+#define SPOTIFY_CARD SPOTIFY_MAIN
 #endif
 
-! Background of selected tracks
-#ifndef SPOTIFY_SELECTION_BG
-#define SPOTIFY_SELECTION_BG COLOR_08
+#ifndef SPOTIFY_SHADOW
+#define SPOTIFY_SHADOW COLOR_BLACK
 #endif
 
-#ifndef SPOTIFY_BUTTON_HELD_FG
-#define SPOTIFY_BUTTON_HELD_FG COLOR_07
+! Used for friends feed text, selected songs, hovered songs, and small buttons
+#ifndef SPOTIFY_SELECTED_ROW
+#define SPOTIFY_SELECTED_ROW COLOR_WHITE
 #endif
 
-#ifndef SPOTIFY_BUTTON_HELD_BG
-#define SPOTIFY_BUTTON_HELD_BG COLOR_02
+! Used for active buttons and volume slider
+#ifndef SPOTIFY_BUTTON
+#define SPOTIFY_BUTTON COLOR_GREEN
 #endif
 
-#ifndef SPOTIFY_SELECTED_BUTTON
-#define SPOTIFY_SELECTED_BUTTON COLOR_05
+! Used for playing on another device bar, the hover state of active buttons, and the play/pause button on playlists/albums, and the title of the current song
+#ifndef SPOTIFY_BUTTON_ACTIVE
+#define SPOTIFY_BUTTON_ACTIVE COLOR_GREEN
 #endif
 
-#ifndef SPOTIFY_BACKGROUND_MISC
-#define SPOTIFY_BACKGROUND_MISC COLOR_01
+! Border of active input box (like when editing a playlist name or description)
+#ifndef SPOTIFY_BUTTON_DISABLED
+#define SPOTIFY_BUTTON_DISABLED COLOR_GREEN
 #endif
 
-! The "Learn more" button bg and alert backgrounds
-#ifndef SPOTIFY_BACKGROUND_MISC_HOVER
-#define SPOTIFY_BACKGROUND_MISC_HOVER COLOR_13
+! Used for the bg of loading album covers
+#ifndef SPOTIFY_TAB_ACTIVE
+#define SPOTIFY_TAB_ACTIVE COLOR_BLACK
 #endif
 
-#ifndef SPOTIFY_PRESERVE_1
-#define SPOTIFY_PRESERVE_1 #FFFFFF
+! Used for indicating if friends are actively listening to something
+#ifndef SPOTIFY_NOTIFICATION
+#define SPOTIFY_NOTIFICATION COLOR_GREEN
 #endif
 
-*spotify_foreground: SPOTIFY_FOREGROUND
-*spotify_foreground2: SPOTIFY_FOREGROUND2
-*spotify_background: SPOTIFY_BACKGROUND
-*spotify_button_bg: SPOTIFY_BUTTON_BG
-*spotify_slider_bg: SPOTIFY_SLIDER_BG
-*spotify_button_hover_bg: SPOTIFY_BUTTON_HOVER_BG
-*spotify_selection_bg: SPOTIFY_SELECTION_BG
-*spotify_button_held_fg: SPOTIFY_BUTTON_HELD_FG
-*spotify_button_held_bg: SPOTIFY_BUTTON_HELD_BG
-*spotify_selected_button: SPOTIFY_SELECTED_BUTTON
-*spotify_background_misc: SPOTIFY_BACKGROUND_MISC
-*spotify_background_misc_hover: SPOTIFY_BACKGROUND_MISC_HOVER
-*spotify_preserve_1: SPOTIFY_PRESERVE_1
+! TODO: How does this look?
+#ifndef SPOTIFY_NOTIFICATION_ERROR
+#define SPOTIFY_NOTIFICATION_ERROR COLOR_RED
+#endif
+
+! Color of music note in empty playlist covers
+#ifndef SPOTIFY_MISC
+#define SPOTIFY_MISC COLOR_YELLOW
+#endif
+
+*spotify_text: SPOTIFY_TEXT
+*spotify_subtext: SPOTIFY_SUBTEXT
+*spotify_main: SPOTIFY_MAIN
+*spotify_sidebar: SPOTIFY_SIDEBAR
+*spotify_player: SPOTIFY_PLAYER
+*spotify_card: SPOTIFY_CARD
+*spotify_shadow: SPOTIFY_SHADOW
+*spotify_selected_row: SPOTIFY_SELECTED_ROW
+*spotify_button: SPOTIFY_BUTTON
+*spotify_button_active: SPOTIFY_BUTTON_ACTIVE
+*spotify_button_disabled: SPOTIFY_BUTTON_DISABLED
+*spotify_tab_active: SPOTIFY_TAB_ACTIVE
+*spotify_notification: SPOTIFY_NOTIFICATION
+*spotify_notification_error: SPOTIFY_NOTIFICATION_ERROR
+*spotify_misc: SPOTIFY_MISC
 
 ! vim:ft=xdefaults

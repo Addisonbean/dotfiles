@@ -4,8 +4,8 @@
 	v-font: "SF Mono Regular 14";
 	// border and title
 	v-accent-color: #ffa9a6;
-	v-bg-color: #3a2b2f;
+	v-bg-color: #34272a;
 	v-fg-color: #fffbf0;
 	v-selection-bg-color: #fffbf0;
-	v-selection-fg-color: #3a2b2f;
+	v-selection-fg-color: #34272a;
 }

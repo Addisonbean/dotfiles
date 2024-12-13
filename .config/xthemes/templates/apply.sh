@@ -64,3 +64,15 @@ sed -i -E \
 	-e "s/^shadow-offset-y = .+;\$/shadow-offset-y = $(xval picom.shadowOffsetY);/" \
 	-e "s/^shadow-opacity = .+;\$/shadow-opacity = $(xval picom.shadowOpacity);/" \
 	"$picom_config"
+
+# dunst
+
+# If I wanted to define separate values for low, normal, and critical notifications, I could add a comment in dunstrc to indicate which line to target
+
+dunst_config="$HOME/.config/dunst/dunstrc"
+make_config "dunstrc" "$dunst_config" "#"
+
+sed -i -E \
+	-e "s/background = .+/background = \"$(xval dunst.background)\"/" \
+	-e "s/foreground = .+/foreground = \"$(xval dunst.foreground)\"/" \
+	"$dunst_config"

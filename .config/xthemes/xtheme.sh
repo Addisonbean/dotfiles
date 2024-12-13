@@ -14,6 +14,10 @@ xrdb -I$HOME/.config/xthemes ~/.config/xthemes/Xresources
 # Copy over various templates to edit in place for programs that can't easily read from xresources
 ~/.config/xthemes/templates/apply.sh
 
+if [[ "$(xval gtk.theme)" = "xresources" ]]; then
+	/opt/oomox/plugins/theme_oomox/change_color.sh -o xresources -t ~/.local/share/themes ~/.config/themix/themes/xresources
+fi
+
 # xsettingsd
 xsettingsd & disown
 (sleep 2 && killall xsettingsd) > /dev/null 2>&1 & disown
@@ -28,7 +32,7 @@ betterlockscreen -u "$HOME/.config/xthemes/wallpapers/$(xval my_desktop.wallpape
 killall -s SIGUSR1 st
 
 # spicetify
-spicetify update > /dev/null & disown
+spicetify apply > /dev/null & disown
 
 # polybar
 killall -q polybar
@@ -39,15 +43,7 @@ done
 
 # dunst
 killall dunst
-dunst \
-	-cb "$(xval dunst.background)" \
-	-lb "$(xval dunst.background)" \
-	-nb "$(xval dunst.background)" \
-	-cf "$(xval dunst.foreground)" \
-	-lf "$(xval dunst.foreground)" \
-	-nf "$(xval dunst.foreground)" \
-	-bf "$(xval dunst.foreground)" \
-	> /dev/null 2>&1 & disown
+dunst > /dev/null 2>&1 & disown
 
 # neovim lualine plugin
 ~/.config/xthemes/update-lualine.py

@@ -1,8 +1,15 @@
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = { 'markdown', 'markdown_inline' },
+    auto_install = true,
+    -- ensure_installed = { 'markdown', 'markdown_inline' },
     highlight = {
 	enable = true,
-	disable = { 'rust' },
+	disable = {
+	    -- TODO: disabled something in rust-tools instead of this? https://www.reddit.com/r/neovim/comments/10bx4vi/rusttools_breaks_treesitter_highlighting/
+	    -- 'rust',
+	    'markdown',
+	    -- 'javascript',
+	    -- 'vue',
+	},
     },
     textobjects = {
 	select = {

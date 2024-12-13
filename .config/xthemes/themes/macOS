@@ -18,7 +18,7 @@
 
 ! Misc. Settings
 
-#define COLOR_BG #1b1918
+#define COLOR_BG #272423
 
 #define ST_ALPHA 0.78
 #define ST_FONT ST_FONT_SF

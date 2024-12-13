@@ -1,22 +1,23 @@
-local colors = {
-	-- black = '#282828',
-	-- white = '#ebdbb2',
-	-- red = '#fb4934',
-	-- green = '#b8bb26',
-	-- blue = '#83a598',
-	-- yellow = '#fe8019',
-	-- gray = '#a89984',
-	-- darkgray = '#3c3836',
-	-- lightgray = '#504945',
-	-- inactivegray = '#7c6f64',
+-- TODO: make this shared/only generate once
+local fd = io.popen('xrdb -q')
+local res = fd:read('*a')
+fd:close()
 
+local xres = {}
+for k, v in string.gmatch(res, "([^%s:]+):%s*([^\n]+)") do
+	xres[k] = v
+end
+
+local colors = {
 	red = '#ff595e',
 	green = '#8ac926',
 	blue = '#1982c4',
 	yellow = '#ffca4a',
-	magenta = '#ffee99',
-	bg = '#3a2b2f',
-	fg = '#fffbf0',
+	magenta = xres['ansi.color05'],
+	-- What to do for these?
+	-- bg = xres['vim.base0'],
+	-- fg = xres['vim.base7'],
+	-- fg = xres['vim.text-fg'],
 }
 
 return {

@@ -1,0 +1,63 @@
+! #ifndef THEMIX_ACCENT
+! #define THEMIX_ACCENT 00ff00
+! #endif
+
+! UI elements
+
+#ifndef THEMIX_BG
+#define THEMIX_BG COLOR_BG
+#endif
+
+#ifndef THEMIX_FG
+#define THEMIX_FG COLOR_FG
+#endif
+
+! Inactive chrome tabs (not sure what else)
+
+! If left blank, this will use THEMIX_BG, but darkened by 25%
+#ifndef THEMIX_HEADER_BG
+#define THEMIX_HEADER_BG
+#endif
+
+#ifndef THEMIX_HEADER_FG
+#define THEMIX_HEADER_FG COLOR_FG
+#endif
+
+! Textboxes
+
+#ifndef THEMIX_TEXTBOX_BG
+#define THEMIX_TEXTBOX_BG COLOR_BG
+#endif
+
+#ifndef THEMIX_TEXTBOX_FG
+#define THEMIX_TEXTBOX_FG COLOR_FG
+#endif
+
+! Selections/accent color
+
+#ifndef THEMIX_SELECTION_BG
+#define THEMIX_SELECTION_BG COLOR_04
+#endif
+
+#ifndef THEMIX_SELECTION_FG
+#define THEMIX_SELECTION_FG COLOR_FG
+#endif
+
+! Can be "lighten" or "darken"
+#ifndef THEMIX_COLOR_ADJUST
+#define THEMIX_COLOR_ADJUST darken
+#endif
+
+themix.bg: THEMIX_BG
+themix.fg: THEMIX_FG
+themix.headerBg: THEMIX_HEADER_BG
+themix.headerFg: THEMIX_HEADER_FG
+themix.txtBg: THEMIX_TXT_BG
+themix.txtFg: THEMIX_TXT_FG
+themix.selectionBg: THEMIX_SELECTION_BG
+themix.selectionFg: THEMIX_SELECTION_FG
+themix.textboxBg: THEMIX_TEXTBOX_BG
+themix.textboxFg: THEMIX_TEXTBOX_FG
+themix.colorAdjust: THEMIX_COLOR_ADJUST
+
+! vim:ft=xdefaults

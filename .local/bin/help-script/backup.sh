@@ -33,6 +33,8 @@ case "$action" in
 		fi
 
 		# TODO: send a dunst notification when the mounting is done (w/ the mount point or something. Open it in ranger???)
+		# TODO: abort if dir isn't empty?
+		# mkdir /tmp/borg
 		# borg mount "/mnt/backup/borg::$choice" "$BORG_MOUNT_POINT"
 		# or maybe...
 		# borg mount -o uid=1000,gid=1000 "/mnt/backup/borg::$choice" "$BORG_MOUNT_POINT"
@@ -42,6 +44,8 @@ case "$action" in
 		# dunst
 
 		# $(cd $BACKUP_DIR && st) & disown
+
+		# Specify where it's mounted in the done notification
 	;;
 	mount)
 		# This has been already done, no action needed...
@@ -53,4 +57,5 @@ case "$action" in
 
 		notify "Done"
 	;;
+	# unmount-backup) unmount the mounted backup (not the drive itself)
 esac

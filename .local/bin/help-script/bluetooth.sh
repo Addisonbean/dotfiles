@@ -1,6 +1,8 @@
 #!/usr/bin/zsh
 
 # TODO: make this a polybar applet???
+# TODO: Sometimes it won't connect if no media is detected via. playerctl
+#       If it fails to connect when this is the case, put that hint in the failure message
 
 source "$HOME/.local/bin/help-script/util.sh"
 

@@ -1,9 +1,9 @@
-! Palette: https://coolors.co/fffbf0-ffaaa7-ff595e-ffca3a-8ac926-52c0c0-1982c4-6a4c93-4f4063-333333
+! Real palette: https://coolors.co/34272a-ff595e-8ac926-ffca4a-1982c4-6a4c93-52c0c0-fffbf0
+! Inspo and testing and whatnot: https://coolors.co/fffbf0-ffaaa7-ff595e-ffca3a-8ac926-52c0c0-1982c4-6a4c93-4f4063-333333
 
-! TODO: rename this? lol
-! Also, red really pops here. Esp #ff0000... Maybe incorporate some of that? Idk, maybe it's too retro/lo-fi/jarring
+! Also, red really pops here. Esp #ff0000... Maybe incorporate some of that? Idk, maybe it''s too retro/lo-fi/jarring
 
-#define COLOR_BLACK      #333333
+#define COLOR_BLACK      #34272a
 #define COLOR_RED        #ff595e
 #define COLOR_GREEN      #8ac926
 #define COLOR_YELLOW     #ffca4a
@@ -12,18 +12,19 @@
 #define COLOR_CYAN       #52c0c0
 #define COLOR_WHITE      #fffbf0
 
-#define COLOR_B_BLACK      #333333
-#define COLOR_B_RED        #ff595e
-#define COLOR_B_GREEN      #8ac926
-#define COLOR_B_YELLOW     #ffca4a
-#define COLOR_B_BLUE       #1982c4
-#define COLOR_B_MAGENTA    #6a4c93
-#define COLOR_B_CYAN       #52c0c0
-#define COLOR_B_WHITE      #fffbf0
+! These are just the colors above, but lightened +25 on coolors.co
+
+#define COLOR_B_BLACK      #70545b
+#define COLOR_B_RED        #ff8185
+#define COLOR_B_GREEN      #aadf55
+#define COLOR_B_YELLOW     #ffd779
+#define COLOR_B_BLUE       #3ea6e6
+#define COLOR_B_MAGENTA    #8e72b6
+#define COLOR_B_CYAN       #7ed0d0
+#define COLOR_B_WHITE      #fffcf4
 
 #define COLOR_PINK #ffa9a6
-
-#define COLOR_BG #3a2b2f
+#define COLOR_JET_BLACK #271d1f
 
 ! Misc. Settings
 
@@ -42,20 +43,25 @@
 
 #define HERB_FOCUSED_BORDER COLOR_ACCENT
 #define HERB_FOCUSED_WINDOW_BORDER COLOR_WHITE
-/* #define HERB_NORMAL_BORDER #00ff00 */
 #define HERB_SMART_FRAME off
 #define HERB_GAP 25
 
-! TODO
-/* #define VIM_TRANSPARENT_BG false */
 #define VIM_COLORSCHEME vimspectr330-light
 
-! TODO: new gtk theme...
-#define GTK_THEME Midnight-Night
+#define GTK_THEME xresources
 
 #define ROFI_ACCENT_COLOR COLOR_PINK
 
-/* #define DUNST_BG COLOR_BG */
-/* #define DUNST_FG COLOR_RED */
+#define DUNST_BG COLOR_BG
+#define DUNST_FG COLOR_PINK
+
+#define SPOTIFY_TEXT COLOR_B_WHITE
+#define SPOTIFY_SUBTEXT #bfbbb0
+#define SPOTIFY_MAIN COLOR_BLACK
+#define SPOTIFY_SIDEBAR COLOR_JET_BLACK
+#define SPOTIFY_CARD COLOR_JET_BLACK
+#define SPOTIFY_BUTTON COLOR_CYAN
+#define SPOTIFY_BUTTON_DISABLED COLOR_PINK
+#define SPOTIFY_NOTIFICATION COLOR_PINK
 
 ! vim:ft=xdefaults

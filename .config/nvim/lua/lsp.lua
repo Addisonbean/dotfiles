@@ -16,8 +16,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', '<c-k>', vim.lsp.buf.signature_help, opts)
     vim.keymap.set('i', '<c-k>', vim.lsp.buf.signature_help, opts)
-    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+    -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+    -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
     vim.keymap.set('n', '[D', function()
 	vim.diagnostic.goto_prev({ severity_limit = "Error" })
     end, opts)
@@ -96,7 +96,7 @@ local extra_settings = {
     omnisharp = {
 	cmd = { "omnisharp", "--languageserver" , "--hostPID", tostring(pid) },
     },
-    tsserver = {
+    ts_ls = {
 	init_options = {
 	    plugins = {
 		{
@@ -109,19 +109,22 @@ local extra_settings = {
 	filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
     },
     ltex = {
-	ltex = {
-	    language = 'en-US',
-	    disabledRules = {
-		['en-US'] = {
-		    'TO_DO_HYPHEN',
-		    'MORFOLOGIK_RULE_EN_US',
+	autostart = false,
+	settings = {
+	    ltex = {
+		language = 'en-US',
+		disabledRules = {
+		    ['en-US'] = {
+			'TO_DO_HYPHEN',
+			'MORFOLOGIK_RULE_EN_US',
+		    },
 		},
 	    },
 	},
     },
 }
 
-local servers = { 'cssls', 'hls', 'html', 'pylsp', 'rust_analyzer', 'vimls', 'tsserver', 'bashls', 'omnisharp', 'lua_ls', 'eslint', 'terraformls', 'volar', 'ltex' }
+local servers = { 'cssls', 'hls', 'html', 'pylsp', 'rust_analyzer', 'vimls', 'ts_ls', 'bashls', 'omnisharp', 'lua_ls', 'eslint', 'terraformls', 'volar', 'ltex' }
 
 for _, server in pairs(servers) do
     local settings = {

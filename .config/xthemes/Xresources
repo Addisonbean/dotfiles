@@ -20,6 +20,7 @@ my_desktop.wallpaper: MY_WALLPAPER
 #include "programs/spotify"
 #include "programs/st"
 #include "programs/sxiv"
+#include "programs/themix"
 #include "programs/vim"
 
 Xcursor.size: 8

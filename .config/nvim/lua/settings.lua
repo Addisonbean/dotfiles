@@ -64,3 +64,6 @@ vim.o.smartcase = true
 vim.o.infercase = true
 
 vim.o.conceallevel = 1
+
+vim.o.mouse = ''
+-- vim.o.mousescroll = 0
