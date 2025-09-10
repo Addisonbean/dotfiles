@@ -1,0 +1,82 @@
+! https://coolors.co/282a2e-cc6666-b5bd68-f0c674-81a2be-b294bb-8abeb7-e0e0e0
+
+#define COLOR_BLACK      #282a2e
+#define COLOR_RED        #cc6666
+#define COLOR_GREEN      #8db866
+#define COLOR_YELLOW     #f0c674
+#define COLOR_BLUE       #81a2be
+#define COLOR_MAGENTA    #b294bb
+#define COLOR_CYAN       #8abeb7
+#define COLOR_WHITE      #e0e0e0
+
+! +15 sat, -5 brightness
+
+#define COLOR_B_BLACK      #212632
+#define COLOR_B_RED        #d15252
+#define COLOR_B_GREEN      #86bf51
+#define COLOR_B_YELLOW     #f1c162
+#define COLOR_B_BLUE       #6e9bc4
+#define COLOR_B_MAGENTA    #b180c0
+#define COLOR_B_CYAN       #73c3b8
+#define COLOR_B_WHITE      #dbcfcf
+
+! #define COLOR_B_BLACK      #1d1f21
+! #define COLOR_B_RED        #cc6666
+! #define COLOR_B_GREEN      #b5bd68
+! #define COLOR_B_YELLOW     #f0c674
+! #define COLOR_B_BLUE       #81a2be
+! #define COLOR_B_MAGENTA    #b294bb
+! #define COLOR_B_CYAN       #8abeb7
+! #define COLOR_B_WHITE      #e0e0e0
+
+#define COLOR_ORANGE #de935f
+#define COLOR_BURNT_RED #a3685a
+#define COLOR_JET_BLACK #1d1f21
+#define COLOR_GREY #c5c8c6
+
+#define COLOR_ACCENT COLOR_MAGENTA
+
+! Misc. Settings
+
+#define ST_ALPHA 0.9
+#define ST_FONT ST_FONT_FIRA_CODE
+! #define ST_CURSOR COLOR_PINK
+#define ST_BORDER_WIDTH 50
+
+#define POLYBAR_ENABLED false
+#define EWW_BAR status-bar-float
+#define EWW_FONT_SIZE 12pt
+#define EWW_FONT_FAMILY Inter Display
+! This bar uses the bg color for the inactive desktop icons
+#define EWW_BG COLOR_GREY
+#define EWW_FG COLOR_BG
+#define EWW_FOCUSED_DESKTOP_BG COLOR_B_MAGENTA
+#define EWW_USE_BRIGHT_COLORS true
+
+#define MY_WALLPAPER fields.png
+
+#define HERB_FOCUSED_BORDER COLOR_ACCENT
+#define HERB_FOCUSED_WINDOW_BORDER COLOR_WHITE
+#define HERB_SMART_FRAME off
+#define HERB_GAP 25
+
+! #define VIM_COLORSCHEME xresources
+#define VIM_COLORSCHEME base16-tomorrow-night
+
+#define GTK_THEME xresources
+
+! #define ROFI_ACCENT_COLOR COLOR_PINK
+
+#define DUNST_BG COLOR_BG
+! #define DUNST_FG COLOR_PINK
+
+#define SPOTIFY_TEXT COLOR_B_WHITE
+#define SPOTIFY_SUBTEXT #bfbbb0
+#define SPOTIFY_MAIN COLOR_BLACK
+#define SPOTIFY_SIDEBAR COLOR_JET_BLACK
+#define SPOTIFY_CARD COLOR_JET_BLACK
+#define SPOTIFY_BUTTON COLOR_CYAN
+! #define SPOTIFY_BUTTON_DISABLED COLOR_PINK
+! #define SPOTIFY_NOTIFICATION COLOR_PINK
+
+! vim:ft=xdefaults

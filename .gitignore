@@ -95,6 +95,9 @@
 !.config/udev/
 !.config/udev/**
 
+!.config/eww/
+!.config/eww/**
+
 # Tracked via. xthemes template
 # !.config/xsettingsd/
 # !.config/xsettingsd/xsettingsd.conf

@@ -40,6 +40,5 @@ if [ "$profile" = "Advanced..." ]; then
 	esac
 elif [ -n "$profile" ]; then
 	autorandr --load "$profile"
-
-	# TODO: consider running `~/.config/xthemes/xtheme.sh` here to load the new polybar and stuff
+	~/.config/xthemes/refresh-displays.sh
 fi

@@ -76,3 +76,36 @@ sed -i -E \
 	-e "s/background = .+/background = \"$(xval dunst.background)\"/" \
 	-e "s/foreground = .+/foreground = \"$(xval dunst.foreground)\"/" \
 	"$dunst_config"
+
+# eww
+
+eww_config="/home/addison/.config/eww/xresources.scss"
+make_config "eww.scss" "$eww_config" "//"
+
+# TODO: I don't like this... Wish I could grab these from in the thing... (I guess the color defs aren't needed, just colors for specific elements...)
+sed -i -E \
+	-e "s/bg: #.+;/bg: $(xval eww.bg);/" \
+	-e "s/fg: #.+;/fg: $(xval eww.fg);/" \
+	-e "s/focusedDesktopBg: #.+;/focusedDesktopBg: $(xval eww.focusedDesktopBg);/" \
+	-e "s/focusedDesktopFg: #.+;/focusedDesktopFg: $(xval eww.focusedDesktopFg);/" \
+	-e "s/font-family: .+;/font-family: $(xval eww.fontFamily);/" \
+	-e "s/font-size: .+;/font-size: $(xval eww.fontSize);/" \
+	\
+	-e "s/black: #.+;/black: $(xval st.color0);/" \
+	-e "s/red: #.+;/red: $(xval st.color1);/" \
+	-e "s/green: #.+;/green: $(xval st.color2);/" \
+	-e "s/yellow: #.+;/yellow: $(xval st.color3);/" \
+	-e "s/blue: #.+;/blue: $(xval st.color4);/" \
+	-e "s/magenta: #.+;/magenta: $(xval st.color5);/" \
+	-e "s/cyan: #.+;/cyan: $(xval st.color6);/" \
+	-e "s/white: #.+;/white: $(xval st.color7);/" \
+	\
+	-e "s/b-black: #.+;/b-black: $(xval st.color8);/" \
+	-e "s/b-red: #.+;/b-red: $(xval st.color9);/" \
+	-e "s/b-green: #.+;/b-green: $(xval st.color10);/" \
+	-e "s/b-yellow: #.+;/b-yellow: $(xval st.color11);/" \
+	-e "s/b-blue: #.+;/b-blue: $(xval st.color12);/" \
+	-e "s/b-magenta: #.+;/b-magenta: $(xval st.color13);/" \
+	-e "s/b-cyan: #.+;/b-cyan: $(xval st.color14);/" \
+	-e "s/b-white: #.+;/b-white: $(xval st.color15);/" \
+	"$eww_config"

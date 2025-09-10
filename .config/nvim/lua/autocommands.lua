@@ -9,15 +9,17 @@
 --   - Closes all folds
 --   - Opens the incorrect fold
 --   - Restores the cursor position, just as `zM` normally does
-local function foldAllAndOpenIncorrectObsidianFold()
-	local firstLine = vim.api.nvim_buf_get_lines(0, 0, 1, false)[1]
-	if firstLine == '---' then
-		local pos = vim.api.nvim_win_get_cursor(0)
-		-- Note: zO is needed here instead of zo because, for some reason, there seems to be two folds in one spot here...
-		vim.cmd('normal! zMggzjzO')
-		vim.api.nvim_win_set_cursor(0, pos)
-	end
-end
+
+-- This isn't needed now, but now some files don't fold unless you do `:e` first...
+-- local function foldAllAndOpenIncorrectObsidianFold()
+-- 	local firstLine = vim.api.nvim_buf_get_lines(0, 0, 1, false)[1]
+-- 	if firstLine == '---' then
+-- 		local pos = vim.api.nvim_win_get_cursor(0)
+-- 		-- Note: zO is needed here instead of zo because, for some reason, there seems to be two folds in one spot here...
+-- 		vim.cmd('normal! zMggzjzO')
+-- 		vim.api.nvim_win_set_cursor(0, pos)
+-- 	end
+-- end
 
 -- Filetype detection
 
@@ -36,30 +38,30 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
 -- Filetype specific settings and mappings
 
 vim.api.nvim_create_augroup('filetype-autocommands', { clear = true })
-vim.api.nvim_create_autocmd('FileType', {
-	pattern = 'markdown',
-	callback = function()
-		vim.keymap.set('n', 'zM', foldAllAndOpenIncorrectObsidianFold, { buffer = 0 })
-	end,
-	group = 'filetype-autocommands',
-})
+-- vim.api.nvim_create_autocmd('FileType', {
+-- 	pattern = 'markdown',
+-- 	callback = function()
+-- 		vim.keymap.set('n', 'zM', foldAllAndOpenIncorrectObsidianFold, { buffer = 0 })
+-- 	end,
+-- 	group = 'filetype-autocommands',
+-- })
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = 'qf',
 	callback = function()
-		vim.bo.number = true
+		vim.wo.number = true
 	end,
 	group = 'filetype-autocommands',
 })
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = 'html,css,vue,less',
 	callback = function()
-		vim.bo.iskeyword:append('-')
+		vim.bo.iskeyword = vim.bo.iskeyword .. ',-'
 	end,
 })
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = 'less',
 	callback = function()
-		vim.bo.iskeyword:append('@')
+		vim.bo.iskeyword = vim.bo.iskeyword .. ',@'
 	end,
 	group = 'filetype-autocommands',
 })
@@ -91,15 +93,4 @@ vim.api.nvim_create_autocmd('FileType', {
 	pattern = { 'xresources', 'xdefaults' },
 	callback = function() vim.bo.commentstring = '! %s' end,
 	group = 'filetype-autocommands',
-})
-
--- File/location specific mappings
-
-vim.api.nvim_create_augroup('filepath-based', { clear = true })
-vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
-	pattern = vim.fn.expand('~/.config/nvim/') .. '*',
-	command = 'setlocal path+=~/.config/nvim,~/.config/nvim/lua',
-	-- The lua for this isn't working... It doesn't recognize `append`
-	-- callback = function() vim.bo.path:append({ '~/.config/nvim', '~/.config/nvim/lua' }) end,
-	group = 'filepath-based',
 })

@@ -39,10 +39,12 @@ function mute_toggle_notification() {
 
 case "$1" in
 	up)
+		pactl set-sink-mute @DEFAULT_SINK@ no
 		pactl set-sink-volume @DEFAULT_SINK@ +5%
 		amixer | get_level | volume_change_notification ""
 		;;
 	down)
+		pactl set-sink-mute @DEFAULT_SINK@ no
 		pactl set-sink-volume @DEFAULT_SINK@ -5%
 		amixer | get_level | volume_change_notification ""
 		;;

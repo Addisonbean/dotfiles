@@ -1,3 +1,7 @@
+#ifndef POLYBAR_ENABLED
+#define POLYBAR_ENABLED true
+#endif
+
 #ifndef POLYBAR_BG
 #define POLYBAR_BG COLOR_00
 #endif
@@ -6,8 +10,13 @@
 #define POLYBAR_FG COLOR_07
 #endif
 
+! TODO: rename this to POLYBAR_FOCUSED_DESKTOP_BG
 #ifndef POLYBAR_FOCUSED_DESKTOP
 #define POLYBAR_FOCUSED_DESKTOP COLOR_02
+#endif
+
+#ifndef POLYBAR_FOCUSED_DESKTOP_FG
+#define POLYBAR_FOCUSED_DESKTOP_FG COLOR_00
 #endif
 
 #ifndef POLYBAR_PRIMARY_FONT
@@ -87,9 +96,12 @@
 #define POLYBAR_CLIP_SPOTIFY_MODULE true
 #endif
 
+polybar.enabled: POLYBAR_ENABLED
+
 polybar.background: POLYBAR_BG
 polybar.foreground: POLYBAR_FG
 polybar.focusedDesktop: POLYBAR_FOCUSED_DESKTOP
+polybar.focusedDesktopFg: POLYBAR_FOCUSED_DESKTOP_FG
 polybar.primaryFont: POLYBAR_PRIMARY_FONT
 polybar.bar: POLYBAR_BAR
 polybar.underlineSize: POLYBAR_UNDERLINE_SIZE

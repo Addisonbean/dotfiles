@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+# TODO: add a verbose flag
+
+info="$(nmcli dev status)"
+
+wifi_connected="$([[ -n "$(echo "$info" | grep '[[:space:]]wifi[[:space:]]\+connected')" ]] && echo "true" || echo "false")"
+eth_connected="$([[ -n "$(echo "$info" | grep '[[:space:]]ethernet[[:space:]]\+connected')" ]] && echo "true" || echo "false")"
+
+echo "{ \"wifi\": $wifi_connected, \"ethernet\": $eth_connected }"

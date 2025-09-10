@@ -18,10 +18,6 @@ map('i', '<c-s><c-s>', '<cmd>set spell!<cr>')
 -- Open config
 map('n', '<leader>ev', '<cmd>e $MYVIMRC<cr>')
 
--- TODO: this doesn't actually reload the lua...
--- Reload config
-map('n', '<leader>rv', '<cmd>source $MYVIMRC <bar> doautocmd BufRead<cr>')
-
 -- {{{ Copy/paste/cut stuff
 
 -- Use `<leader>s` to copy/cut/paste from the system clipboard
@@ -71,7 +67,6 @@ map('v', '<leader>X', 'X')
 
 -- }}}
 
--- TODO: is there a more general way to do this?
 -- Remap <C-a> since that's my tmux prefix and <C-c> is useless by default
 map('n', '<c-c>', '<c-a>')
 map('v', '<c-c>', '<c-a>')
@@ -83,12 +78,6 @@ map('i', '<c-h>', '<cmd>noh <bar> echo ""<cr>')
 
 -- Toggle line numbers
 map('n', '<c-q>', '<cmd>set number!<cr>')
-
--- Use [<space> and ]<space> to add a new line above/below the current line
--- (Thanks to https://vi.stackexchange.com/a/3891/8749 for extracting this
--- from the tpope/vim-unimpaired plugin)
-map('n', '[<space>', [[<cmd>put!=repeat([''],v:count)<bar>']+1<cr>]])
-map('n', ']<space>', [[<cmd>put =repeat([''],v:count)<bar>'[-1<cr>]])
 
 -- Maybe just type `:norm @q` out normally when I need to do this?
 -- xnoremap <silent> @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
@@ -107,6 +96,7 @@ map('n', '<leader>h', '^v$hyo<esc>p==^v$hr')
 map('n', 'gp', '`[v`]')
 
 -- TODO: maybe make this a text-object so I can do something
+-- Also TODO: why do I have this??
 -- like `yil` to "yank inner line"
 map('n', '<leader>vl', '^v$h')
 
@@ -117,17 +107,18 @@ map('n', '-', ':e %:h<cr>', { silent = true })
 -- `!` mode is insert + command mode
 map('!', '<c-\\><c-d>', [[<c-r>=strftime('%Y-%m-%d')<cr>]], { silent = true })
 
--- Make `<c-r>` start a new undo block
-map('i', '<c-r>', '<c-g>u<c-r>')
-
--- neovim 0.6.0 remaps this
+-- neovim 0.6.0 remaps this to `y$`, rather than the previous default `yy`
 vim.cmd 'unmap Y'
 
+-- Make `<c-r>`, sentence enders, and new lines, a start a new undo block
+
 -- TODO: start a new undo chain *after* pasting here, in addition to before
+-- Not sure how to do that though bc the read for input...
 map('i', '<c-r>', '<c-g>u<c-r>')
 map('i', '.', '<c-g>u.')
 map('i', '!', '<c-g>u!')
 map('i', '?', '<c-g>u?')
 map('i', '<cr>', '<c-g>u<cr>')
+
 
 -- vim:foldmethod=marker:foldlevel=0

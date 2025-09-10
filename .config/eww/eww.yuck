@@ -1,0 +1,157 @@
+(deflisten focused-desktop "./scripts/workspaces")
+; (defpoll time :interval "1s"
+;   "date '+%I:%M %p   %b %d, %Y'")
+(defpoll internet-status :interval "1s" "./scripts/internet")
+(defpoll media-status :interval "1s" "./scripts/spotify")
+; This must be an even number
+(defvar media-char-limit 70)
+(defvar verbose-time false)
+(defvar use-bright-colors false)
+
+(defwindow status-bar-float
+  :monitor 0
+  :geometry (geometry
+    :x "0"
+    :y "0"
+    :width "100%"
+    :height "44px"
+    :anchor "top center")
+  :stacking "fg"
+  ; This distance should match the height of the bar
+  :reserve (struts :distance "44px" :side "top")
+  :windowtype "dock"
+  ; :wm-ignore false
+  (bar-float))
+
+(defwidget bar-float []
+  (centerbox
+    :class "bar ${use-bright-colors ? 'use-bright-colors' : ''}"
+    (workplaces :icon " ")
+    (time)
+    (misc)))
+
+(defwindow status-bar
+  :monitor 0
+  :geometry (geometry
+    :x "0"
+    :y "0"
+    :width "100%"
+    :height "32px"
+    :anchor "top center")
+  :stacking "fg"
+  ; This distance should match the height of the bar
+  :reserve (struts :distance "32px" :side "top")
+  :windowtype "dock"
+  ; :wm-ignore false
+  (bar))
+
+(defwidget bar []
+  (centerbox
+    :class "bar"
+    (workplaces)
+    (time)
+    (misc)))
+
+(defwidget workplaces [?icon]
+  (box :class "workspaces"
+    :space-evenly false
+    (workspaces-button :index 1 :focused { focused-desktop == 0 } :icon icon)
+    (workspaces-button :index 2 :focused { focused-desktop == 1 } :icon icon)
+    (workspaces-button :index 3 :focused { focused-desktop == 2 } :icon icon)
+    (workspaces-button :index 4 :focused { focused-desktop == 3 } :icon icon)
+    (workspaces-button :index 5 :focused { focused-desktop == 4 } :icon icon)
+    (workspaces-button :index 6 :focused { focused-desktop == 5 } :icon icon)
+    (workspaces-button :index 7 :focused { focused-desktop == 6 } :icon icon)
+    (workspaces-button :index 8 :focused { focused-desktop == 7 } :icon icon)
+    (workspaces-button :index 9 :focused { focused-desktop == 8 } :icon icon)
+))
+
+(defwidget time []
+  (eventbox
+    :class "no-hl"
+    :onclick "eww update verbose-time=${ !verbose-time }"
+    (box "${ verbose-time
+      ? "${ formattime(EWW_TIME, '%I:%M:%S %p   %a. %b %d, %Y') }"
+      : "${ formattime(EWW_TIME, '%I:%M %p   %b %d, %Y') }" }")))
+
+(defwidget misc []
+  (box
+    :space-evenly false
+    :halign "end"
+    :spacing 30
+    :class "misc"
+    (battery)
+    ; TODO: do I want the cpu module back?
+    (internet)
+    (spotify)
+    ))
+
+(defwidget battery []
+  (box :space-evenly false :spacing 20
+    (label
+      :class { EWW_BATTERY.BAT0.status == "Charging" ? "charging" : "" }
+      :text {
+        EWW_BATTERY.BAT0.capacity < 20 ? "" :
+        EWW_BATTERY.BAT0.capacity < 40 ? "" :
+        EWW_BATTERY.BAT0.capacity < 75 ? "" :
+        EWW_BATTERY.BAT0.capacity < 100 ? "" :
+        ""})
+    (box "${EWW_BATTERY.BAT0.capacity}%")))
+
+; TODO: do I want this to be a color when active?
+; TODO: Add a way (right click? alt click?) to get more detail (connection strength, more ethernet details maybe?)
+(defwidget internet []
+  (eventbox
+    :class "no-hl"
+    :onclick "st -e nmtui & disown"
+    (box
+      :class "internet ${
+        internet-status.wifi || internet-status.ethernet ? "connected" : "" }"
+      { internet-status.ethernet ? " " : " " })))
+
+(defwidget spotify []
+  (eventbox
+    :class "no-hl"
+    :onclick "wmctrl -xa spotify"
+    (box
+      :class "media"
+      :space-evenly false
+      (box
+        :class "media-status ${ media-status.state }"
+        "   ")
+      (box
+        :visible {
+          media-status != "{}"
+          && (media-status?.artist != "" || media-status?.track != "")
+          && strlength(media-status.artist) + strlength(media-status.track) + 3 <= media-char-limit }
+        "${ media-status.track} - ${ media-status.artist }")
+      (media-label-truncated
+        :visible { strlength(media-status.artist) + strlength(media-status.track) + 3 > media-char-limit }))))
+
+(defwidget media-label-truncated [visible]
+  (box
+    :space-evenly false
+    :visible visible
+    (truncate
+      :text "${ media-status.track }"
+      ; The built in `min` function doesn't seem to work...
+      ; `-10` to account for the " - " and up to 2 "..."'s
+      :limit { media-char-limit - 10 - strlength(media-status.artist) < (media-char-limit - 10) / 2
+        ? (media-char-limit - 10) / 2
+        : (media-char-limit - 10) - strlength(media-status.artist) }
+      :add-space true)
+    "- "
+    (truncate
+      :text "${ media-status.artist }"
+      :limit { (media-char-limit - 10) - strlength(media-status.track) < (media-char-limit - 10) / 2
+        ? (media-char-limit - 10) / 2
+        : (media-char-limit - 10) - strlength(media-status.track) })))
+
+(defwidget truncate [text limit ?add-space]
+  "${ substring(text, 0, limit) }${ strlength(text) > limit ? "..." : "" }${ add-space != "" ? " " : "" }")
+
+(defwidget workspaces-button [index focused ?icon]
+  (eventbox
+    :onclick "wmctrl -s ${index - 1}"
+    :class "no-hl"
+    (box :class "ws-button ${ focused ? 'focused' : '' }" { icon != "" ? icon : index })))

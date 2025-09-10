@@ -119,6 +119,7 @@ require('lazy').setup({
 	-- 		'nvim-tree/nvim-web-devicons'
 	-- 	},
 	-- },
+	{ 'elkowar/yuck.vim', ft = 'yuck' },
 
 	-- Misc plugins
 
@@ -273,6 +274,9 @@ require('lazy').setup({
 			{ '<leader>fv', '<cmd>Telescope git_status<cr>' },
 		},
 	},
+	-- Since 0.11, all this would add that I may want is the ability to show docs along side completion suggestions
+	-- It can also aggregate results from multiple sources too
+	-- 'hrsh7th/nvim-cmp',
 	'AndrewRadev/splitjoin.vim',
 	{ 'simrat39/symbols-outline.nvim', cmd = { 'SymbolsOutline', 'SymbolsOutlineOpen' } },
 	{
@@ -293,7 +297,7 @@ require('lazy').setup({
 		end,
 	},
 	{
-		'epwalsh/obsidian.nvim',
+		'obsidian-nvim/obsidian.nvim',
 		version = '*',
 		lazy = true,
 		ft = 'markdown',
@@ -303,9 +307,9 @@ require('lazy').setup({
 		},
 		dependencies = {
 			'nvim-lua/plenary.nvim', -- required
-			'hrsh7th/nvim-cmp',
 		},
 		opts = {
+			legacy_commands = false,
 			templates = {
 				subdir = 'templates'
 			},
@@ -317,29 +321,15 @@ require('lazy').setup({
 			},
 			ui = {
 				max_file_length = 3000, -- this is in lines
-				checkboxes = {},
 				bullets = {},
 			},
-			mappings = {
-				["<c-space>"] = {
-					action = function()
-						return require("obsidian").util.toggle_checkbox()
-					end,
-					opts = { buffer = true },
-				},
-				["gf"] = {
-					action = function()
-						return require("obsidian").util.gf_passthrough()
-					end,
-					opts = { noremap = false, expr = true, buffer = true },
-				},
-				["<cr>"] = {
-					action = function()
-						-- Or the smart action?
-						return require("obsidian").util.gf_passthrough()
-					end,
-					opts = { noremap = false, expr = true, buffer = true },
-				},
+			checkboxes = {},
+			callbacks = {
+				enter_note = function(_, note)
+					vim.keymap.set("n", "<c-space>", "<cmd>Obsidian toggle_checkbox<cr>", { buffer = note.bufnr })
+					vim.keymap.set("n", "gf", "<cmd>Obsidian follow_link<cr>", { buffer = note.bufnr })
+					vim.keymap.set("n", "<cr>", "<cmd>Obsidian follow_link<cr>", { buffer = note.bufnr })
+				end,
 			},
 			follow_url_func = function(url)
 				vim.fn.jobstart({ 'xdg-open', url })  -- linux

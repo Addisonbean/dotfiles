@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
 
-# TODO: make a util script, with funcitons like `notify` to use dunst
+# TODO: Why am I using hyphens? These names can have spaces...
 
-rofi-dialog() {
-	rofi -dmenu -sort -i -p "$1"
-}
+source "$HOME/.local/bin/help-script/util.sh"
 
 while [[ $# -gt 0 ]]; do
 	case "$1" in
 	commands)
-		cmd="$(echo -e "timezone\nwifi-portal\nbluetooth\ndisplays\nbackups\ntroubleshooting" | rofi-dialog "Commands")"
+		cmd="$(echo -e "timezone\nwifi-portal\nbluetooth\ndisplays\nbackups\ntroubleshooting" | rofi-selection "Commands")"
 		[ -n "$cmd" ] && "$0" "$cmd"
 		shift
 	;;
@@ -18,7 +16,9 @@ while [[ $# -gt 0 ]]; do
 		shift
 	;;
 	wifi-portal)
-		xdg-open http://192.168.1.1/
+		# TODO: maybe offer an option for this too: http://detectportal.brave-http-only.com/
+		# xdg-open http://192.168.1.1/
+		~/.local/bin/help-script/wifi-portal.sh
 		shift
 	;;
 	bluetooth)

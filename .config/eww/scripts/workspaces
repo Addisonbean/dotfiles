@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+# index="$(herbstclient attr tags.focus.index)"
+# name="$(herbstclient attr tags.focus.name)"
+
+xprop -spy -root _NET_CURRENT_DESKTOP | while read line; do
+	echo "$line" | awk -e '{ print $3 }'
+done

@@ -1,4 +1,3 @@
--- TODO: make this shared/only generate once
 local fd = io.popen('xrdb -q')
 local res = fd:read('*a')
 fd:close()
@@ -9,15 +8,14 @@ for k, v in string.gmatch(res, "([^%s:]+):%s*([^\n]+)") do
 end
 
 local colors = {
-	red = '#ff595e',
-	green = '#8ac926',
-	blue = '#1982c4',
-	yellow = '#ffca4a',
-	magenta = xres['ansi.color05'],
-	-- What to do for these?
-	-- bg = xres['vim.base0'],
-	-- fg = xres['vim.base7'],
-	-- fg = xres['vim.text-fg'],
+	-- TODO: Like make a vim.status_bar_insert var and stuff
+	red = '#cc6666',
+	green = '#8db866',
+	blue = '#81a2be',
+	yellow = '#f0c674',
+	magenta = xres['ansi.color5'],
+	bg = '#282a2e',
+	fg = '#e0e0e0',
 }
 
 return {

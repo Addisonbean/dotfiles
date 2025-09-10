@@ -1,0 +1,89 @@
+@import "./xresources.scss";
+
+.bar {
+  font: $xres-font-size $xres-font-family;
+  background-color: $xres-bg;
+  color: $xres-fg;
+}
+
+.no-hl:active {
+  background-color: inherit;
+}
+
+.ws-button {
+  // border: none;
+  // border-radius: 0;
+
+  padding: 0 12px;
+  color: $xres-fg;
+  background-color: inherit;
+
+  transition-property: none;
+
+  &.focused {
+    background-color: $xres-focusedDesktopBg;
+    color: $xres-focusedDesktopFg;
+  }
+}
+
+.misc {
+  padding-right: 30px;
+}
+
+.charging {
+  color: $xres-yellow;
+}
+
+.internet {
+  color: $xres-red;
+
+  &.connected {
+    color: inherit;
+  }
+}
+
+.media {
+  .media-status.playing {
+      color: $xres-green;
+  }
+}
+
+.use-bright-colors {
+  .media .media-status.playing {
+      color: $xres-b-green;
+  }
+
+  .charging {
+    color: $xres-b-yellow;
+  }
+
+  .internet {
+    color: $xres-b-red;
+  }
+}
+
+// Styles for `status-bar-float`
+
+.status-bar-float {
+  background: none;
+  background: none;
+  // TODO: make this relative to the herbstluft gap value (this for a gap of 25px)
+  padding: 15px 30px 0 20px;
+
+  .misc {
+    padding-right: 0;
+  }
+
+  .ws-button {
+    font-size: 0.8em;
+    // border: none;
+    padding: 0 8px;
+    color: $xres-bg;
+
+    &.focused {
+      background-color: inherit;
+      color: $xres-focusedDesktopBg;
+    }
+  }
+
+}

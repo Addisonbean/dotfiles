@@ -1,0 +1,69 @@
+
+#ifndef EWW_BG
+#ifdef POLYBAR_BG
+#define EWW_BG POLYBAR_BG
+#endif
+#endif
+
+#ifndef EWW_FG
+#ifdef POLYBAR_FG
+#define EWW_FG POLYBAR_FG
+#endif
+#endif
+
+#ifndef EWW_FOCUSED_DESKTOP_BG
+#ifdef POLYBAR_FOCUSED_DESKTOP
+#define EWW_FOCUSED_DESKTOP_BG POLYBAR_FOCUSED_DESKTOP
+#endif
+#endif
+
+#ifndef EWW_FOCUSED_DESKTOP_FG
+#ifdef POLYBAR_FOCUSED_DESKTOP_FG
+#define EWW_FOCUSED_DESKTOP_FG POLYBAR_FOCUSED_DESKTOP_FG
+#endif
+#endif
+
+! -- POLYBAR MIGRATION ABOVE -- !
+
+#ifndef EWW_BAR
+#define EWW_BAR status-bar
+#endif
+
+#ifndef EWW_BG
+#define EWW_BG COLOR_00
+#endif
+
+#ifndef EWW_FG
+#define EWW_FG COLOR_07
+#endif
+
+#ifndef EWW_FOCUSED_DESKTOP_BG
+#define EWW_FOCUSED_DESKTOP_BG COLOR_02
+#endif
+
+#ifndef EWW_FOCUSED_DESKTOP_FG
+#define EWW_FOCUSED_DESKTOP_FG COLOR_00
+#endif
+
+#ifndef EWW_FONT_FAMILY
+#define EWW_FONT_FAMILY iosevka
+#endif
+
+#ifndef EWW_FONT_SIZE
+#define EWW_FONT_SIZE 12pt
+#endif
+
+#ifndef EWW_USE_BRIGHT_COLORS
+#define EWW_USE_BRIGHT_COLORS false
+#endif
+
+eww.bar: EWW_BAR
+eww.fontFamily: EWW_FONT_FAMILY
+eww.fontSize: EWW_FONT_SIZE
+eww.bg: EWW_BG
+eww.fg: EWW_FG
+eww.focusedDesktopBg: EWW_FOCUSED_DESKTOP_BG
+eww.focusedDesktopFg: EWW_FOCUSED_DESKTOP_FG
+eww.useBrightColors: EWW_USE_BRIGHT_COLORS
+
+! vim:ft=xdefaults

@@ -1,0 +1,28 @@
+#!/usr/bin/env zsh
+
+# TODO: this breaks the chrome status if spotify isn't open
+running=$(pidof spotify)
+if [[ -z "$running" ]]; then
+    echo "{}"
+    exit
+fi
+
+playerctl="playerctl --player playerctld"
+
+state=""
+artist=""
+track=""
+
+player_status="$(${=playerctl} status)"
+case "$player_status" in
+    "Playing") state="playing" ;;
+    "Paused") state="paused" ;;
+    *) state="stopped" ;;
+esac
+
+# Try not to cut, then cut artist, then song
+# colrm works like cut but handles unicode better
+artist="$(${=playerctl} metadata artist | tr -d "\n")"
+track="$(${=playerctl} metadata title | tr -d "\n")"
+
+echo "{ \"state\": \"$state\", \"artist\": \"$artist\", \"track\": \"$track\" }"

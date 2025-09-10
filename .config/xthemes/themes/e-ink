@@ -1,0 +1,82 @@
+! Named after and inspired by this:
+! https://www.reddit.com/r/unixporn/comments/j87kxb/cwm_astigmatism_friendly/
+
+! TODO:
+
+#define COLOR_BLACK      #fefefe
+#define COLOR_RED        #C77B63
+#define COLOR_GREEN      #A1B33E
+#define COLOR_YELLOW     #C2B44F
+#define COLOR_BLUE       #5e5e5e
+#define COLOR_MAGENTA    #9166BD
+#define COLOR_CYAN       #60ADB3
+#define COLOR_WHITE      #cccccc
+
+#define COLOR_B_BLACK    #fefefe
+#define COLOR_B_RED      #C77B63
+#define COLOR_B_GREEN    #A1B33E
+#define COLOR_B_YELLOW   #C2B44F
+#define COLOR_B_BLUE     #5e5e5e
+#define COLOR_B_MAGENTA  #9166BD
+#define COLOR_B_CYAN     #60ADB3
+#define COLOR_B_WHITE    #cccccc
+
+#define COLOR_ACCENT COLOR_FG
+
+# okay we got:
+# - dadada (wallpaper)
+# - cccccc (bg)
+# - c2c2c2 (bg darker - polybar, chrome input)
+# - b8b8b8 (bg_darkest)
+
+#define COLOR_BG #cccccc
+#define COLOR_BG_DARKER #c2c2c2
+! Currently unused
+#define COLOR_BG_DARKEST #b8b8b8
+#define COLOR_FG #5e5e5e
+
+#define AUX_SELECTION_BG #212121
+
+! Misc. Settings
+
+#define ST_ALPHA 1.0
+#define ST_FONT ST_FONT_FIRA_CODE
+#define ST_CURSOR COLOR_BLUE
+#define ST_BORDER_WIDTH 50
+
+#define POLYBAR_BG COLOR_BG_DARKER
+#define POLYBAR_FG COLOR_FG
+#define POLYBAR_PRIMARY_FONT Terminus (TTF):size=13;2
+#define POLYBAR_LEFT_MODULES all-desktops
+#define POLYBAR_FOCUSED_DESKTOP POLYBAR_FG
+#define POLYBAR_FOCUSED_DESKTOP_FG POLYBAR_BG
+
+#define MY_WALLPAPER #dadada
+
+#define BSPWM_FOCUSED_BORDER COLOR_BG
+#define BSPWM_NORMAL_BORDER #A9A9A9
+#define BSPWM_GAPLESS_MONOCLE false
+#define BSPWM_GAP 25
+
+#define VIM_COLORSCHEME typewriter
+! #define VIM_TRANSPARENT_BG false
+
+#define GTK_THEME xresources
+
+#define THEMIX_HEADER_BG COLOR_BG_DARKER
+#define THEMIX_TEXTBOX_BG COLOR_BG_DARKER
+
+#define SPOTIFY_FOREGROUND COLOR_FG
+#define SPOTIFY_FOREGROUND2 COLOR_FG
+#define SPOTIFY_BACKGROUND COLOR_BG
+#define SPOTIFY_SELECTION_BG AUX_SELECTION_BG
+#define SPOTIFY_BACKGROUND_MISC_HOVER COLOR_RED
+#define SPOTIFY_BUTTON_BG COLOR_GREEN
+#define SPOTIFY_BUTTON_HOVER_BG COLOR_CYAN
+#define SPOTIFY_SLIDER_BG #888888
+
+#define ROFI_ACCENT_COLOR COLOR_MAGENTA
+#define ROFI_SELECTION_FG_COLOR COLOR_FG
+#define ROFI_SELECTION_BG_COLOR AUX_SELECTION_BG
+
+! vim:ft=xdefaults
